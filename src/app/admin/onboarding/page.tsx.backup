@@ -1,0 +1,309 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import NavBar from '@/components/NavBar'
+import Footer from '@/components/Footer'
+import { Button } from '@/components/ui/Button'
+import { Card, CardHeader, CardContent } from '@/components/ui/Card'
+import AIAssistantChat from '@/components/onboarding/AIAssistantChat'
+import IntegrationSetupWizard from '@/components/onboarding/IntegrationSetupWizard'
+import OnboardingChecklist from '@/components/onboarding/OnboardingChecklist'
+import QuickStartGuide from '@/components/onboarding/QuickStartGuide'
+
+type TabType = 'overview' | 'integrations' | 'checklist' | 'guides'
+
+export default function OnboardingDashboard() {
+  const [activeTab, setActiveTab] = useState<TabType>('overview')
+  const [integrationStatus, setIntegrationStatus] = useState<Record<string, boolean>>({})
+  const [showAIAssistant, setShowAIAssistant] = useState(true)
+  
+  // Mock data for demonstration
+  const [stats, setStats] = useState({
+    completedSteps: 3,
+    totalSteps: 12,
+    timeSpent: '45 min',
+    estimatedTimeLeft: '2 hours',
+    leadsCaptured: 0,
+    revenueGenerated: 0,
+  })
+
+  useEffect(() => {
+    // Load saved progress
+    const savedIntegrations = localStorage.getItem('treeai-integrations')
+    if (savedIntegrations) {
+      try {
+        setIntegrationStatus(JSON.parse(savedIntegrations))
+      } catch (error) {
+        console.error('Failed to load integration status:', error)
+      }
+    }
+  }, [])
+
+  const renderOverview = () => (
+    <div className="space-y-6">
+      {/* Welcome Message */}
+      <Card className="glass-surface border-green-500/30 bg-gradient-to-br from-green-900/20 to-blue-900/20">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">
+                Welcome to TreeAI ProWebsite Setup! 🌲
+              </h2>
+              <p className="text-lg text-gray-300 mb-4">
+                Let's get your tree service business online and generating leads in just a few steps.
+              </p>
+              <div className="flex items-center gap-4">
+                <Button variant="primary" size="lg" onClick={() => setActiveTab('integrations')}>
+                  Start Setup →
+                </Button>
+                <Button variant="outline" onClick={() => setActiveTab('guides')}>
+                  View Guides
+                </Button>
+              </div>
+            </div>
+            <div className="text-6xl">🚀</div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Progress Stats */}
+      <div className="grid md:grid-cols-4 gap-4">
+        <Card className="border-gray-700">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-green-400">
+              {Math.round((stats.completedSteps / stats.totalSteps) * 100)}%
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Setup Progress</div>
+          </CardContent>
+        </Card>
+        
+        <Card className="border-gray-700">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-blue-400">
+              {stats.timeSpent}
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Time Invested</div>
+          </CardContent>
+        </Card>
+        
+        <Card className="border-gray-700">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-yellow-400">
+              {stats.estimatedTimeLeft}
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Est. Time Left</div>
+          </CardContent>
+        </Card>
+        
+        <Card className="border-gray-700">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-purple-400">
+              {Object.values(integrationStatus).filter(v => v).length}
+            </div>
+            <div className="text-sm text-gray-400 mt-1">Active Integrations</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Quick Actions */}
+      <Card>
+        <CardHeader>
+          <h3 className="text-xl font-bold text-white">Quick Actions</h3>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-3 gap-4">
+            <button
+              onClick={() => setActiveTab('integrations')}
+              className="p-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-left transition-colors"
+            >
+              <div className="text-2xl mb-2">🔗</div>
+              <div className="font-semibold text-white">Connect APIs</div>
+              <div className="text-sm text-gray-400">Set up Google, Stripe, and more</div>
+            </button>
+            
+            <button
+              onClick={() => setActiveTab('checklist')}
+              className="p-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-left transition-colors"
+            >
+              <div className="text-2xl mb-2">✅</div>
+              <div className="font-semibold text-white">Review Checklist</div>
+              <div className="text-sm text-gray-400">Track your setup progress</div>
+            </button>
+            
+            <button
+              onClick={() => setActiveTab('guides')}
+              className="p-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-left transition-colors"
+            >
+              <div className="text-2xl mb-2">📚</div>
+              <div className="font-semibold text-white">Read Guides</div>
+              <div className="text-sm text-gray-400">Step-by-step instructions</div>
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Next Steps */}
+      <Card className="border-yellow-600/30 bg-yellow-900/10">
+        <CardHeader>
+          <h3 className="text-xl font-bold text-yellow-400">🎯 Recommended Next Steps</h3>
+        </CardHeader>
+        <CardContent>
+          <ol className="space-y-3">
+            <li className="flex items-start gap-3">
+              <span className="bg-yellow-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                1
+              </span>
+              <div>
+                <div className="font-semibold text-white">Connect Google Analytics</div>
+                <div className="text-sm text-gray-400">Track visitor behavior and lead sources</div>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-yellow-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                2
+              </span>
+              <div>
+                <div className="font-semibold text-white">Set Up Stripe Payments</div>
+                <div className="text-sm text-gray-400">Accept deposits and payments online</div>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-yellow-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                3
+              </span>
+              <div>
+                <div className="font-semibold text-white">Configure Service Areas</div>
+                <div className="text-sm text-gray-400">Define where you provide services</div>
+              </div>
+            </li>
+          </ol>
+        </CardContent>
+      </Card>
+    </div>
+  )
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <NavBar />
+      
+      <main className="max-w-7xl mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Business Onboarding Center
+          </h1>
+          <p className="text-xl text-gray-300">
+            Your complete setup hub with AI assistance, step-by-step guides, and real-time validation
+          </p>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          <Button
+            variant={activeTab === 'overview' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('overview')}
+          >
+            📊 Overview
+          </Button>
+          <Button
+            variant={activeTab === 'integrations' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('integrations')}
+          >
+            🔗 Integrations
+          </Button>
+          <Button
+            variant={activeTab === 'checklist' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('checklist')}
+          >
+            ✅ Checklist
+          </Button>
+          <Button
+            variant={activeTab === 'guides' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('guides')}
+          >
+            📚 Quick Guides
+          </Button>
+        </div>
+
+        {/* Tab Content */}
+        <div className="min-h-[600px]">
+          {activeTab === 'overview' && renderOverview()}
+          
+          {activeTab === 'integrations' && (
+            <IntegrationSetupWizard
+              onComplete={(data) => {
+                console.log('Integrations saved:', data)
+                // Save to backend
+              }}
+              onValidation={(integration, valid) => {
+                setIntegrationStatus(prev => {
+                  const updated = { ...prev, [integration]: valid }
+                  localStorage.setItem('treeai-integrations', JSON.stringify(updated))
+                  return updated
+                })
+              }}
+            />
+          )}
+          
+          {activeTab === 'checklist' && (
+            <OnboardingChecklist
+              onItemComplete={(itemId) => {
+                console.log('Checklist item completed:', itemId)
+              }}
+              onAllComplete={() => {
+                console.log('All required items complete!')
+              }}
+            />
+          )}
+          
+          {activeTab === 'guides' && <QuickStartGuide />}
+        </div>
+
+        {/* Help Section */}
+        <Card className="mt-12 glass-surface border-purple-500/30">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Need Help?</h3>
+                <p className="text-gray-300 text-sm">
+                  Our AI assistant can guide you through any setup step
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowAIAssistant(!showAIAssistant)}
+                >
+                  {showAIAssistant ? 'Hide' : 'Show'} AI Assistant
+                </Button>
+                <Button variant="secondary">
+                  📧 Email Support
+                </Button>
+                <Button variant="secondary">
+                  📞 Schedule Call
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+
+      {/* AI Assistant Chat */}
+      {showAIAssistant && (
+        <AIAssistantChat
+          context={{
+            currentStep: activeTab,
+            completedSteps: [],
+            businessInfo: {},
+            integrationStatus,
+          }}
+          onSuggestionClick={(suggestion) => {
+            console.log('AI suggestion clicked:', suggestion)
+          }}
+        />
+      )}
+
+      <Footer />
+    </div>
+  )
+}

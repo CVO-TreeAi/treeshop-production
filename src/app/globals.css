@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "../styles/design-tokens.css";
+@import "../styles/claude-rule-green-buttons.css";
+
+/* TreeAI Global Styles - Unified Design System */
+
+@theme inline {
+  --color-background: var(--surface-black);
+  --color-foreground: var(--text-primary);
+  --color-brandblue: var(--color-brand-blue);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--surface-black);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  line-height: var(--line-height-normal);
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+p {
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 2px;
+}
+
+/* Selection Styles */
+::selection {
+  background: var(--color-accent-green);
+  color: var(--surface-black);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-gray-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-gray-700);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-green);
+}
+
+/* Loading States */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+.animate-fade-in { animation: fadeIn 0.5s var(--motion-ease-out); }
+
+/* Glass Morphism Enhanced */
+.glass-surface {
+  background: var(--glass-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-surface:hover {
+  background: var(--glass-medium);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Button Reset */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+/* Link Styles */
+a {
+  color: var(--color-accent-green);
+  text-decoration: none;
+  transition: color var(--motion-duration-fast);
+}
+
+a:hover {
+  color: var(--color-accent-green-light);
+}
+
+/* Form Elements */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: var(--input-background);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: 0 var(--input-padding-x);
+  height: var(--input-height);
+  transition: all var(--motion-duration-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px rgba(31, 78, 165, 0.1);
+}
+
+textarea {
+  height: auto;
+  min-height: calc(var(--input-height) * 2);
+  padding: var(--spacing-sm) var(--input-padding-x);
+  resize: vertical;
+}

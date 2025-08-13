@@ -1,0 +1,6 @@
+{
+  "functions": "./convex/",
+  "node": {
+    "18": true
+  }
+}

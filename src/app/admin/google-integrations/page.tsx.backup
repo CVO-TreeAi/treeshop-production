@@ -1,0 +1,419 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useEnhancedConversions } from '@/lib/enhancedConversions';
+
+interface IntegrationStatus {
+  name: string;
+  status: 'connected' | 'disconnected' | 'error';
+  lastUpdated?: string;
+  details?: any;
+}
+
+export default function GoogleIntegrationsPage() {
+  const [integrations, setIntegrations] = useState<IntegrationStatus[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('overview');
+  const { trackPhoneCall } = useEnhancedConversions();
+
+  useEffect(() => {
+    fetchIntegrationStatus();
+  }, []);
+
+  const fetchIntegrationStatus = async () => {
+    try {
+      // Check all integrations
+      const checks = await Promise.allSettled([
+        fetch('/api/admin/google/ads/offline-conversion').then(r => r.json()),
+        fetch('/api/gbp/reviews').then(r => r.json()),
+        fetch('/api/admin/search-console/analytics').then(r => r.json()),
+      ]);
+
+      const statuses: IntegrationStatus[] = [
+        {
+          name: 'Google Tag Manager',
+          status: process.env.NEXT_PUBLIC_GTM_ID ? 'connected' : 'disconnected',
+          details: { containerId: process.env.NEXT_PUBLIC_GTM_ID }
+        },
+        {
+          name: 'Google Analytics 4',
+          status: process.env.NEXT_PUBLIC_GA4_ID ? 'connected' : 'disconnected',
+          details: { measurementId: process.env.NEXT_PUBLIC_GA4_ID }
+        },
+        {
+          name: 'Google Ads',
+          status: checks[0].status === 'fulfilled' ? 'connected' : 'error',
+          details: checks[0].status === 'fulfilled' ? checks[0].value : null
+        },
+        {
+          name: 'Google Business Profile',
+          status: checks[1].status === 'fulfilled' && !checks[1].value?.error ? 'connected' : 'error',
+          details: checks[1].status === 'fulfilled' ? checks[1].value : null,
+          lastUpdated: checks[1].status === 'fulfilled' ? checks[1].value?.last_updated : null
+        },
+        {
+          name: 'Google Search Console',
+          status: checks[2].status === 'fulfilled' && checks[2].value?.configured ? 'connected' : 'error',
+          details: checks[2].status === 'fulfilled' ? checks[2].value : null
+        }
+      ];
+
+      setIntegrations(statuses);
+    } catch (error) {
+      console.error('Failed to fetch integration status:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getStatusColor = (status: IntegrationStatus['status']) => {
+    switch (status) {
+      case 'connected': return 'text-green-400 bg-green-900/50';
+      case 'disconnected': return 'text-yellow-400 bg-yellow-900/50';
+      case 'error': return 'text-red-400 bg-red-900/50';
+      default: return 'text-gray-400 bg-gray-700/50';
+    }
+  };
+
+  const getStatusIcon = (status: IntegrationStatus['status']) => {
+    switch (status) {
+      case 'connected': return '✅';
+      case 'disconnected': return '⚠️';
+      case 'error': return '❌';
+      default: return '⚪';
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-700 rounded w-1/3 mb-6"></div>
+            <div className="space-y-4">
+              {[1, 2, 3, 4, 5].map(i => (
+                <div key={i} className="h-20 bg-gray-800 rounded"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">
+            Google Integrations
+          </h1>
+          <p className="text-gray-400">
+            Manage all Google service integrations for TreeAI ProWebsite
+          </p>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="border-b border-gray-700 mb-6">
+          <nav className="-mb-px flex space-x-8">
+            {[
+              { id: 'overview', name: 'Overview' },
+              { id: 'analytics', name: 'Analytics & Ads' },
+              { id: 'gbp', name: 'Business Profile' },
+              { id: 'maps', name: 'Maps & Places' },
+              { id: 'tools', name: 'Tools & Testing' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === tab.id
+                    ? 'border-green-500 text-green-400'
+                    : 'border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-600'
+                }`}
+              >
+                {tab.name}
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Overview Tab */}
+      {activeTab === 'overview' && (
+          <div className="space-y-6">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {integrations.map(integration => (
+                <div key={integration.name} className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-semibold text-white">{integration.name}</h3>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(integration.status)}`}>
+                      {getStatusIcon(integration.status)} {integration.status}
+                    </span>
+                  </div>
+                  
+                  {integration.details && (
+                    <div className="text-sm text-gray-400 space-y-1">
+                      {integration.name === 'Google Business Profile' && integration.details.rating && (
+                        <div>
+                          Rating: {integration.details.rating} ⭐ ({integration.details.user_ratings_total} reviews)
+                        </div>
+                      )}
+                      {integration.name === 'Google Ads' && integration.details.conversionActions && (
+                        <div>Conversion Actions: {integration.details.conversionActions.length}</div>
+                      )}
+                    </div>
+                  )}
+                  
+                  {integration.lastUpdated && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      Last updated: {new Date(integration.lastUpdated).toLocaleString()}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          <div className="bg-blue-900/50 border border-blue-700 rounded-lg p-4">
+            <h3 className="font-medium text-blue-400 mb-2">🚀 Quick Actions</h3>
+            <div className="space-y-2">
+              <button
+                onClick={() => fetch('/api/admin/search-console/sitemap', { method: 'POST' })}
+                className="block w-full text-left px-3 py-2 text-sm text-blue-300 hover:bg-blue-800/50 rounded"
+              >
+                🗺️ Submit Sitemap to Search Console
+              </button>
+              <button
+                onClick={() => fetch('/api/gbp/reviews', { method: 'POST' })}
+                className="block w-full text-left px-3 py-2 text-sm text-blue-300 hover:bg-blue-800/50 rounded"
+              >
+                🔄 Refresh Business Profile Reviews
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Analytics & Ads Tab */}
+      {activeTab === 'analytics' && (
+        <div className="space-y-6">
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Google Analytics 4</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Measurement ID:</span>
+                <code className="bg-gray-700 text-gray-300 px-2 py-1 rounded text-sm">
+                  {process.env.NEXT_PUBLIC_GA4_ID || 'Not configured'}
+                </code>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Consent Mode v2:</span>
+                <span className="text-green-400">✅ Enabled</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Google Ads</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Enhanced Conversions:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Offline Conversion Import:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Dynamic Phone Numbers:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-yellow-900/50 border border-yellow-700 rounded-lg p-4">
+            <h4 className="font-medium text-yellow-400 mb-2">📊 Test Tracking</h4>
+            <div className="space-y-2">
+              <button
+                onClick={() => trackPhoneCall('+15558733776', 'header')}
+                className="bg-yellow-800/50 hover:bg-yellow-700/50 px-3 py-2 rounded text-sm text-yellow-300"
+              >
+                Test Phone Conversion Tracking
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Business Profile Tab */}
+      {activeTab === 'gbp' && (
+        <div className="space-y-6">
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Google Business Profile</h3>
+            {integrations.find(i => i.name === 'Google Business Profile')?.details && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Business Rating:</span>
+                  <span className="text-white">{integrations.find(i => i.name === 'Google Business Profile')?.details?.rating} ⭐</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Total Reviews:</span>
+                  <span className="text-white">{integrations.find(i => i.name === 'Google Business Profile')?.details?.user_ratings_total}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Weekly Posts</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Auto-posting:</span>
+                <span className="text-green-400">✅ Enabled</span>
+              </div>
+              <button
+                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                onClick={() => {
+                  fetch('/api/admin/google/gbp/post?template=random')
+                    .then(r => r.json())
+                    .then(template => {
+                      console.log('Random template:', template);
+                      // You could show this in a modal or form
+                    });
+                }}
+              >
+                Create Post Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Maps & Places Tab */}
+      {activeTab === 'maps' && (
+        <div className="space-y-6">
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Google Maps Platform</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Places Autocomplete:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Geocoding API:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Distance Matrix:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Static Maps:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Google Calendar</h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Scheduling Integration:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">ICS Generation:</span>
+                <span className="text-green-400">✅ Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tools & Testing Tab */}
+      {activeTab === 'tools' && (
+        <div className="space-y-6">
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">🔧 Testing Tools</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="border border-gray-600 bg-gray-700 rounded p-4">
+                <h4 className="font-medium text-white mb-2">Analytics Test</h4>
+                <button
+                  onClick={() => {
+                    window.gtag?.('event', 'test_event', {
+                      test_parameter: 'admin_test',
+                      page_location: window.location.href
+                    });
+                    alert('Test event sent to GA4');
+                  }}
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                >
+                  Send Test Event
+                </button>
+              </div>
+              
+              <div className="border border-gray-600 bg-gray-700 rounded p-4">
+                <h4 className="font-medium text-white mb-2">Phone Tracking Test</h4>
+                <button
+                  onClick={() => {
+                    trackPhoneCall('+15558733776', 'cta');
+                    alert('Phone conversion tracked');
+                  }}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  Test Phone Call
+                </button>
+              </div>
+
+              <div className="border border-gray-600 bg-gray-700 rounded p-4">
+                <h4 className="font-medium text-white mb-2">Attribution Test</h4>
+                <button
+                  onClick={() => {
+                    const attribution = localStorage.getItem('treeai_attribution');
+                    alert(attribution ? JSON.stringify(JSON.parse(attribution), null, 2) : 'No attribution data');
+                  }}
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                >
+                  View Attribution
+                </button>
+              </div>
+
+              <div className="border border-gray-600 bg-gray-700 rounded p-4">
+                <h4 className="font-medium text-white mb-2">Schema Validation</h4>
+                <a
+                  href={`https://search.google.com/test/rich-results?url=${encodeURIComponent(window.location.origin)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+                >
+                  Test Rich Results
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg border border-gray-700 shadow-sm p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">🚨 System Status</h3>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">All Integrations:</span>
+                <span className={`px-2 py-1 rounded text-sm ${
+                  integrations.every(i => i.status === 'connected') 
+                    ? 'bg-green-900/50 text-green-400' 
+                    : 'bg-yellow-900/50 text-yellow-400'
+                }`}>
+                  {integrations.every(i => i.status === 'connected') ? '✅ All Connected' : '⚠️ Issues Detected'}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-300">Last Check:</span>
+                <span className="text-sm text-gray-400">
+                  {new Date().toLocaleString()}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,95 @@
+/* 
+ * CLAUDE RULE: Tree Shop Green Button Text
+ * MANDATORY: All green buttons on Tree Shop website MUST have black text
+ * NO EXCEPTIONS - This rule overrides everything
+ */
+
+/* Target ALL possible green button selectors */
+[class*="bg-green"],
+.treeai-green-button,
+[style*="background-color: #22c55e"],
+[style*="background-color: #16a34a"],
+[style*="background-color: #4ade80"],
+[style*="background: #22c55e"],
+[style*="background: #16a34a"],
+[style*="background: #4ade80"],
+[style*="background-color:rgb(34,197,94)"],
+[style*="background-color:rgb(22,163,74)"],
+[style*="background-color:rgb(74,222,128)"],
+button[class*="green"],
+a[class*="green"],
+.bg-green-100,
+.bg-green-200,
+.bg-green-300,
+.bg-green-400,
+.bg-green-500,
+.bg-green-600,
+.bg-green-700,
+.bg-green-800,
+.bg-green-900 {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-shadow: none !important;
+  text-decoration-color: #000000 !important;
+}
+
+/* All pseudo-states */
+[class*="bg-green"]:link,
+[class*="bg-green"]:visited,
+[class*="bg-green"]:hover,
+[class*="bg-green"]:active,
+[class*="bg-green"]:focus,
+.treeai-green-button:link,
+.treeai-green-button:visited,
+.treeai-green-button:hover,
+.treeai-green-button:active,
+.treeai-green-button:focus {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* All child elements */
+[class*="bg-green"] *,
+.treeai-green-button *,
+[style*="background-color: #22c55e"] *,
+[style*="background-color: #16a34a"] *,
+[style*="background-color: #4ade80"] * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Override ANY conflicting utility classes */
+.text-white[class*="bg-green"],
+.text-gray-300[class*="bg-green"],
+.text-gray-400[class*="bg-green"],
+.text-blue-500[class*="bg-green"],
+.text-white.treeai-green-button,
+.text-gray-300.treeai-green-button,
+.text-gray-400.treeai-green-button {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Nuclear override for stubborn elements */
+* {
+  --tw-text-opacity: 1 !important;
+}
+
+[class*="bg-green"] {
+  --tw-text-opacity: 1 !important;
+  color: rgba(0, 0, 0, var(--tw-text-opacity)) !important;
+}
+
+.treeai-green-button {
+  --tw-text-opacity: 1 !important;
+  color: rgba(0, 0, 0, var(--tw-text-opacity)) !important;
+}
+
+/* Final enforcement - if it's green, it's black text */
+:is([class*="bg-green"], .treeai-green-button, [style*="background"]:is([style*="green"], [style*="#22c55e"], [style*="#16a34a"], [style*="#4ade80"])) {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-shadow: none !important;
+}

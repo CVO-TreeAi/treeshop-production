@@ -1,0 +1,303 @@
+/* TreeAI Design System - Brand Tokens */
+:root {
+  /* Brand Colors - Extracted from actual logos */
+  --color-treeshop-blue: #2563eb;
+  --color-treeshop-blue-light: #3b82f6;
+  --color-treeshop-blue-dark: #1d4ed8;
+  
+  --color-treeai-green: #22c55e;
+  --color-treeai-green-light: #4ade80;
+  --color-treeai-green-dark: #16a34a;
+  
+  /* Legacy aliases - will be removed */
+  --color-brand-blue: var(--color-treeshop-blue);
+  --color-accent-green: var(--color-treeai-green);
+  
+  /* Gradient Tokens - TreeAI Green & Tree Shop Blue Only */
+  --gradient-treeshop-primary: linear-gradient(135deg, var(--color-treeshop-blue) 0%, var(--color-treeshop-blue-light) 100%);
+  --gradient-treeai-primary: linear-gradient(135deg, var(--color-treeai-green) 0%, var(--color-treeai-green-light) 100%);
+  --gradient-brand-combo: linear-gradient(135deg, var(--color-treeshop-blue) 0%, var(--color-treeai-green) 100%);
+  
+  /* Legacy aliases */
+  --gradient-brand-primary: var(--gradient-treeshop-primary);
+  --gradient-brand-secondary: var(--gradient-brand-combo);
+  --gradient-accent: var(--gradient-treeai-primary);
+  
+  /* Gradient Mesh Backgrounds */
+  --gradient-mesh-hero: 
+    radial-gradient(circle at 20% 50%, hsla(220, 70%, 50%, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsla(160, 70%, 50%, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, hsla(200, 70%, 60%, 0.15) 0%, transparent 50%);
+    
+  --gradient-mesh-card: 
+    radial-gradient(circle at 50% 0%, hsla(220, 70%, 50%, 0.1) 0%, transparent 50%);
+
+  /* Glass Surfaces */
+  --glass-light: rgba(255, 255, 255, 0.05);
+  --glass-medium: rgba(255, 255, 255, 0.08);
+  --glass-heavy: rgba(255, 255, 255, 0.12);
+  
+  /* Dark Surfaces */
+  --surface-black: #000000;
+  --surface-gray-900: #111827;
+  --surface-gray-800: #1f2937;
+  --surface-gray-700: #374151;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-green-button: #000000;
+  
+  /* Border Colors */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.2);
+  --border-brand: var(--color-brand-blue);
+  --border-accent: var(--color-accent-green);
+  
+  /* Shadow Tokens */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(31, 78, 165, 0.3);
+  --shadow-glow-green: 0 0 20px rgba(16, 185, 129, 0.3);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 5rem;     /* 80px */
+  --spacing-5xl: 6rem;     /* 96px */
+  
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Motion Tokens */
+  --motion-duration-fast: 150ms;
+  --motion-duration-normal: 250ms;
+  --motion-duration-slow: 350ms;
+  --motion-duration-slower: 500ms;
+  
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Z-Index Scale */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  --z-max: 9999;
+}
+
+/* Component Tokens */
+:root {
+  /* Button Tokens */
+  --button-height-sm: 2rem;      /* 32px */
+  --button-height-md: 2.5rem;    /* 40px */
+  --button-height-lg: 3rem;      /* 48px */
+  --button-height-xl: 3.5rem;    /* 56px */
+  
+  --button-padding-x-sm: 0.75rem; /* 12px */
+  --button-padding-x-md: 1rem;    /* 16px */
+  --button-padding-x-lg: 1.5rem;  /* 24px */
+  --button-padding-x-xl: 2rem;    /* 32px */
+  
+  /* Card Tokens */
+  --card-padding: var(--spacing-xl);
+  --card-radius: var(--radius-xl);
+  --card-border: var(--border-light);
+  --card-background: var(--surface-gray-900);
+  --card-background-hover: var(--surface-gray-800);
+  
+  /* Input Tokens */
+  --input-height: 2.75rem;       /* 44px */
+  --input-padding-x: 1rem;       /* 16px */
+  --input-radius: var(--radius-md);
+  --input-border: var(--border-light);
+  --input-border-focus: var(--color-brand-blue);
+  --input-background: var(--surface-gray-800);
+  
+  /* Layout Tokens */
+  --container-max-width: 1280px;  /* 1280px - max-w-7xl */
+  --container-padding: var(--spacing-md);
+  --section-spacing-y: var(--spacing-5xl); /* 96px */
+}
+
+/* Utility Classes */
+.gradient-brand-primary {
+  background: var(--gradient-brand-primary);
+}
+
+.gradient-brand-secondary {
+  background: var(--gradient-brand-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.glass-surface {
+  background: var(--glass-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+}
+
+.glass-surface-medium {
+  background: var(--glass-medium);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-medium);
+}
+
+.gradient-mesh-hero {
+  background: var(--gradient-mesh-hero);
+}
+
+.gradient-mesh-card {
+  background: var(--gradient-mesh-card);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-glow-green {
+  box-shadow: var(--shadow-glow-green);
+}
+
+.text-gradient-brand {
+  background: var(--gradient-brand-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--surface-gray-900), var(--surface-gray-900)) padding-box,
+              var(--gradient-brand-primary) border-box;
+}
+
+.treeai-green-button {
+  background-color: #16a34a !important;
+  color: var(--text-green-button) !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+}
+
+.treeai-green-button:hover {
+  background-color: #22c55e !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+.treeai-green-button * {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+.treeai-green-button:hover * {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+.treeai-green-button:link {
+  color: #000000 !important;
+}
+
+.treeai-green-button:visited {
+  color: #000000 !important;
+}
+
+.treeai-green-button:active {
+  color: #000000 !important;
+}
+
+/* Force black text on any green background buttons */
+[class*="bg-green"] {
+  color: #000000 !important;
+}
+
+[class*="bg-green"]:hover {
+  color: #000000 !important;
+}
+
+[class*="bg-green"] * {
+  color: #000000 !important;
+}
+
+/* Ultra specific overrides for stubborn buttons */
+a.treeai-green-button,
+link.treeai-green-button,
+button.treeai-green-button,
+.treeai-green-button a,
+.treeai-green-button link,
+.treeai-green-button button {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-decoration-color: #000000 !important;
+}
+
+/* Force override any inherited text colors */
+.treeai-green-button {
+  -webkit-text-fill-color: #000000 !important;
+  text-decoration-color: #000000 !important;
+}
+
+/* NUCLEAR OPTION - Force black text on green buttons */
+.treeai-green-button,
+.treeai-green-button:link,
+.treeai-green-button:visited,
+.treeai-green-button:hover,
+.treeai-green-button:active,
+.treeai-green-button:focus {
+  color: black !important;
+  -webkit-text-fill-color: black !important;
+  text-shadow: none !important;
+}
+
+/* Override Tailwind utility classes */
+.text-white.treeai-green-button {
+  color: black !important;
+}
+
+.text-gray-300.treeai-green-button {
+  color: black !important;
+}
