@@ -136,12 +136,13 @@ export class AttributionManager {
   // Save attribution to proposal in Firestore
   static async saveToProposal(proposalId: string, attribution: AttributionData): Promise<void> {
     try {
-      const proposalRef = doc(db, 'proposals', proposalId);
+      // const proposalRef = doc(db, 'proposals', proposalId);
       
-      await updateDoc(proposalRef, {
-        attribution: attribution,
-        'attribution.savedAt': Date.now()
-      });
+      // await updateDoc(proposalRef, {
+      //   attribution: attribution,
+      //   'attribution.savedAt': Date.now()
+      // });
+      console.log('Attribution save disabled for Convex migration');
     } catch (error) {
       console.error('Error saving attribution to proposal:', error);
       throw error;
@@ -151,14 +152,15 @@ export class AttributionManager {
   // Get attribution for a specific proposal
   static async getProposalAttribution(proposalId: string): Promise<AttributionData | null> {
     try {
-      const proposalRef = doc(db, 'proposals', proposalId);
-      const proposalSnap = await getDoc(proposalRef);
+      // const proposalRef = doc(db, 'proposals', proposalId);
+      // const proposalSnap = await getDoc(proposalRef);
       
-      if (proposalSnap.exists()) {
-        const data = proposalSnap.data();
-        return data.attribution || null;
-      }
+      // if (proposalSnap.exists()) {
+      //   const data = proposalSnap.data();
+      //   return data.attribution || null;
+      // }
       
+      console.log('Attribution get disabled for Convex migration');
       return null;
     } catch (error) {
       console.error('Error getting proposal attribution:', error);

@@ -28,8 +28,8 @@ export default function AdminHome(){
   }, []);
 
   const logout = async () => {
-    if (!auth) return;
-    await signOut(auth);
+    // if (!auth) return;
+    // await signOut(auth);
   };
 
   return (

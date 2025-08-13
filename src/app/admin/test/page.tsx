@@ -22,16 +22,17 @@ export default function AdminTestPage() {
   const testGoogleAuth = async () => {
     setLoadingState('googleAuth', true);
     try {
-      if (!auth) {
-        throw new Error('Firebase Auth not initialized');
-      }
+      // if (!auth) {
+      //   throw new Error('Firebase Auth not initialized');
+      // }
 
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+      // const provider = new GoogleAuthProvider();
+      // const result = await signInWithPopup(auth, provider);
+      // const user = result.user;
       
       // Get ID token to test API
-      const idToken = await getIdToken(user);
+      // const idToken = await getIdToken(user);
+      throw new Error('Firebase auth disabled for Convex migration');
       
       updateResult('googleAuth', {
         success: true,
@@ -57,11 +58,12 @@ export default function AdminTestPage() {
   const testAPIAuth = async () => {
     setLoadingState('apiAuth', true);
     try {
-      if (!auth?.currentUser) {
-        throw new Error('Not logged in');
-      }
+      // if (!auth?.currentUser) {
+      //   throw new Error('Not logged in');
+      // }
 
-      const idToken = await getIdToken(auth.currentUser);
+      // const idToken = await getIdToken(auth.currentUser);
+      throw new Error('Firebase auth disabled for Convex migration');
       
       const response = await fetch('/api/auth/test', {
         method: 'POST',
