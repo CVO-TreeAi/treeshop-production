@@ -5,15 +5,12 @@ import { api } from "./_generated/api";
 export const sendEmail = httpAction(async (ctx, request) => {
   const { emailType, data } = await request.json();
   
-  // Get Resend API key from environment variables
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  if (!RESEND_API_KEY) {
-    console.error("RESEND_API_KEY not configured");
-    return new Response(JSON.stringify({ error: "Email service not configured" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  // RESEND DISABLED - USING GMAIL API INSTEAD
+  console.log("Email service disabled - using Gmail API instead");
+  return new Response(JSON.stringify({ error: "Email service disabled - using Gmail API" }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 
   try {
     let emailContent;

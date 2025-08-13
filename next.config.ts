@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['@mdx-js/react', 'firebase', 'date-fns'],
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled due to critters module issue in production
   },
   
   // Security headers

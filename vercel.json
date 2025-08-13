@@ -1,0 +1,14 @@
+{
+  "env": {
+    "NEXT_PUBLIC_CONVEX_URL": "https://notable-okapi-484.convex.cloud",
+    "NEXT_PUBLIC_BASE_URL": "https://treeshop-production.vercel.app",
+    "NODE_ENV": "production",
+    "RATE_LIMIT_MAX_REQUESTS": "100",
+    "RATE_LIMIT_WINDOW_MS": "900000"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_CONVEX_URL": "https://notable-okapi-484.convex.cloud"
+    }
+  }
+}
