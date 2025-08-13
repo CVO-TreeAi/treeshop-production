@@ -1,4 +1,4 @@
-import { aiModel } from './firebase';
+// FIREBASE DISABLED
 
 export interface PropertyAssessment {
   acreage: number;

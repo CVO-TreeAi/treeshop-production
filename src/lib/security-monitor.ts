@@ -1,4 +1,4 @@
-import { adminDb } from './firebaseAdmin';
+// FIREBASE DISABLED
 
 export type SecurityEventType = 
   | 'AUTH_FAILURE'

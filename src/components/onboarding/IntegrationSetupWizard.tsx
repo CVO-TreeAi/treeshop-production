@@ -303,7 +303,7 @@ const integrations: Integration[] = [
     ],
   },
   {
-    id: 'firebase',
+    id: 'DISABLED_FIREBASE',
     name: 'Firebase',
     description: 'Database, authentication, and real-time features',
     icon: '🔥',
@@ -319,7 +319,7 @@ const integrations: Integration[] = [
     ],
     fields: [
       {
-        key: 'firebase_project_id',
+        key: 'DISABLED_FIREBASE_project_id',
         label: 'Project ID',
         type: 'text',
         placeholder: 'your-project-id',
@@ -327,7 +327,7 @@ const integrations: Integration[] = [
         helpText: 'Found in Firebase Console > Project Settings',
       },
       {
-        key: 'firebase_api_key',
+        key: 'DISABLED_FIREBASE_api_key',
         label: 'Web API Key',
         type: 'text',
         placeholder: 'AIza...',
@@ -335,17 +335,17 @@ const integrations: Integration[] = [
         helpText: 'Found in Project Settings > General',
       },
       {
-        key: 'firebase_auth_domain',
+        key: 'DISABLED_FIREBASE_auth_domain',
         label: 'Auth Domain',
         type: 'text',
-        placeholder: 'your-project.firebaseapp.com',
+        placeholder: 'your-project.DISABLED_FIREBASEapp.com',
         required: true,
-        helpText: 'Usually your-project-id.firebaseapp.com',
+        helpText: 'Usually your-project-id.DISABLED_FIREBASEapp.com',
       },
     ],
-    helpUrl: 'https://console.firebase.google.com',
+    helpUrl: 'https://console.DISABLED_FIREBASE.google.com',
     setupSteps: [
-      'Go to console.firebase.google.com',
+      'Go to console.DISABLED_FIREBASE.google.com',
       'Create a new project or select existing',
       'Enable Authentication and Firestore',
       'Go to Project Settings > General',
@@ -492,7 +492,7 @@ export default function IntegrationSetupWizard({ onComplete, onValidation }: Int
               <div className="text-2xl">🔥</div>
               <div className="text-xs text-gray-400">Database</div>
               <div className="text-sm font-semibold text-white">
-                {validationStatus.firebase === 'valid' ? '✅' : '⏳'}
+                {validationStatus.DISABLED_FIREBASE === 'valid' ? '✅' : '⏳'}
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth as clientAuth } from './firebase'
-import { adminAuth, isAdminInitialized, getAdminInitError } from '@/lib/firebaseAdmin'
+// FIREBASE DISABLED
+// FIREBASE DISABLED
 
 // For API routes - we need server-side auth verification
 export async function verifyAuthFromRequest(request: NextRequest): Promise<{ authorized: boolean; error?: string; uid?: string; user?: any }> {

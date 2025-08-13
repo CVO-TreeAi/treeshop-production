@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { auth } from '@/lib/firebase';
+// FIREBASE DISABLED
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 

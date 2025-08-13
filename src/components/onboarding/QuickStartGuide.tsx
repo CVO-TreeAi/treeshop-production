@@ -68,13 +68,13 @@ const guides: GuideStep[] = [
     ],
   },
   {
-    id: 'firebase_setup',
+    id: 'DISABLED_FIREBASE_setup',
     title: 'Configure Firebase Project',
     icon: '🔥',
     estimatedTime: '15 min',
     difficulty: 'easy',
     steps: [
-      'Go to console.firebase.google.com',
+      'Go to console.DISABLED_FIREBASE.google.com',
       'Click "Create a project" or select existing',
       'Give it a name (e.g., "TreeShop-Production")',
       'Enable Google Analytics if prompted',

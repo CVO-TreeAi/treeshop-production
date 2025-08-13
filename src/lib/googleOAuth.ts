@@ -1,4 +1,4 @@
-import { adminDb } from '@/lib/firebaseAdmin'
+// FIREBASE DISABLED
 
 type StoredTokens = {
   accessToken: string

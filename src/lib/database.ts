@@ -1,5 +1,5 @@
-import { db } from './firebase';
-import { adminDb } from './firebaseAdmin';
+// FIREBASE DISABLED
+// FIREBASE DISABLED
 import { 
   collection, 
   doc, 
@@ -15,7 +15,7 @@ import {
   Timestamp,
   DocumentData,
   QueryConstraint
-} from 'firebase/firestore';
+} // FIREBASE DISABLED
 
 // =============================================================================
 // TYPE DEFINITIONS

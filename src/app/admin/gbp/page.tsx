@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import { auth } from '@/lib/firebase'
+// FIREBASE DISABLED
 
 type Account = { name: string; accountName?: string; organizationInfo?: { registeredLegalName?: string } }
 type Location = { name: string; title?: string; storeCode?: string }

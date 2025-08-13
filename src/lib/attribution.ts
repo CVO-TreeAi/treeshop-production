@@ -1,5 +1,5 @@
-// import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
-// import { db } from './firebase';
+// // FIREBASE DISABLED
+// // FIREBASE DISABLED
 
 export interface AttributionData {
   gclid?: string | null;

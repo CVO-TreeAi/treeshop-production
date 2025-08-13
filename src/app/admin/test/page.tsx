@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
-// import { auth } from '@/lib/firebase';
-// import { GoogleAuthProvider, signInWithPopup, getIdToken } from 'firebase/auth';
+// // FIREBASE DISABLED
+// // FIREBASE DISABLED
 
 export default function AdminTestPage() {
   const [testResults, setTestResults] = useState<Record<string, any>>({});

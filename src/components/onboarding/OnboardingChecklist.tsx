@@ -88,7 +88,7 @@ export default function OnboardingChecklist({ onItemComplete, onAllComplete }: O
       helpText: 'Shows your coverage area to visitors',
     },
     {
-      id: 'firebase_config',
+      id: 'DISABLED_FIREBASE_config',
       category: 'Infrastructure',
       title: 'Set Up Firebase',
       description: 'Configure database and authentication',

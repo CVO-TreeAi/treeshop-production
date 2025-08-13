@@ -3,8 +3,8 @@
  * Powered by Firebase Genkit, Google AI, and advanced business intelligence
  */
 
-import { db } from '@/lib/firebase';
-import { collection, query, where, orderBy, limit, getDocs, Timestamp } from 'firebase/firestore';
+// FIREBASE DISABLED
+// FIREBASE DISABLED
 
 // Enhanced Business Intelligence Interfaces
 export interface BusinessMetrics {

@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
-// import { auth } from '@/lib/firebase';
-// import { signOut, onAuthStateChanged } from 'firebase/auth';
+// // FIREBASE DISABLED
+// // FIREBASE DISABLED
 import { useEffect, useState } from 'react';
 // import { isAuthorizedUser } from '@/lib/auth';
 
