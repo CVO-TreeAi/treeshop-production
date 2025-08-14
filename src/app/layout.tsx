@@ -24,9 +24,16 @@ export const metadata: Metadata = {
   description: 'Professional forestry mulching and land clearing across Florida. AI-powered estimates, selective DBH packages, eco‑friendly mulch finish, fast scheduling.',
   alternates: { canonical: siteUrl },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: [
+      { url: '/treeai.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/treeai.png',
     apple: '/treeai.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/treeai.png',
+    },
   },
   openGraph: {
     title: 'TreeAI Forestry Services | AI-Powered Land Clearing in Florida',
