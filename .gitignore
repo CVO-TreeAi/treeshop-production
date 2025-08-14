@@ -34,25 +34,19 @@ yarn-error.log*
 /ClaudeCursor-Reports/
 FIREBASE_ADMIN_SETUP.md
 
-# PROTECTED CONTENT - All Media Files
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.webp
-*.svg
-*.tiff
-*.bmp
+# PROTECTED CONTENT - Source Media Files Only
+/WebsitePics/
+/SourcePics/
 *.heic
 *.HEIC
-*.JPG
-*.PNG
-*.HEIC
-*.mp4
-*.avi
-*.mov
-*.webm
-*.mkv
+
+# Allow public web images
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.png
+!public/**/*.gif
+!public/**/*.webp
+!public/**/*.svg
 
 # PROTECTED CONTENT - Business Documentation
 README.md
