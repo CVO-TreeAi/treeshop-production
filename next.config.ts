@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
   
   // Configure allowed image domains with performance optimizations
   images: {
+    unoptimized: true, // Disable optimization temporarily to fix 400 errors
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -58,7 +59,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.youtube.com *.googletagmanager.com *.stripe.com; frame-src 'self' *.youtube.com *.youtube-nocookie.com; connect-src 'self' *.firebase.googleapis.com *.googleapis.com api.stripe.com *.google-analytics.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos; frame-src 'self' *.youtube.com *.youtube-nocookie.com; connect-src 'self' *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com;"
           },
           {
             key: 'X-Frame-Options',
