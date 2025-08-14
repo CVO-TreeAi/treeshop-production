@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   title: 'TreeAI Forestry Services | AI-Powered Land Clearing & Forestry Mulching in Florida',
   description: 'Professional forestry mulching and land clearing across Florida. AI-powered estimates, selective DBH packages, eco‑friendly mulch finish, fast scheduling.',
   alternates: { canonical: siteUrl },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/treeai.png',
+  },
   openGraph: {
     title: 'TreeAI Forestry Services | AI-Powered Land Clearing in Florida',
     description: 'Professional forestry mulching and land clearing across Florida. AI-powered estimates, selective DBH packages, eco‑friendly mulch finish.',
