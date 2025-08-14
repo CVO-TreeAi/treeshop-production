@@ -42,7 +42,7 @@ export const seedProjects = mutation({
       {
         title: "Avon Park Land Clearing - Before",
         description: "Dense vegetation requiring professional forestry mulching services",
-        imageUrl: "/project-images/avon-park-land-clearing-before-dense-vegetation.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/avon-park-land-clearing-before-dense-vegetation.jpg",
         category: "before",
         featured: true,
         acreage: 8,
@@ -54,7 +54,7 @@ export const seedProjects = mutation({
       {
         title: "Avon Park Land Clearing - After",
         description: "Professional forestry mulching results - land ready for development",
-        imageUrl: "/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
         category: "after",
         featured: true,
         acreage: 8,
@@ -66,7 +66,7 @@ export const seedProjects = mutation({
       {
         title: "CAT 265 Fecon Blackhawk",
         description: "Our precision forestry mulching equipment delivering professional results",
-        imageUrl: "/project-images/cat-265-fecon-blackhawk-fueling.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/cat-265-fecon-blackhawk-fueling.jpg",
         category: "equipment",
         featured: true,
         status: "active",
@@ -76,7 +76,7 @@ export const seedProjects = mutation({
       {
         title: "Lehigh Acres - Before Clearing",
         description: "Thick undergrowth removal project in Southwest Florida",
-        imageUrl: "/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg",
         category: "before",
         featured: true,
         acreage: 12,
@@ -88,7 +88,7 @@ export const seedProjects = mutation({
       {
         title: "Lehigh Acres - Professional Results",
         description: "Complete land transformation after professional mulching service",
-        imageUrl: "/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg",
         category: "after",
         featured: true,
         acreage: 12,
@@ -100,7 +100,7 @@ export const seedProjects = mutation({
       {
         title: "Okeechobee Forest Clearing - Before",
         description: "Dense forest undergrowth before professional forestry mulching",
-        imageUrl: "/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg",
         category: "before",
         featured: true,
         acreage: 20,
@@ -112,7 +112,7 @@ export const seedProjects = mutation({
       {
         title: "Okeechobee Forest Clearing - Complete",
         description: "Pristine cleared land ready for agricultural or development use",
-        imageUrl: "/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg",
+        imageUrl: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg",
         category: "after",
         featured: true,
         acreage: 20,
