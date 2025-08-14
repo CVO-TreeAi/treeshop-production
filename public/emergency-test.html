@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMERGENCY: Basic Image Test</title>
+</head>
+<body>
+    <h1>🚨 EMERGENCY IMAGE TEST</h1>
+    <p><strong>Testing most basic HTML image loading possible</strong></p>
+    
+    <h2>Test Image:</h2>
+    <img src="/test-image.jpg" alt="Emergency Test Image" />
+    
+    <h2>Debug Info:</h2>
+    <p>Current URL: <span id="url"></span></p>
+    <p>Image Source: /test-image.jpg</p>
+    <p>File Size: 52KB</p>
+    
+    <script>
+        document.getElementById('url').textContent = window.location.href;
+        console.log('Emergency test page loaded at:', window.location.href);
+        console.log('Testing image at: /test-image.jpg');
+    </script>
+</body>
+</html>
