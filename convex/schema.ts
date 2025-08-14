@@ -217,6 +217,197 @@ export default defineSchema({
     .index("by_type", ["type"])
     .index("by_createdAt", ["createdAt"]),
 
+  // Video Content
+  videos: defineTable({
+    title: v.string(),
+    description: v.optional(v.string()),
+    videoId: v.string(), // YouTube video ID
+    thumbnailUrl: v.optional(v.string()),
+    category: v.string(), // 'forestry-mulching', 'land-clearing', 'stump-grinding', 'before-after'
+    featured: v.optional(v.boolean()),
+    duration: v.optional(v.string()),
+    
+    // Status
+    status: v.string(), // 'active', 'inactive'
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_category", ["category"])
+    .index("by_featured", ["featured"])
+    .index("by_status", ["status"])
+    .index("by_createdAt", ["createdAt"]),
+
+  // Project Images/Gallery
+  projects: defineTable({
+    title: v.string(),
+    description: v.optional(v.string()),
+    imageUrl: v.string(),
+    category: v.string(), // 'before', 'after', 'equipment'
+    featured: v.optional(v.boolean()),
+    acreage: v.optional(v.number()),
+    location: v.optional(v.string()),
+    
+    // Status
+    status: v.string(), // 'active', 'inactive'
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_category", ["category"])
+    .index("by_featured", ["featured"])
+    .index("by_status", ["status"])
+    .index("by_createdAt", ["createdAt"]),
+
+  // Employee Management
+  employees: defineTable({
+    // Basic Info
+    firstName: v.string(),
+    lastName: v.string(),
+    email: v.string(),
+    phone: v.optional(v.string()),
+    
+    // Employment Details
+    position: v.string(), // 'crew_leader', 'operator', 'laborer', 'admin'
+    department: v.string(), // 'field_operations', 'administration', 'sales'
+    employeeId: v.string(),
+    hireDate: v.number(),
+    
+    // Compensation
+    baseHourlyRate: v.number(),
+    payType: v.string(), // 'hourly', 'salary'
+    salaryAmount: v.optional(v.number()),
+    
+    // Status
+    status: v.string(), // 'active', 'inactive', 'terminated'
+    terminationDate: v.optional(v.number()),
+    terminationReason: v.optional(v.string()),
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_email", ["email"])
+    .index("by_employeeId", ["employeeId"])
+    .index("by_status", ["status"])
+    .index("by_position", ["position"])
+    .index("by_department", ["department"]),
+
+  // Employee Cost Calculations
+  employeeCosts: defineTable({
+    employeeId: v.id("employees"),
+    calculationDate: v.number(),
+    
+    // Base Costs
+    baseHourlyRate: v.number(),
+    expectedAnnualHours: v.number(), // Usually 2,080
+    annualBaseWages: v.number(),
+    
+    // Burden Costs (all annual amounts)
+    payrollTaxes: v.number(), // FICA, FUTA, SUTA
+    workersComp: v.number(), // High for tree care industry
+    healthInsurance: v.number(),
+    equipmentPPE: v.number(),
+    vehicleAllocation: v.number(),
+    trainingCertifications: v.number(),
+    overheadAllocation: v.number(),
+    totalBurdenCosts: v.number(),
+    
+    // Productivity Factors
+    ptoSickHours: v.number(),
+    trainingHours: v.number(),
+    maintenanceDowntime: v.number(),
+    weatherDelays: v.number(),
+    administrativeTime: v.number(),
+    totalNonProductiveHours: v.number(),
+    netProductiveHours: v.number(),
+    
+    // Final Calculations
+    totalAnnualCost: v.number(),
+    trueHourlyCost: v.number(),
+    burdenMultiplier: v.number(),
+    productivityRate: v.number(), // Productive hours / Total hours
+    
+    // Industry Factors
+    industryRiskFactor: v.number(), // Tree care specific
+    seasonalAdjustment: v.number(), // Florida weather patterns
+    equipmentDependency: v.number(), // Equipment-heavy positions
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_employeeId", ["employeeId"])
+    .index("by_calculationDate", ["calculationDate"]),
+
+  // Time Tracking
+  timeEntries: defineTable({
+    employeeId: v.id("employees"),
+    date: v.number(),
+    
+    // Time Details
+    clockIn: v.number(),
+    clockOut: v.optional(v.number()),
+    totalHours: v.optional(v.number()),
+    
+    // Work Classification
+    workType: v.string(), // 'productive', 'training', 'maintenance', 'administrative', 'weather_delay'
+    projectId: v.optional(v.string()),
+    location: v.optional(v.string()),
+    
+    // Equipment Used
+    equipmentUsed: v.optional(v.array(v.string())),
+    
+    // Notes
+    description: v.optional(v.string()),
+    notes: v.optional(v.string()),
+    
+    // Approval
+    approved: v.boolean(),
+    approvedBy: v.optional(v.string()),
+    approvedAt: v.optional(v.number()),
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_employeeId", ["employeeId"])
+    .index("by_date", ["date"])
+    .index("by_workType", ["workType"])
+    .index("by_approved", ["approved"]),
+
+  // Cost Factors Configuration
+  costFactors: defineTable({
+    factorType: v.string(), // 'payroll_tax', 'workers_comp', 'equipment', etc.
+    position: v.optional(v.string()), // Position-specific factors
+    state: v.optional(v.string()), // State-specific rates
+    
+    // Factor Values
+    percentage: v.optional(v.number()), // For percentage-based factors
+    fixedAmount: v.optional(v.number()), // For fixed cost factors
+    minAmount: v.optional(v.number()),
+    maxAmount: v.optional(v.number()),
+    
+    // Applicability
+    effectiveDate: v.number(),
+    expirationDate: v.optional(v.number()),
+    isActive: v.boolean(),
+    
+    // Metadata
+    description: v.string(),
+    source: v.optional(v.string()), // Where this rate comes from
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_factorType", ["factorType"])
+    .index("by_position", ["position"])
+    .index("by_effectiveDate", ["effectiveDate"])
+    .index("by_isActive", ["isActive"]),
+
   // System Configuration
   siteSettings: defineTable({
     key: v.string(),

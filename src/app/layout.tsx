@@ -79,7 +79,7 @@ export default function RootLayout({
     },
     "@id": siteUrl,
     "url": siteUrl,
-    "telephone": "+1-555-TREE-AI",
+    "telephone": "+1-407-555-8733",
     "email": "contact@treeai.us",
     "address": {
       "@type": "PostalAddress",
@@ -172,7 +172,7 @@ export default function RootLayout({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-555-TREE-AI",
+      "telephone": "+1-407-555-8733",
       "contactType": "customer service",
       "availableLanguage": "English",
       "areaServed": "US"

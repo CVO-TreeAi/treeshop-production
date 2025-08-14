@@ -204,7 +204,7 @@ export class SchemaGenerator {
       "name": this.businessInfo.name || "TreeAI Forestry Services",
       "description": "Professional forestry mulching and land clearing services across Florida. AI-powered estimates, eco-friendly solutions, and expert results.",
       "url": this.siteUrl,
-      "telephone": this.businessInfo.phone || "+1-555-TREE-AI",
+      "telephone": this.businessInfo.phone || "+1-407-555-8733",
       "email": this.businessInfo.email || "contact@treeai.us",
       "address": {
         "@type": "PostalAddress",
@@ -297,7 +297,7 @@ export class SchemaGenerator {
         "@type": "LocalBusiness",
         "name": this.businessInfo.name || "TreeAI Forestry Services",
         "url": this.siteUrl,
-        "telephone": this.businessInfo.phone || "+1-555-TREE-AI",
+        "telephone": this.businessInfo.phone || "+1-407-555-8733",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Orlando",
