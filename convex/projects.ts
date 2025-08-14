@@ -42,7 +42,7 @@ export const seedProjects = mutation({
       {
         title: "15 Acre Forestry Mulching",
         description: "Complete land clearing and forestry mulching project in Orange County",
-        imageUrl: "https://picsum.photos/800/600?random=1",
+        imageUrl: "/treeshop/images/projects/avon-park-land-clearing-before-dense-vegetation.jpg",
         category: "before",
         featured: true,
         acreage: 15,
@@ -54,7 +54,7 @@ export const seedProjects = mutation({
       {
         title: "Cleared and Ready for Development",
         description: "Same 15 acre property after professional forestry mulching",
-        imageUrl: "https://picsum.photos/800/600?random=2",
+        imageUrl: "/treeshop/images/projects/avon-park-land-clearing-after-forestry-mulching.jpg",
         category: "after",
         featured: true,
         acreage: 15,
@@ -66,7 +66,7 @@ export const seedProjects = mutation({
       {
         title: "Precision Equipment",
         description: "Our state-of-the-art forestry mulching equipment in action",
-        imageUrl: "https://picsum.photos/800/600?random=3",
+        imageUrl: "/treeshop/images/equipment/cat-265-fecon-blackhawk-fueling.jpg",
         category: "equipment",
         featured: true,
         status: "active",
@@ -76,7 +76,7 @@ export const seedProjects = mutation({
       {
         title: "5 Acre Residential Project",
         description: "Overgrown residential property before clearing",
-        imageUrl: "https://picsum.photos/800/600?random=4",
+        imageUrl: "/treeshop/images/projects/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg",
         category: "before",
         featured: true,
         acreage: 5,
