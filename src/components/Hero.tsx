@@ -7,24 +7,24 @@ import { useState, useEffect } from 'react';
 
 const heroImages = [
   {
-    src: "/images/hero/cat-320-excavator-land-clearing.jpg",
-    alt: "CAT 320 Excavator with Clearing Rake - Professional Land Clearing"
-  },
-  {
-    src: "/images/hero/cat-265-299d3-land-clearing.jpg", 
+    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/WebsitePics/CAT%20265%20sitting%20next%20to%20CAT%20299D3%20on%20land%20clearing%20project.HEIC.jpg",
     alt: "CAT 265 and CAT 299D3 Equipment - Heavy-Duty Land Clearing Project"
   },
   {
-    src: "/images/hero/rayco-stump-grinder-remote.jpg",
+    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/WebsitePics/FM%20FAE%20CAT%20299D3%20Large%20Package%208%20inch.HEIC.jpg",
+    alt: "Professional Forestry Mulching Equipment - CAT 299D3 in Action"
+  },
+  {
+    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/WebsitePics/Rayco%20stump%20grinder%20grinding%20stumps%20via%20remote%20control%20for%20operator%20saftey%2C%20comfort%2C%20and%20accuracy.HEIC.jpg",
     alt: "Rayco Remote-Controlled Stump Grinder - Precision Stump Removal"
   },
   {
-    src: "/images/hero/land-clearing-operation.jpg",
-    alt: "Professional Land Clearing Operation in Progress"
+    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/WebsitePics/NEXT%20GEN%20CAT%20320%20Land%20clearing%202.5%20acre%20residential%20lot%20in%20Orlando%20Florida.HEIC.jpg",
+    alt: "Professional Land Clearing Operation in Progress - Next Gen CAT 320"
   },
   {
-    src: "/images/hero/forestry-mulching-equipment.jpg",
-    alt: "Advanced Forestry Mulching Equipment - Modern Tree Service"
+    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/WebsitePics/First%20company%20to%20run%20the%20Fecon%20Fusion%20Blackhawk%20on%20a%20CAT%20Skid%20steer.%20Self%20tuning%20forestry%20mulcher.%20Best%20Forestry%20Mulcher%20in%20the%20Game%202025.jpg",
+    alt: "Advanced Fecon Blackhawk Forestry Mulcher - Industry Leading Equipment"
   }
 ];
 
