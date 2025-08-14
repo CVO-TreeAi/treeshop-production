@@ -1,14 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { useMutation, useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
-// // FIREBASE DISABLED
-// // FIREBASE DISABLED
+// // FIREBASE DISABLED - USING CONVEX
+// // FIREBASE DISABLED - USING CONVEX
 
 export default function AdminTestPage() {
   const [testResults, setTestResults] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState<Record<string, boolean>>({});
+
+  // Convex mutations
+  const seedProjects = useMutation(api.projects.seedProjects);
+  const clearProjects = useMutation(api.projects.clearProjects);
+  
+  // Convex queries  
+  const projects = useQuery(api.projects.getFeaturedProjects, { limit: 10 });
 
   const updateResult = (test: string, result: any) => {
     setTestResults(prev => ({ ...prev, [test]: result }));
@@ -195,6 +204,65 @@ export default function AdminTestPage() {
     }
   };
 
+  // Test Project Seeding
+  const testProjectSeeding = async () => {
+    setLoadingState('projectSeeding', true);
+    try {
+      const result = await seedProjects();
+      
+      updateResult('projectSeeding', {
+        success: true,
+        data: result
+      });
+    } catch (error: any) {
+      updateResult('projectSeeding', {
+        success: false,
+        error: error.message
+      });
+    } finally {
+      setLoadingState('projectSeeding', false);
+    }
+  };
+
+  // Test Project Clearing
+  const testProjectClearing = async () => {
+    setLoadingState('projectClearing', true);
+    try {
+      const result = await clearProjects();
+      
+      updateResult('projectClearing', {
+        success: true,
+        data: result
+      });
+    } catch (error: any) {
+      updateResult('projectClearing', {
+        success: false,
+        error: error.message
+      });
+    } finally {
+      setLoadingState('projectClearing', false);
+    }
+  };
+
+  // Test Project Query
+  const testProjectQuery = async () => {
+    setLoadingState('projectQuery', true);
+    try {
+      updateResult('projectQuery', {
+        success: true,
+        count: projects?.length || 0,
+        data: projects
+      });
+    } catch (error: any) {
+      updateResult('projectQuery', {
+        success: false,
+        error: error.message
+      });
+    } finally {
+      setLoadingState('projectQuery', false);
+    }
+  };
+
   const TestButton = ({ label, onClick, testKey }: { label: string; onClick: () => void; testKey: string }) => (
     <button
       onClick={onClick}
@@ -253,6 +321,18 @@ export default function AdminTestPage() {
             </div>
 
             <div className="bg-gray-900 rounded-lg p-6">
+              <h2 className="text-xl font-semibold text-white mb-4">🎨 Convex Project Gallery</h2>
+              <div className="space-y-3">
+                <TestButton label="Clear Projects" onClick={testProjectClearing} testKey="projectClearing" />
+                <TestButton label="Seed Projects" onClick={testProjectSeeding} testKey="projectSeeding" />
+                <TestButton label="Query Projects" onClick={testProjectQuery} testKey="projectQuery" />
+              </div>
+              <div className="mt-3 p-3 bg-gray-800 rounded text-sm">
+                <p className="text-gray-300">Current projects in DB: <span className="text-green-400 font-bold">{projects?.length || 0}</span></p>
+              </div>
+            </div>
+
+            <div className="bg-gray-900 rounded-lg p-6">
               <h2 className="text-xl font-semibold text-white mb-4">AI Tests</h2>
               <div className="space-y-3">
                 <TestButton label="Test AI Estimate" onClick={testAIEstimate} testKey="aiEstimate" />
@@ -282,6 +362,9 @@ export default function AdminTestPage() {
             <ResultCard title="API Authentication" result={testResults.apiAuth} />
             <ResultCard title="Lead Creation" result={testResults.leadCreation} />
             <ResultCard title="Database Query" result={testResults.dbQuery} />
+            <ResultCard title="Project Clearing" result={testResults.projectClearing} />
+            <ResultCard title="Project Seeding" result={testResults.projectSeeding} />
+            <ResultCard title="Project Query" result={testResults.projectQuery} />
             <ResultCard title="AI Estimate" result={testResults.aiEstimate} />
           </div>
         </div>

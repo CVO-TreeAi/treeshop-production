@@ -40,32 +40,32 @@ export const seedProjects = mutation({
   handler: async (ctx) => {
     const sampleProjects = [
       {
-        title: "15 Acre Forestry Mulching",
-        description: "Complete land clearing and forestry mulching project in Orange County",
+        title: "Avon Park Land Clearing - Before",
+        description: "Dense vegetation requiring professional forestry mulching services",
         imageUrl: "/project-images/avon-park-land-clearing-before-dense-vegetation.jpg",
         category: "before",
         featured: true,
-        acreage: 15,
-        location: "Orange County, FL",
+        acreage: 8,
+        location: "Avon Park, FL",
         status: "active",
         createdAt: Date.now(),
         updatedAt: Date.now(),
       },
       {
-        title: "Cleared and Ready for Development",
-        description: "Same 15 acre property after professional forestry mulching",
+        title: "Avon Park Land Clearing - After",
+        description: "Professional forestry mulching results - land ready for development",
         imageUrl: "/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
         category: "after",
         featured: true,
-        acreage: 15,
-        location: "Orange County, FL",
+        acreage: 8,
+        location: "Avon Park, FL",
         status: "active",
         createdAt: Date.now(),
         updatedAt: Date.now(),
       },
       {
-        title: "Precision Equipment",
-        description: "Our state-of-the-art forestry mulching equipment in action",
+        title: "CAT 265 Fecon Blackhawk",
+        description: "Our precision forestry mulching equipment delivering professional results",
         imageUrl: "/project-images/cat-265-fecon-blackhawk-fueling.jpg",
         category: "equipment",
         featured: true,
@@ -74,13 +74,49 @@ export const seedProjects = mutation({
         updatedAt: Date.now(),
       },
       {
-        title: "5 Acre Residential Project",
-        description: "Overgrown residential property before clearing",
+        title: "Lehigh Acres - Before Clearing",
+        description: "Thick undergrowth removal project in Southwest Florida",
+        imageUrl: "/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg",
+        category: "before",
+        featured: true,
+        acreage: 12,
+        location: "Lehigh Acres, FL",
+        status: "active",
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+      {
+        title: "Lehigh Acres - Professional Results",
+        description: "Complete land transformation after professional mulching service",
+        imageUrl: "/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg",
+        category: "after",
+        featured: true,
+        acreage: 12,
+        location: "Lehigh Acres, FL",
+        status: "active",
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+      {
+        title: "Okeechobee Forest Clearing - Before",
+        description: "Dense forest undergrowth before professional forestry mulching",
         imageUrl: "/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg",
         category: "before",
         featured: true,
-        acreage: 5,
-        location: "Seminole County, FL",
+        acreage: 20,
+        location: "Okeechobee, FL",
+        status: "active",
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      },
+      {
+        title: "Okeechobee Forest Clearing - Complete",
+        description: "Pristine cleared land ready for agricultural or development use",
+        imageUrl: "/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg",
+        category: "after",
+        featured: true,
+        acreage: 20,
+        location: "Okeechobee, FL",
         status: "active",
         createdAt: Date.now(),
         updatedAt: Date.now(),
@@ -92,5 +128,17 @@ export const seedProjects = mutation({
     }
 
     return { success: true, count: sampleProjects.length };
+  },
+});
+
+// Clear all projects (useful for reseeding)
+export const clearProjects = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const projects = await ctx.db.query("projects").collect();
+    for (const project of projects) {
+      await ctx.db.delete(project._id);
+    }
+    return { success: true, deleted: projects.length };
   },
 });

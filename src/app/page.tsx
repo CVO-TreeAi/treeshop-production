@@ -2,7 +2,7 @@ import Hero from '@/components/Hero'
 import NavBar from '@/components/NavBar'
 import ServiceTiles from '@/components/ServiceTiles'
 import ValueProps from '@/components/ValueProps'
-import ProjectGallery from '@/components/ProjectGallery'
+import ProjectGalleryDynamic from '@/components/ProjectGalleryDynamic'
 import VideoHighlightsDynamic from '@/components/VideoHighlightsDynamic'
 import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <ValueProps />
       <ServiceTiles />
-      <ProjectGallery />
+      <ProjectGalleryDynamic />
       <VideoHighlightsDynamic />
       <GbpReviewHighlights 
         rating={4.9} 
