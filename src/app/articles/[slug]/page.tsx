@@ -5,7 +5,7 @@ import { format } from 'date-fns'
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import BlogContent from '@/components/articles/BlogContent'
+import BlogContent from '@/components/blog/BlogContent'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>

@@ -74,12 +74,12 @@ export default function BlogPage() {
                     </Link>
                   </div>
                 </div>
-                <div className="bg-gray-800 rounded-lg flex items-center justify-center min-h-[200px]">
+                <div className="bg-gray-800 rounded-lg flex items-center justify-center p-4">
                   {featuredPost.coverImage ? (
                     <img 
                       src={featuredPost.coverImage} 
                       alt={featuredPost.title}
-                      className="max-w-sm h-auto object-cover rounded-lg"
+                      className="w-32 h-32 object-cover rounded-lg"
                     />
                   ) : (
                     <div className="text-center text-gray-500">
@@ -124,7 +124,7 @@ export default function BlogPage() {
                         </div>
                         
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
-                          <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
+                          <Link href={`/articles/${post.slug}`} className="text-white hover:text-green-400 transition-colors">
                             {post.title}
                           </Link>
                         </h3>
