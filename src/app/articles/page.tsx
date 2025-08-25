@@ -124,7 +124,7 @@ export default function BlogPage() {
                         </div>
                         
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
-                          <Link href={`/articles/${post.slug}`} className="text-white hover:text-green-400 transition-colors">
+                          <Link href={`/articles/${post.slug}`} className="text-white hover:text-green-400 transition-colors" style={{ color: '#ffffff !important' }}>
                             {post.title}
                           </Link>
                         </h3>
