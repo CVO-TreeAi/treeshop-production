@@ -107,28 +107,28 @@ export function ProjectShowcase({
       {/* Image Display */}
       <div className="mb-6 sm:mb-8">
         {viewMode === 'split' ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-3">
-              <h3 className="text-lg sm:text-xl font-semibold text-white text-center">Before</h3>
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
+            <div className="space-y-2">
+              <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-white text-center">Before</h3>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
                   src={currentProject.beforeImage}
                   alt={`${currentProject.location} - Before`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="50vw"
                 />
               </div>
             </div>
-            <div className="space-y-3">
-              <h3 className="text-lg sm:text-xl font-semibold text-white text-center">After</h3>
+            <div className="space-y-2">
+              <h3 className="text-sm sm:text-lg lg:text-xl font-semibold text-white text-center">After</h3>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
                   src={currentProject.afterImage}
                   alt={`${currentProject.location} - After`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="50vw"
                 />
               </div>
             </div>
