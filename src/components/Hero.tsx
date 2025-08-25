@@ -7,23 +7,23 @@ import { useState, useEffect } from 'react';
 
 const heroImages = [
   {
-    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/cat-265-fecon-blackhawk-fueling.jpg",
+    src: "/project-images/cat-265-fecon-blackhawk-fueling.jpg",
     alt: "CAT 265 with Fecon Blackhawk - Professional Forestry Mulching Equipment"
   },
   {
-    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
+    src: "/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
     alt: "Professional Land Clearing Results - Avon Park Project Complete"
   },
   {
-    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg",
+    src: "/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg",
     alt: "Lehigh Acres Land Clearing - Professional Results"
   },
   {
-    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg",
+    src: "/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg",
     alt: "Okeechobee Forest Clearing - Complete Professional Service"
   },
   {
-    src: "https://raw.githubusercontent.com/CVO-TreeAi/treeshop-production/main/public/images/hero/forestry-mulcher-in-action-hero.jpg",
+    src: "/images/hero/forestry-mulcher-in-action-hero.jpg",
     alt: "Advanced Forestry Mulcher in Action - Professional Tree Service"
   }
 ];

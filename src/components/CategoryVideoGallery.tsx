@@ -188,7 +188,7 @@ export default function CategoryVideoGallery({
         name: 'The Tree Shop',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.fltreeshop.com/images/TreeShopLogo.png'
+          url: '/images/TreeShopLogo.png'
         }
       },
       locationCreated: {

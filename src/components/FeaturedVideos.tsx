@@ -87,7 +87,7 @@ export default function FeaturedVideos() {
         name: 'The Tree Shop',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.fltreeshop.com/images/TreeShopLogo.png'
+          url: '/images/TreeShopLogo.png'
         }
       },
       author: {

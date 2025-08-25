@@ -59,7 +59,7 @@ const videoGalleryStructuredData = {
     url: 'https://www.fltreeshop.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.fltreeshop.com/images/TreeShopLogo.png'
+      url: '/images/TreeShopLogo.png'
     }
   },
   author: {
