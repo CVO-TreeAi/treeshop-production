@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <nav className="text-sm text-gray-400 mb-6">
             <Link href="/" className="hover:text-green-400">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/blog" className="hover:text-green-400">Blog</Link>
+            <Link href="/articles" className="hover:text-green-400">Blog</Link>
             <span className="mx-2">/</span>
             <span className="text-white">{post.title}</span>
           </nav>

@@ -48,7 +48,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <nav className="text-sm text-gray-400 mb-6">
             <Link href="/" className="hover:text-green-400">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/blog" className="hover:text-green-400">Blog</Link>
+            <Link href="/articles" className="hover:text-green-400">Blog</Link>
             <span className="mx-2">/</span>
             <span className="text-white">{formattedCategory}</span>
           </nav>
@@ -118,7 +118,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* Back to Blog */}
         <div className="text-center mt-12">
           <Link
-            href="/blog"
+            href="/articles"
             className="inline-block bg-green-600 hover:bg-green-500 text-black font-semibold px-6 py-3 rounded-lg transition-colors"
           >
             ← Back to All Articles
