@@ -52,7 +52,7 @@ export default function BlogPage() {
                     <span>{featuredPost.readingTime.text}</span>
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
-                    <Link href={`/articles/${featuredPost.slug}`} className="hover:text-green-400 transition-colors">
+                    <Link href={`/articles/${featuredPost.slug}`} className="text-white hover:text-green-400 transition-colors">
                       {featuredPost.title}
                     </Link>
                   </h3>
