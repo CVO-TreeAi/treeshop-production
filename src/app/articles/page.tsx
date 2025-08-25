@@ -74,12 +74,12 @@ export default function BlogPage() {
                     </Link>
                   </div>
                 </div>
-                <div className="bg-gray-800 rounded-lg flex items-center justify-center min-h-[300px]">
+                <div className="bg-gray-800 rounded-lg flex items-center justify-center min-h-[200px]">
                   {featuredPost.coverImage ? (
                     <img 
                       src={featuredPost.coverImage} 
                       alt={featuredPost.title}
-                      className="w-full h-full object-cover rounded-lg"
+                      className="max-w-sm h-auto object-cover rounded-lg"
                     />
                   ) : (
                     <div className="text-center text-gray-500">
