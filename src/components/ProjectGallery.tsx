@@ -17,7 +17,7 @@ const projects = [
     id: '2',
     location: 'Lehigh Acres, FL',
     packageSize: 'Medium Package (6" DBH)',
-    description: 'Custom home site preparation for condominium builder. Land prepped for builder to design and layout his dream home construction project.',
+    description: 'Custom barndominium site preparation for builder. Land prepped for builder to design and layout his dream home construction project.',
     beforeImage: '/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg',
     afterImage: '/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg',
     acreage: '5 acres',
