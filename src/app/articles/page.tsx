@@ -30,7 +30,7 @@ export default function BlogPage() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-16">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            The Tree Shop <span className="text-green-500">Blog</span>
+            The Tree Shop <span className="text-green-500">Articles</span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Expert insights on land clearing, forestry mulching, property management, and maximizing your land&apos;s potential. 
@@ -102,46 +102,62 @@ export default function BlogPage() {
               <div className="space-y-6 sm:space-y-8">
                 {recentPosts.map((post) => (
                   <article key={post.slug} className="bg-gray-900 rounded-lg p-4 sm:p-6 hover:bg-gray-800 transition-colors">
-                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-400 mb-3">
-                      <span className="px-3 py-1 bg-green-600/20 text-green-400 rounded-full text-xs">{post.category}</span>
-                      <span className="hidden sm:inline">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-                      <span className="sm:hidden">{format(new Date(post.date), 'MMM d')}</span>
-                      <span>{post.readingTime.text}</span>
-                    </div>
-                    
-                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 leading-tight">
-                      <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
-                        {post.title}
-                      </Link>
-                    </h3>
-                    
-                    <p className="text-gray-300 mb-4 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <span>By {post.author}</span>
-                        {post.tags.length > 0 && (
-                          <>
-                            <span>•</span>
-                            <div className="flex gap-2">
-                              {post.tags.slice(0, 2).map((tag) => (
-                                <span key={tag} className="text-green-400">#{tag}</span>
-                              ))}
-                            </div>
-                          </>
-                        )}
+                    <div className="flex gap-4">
+                      {/* Small image */}
+                      {post.coverImage && (
+                        <div className="flex-shrink-0">
+                          <img 
+                            src={post.coverImage} 
+                            alt={post.title}
+                            className="w-20 h-20 object-cover rounded-lg"
+                          />
+                        </div>
+                      )}
+                      
+                      {/* Content */}
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-400 mb-3">
+                          <span className="px-3 py-1 bg-green-600/20 text-green-400 rounded-full text-xs">{post.category}</span>
+                          <span className="hidden sm:inline">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+                          <span className="sm:hidden">{format(new Date(post.date), 'MMM d')}</span>
+                          <span>{post.readingTime.text}</span>
+                        </div>
+                        
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
+                          <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
+                            {post.title}
+                          </Link>
+                        </h3>
+                        
+                        <p className="text-gray-300 mb-4 leading-relaxed">
+                          {post.excerpt}
+                        </p>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-sm text-gray-400">
+                            <span>By {post.author}</span>
+                            {post.tags.length > 0 && (
+                              <>
+                                <span>•</span>
+                                <div className="flex gap-2">
+                                  {post.tags.slice(0, 2).map((tag) => (
+                                    <span key={tag} className="text-green-400">#{tag}</span>
+                                  ))}
+                                </div>
+                              </>
+                            )}
+                          </div>
+                          <Link 
+                            href={`/articles/${post.slug}`}
+                            className="text-green-400 hover:text-green-300 font-medium text-sm flex items-center gap-1"
+                          >
+                            Read more
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        </div>
                       </div>
-                      <Link 
-                        href={`/articles/${post.slug}`}
-                        className="text-green-400 hover:text-green-300 font-medium text-sm flex items-center gap-1"
-                      >
-                        Read more
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
                     </div>
                   </article>
                 ))}
