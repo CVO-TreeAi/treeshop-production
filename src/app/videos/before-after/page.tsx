@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: 'https://www.fltreeshop.com/videos/before-after',
     images: [
       {
-        url: '/treeshop/images/before-after-transformation-hero.jpg',
+        url: '/images/hero/forestry-mulching-before-after-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'Before and after land clearing transformation videos Florida'

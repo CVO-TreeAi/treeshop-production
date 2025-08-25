@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: 'https://www.fltreeshop.com/videos/forestry-mulching',
     images: [
       {
-        url: '/treeshop/images/forestry-mulching-videos-hero.jpg',
+        url: '/images/hero/land-clearing-equipment-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'Forestry mulching videos from Florida projects'

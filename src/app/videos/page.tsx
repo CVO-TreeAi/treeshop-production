@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: 'https://www.fltreeshop.com/videos',
     images: [
       {
-        url: '/treeshop/images/video-gallery-hero.jpg',
+        url: '/images/hero/forestry-mulcher-in-action-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'Tree Shop forestry mulching videos from Florida'
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tree Service Videos - Watch Florida Land Clearing',
     description: 'Watch real forestry mulching and land clearing projects across Florida.',
-    images: ['/treeshop/images/video-gallery-hero.jpg']
+    images: ['/images/hero/forestry-mulcher-in-action-hero.jpg']
   },
   alternates: {
     canonical: 'https://www.fltreeshop.com/videos'

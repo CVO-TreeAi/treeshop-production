@@ -96,7 +96,7 @@ export default async function CityPage({ params }: Props) {
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/treeshop/images/equipment/forestry-mulching-cat-299d3-central-florida.jpg"
+                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
                   alt={`CAT 299D3 forestry mulching equipment working in Central Florida near ${city.name}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -114,7 +114,7 @@ export default async function CityPage({ params }: Props) {
                 <div className="absolute inset-0 grid grid-cols-2">
                   <div className="relative">
                     <img 
-                      src="/treeshop/images/projects/forestry-mulching-before-central-florida.png"
+                      src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
                       alt={`Dense overgrown vegetation before forestry mulching near ${city.name} Florida`}
                       className="w-full h-full object-cover"
                     />
@@ -122,7 +122,7 @@ export default async function CityPage({ params }: Props) {
                   </div>
                   <div className="relative">
                     <img 
-                      src="/treeshop/images/projects/forestry-mulching-after-central-florida.jpg"
+                      src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
                       alt={`Cleared land with natural mulch after forestry mulching near ${city.name} Florida`}
                       className="w-full h-full object-cover"
                     />
@@ -136,7 +136,7 @@ export default async function CityPage({ params }: Props) {
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/treeshop/images/projects/forestry-mulching-central-florida.jpg"
+                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
                   alt={`Completed forestry mulching project results near ${city.name} Florida`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -157,7 +157,7 @@ export default async function CityPage({ params }: Props) {
             {/* Different Location Photos */}
             <div className="relative aspect-square rounded-lg overflow-hidden group">
               <img 
-                src="/treeshop/images/projects/forestry-mulching-new-smyrna-beach-florida.jpg"
+                src="/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg"
                 alt="Forestry mulching project New Smyrna Beach Florida"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
@@ -169,7 +169,7 @@ export default async function CityPage({ params }: Props) {
 
             <div className="relative aspect-square rounded-lg overflow-hidden group">
               <img 
-                src="/treeshop/images/projects/forestry-mulching-lake-mary-florida.jpg"
+                src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
                 alt="Forestry mulching project Lake Mary Florida"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
@@ -181,7 +181,7 @@ export default async function CityPage({ params }: Props) {
 
             <div className="relative aspect-square rounded-lg overflow-hidden group">
               <img 
-                src="/treeshop/images/projects/forestry-mulching-oak-hill-florida.jpg"
+                src="/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg"
                 alt="Forestry mulching project Oak Hill Florida"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
@@ -193,7 +193,7 @@ export default async function CityPage({ params }: Props) {
 
             <div className="relative aspect-square rounded-lg overflow-hidden group">
               <img 
-                src="/treeshop/images/projects/forestry-mulching-volusia-county-florida.jpg"
+                src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
                 alt="Forestry mulching project Volusia County Florida"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />

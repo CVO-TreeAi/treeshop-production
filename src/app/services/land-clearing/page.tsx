@@ -130,7 +130,7 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4">
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/land-clearing/cat-320-excavator-land-clearing-project.heic"
+                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
                   alt="CAT 320 excavator complete land clearing project Florida"
                   className="w-full h-full object-cover"
                 />
@@ -141,7 +141,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/land-clearing/fecon-blackhawk-cat-299d3-8-inch-large.jpg"
+                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
                   alt="Heavy land clearing equipment removing vegetation Florida"
                   className="w-full h-full object-cover"
                 />
@@ -152,7 +152,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/land-clearing/cat-309-diamond-mowers-excavator.jpg"
+                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
                   alt="Precision land clearing with Diamond Mowers Florida"
                   className="w-full h-full object-cover"
                 />
@@ -167,7 +167,7 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4 px-24">
               <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-amber-500">
                 <img 
-                  src="/treeshop/images/land-clearing/cat-265-skidsteer-grapple-avon-park.jpg"
+                  src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
                   alt="Land clearing equipment working day and night Florida"
                   className="w-full h-full object-cover"
                 />
@@ -179,7 +179,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-amber-500">
                 <img 
-                  src="/treeshop/images/land-clearing/land-clearing-debris-pile-orlando.heic"
+                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
                   alt="Complete debris removal land clearing Orlando Florida"
                   className="w-full h-full object-cover"
                 />
@@ -195,7 +195,7 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-3">
               <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/land-clearing/next-gen-cat-320-orlando-residential.heic"
+                  src="/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg"
                   alt="Residential land clearing Orlando Florida"
                   className="w-full h-full object-cover"
                 />
@@ -206,7 +206,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/equipment/land-clearing-cat-320-central-florida.jpg"
+                  src="/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg"
                   alt="Commercial land clearing Central Florida"
                   className="w-full h-full object-cover"
                 />
@@ -217,7 +217,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/equipment/land-clearing-cat-299d3-central-florida.jpg"
+                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
                   alt="Infrastructure land clearing project Florida"
                   className="w-full h-full object-cover"
                 />
@@ -228,7 +228,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/treeshop/images/equipment/land-clearing-central-florida.jpg"
+                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
                   alt="Agricultural land clearing Central Florida"
                   className="w-full h-full object-cover"
                 />
@@ -314,7 +314,7 @@ export default function LandClearingPage(){
                 <div className="absolute inset-0 grid grid-cols-2">
                   <div className="relative">
                     <img 
-                      src="/treeshop/images/land-clearing/fecon-blackhawk-cat-299d3-8-inch-large.jpg"
+                      src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
                       alt="Dense vegetation before land clearing project Florida"
                       className="w-full h-full object-cover"
                     />
@@ -322,7 +322,7 @@ export default function LandClearingPage(){
                   </div>
                   <div className="relative">
                     <img 
-                      src="/treeshop/images/land-clearing/cat-265-skidsteer-grapple-avon-park.jpg"
+                      src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
                       alt="Cleared and prepared land after professional land clearing Florida"
                       className="w-full h-full object-cover"
                     />
@@ -341,7 +341,7 @@ export default function LandClearingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/treeshop/images/land-clearing/cat-309-diamond-mowers-excavator.jpg"
+                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
                   alt="Professional wetland land clearing project Orlando Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
