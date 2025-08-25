@@ -72,7 +72,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </div>
               
               <h2 className="text-2xl font-semibold text-white mb-3 leading-tight">
-                <Link href={`/blog/${post.slug}`} className="hover:text-green-400 transition-colors">
+                <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
                   {post.title}
                 </Link>
               </h2>
@@ -91,7 +91,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         {post.tags.slice(0, 3).map((tag) => (
                           <Link
                             key={tag}
-                            href={`/blog/tag/${tag.toLowerCase()}`}
+                            href={`/articles/tag/${tag.toLowerCase()}`}
                             className="text-green-400 hover:text-green-300"
                           >
                             #{tag}
@@ -102,7 +102,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   )}
                 </div>
                 <Link 
-                  href={`/blog/${post.slug}`}
+                  href={`/articles/${post.slug}`}
                   className="text-green-400 hover:text-green-300 font-medium text-sm flex items-center gap-1"
                 >
                   Read article

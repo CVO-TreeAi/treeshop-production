@@ -28,7 +28,7 @@ export default function NavBar(){
           <div className="hidden lg:flex items-center gap-4 text-base">
             <Link href="/services/land-clearing" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Land Clearing</Link>
             <Link href="/services/forestry-mulching" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Forestry Mulching</Link>
-            <Link href="/blog" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium border border-transparent hover:border-white/20">Blog</Link>
+            <Link href="/articles" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium border border-transparent hover:border-white/20">Articles</Link>
             <Link href="/locations" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Service Areas</Link>
             <Link href="/#reviews" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium border border-transparent hover:border-white/20">Reviews</Link>
           </div>
@@ -140,7 +140,7 @@ export default function NavBar(){
 
                 <div className="flex justify-end">
                   <Link 
-                    href="/blog" 
+                    href="/articles" 
                     className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >

@@ -16,7 +16,7 @@ export default function ValueProps(){
       </div>
       <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
         {items.map((i)=> (
-          <a href={`/blog/${i.slug}`} key={i.title} className="group relative block overflow-hidden rounded-xl p-4 hover:scale-[1.02] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 touch-manipulation min-h-[140px] flex flex-col justify-center" 
+          <a href={`/articles/${i.slug}`} key={i.title} className="group relative block overflow-hidden rounded-xl p-4 hover:scale-[1.02] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 touch-manipulation min-h-[140px] flex flex-col justify-center" 
              style={{ 
                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.85), rgba(29, 78, 216, 0.85))', 
                backdropFilter: 'blur(16px)',

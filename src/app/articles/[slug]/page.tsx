@@ -5,7 +5,7 @@ import { format } from 'date-fns'
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import BlogContent from '@/components/blog/BlogContent'
+import BlogContent from '@/components/articles/BlogContent'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/blog/tag/${tag.toLowerCase()}`}
+                  href={`/articles/tag/${tag.toLowerCase()}`}
                   className="px-3 py-1 bg-gray-800 text-gray-300 hover:bg-green-600 hover:text-black rounded-full text-sm transition-colors"
                 >
                   #{tag}
@@ -152,7 +152,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {previousPost && (
                 <Link 
-                  href={`/blog/${previousPost.slug}`}
+                  href={`/articles/${previousPost.slug}`}
                   className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors"
                 >
                   <div className="text-sm text-gray-400 mb-2">← Previous Article</div>
@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               )}
               {nextPost && (
                 <Link 
-                  href={`/blog/${nextPost.slug}`}
+                  href={`/articles/${nextPost.slug}`}
                   className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors md:text-right"
                 >
                   <div className="text-sm text-gray-400 mb-2">Next Article →</div>
@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {relatedPosts.map((relatedPost) => (
                   <Link
                     key={relatedPost.slug}
-                    href={`/blog/${relatedPost.slug}`}
+                    href={`/articles/${relatedPost.slug}`}
                     className="bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors"
                   >
                     <div className="text-sm text-gray-400 mb-2">{relatedPost.category}</div>

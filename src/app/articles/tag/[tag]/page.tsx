@@ -67,7 +67,7 @@ export default async function TagPage({ params }: TagPageProps) {
             <article key={post.slug} className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors">
               <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
                 <Link 
-                  href={`/blog/category/${post.category.toLowerCase()}`}
+                  href={`/articles/category/${post.category.toLowerCase()}`}
                   className="px-3 py-1 bg-green-600/20 text-green-400 rounded-full hover:bg-green-600/30"
                 >
                   {post.category}
@@ -77,7 +77,7 @@ export default async function TagPage({ params }: TagPageProps) {
               </div>
               
               <h2 className="text-2xl font-semibold text-white mb-3 leading-tight">
-                <Link href={`/blog/${post.slug}`} className="hover:text-green-400 transition-colors">
+                <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
                   {post.title}
                 </Link>
               </h2>
@@ -96,7 +96,7 @@ export default async function TagPage({ params }: TagPageProps) {
                         {post.tags.filter(t => t.toLowerCase() !== tag.toLowerCase()).slice(0, 2).map((tagItem) => (
                           <Link
                             key={tagItem}
-                            href={`/blog/tag/${tagItem.toLowerCase()}`}
+                            href={`/articles/tag/${tagItem.toLowerCase()}`}
                             className="text-green-400 hover:text-green-300"
                           >
                             #{tagItem}
@@ -107,7 +107,7 @@ export default async function TagPage({ params }: TagPageProps) {
                   )}
                 </div>
                 <Link 
-                  href={`/blog/${post.slug}`}
+                  href={`/articles/${post.slug}`}
                   className="text-green-400 hover:text-green-300 font-medium text-sm flex items-center gap-1"
                 >
                   Read article

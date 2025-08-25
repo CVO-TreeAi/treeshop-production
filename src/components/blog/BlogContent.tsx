@@ -32,7 +32,9 @@ const components = {
     <a className="text-green-400 hover:text-green-300 underline transition-colors" {...props} />
   ),
   img: (props: any) => (
-    <img className="w-full rounded-lg mb-4" {...props} />
+    <div className="flex justify-center mb-4">
+      <img className="max-w-md w-auto rounded-lg shadow-lg" {...props} />
+    </div>
   ),
   hr: (props: any) => <hr className="border-gray-700 my-8" {...props} />,
   table: (props: any) => (

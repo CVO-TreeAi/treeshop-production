@@ -52,7 +52,7 @@ export default function BlogPage() {
                     <span>{featuredPost.readingTime.text}</span>
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
-                    <Link href={`/blog/${featuredPost.slug}`} className="hover:text-green-400 transition-colors">
+                    <Link href={`/articles/${featuredPost.slug}`} className="hover:text-green-400 transition-colors">
                       {featuredPost.title}
                     </Link>
                   </h3>
@@ -64,7 +64,7 @@ export default function BlogPage() {
                       <span>By {featuredPost.author}</span>
                     </div>
                     <Link 
-                      href={`/blog/${featuredPost.slug}`}
+                      href={`/articles/${featuredPost.slug}`}
                       className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-black font-semibold px-4 py-2 rounded-lg transition-colors"
                     >
                       Read Article
@@ -110,7 +110,7 @@ export default function BlogPage() {
                     </div>
                     
                     <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 leading-tight">
-                      <Link href={`/blog/${post.slug}`} className="hover:text-green-400 transition-colors">
+                      <Link href={`/articles/${post.slug}`} className="hover:text-green-400 transition-colors">
                         {post.title}
                       </Link>
                     </h3>
@@ -134,7 +134,7 @@ export default function BlogPage() {
                         )}
                       </div>
                       <Link 
-                        href={`/blog/${post.slug}`}
+                        href={`/articles/${post.slug}`}
                         className="text-green-400 hover:text-green-300 font-medium text-sm flex items-center gap-1"
                       >
                         Read more
@@ -170,7 +170,7 @@ export default function BlogPage() {
                   {categories.map((category) => (
                     <Link 
                       key={category}
-                      href={`/blog/category/${category.toLowerCase()}`}
+                      href={`/articles/category/${category.toLowerCase()}`}
                       className="block text-gray-300 hover:text-green-400 transition-colors"
                     >
                       {category}
@@ -188,7 +188,7 @@ export default function BlogPage() {
                   {tags.slice(0, 12).map((tag) => (
                     <Link 
                       key={tag}
-                      href={`/blog/tag/${tag.toLowerCase()}`}
+                      href={`/articles/tag/${tag.toLowerCase()}`}
                       className="px-3 py-1 bg-gray-800 text-gray-300 hover:bg-green-600 hover:text-black rounded-full text-sm transition-colors"
                     >
                       #{tag}
