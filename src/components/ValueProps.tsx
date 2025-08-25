@@ -1,10 +1,8 @@
 
-import FeconLogo from './FeconLogo';
-
 const items = [
   { title: 'DBH Package System', desc: 'Industry-first Small, Medium, Large packages - we invented precise diameter clearing', slug: 'dbh-package-system-explained', icon: '🎯' },
   { title: 'Land Freedom Philosophy', desc: 'Your land, your vision. No need for massive equipment to open up possibilities', slug: 'land-freedom-forestry-mulching-benefits', icon: '🌄' },
-  { title: 'Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'fecon-drum-mulchers-in-florida', icon: '⚙️', customTitle: <><FeconLogo size="sm" className="mr-1" noLink /> Drum Technology</> },
+  { title: 'Fecon Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'fecon-drum-mulchers-in-florida', icon: '⚙️' },
   { title: 'Eco-Friendly Process', desc: 'Low-impact clearing that enriches soil and prevents erosion naturally', slug: 'eco-friendly-forestry-mulching', icon: '🌱' },
   { title: 'Industry Leadership', desc: 'Pioneers of TreeAI and advanced tools that revolutionize customer experience', slug: 'treeai-precision-clearing', icon: '🚀' },
   { title: 'High-Value Solutions', desc: 'Maximum land utility with minimal environmental disruption and defined finish points', slug: 'high-value-forestry-mulching-outcomes', icon: '💎' },
@@ -28,9 +26,7 @@ export default function ValueProps(){
             <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent"></div>
             <div className="relative z-10 text-center">
               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">{i.icon}</div>
-              <div className="font-black text-base mb-2 group-hover:text-green-300 transition-colors duration-300 text-white tracking-tight flex items-center justify-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                {i.customTitle || i.title}
-              </div>
+              <div className="font-black text-base mb-2 group-hover:text-green-300 transition-colors duration-300 text-white tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{i.title}</div>
               <div className="text-sm leading-snug text-white/90 font-medium">{i.desc}</div>
             </div>
           </a>

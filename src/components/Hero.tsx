@@ -4,7 +4,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import FeconLogo from './FeconLogo';
 
 const heroImages = [
   {
@@ -112,9 +111,15 @@ export default function Hero(){
         <p className="text-xl sm:text-2xl text-white mb-12 max-w-4xl mx-auto leading-relaxed" 
            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
           Trusted Florida team since 2016. Purpose-built{' '}
-          <span className="inline-flex items-center px-3 py-1.5 mx-1 rounded-md bg-red-600 hover:bg-red-700 transition-all duration-300 hover:scale-105 shadow-lg" style={{ backgroundColor: '#DC2626' }}>
-            <FeconLogo size="md" />
-          </span>{' '}
+          <a 
+            href="https://fecon.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center px-3 py-1.5 mx-1 rounded-md bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+            style={{ backgroundColor: '#DC2626', color: '#FFFFFF' }}
+          >
+            Fecon
+          </a>{' '}
           drum mulchers deliver eco-friendly, low-impact clearing that opens up your land while preserving what matters.
         </p>
 
