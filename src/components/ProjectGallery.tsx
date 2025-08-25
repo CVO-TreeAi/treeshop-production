@@ -6,32 +6,32 @@ const projects = [
   {
     id: '1',
     location: 'Avon Park, FL',
-    packageSize: 'Medium Package (6" DBH)',
-    description: 'Complete land clearing for agricultural use. Dense vegetation removed while preserving topsoil.',
+    packageSize: 'Large Package (8" DBH)',
+    description: 'Real estate transformation for competitive market advantage. Property sold the week after completion - in a competitive market, every advantage can be the one that helps you win.',
     beforeImage: '/project-images/avon-park-land-clearing-before-dense-vegetation.jpg',
     afterImage: '/project-images/avon-park-land-clearing-after-forestry-mulching.jpg',
-    acreage: '5.2 acres',
-    timeframe: '2 days'
+    acreage: '0.25 acres',
+    timeframe: '1 day'
   },
   {
     id: '2',
     location: 'Lehigh Acres, FL',
-    packageSize: 'X-Large Package (10" DBH)',
-    description: 'Comprehensive land preparation for residential development. Cleared overgrown vegetation while maintaining shade trees.',
+    packageSize: 'Medium Package (6" DBH)',
+    description: 'Custom home site preparation for condominium builder. Land prepped for builder to design and layout his dream home construction project.',
     beforeImage: '/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg',
     afterImage: '/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg',
-    acreage: '4.1 acres',
+    acreage: '5 acres',
     timeframe: '2 days'
   },
   {
     id: '3',
     location: 'Okeechobee, FL',
-    packageSize: 'Large Package (8" DBH)',
-    description: 'Pasture restoration and fence line clearing. Enhanced access while maintaining natural windbreaks.',
+    packageSize: 'Small Package (4" DBH)',
+    description: 'Property maintenance to control wild pig issues. Vegetation reduced to manageable level so landowner can maintain with his own tractor equipment going forward.',
     beforeImage: '/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg',
     afterImage: '/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg',
-    acreage: '6.7 acres',
-    timeframe: '3 days'
+    acreage: '3 acres',
+    timeframe: '2 days'
   }
 ]
 
