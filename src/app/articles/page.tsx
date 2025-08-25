@@ -51,8 +51,8 @@ export default function BlogPage() {
                     <span className="sm:hidden">{format(new Date(featuredPost.date), 'MMM d')}</span>
                     <span>{featuredPost.readingTime.text}</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
-                    <Link href={`/articles/${featuredPost.slug}`} className="text-white hover:text-green-400 transition-colors">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 leading-tight">
+                    <Link href={`/articles/${featuredPost.slug}`} className="text-white hover:text-green-400 transition-colors font-bold" style={{ color: '#ffffff' }}>
                       {featuredPost.title}
                     </Link>
                   </h3>
