@@ -1,8 +1,10 @@
 
+import FeconLogo from './FeconLogo';
+
 const items = [
-  { title: 'DBH Package System', desc: 'Choose exactly what gets cleared - 4", 6", 8", or 10" diameter limits for precise results', slug: 'dbh-package-system-explained', icon: '🎯' },
+  { title: 'DBH Package System', desc: 'Industry-first Small, Medium, Large packages - we invented precise diameter clearing', slug: 'dbh-package-system-explained', icon: '🎯' },
   { title: 'Land Freedom Philosophy', desc: 'Your land, your vision. No need for massive equipment to open up possibilities', slug: 'land-freedom-forestry-mulching-benefits', icon: '🌄' },
-  { title: 'Fecon Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'fecon-drum-mulchers-in-florida', icon: '⚙️' },
+  { title: 'Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'fecon-drum-mulchers-in-florida', icon: '⚙️', customTitle: <><FeconLogo size="sm" className="mr-1" /> Drum Technology</> },
   { title: 'Eco-Friendly Process', desc: 'Low-impact clearing that enriches soil and prevents erosion naturally', slug: 'eco-friendly-forestry-mulching', icon: '🌱' },
   { title: 'Industry Leadership', desc: 'Pioneers of TreeAI and advanced tools that revolutionize customer experience', slug: 'treeai-precision-clearing', icon: '🚀' },
   { title: 'High-Value Solutions', desc: 'Maximum land utility with minimal environmental disruption and defined finish points', slug: 'high-value-forestry-mulching-outcomes', icon: '💎' },
@@ -16,12 +18,21 @@ export default function ValueProps(){
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {items.map((i)=> (
-          <a href={`/blog/${i.slug}`} key={i.title} className="group block border border-blue-600 rounded-xl p-6 hover:border-blue-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 touch-manipulation shadow-xl hover:shadow-2xl hover:scale-105" style={{ background: 'linear-gradient(135deg, #1e40af, #1e3a8a)' }}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="text-2xl group-hover:scale-110 transition-transform duration-300">{i.icon}</div>
-              <div className="font-bold text-lg group-hover:text-green-400 transition-colors duration-300" style={{ color: '#FFFFFF' }}>{i.title}</div>
+          <a href={`/blog/${i.slug}`} key={i.title} className="group relative block overflow-hidden rounded-xl p-4 hover:scale-[1.02] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 touch-manipulation min-h-[140px] flex flex-col justify-center" 
+             style={{ 
+               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.85), rgba(29, 78, 216, 0.85))', 
+               backdropFilter: 'blur(16px)',
+               border: '1px solid rgba(59, 130, 246, 0.2)',
+               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+             }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent"></div>
+            <div className="relative z-10 text-center">
+              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">{i.icon}</div>
+              <div className="font-black text-base mb-2 group-hover:text-green-300 transition-colors duration-300 text-white tracking-tight flex items-center justify-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                {i.customTitle || i.title}
+              </div>
+              <div className="text-sm leading-snug text-white/90 font-medium">{i.desc}</div>
             </div>
-            <div className="text-base leading-relaxed" style={{ color: '#FFFFFF' }}>{i.desc}</div>
           </a>
         ))}
       </div>
