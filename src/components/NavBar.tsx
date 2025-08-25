@@ -145,7 +145,7 @@ export default function NavBar(){
                     onClick={() => setIsOpen(false)}
                   >
                     <span className="text-lg mr-2">📖</span>
-                    Expert Tips
+                    Articles
                   </Link>
                 </div>
 
