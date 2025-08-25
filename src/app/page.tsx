@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import NavBar from '@/components/NavBar'
 import ValueProps from '@/components/ValueProps'
-import ProjectGalleryDynamic from '@/components/ProjectGalleryDynamic'
+import ProjectGallery from '@/components/ProjectGallery'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <NavBar />
       <Hero />
       <ValueProps />
-      <ProjectGalleryDynamic />
+      <ProjectGallery />
       <Footer />
     </div>
   );
