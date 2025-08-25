@@ -14,7 +14,7 @@ export default function ValueProps(){
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Land Freedom Through Innovation</h2>
         <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">Leaders in precision land clearing with purpose-built technology for the Southeast</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
         {items.map((i)=> (
           <a href={`/blog/${i.slug}`} key={i.title} className="group relative block overflow-hidden rounded-xl p-4 hover:scale-[1.02] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 touch-manipulation min-h-[140px] flex flex-col justify-center" 
              style={{ 
