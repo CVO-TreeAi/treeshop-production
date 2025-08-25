@@ -13,10 +13,13 @@ import { anyApi } from "convex/server";
 /**
  * A utility for referencing Convex functions in your app's API.
  *
- * Usage:
+ * Usage for example:
  * ```js
  * const myFunctionReference = api.myModule.myFunction;
  * ```
  */
-export const api = anyApi;
+const api = anyApi;
+export default api;
+export { api };
+
 export const internal = anyApi;

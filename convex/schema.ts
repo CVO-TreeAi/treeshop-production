@@ -36,7 +36,7 @@ export default defineSchema({
     .index("by_status", ["status"])
     .index("by_updatedAt", ["updatedAt"]),
 
-  // Lead Management
+  // Lead Management with TreeAI Hive Intelligence
   leads: defineTable({
     // Contact Information
     name: v.string(),
@@ -50,6 +50,89 @@ export default defineSchema({
     selectedPackage: v.string(), // 'small', 'medium', 'large', 'xlarge'
     obstacles: v.array(v.string()),
     
+    // TreeAI Hive Intelligence - Enhanced Location Data with Cross-Domain Analytics
+    locationData: v.optional(v.object({
+      coordinates: v.object({
+        lat: v.number(),
+        lng: v.number(),
+      }),
+      placeId: v.optional(v.string()),
+      verified: v.optional(v.boolean()),
+      propertyType: v.optional(v.string()), // 'residential', 'commercial', 'agricultural', 'industrial'
+      accessibilityScore: v.optional(v.number()),
+      distanceFromBase: v.optional(v.object({
+        meters: v.number(),
+        durationSeconds: v.number(),
+      })),
+      propertyBounds: v.optional(v.object({
+        north: v.number(),
+        south: v.number(),
+        east: v.number(),
+        west: v.number(),
+      })),
+      
+      // TreeAI Core Intelligence - Advanced Pricing Analysis
+      treeAIAnalysis: v.optional(v.object({
+        pricingFactors: v.object({
+          basePropertyType: v.string(),
+          vegetationDensity: v.string(), // 'light', 'moderate', 'heavy', 'extreme'
+          terrainDifficulty: v.number(), // 1-10 scale
+          equipmentAccessibility: v.number(), // 1-10 scale
+          proximityToUtilities: v.boolean(),
+          environmentalRestrictions: v.array(v.string()),
+          seasonalFactors: v.object({
+            wetlandSeason: v.boolean(),
+            birdNestingSeason: v.boolean(),
+            fireRiskLevel: v.string(), // 'low', 'moderate', 'high'
+          }),
+        }),
+        estimatedCost: v.object({
+          basePrice: v.number(),
+          travelSurcharge: v.number(),
+          difficultyMultiplier: v.number(),
+          totalEstimate: v.number(),
+          confidence: v.number(), // 0-1 scale
+        }),
+      })),
+      
+      // Business Intelligence - Location Market Analytics
+      analytics: v.optional(v.object({
+        marketSegment: v.string(), // 'premium', 'standard', 'budget'
+        competitorDensity: v.number(),
+        historicalDemand: v.string(), // 'low', 'moderate', 'high'
+        customerRetentionProbability: v.number(),
+        priceElasticity: v.number(),
+        averageProjectSize: v.number(),
+      })),
+      
+      // Security Intelligence - Risk Assessment
+      riskProfile: v.optional(v.object({
+        accessRisk: v.string(), // 'low', 'moderate', 'high'
+        equipmentSecurityRisk: v.string(), // 'low', 'moderate', 'high'
+        weatherVulnerability: v.number(), // 1-10 scale
+        liabilityFactors: v.array(v.string()),
+        insuranceComplexity: v.string(), // 'standard', 'complex'
+      })),
+      
+      // Data Intelligence - Enhanced Property Insights
+      propertyInsights: v.optional(v.object({
+        lotSize: v.number(), // square feet
+        buildingCount: v.number(),
+        vegetationCoverage: v.number(), // percentage
+        slopeAnalysis: v.object({
+          averageSlope: v.number(),
+          maxSlope: v.number(),
+          terrainType: v.string(), // 'flat', 'rolling', 'steep', 'mountainous'
+        }),
+        waterFeatures: v.array(v.string()),
+        utilityClearanceNeeds: v.boolean(),
+      })),
+    })),
+    
+    // Enhanced Project Details
+    urgency: v.optional(v.string()), // 'standard', 'priority', 'emergency'
+    accessConcerns: v.optional(v.array(v.string())),
+    
     // Lead Scoring
     leadScore: v.string(), // 'hot', 'warm', 'cold'
     leadSource: v.string(), // 'website', 'referral', etc.
@@ -60,6 +143,7 @@ export default defineSchema({
     pricePerAcre: v.optional(v.number()),
     travelSurcharge: v.optional(v.number()),
     assumptions: v.optional(v.array(v.string())),
+    estimateConfidence: v.optional(v.number()),
     
     // Status Tracking
     status: v.string(), // 'new', 'contacted', 'qualified', 'quoted', 'won', 'lost'
@@ -156,7 +240,7 @@ export default defineSchema({
     .index("by_folder", ["folder"])
     .index("by_createdAt", ["createdAt"]),
 
-  // Estimates/Proposals
+  // Estimates/Proposals with TreeAI Enhancement
   estimates: defineTable({
     leadId: v.string(), // Reference to leads table
     
@@ -171,9 +255,16 @@ export default defineSchema({
     obstacleAdjustment: v.number(),
     totalPrice: v.number(),
     
-    // AI Analysis
+    // TreeAI Hive Intelligence Analysis
     aiConfidence: v.optional(v.number()),
     aiAssumptions: v.optional(v.array(v.string())),
+    treeAIEnhancedPricing: v.optional(v.object({
+      baseLocationScore: v.number(),
+      riskAdjustment: v.number(),
+      marketSegmentMultiplier: v.number(),
+      seasonalFactors: v.number(),
+      finalPriceOptimization: v.number(),
+    })),
     
     // Proposal Details
     proposalSent: v.boolean(),
@@ -185,6 +276,10 @@ export default defineSchema({
     estimatedDays: v.optional(v.number()),
     startDate: v.optional(v.number()),
     completionDate: v.optional(v.number()),
+    
+    // Hive Intelligence Tracking
+    hiveIntelligenceUsed: v.optional(v.boolean()),
+    crossDomainInsights: v.optional(v.array(v.string())),
     
     // Status
     status: v.string(), // 'draft', 'sent', 'accepted', 'rejected', 'completed'
@@ -407,6 +502,90 @@ export default defineSchema({
     .index("by_position", ["position"])
     .index("by_effectiveDate", ["effectiveDate"])
     .index("by_isActive", ["isActive"]),
+
+  // TreeAI Hive Intelligence - Location Analytics Dashboard
+  locationAnalytics: defineTable({
+    // Analytics Period
+    period: v.string(), // 'daily', 'weekly', 'monthly', 'quarterly'
+    startDate: v.number(),
+    endDate: v.number(),
+    
+    // Aggregated Metrics
+    totalLeads: v.number(),
+    averageProjectValue: v.number(),
+    conversionRate: v.number(),
+    
+    // Geographic Insights
+    topPerformingZips: v.array(v.object({
+      zipCode: v.string(),
+      leadCount: v.number(),
+      averageValue: v.number(),
+      conversionRate: v.number(),
+    })),
+    
+    // Market Segmentation
+    segmentBreakdown: v.object({
+      premium: v.object({ count: v.number(), avgValue: v.number() }),
+      standard: v.object({ count: v.number(), avgValue: v.number() }),
+      budget: v.object({ count: v.number(), avgValue: v.number() }),
+    }),
+    
+    // Risk Assessment Trends
+    riskTrends: v.object({
+      lowRisk: v.number(),
+      moderateRisk: v.number(),
+      highRisk: v.number(),
+    }),
+    
+    // Property Type Performance
+    propertyTypeMetrics: v.object({
+      residential: v.object({ count: v.number(), avgValue: v.number() }),
+      commercial: v.object({ count: v.number(), avgValue: v.number() }),
+      agricultural: v.object({ count: v.number(), avgValue: v.number() }),
+      industrial: v.object({ count: v.number(), avgValue: v.number() }),
+    }),
+    
+    // TreeAI Performance Metrics
+    treeAIMetrics: v.object({
+      averageConfidence: v.number(),
+      pricingAccuracy: v.number(),
+      costSavingsGenerated: v.number(),
+    }),
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_period", ["period"])
+    .index("by_startDate", ["startDate"]),
+    
+  // Hive Intelligence Coordination Log
+  hiveCoordination: defineTable({
+    // Coordination Event
+    eventType: v.string(), // 'cross_domain_analysis', 'pricing_coordination', 'risk_assessment'
+    triggerDomain: v.string(), // Which domain initiated
+    involvedDomains: v.array(v.string()), // All domains coordinated
+    
+    // Event Details
+    leadId: v.optional(v.id("leads")),
+    locationData: v.optional(v.any()), // Location context
+    coordinationResult: v.object({
+      success: v.boolean(),
+      insights: v.array(v.string()),
+      recommendations: v.array(v.string()),
+    }),
+    
+    // Performance Metrics
+    processingTimeMs: v.number(),
+    confidenceScore: v.number(),
+    
+    // Timestamps
+    createdAt: v.number(),
+  })
+    .index("by_eventType", ["eventType"])
+    .index("by_triggerDomain", ["triggerDomain"])
+    .index("by_leadId", ["leadId"])
+    .index("by_createdAt", ["createdAt"]),
 
   // System Configuration
   siteSettings: defineTable({

@@ -376,6 +376,36 @@ export const getPartialLeads = query({
   },
 });
 
+// List leads with date range filtering for analytics
+export const list = query({
+  args: {
+    startDate: v.optional(v.number()),
+    endDate: v.optional(v.number()),
+    status: v.optional(v.string()),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    let query = ctx.db.query("leads");
+    
+    if (args.status) {
+      query = query.filter((q) => q.eq(q.field("status"), args.status));
+    }
+    
+    const leads = await query.order("desc").take(args.limit || 1000);
+    
+    // Filter by date range if provided
+    if (args.startDate || args.endDate) {
+      return leads.filter(lead => {
+        if (args.startDate && lead.createdAt < args.startDate) return false;
+        if (args.endDate && lead.createdAt > args.endDate) return false;
+        return true;
+      });
+    }
+    
+    return leads;
+  },
+});
+
 // Add notes to lead
 export const addLeadNote = mutation({
   args: {

@@ -11,22 +11,22 @@ export default function Footer(){
             <Link href="/" className="text-green-500 font-bold text-lg sm:text-xl">
               Tree Shop
             </Link>
-            <p className="text-gray-400 text-sm mt-3 leading-relaxed">
-              Florida&apos;s premier forestry mulching service. Professional land clearing with fast response and transparent process.
+            <p className="text-white text-sm mt-3 leading-relaxed">
+              Florida's premier forestry mulching service. Professional land clearing with fast response and transparent process.
             </p>
           </div>
 
           {/* Services */}
           <div>
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Services</h3>
-            <div className="space-y-2 text-gray-400 text-sm">
-              <Link href="/services/forestry-mulching" className="block hover:text-green-400 transition-colors">
+            <div className="space-y-2 text-white text-sm">
+              <Link href="/services/forestry-mulching" className="block text-white hover:text-green-400 transition-colors">
                 Forestry Mulching
               </Link>
-              <Link href="/services/stump-grinding" className="block hover:text-green-400 transition-colors">
+              <Link href="/services/stump-grinding" className="block text-white hover:text-green-400 transition-colors">
                 Stump Grinding
               </Link>
-              <Link href="/estimate" className="block hover:text-green-400 transition-colors">
+              <Link href="/estimate" className="block text-white hover:text-green-400 transition-colors">
                 Free Estimates
               </Link>
             </div>
@@ -35,14 +35,14 @@ export default function Footer(){
           {/* Areas - Simplified for mobile */}
           <div className="sm:col-span-2 lg:col-span-1">
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Service Areas</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 text-gray-400 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 text-white text-sm">
               <div>
                 <div className="text-white font-medium mb-1 sm:mb-2 text-sm">Central Florida</div>
                 <ul className="space-y-1">
-                  <li><Link href="/locations/brooksville" className="hover:text-green-400 transition-colors">Brooksville</Link></li>
-                  <li><Link href="/locations/clermont" className="hover:text-green-400 transition-colors">Clermont</Link></li>
-                  <li><Link href="/locations/daytona-beach" className="hover:text-green-400 transition-colors">Daytona Beach</Link></li>
-                  <li><Link href="/locations/lakeland" className="hover:text-green-400 transition-colors">Lakeland</Link></li>
+                  <li><Link href="/locations/brooksville" className="text-white hover:text-green-400 transition-colors">Brooksville</Link></li>
+                  <li><Link href="/locations/clermont" className="text-white hover:text-green-400 transition-colors">Clermont</Link></li>
+                  <li><Link href="/locations/daytona-beach" className="text-white hover:text-green-400 transition-colors">Daytona Beach</Link></li>
+                  <li><Link href="/locations/lakeland" className="text-white hover:text-green-400 transition-colors">Lakeland</Link></li>
                 </ul>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function Footer(){
               >
                 Get Free Estimate
               </Link>
-              <div className="text-gray-400 text-xs sm:text-sm space-y-1">
+              <div className="text-white text-xs sm:text-sm space-y-1">
                 <div>📞 Call or text anytime</div>
                 <div>📧 Email response &lt; 4 hours</div>
                 <div>📍 Licensed & insured</div>
@@ -71,10 +71,10 @@ export default function Footer(){
         </div>
 
         <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
-          <div className="text-gray-500 text-xs sm:text-sm">© {new Date().getFullYear()} Tree Shop. All rights reserved.</div>
-          <div className="text-gray-500 text-xs sm:text-sm">Professional forestry mulching services in Florida</div>
+          <div className="text-white text-xs sm:text-sm">© {new Date().getFullYear()} Tree Shop. All rights reserved.</div>
+          <div className="text-white text-xs sm:text-sm">Professional forestry mulching services in Florida</div>
           <div className="flex items-center gap-2">
-            <span className="text-gray-400 text-xs sm:text-sm">Powered by</span>
+            <span className="text-white text-xs sm:text-sm">Powered by</span>
             <img src="/treeai.png" alt="TreeAI" width={72} height={20} className="object-contain" />
           </div>
         </div>

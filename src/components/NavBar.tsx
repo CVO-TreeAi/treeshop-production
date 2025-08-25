@@ -14,47 +14,50 @@ export default function NavBar(){
         {/* Main Navigation Bar */}
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <Image 
               src="/treeshop/images/branding/treeshop-logo-land-clearing-company.png" 
-              alt="Tree Shop Logo" 
-              width={32} 
-              height={32}
-              className="w-8 h-8"
+              alt="Tree Shop - Florida Land Clearing & Forestry Services" 
+              width={40} 
+              height={40}
+              className="w-10 h-10 hover:scale-105 transition-transform duration-200"
             />
-            <span className="text-white font-semibold text-lg">Tree Shop</span>
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 text-base">
-            <Link href="/services/forestry-mulching" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap">Forestry Mulching</Link>
-            <Link href="/services/land-clearing" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap">Land Clearing</Link>
-            <Link href="/services/stump-grinding" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap">Stump Grinding</Link>
-            <Link href="/videos" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium">Videos</Link>
-            <Link href="/blog" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium">Blog</Link>
-            <Link href="/locations" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium whitespace-nowrap">Service Areas</Link>
-            <Link href="/#reviews" className="text-white hover:text-white bg-transparent hover:bg-[var(--color-treeshop-blue)] px-4 py-2.5 rounded-lg transition-all duration-200 font-medium">Reviews</Link>
+          <div className="hidden lg:flex items-center gap-4 text-base">
+            <Link href="/services/land-clearing" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Land Clearing</Link>
+            <Link href="/services/forestry-mulching" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Forestry Mulching</Link>
+            <Link href="/blog" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium border border-transparent hover:border-white/20">Blog</Link>
+            <Link href="/locations" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium whitespace-nowrap border border-transparent hover:border-white/20">Service Areas</Link>
+            <Link href="/#reviews" className="text-white hover:text-green-400 bg-transparent hover:bg-white/10 px-5 py-3 rounded-lg transition-all duration-200 font-medium border border-transparent hover:border-white/20">Reviews</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:13868435266" className="text-sm text-white hover:text-white hover:bg-[var(--color-treeshop-blue)] px-3 py-2 rounded-md transition-all duration-200 font-medium">
-              386.843.5266
+          <div className="hidden lg:flex items-center gap-4">
+            <a href="tel:13868435266" className="text-white hover:text-green-400 hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200 font-semibold border border-white/20 hover:border-green-400/50 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+              </svg>
+              (386) 843-5266
             </a>
-            <Link href="/estimate" className="treeai-green-button px-5 py-2.5 rounded-lg text-sm transition-all duration-200 shadow-md hover:shadow-lg">
-              Get Estimate
+            <Link href="/estimate" className="bg-green-600 hover:bg-green-500 text-black hover:text-black px-6 py-3 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform border border-green-500/50">
+              Get Free Estimate
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-3">
-            <a href="tel:13868435266" className="text-black hover:text-black font-bold text-sm px-3 py-1.5 bg-green-600 hover:bg-green-500 rounded-md transition-all duration-200" style={{ color: '#000000 !important' }}>
-              Call
+            <a href="tel:13868435266" className="text-black hover:text-black font-bold px-4 py-2.5 bg-green-600 hover:bg-green-500 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 transform flex items-center gap-2" style={{ color: '#000000 !important' }}>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+              </svg>
+              Call Now
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-white p-2.5 rounded-lg hover:bg-[var(--color-treeshop-blue)] transition-all duration-200 border border-white/20"
-              aria-label="Toggle menu"
+              className="text-white hover:text-white p-3 rounded-lg bg-blue-600 hover:bg-blue-500 transition-all duration-200 border border-blue-500/50 hover:border-blue-400 hover:scale-105 transform shadow-md hover:shadow-lg"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <svg 
                 className="w-6 h-6" 
@@ -73,151 +76,111 @@ export default function NavBar(){
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay - Compact Right-Aligned */}
         {isOpen && (
-          <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 absolute left-0 right-0 top-full shadow-2xl">
-            <div className="px-6 py-8 space-y-6 max-w-sm mx-auto">
-              {/* Primary CTA - Liquid Glass Design */}
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600/60 to-green-500/70 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+          <div className="lg:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-700">
+              <Link href="/" onClick={() => setIsOpen(false)}>
+                <Image 
+                  src="/treeshop/images/branding/treeshop-logo-land-clearing-company.png" 
+                  alt="Tree Shop" 
+                  width={32} 
+                  height={32}
+                  className="w-8 h-8"
+                />
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
+                aria-label="Close menu"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Menu Content */}
+            <div className="px-4 py-8">
+              {/* Primary CTA */}
+              <div className="mb-8 flex justify-end">
                 <Link 
                   href="/estimate" 
-                  className="relative block w-full bg-green-600 hover:bg-green-500 text-black hover:text-black text-center font-bold py-5 px-6 rounded-2xl text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform backdrop-blur-sm border border-green-500/30"
+                  className="flex items-center justify-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg text-base transition-all duration-200 min-w-[120px]"
                   onClick={() => setIsOpen(false)}
-                  style={{ color: '#000000 !important' }}
                 >
                   Get Free Estimate
                 </Link>
               </div>
               
-              {/* Navigation Links - Individual Glass Cards */}
-              <div className="space-y-4 pt-6">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
-                  <Link 
-                    href="/services/forestry-mulching" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span className="flex items-center justify-between">
-                      Forestry Mulching
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Link>
-                </div>
-
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
+              {/* Navigation Pills - Right Aligned, 33% Width */}
+              <nav className="space-y-3">
+                <div className="flex justify-end">
                   <Link 
                     href="/services/land-clearing" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
+                    className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center justify-between">
-                      Land Clearing
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
+                    <span className="text-lg mr-2">🏞️</span>
+                    Land Clearing
                   </Link>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
+                <div className="flex justify-end">
                   <Link 
-                    href="/services/stump-grinding" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
+                    href="/services/forestry-mulching" 
+                    className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center justify-between">
-                      Stump Grinding
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
+                    <span className="text-lg mr-2">🌲</span>
+                    Forestry Mulching
                   </Link>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
-                  <Link 
-                    href="/videos" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span className="flex items-center justify-between">
-                      Videos
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </Link>
-                </div>
-
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
+                <div className="flex justify-end">
                   <Link 
                     href="/blog" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
+                    className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center justify-between">
-                      Expert Tips
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
+                    <span className="text-lg mr-2">📖</span>
+                    Expert Tips
                   </Link>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
+                <div className="flex justify-end">
                   <Link 
                     href="/locations" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
+                    className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center justify-between">
-                      Service Areas
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
+                    <span className="text-lg mr-2">📍</span>
+                    Service Areas
                   </Link>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/5 rounded-xl blur-sm group-hover:bg-white/10 transition-all duration-300"></div>
+                <div className="flex justify-end">
                   <Link 
                     href="/#reviews" 
-                    className="relative block text-white hover:text-white bg-white/5 hover:bg-white/15 py-4 px-5 rounded-xl text-base font-medium transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:scale-105 transform"
+                    className="flex items-center justify-center bg-green-600 hover:bg-blue-600 active:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 w-1/3 min-w-[120px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center justify-between">
-                      Reviews
-                      <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
+                    <span className="text-lg mr-2">⭐</span>
+                    Reviews
                   </Link>
                 </div>
-              </div>
-              
-              {/* Contact Info - Glass Design */}
-              <div className="pt-6 text-center">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-600/60 to-green-500/70 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
-                  <a 
-                    href="tel:13868435266" 
-                    className="relative inline-block bg-green-600 hover:bg-green-500 text-black hover:text-black font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform backdrop-blur-sm border border-green-500/30"
-                    style={{ color: '#000000 !important' }}
-                  >
-                    (386) 843-5266
-                  </a>
-                </div>
-                <p className="text-gray-400 text-sm mt-3 font-medium">Available 7 days a week</p>
+              </nav>
+
+              {/* Contact Section */}
+              <div className="mt-8 pt-6 border-t border-gray-600 flex justify-end">
+                <a 
+                  href="tel:13868435266" 
+                  className="flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 min-w-[120px]"
+                >
+                  <span className="text-lg mr-2">📞</span>
+                  (386) 843-5266
+                </a>
               </div>
             </div>
           </div>
