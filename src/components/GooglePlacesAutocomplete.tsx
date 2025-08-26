@@ -43,12 +43,15 @@ export default function GooglePlacesAutocomplete({
     }
 
     try {
-      // Initialize autocomplete with the legacy API
+      // Initialize autocomplete - RESTRICT TO FLORIDA ONLY
       autocompleteRef.current = new window.google.maps.places.Autocomplete(
         inputRef.current,
         {
           types: ['address'],
-          componentRestrictions: { country: 'us' },
+          componentRestrictions: { 
+            country: 'us',
+            administrativeArea: 'FL' // Restrict to Florida only
+          },
           fields: ['formatted_address', 'address_components', 'geometry']
         }
       );
