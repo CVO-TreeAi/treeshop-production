@@ -209,8 +209,28 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     <div className={`bg-gray-900 rounded-lg p-6 ${className}`}>
       <h3 className="text-2xl font-bold text-white mb-6">Get Your Estimate</h3>
       
-      {/* Project Size */}
+      {/* Project Location */}
       <div className="space-y-6">
+        <div>
+          <label className="block text-sm font-semibold text-gray-200 mb-2">
+            Project Address *
+          </label>
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
+            placeholder="Enter property address or ZIP code"
+          />
+          {addressValidated && (
+            <p className="text-green-400 text-sm mt-2">✓ Address validated</p>
+          )}
+          {isCalculating && (
+            <p className="text-gray-400 text-sm mt-2">Calculating distance...</p>
+          )}
+        </div>
+
+        {/* Project Size */}
         <div>
           <label className="block text-sm font-semibold text-gray-200 mb-2">
             Project Size (Acres) *
