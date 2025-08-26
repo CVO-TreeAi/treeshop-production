@@ -31,12 +31,12 @@ export default function LeadCaptureForm() {
     setSubmitStatus('idle');
 
     try {
-      // Submit to Convex backend
+      // Submit to Convex Terminal Sync - SIMPLE PATH
       const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          path: 'leads:createLead',
+          path: 'terminalSync:createLead', // UPDATED to terminalSync
           args: {
             name: formData.name,
             email: formData.email,
@@ -45,8 +45,8 @@ export default function LeadCaptureForm() {
             acreage: formData.acreage || undefined,
             selectedPackage: formData.selectedPackage || undefined,
             message: formData.message || undefined,
-            source: 'treeshop.app', // CRITICAL: Identifies this site
-            status: 'new',
+            source: 'treeshop.app', // MUST BE treeshop.app
+            status: 'complete',
             createdAt: Date.now()
           }
         })

@@ -256,23 +256,22 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     const session = getOrCreateSession();
 
     try {
-      // Send to Convex with session ID for linking to partial data
+      // Send to Convex Terminal Sync - SIMPLE PATH
       const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          path: 'leads:createLead',
+          path: 'terminalSync:createLead', // UPDATED to terminalSync
           args: {
-            sessionId: session, // Link to progressive tracking
             name: name,
             email: email,
             phone: phone,
             address: address,
             acreage: acres,
-            selectedPackage: PACKAGE_PRICING[selectedPackage].label + ' - ' + PACKAGE_PRICING[selectedPackage].description,
+            selectedPackage: PACKAGE_PRICING[selectedPackage].label,
             message: message || '',
-            source: 'treeshop.app',
-            status: 'complete', // Mark as complete lead
+            source: 'treeshop.app', // MUST BE treeshop.app
+            status: 'complete',
             createdAt: Date.now()
           }
         })
