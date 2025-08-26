@@ -92,36 +92,10 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     return sessionId.current || 'no-session';
   };
 
-  // Track field updates progressively
+  // Track field updates - simplified
   const trackFieldUpdate = async (fieldName: string, value: string) => {
-    const session = getOrCreateSession();
-    
-    try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: 'leads:upsertPartialLead',
-          args: {
-            sessionId: session,
-            source: 'treeshop.app',
-            fields: {
-              [fieldName]: value
-            },
-            lastUpdated: Date.now(),
-            status: 'partial'
-          }
-        })
-      });
-      
-      if (!response.ok) {
-        console.warn('Failed to track field:', fieldName);
-      } else {
-        console.log(`✅ Tracked: ${fieldName}`);
-      }
-    } catch (error) {
-      console.error('Tracking error:', error);
-    }
+    // Just log for now - remove broken tracking
+    console.log(`Field updated: ${fieldName}`);
   };
 
   // Debounced field tracking
@@ -322,15 +296,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
 
   // Track form view on mount
   useEffect(() => {
-    trackFieldUpdate('form_viewed', 'estimate_calculator');
-    
-    // Track page view if Terminal tracker is available
-    if (typeof window !== 'undefined' && (window as any).terminalTrack) {
-      (window as any).terminalTrack('form_view', {
-        form: 'estimate_calculator',
-        source: 'treeshop.app'
-      });
-    }
+    console.log('Estimate calculator loaded');
   }, []);
 
   // Calculate estimate when inputs change
@@ -549,10 +515,10 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
         {/* Submit Button - CRITICAL FIX */}
         <button
           onClick={handleSubmit}
-          disabled={isSubmitting || !addressValidated || !acres}
+          disabled={isSubmitting || !name || !email || !phone || !addressValidated || !acres}
           className="w-full mt-6 bg-green-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? 'Submitting...' : 'Get Free Estimate'}
+          {isSubmitting ? 'Submitting...' : estimate ? 'Submit Request for This Estimate' : 'Calculate Estimate'}
         </button>
 
         {/* Status Messages */}
