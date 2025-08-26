@@ -1,3 +1,5 @@
+import LeadCaptureForm from '@/components/LeadCaptureForm';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-green-50 to-white">
@@ -40,12 +42,7 @@ export default function Home() {
           </div>
           
           <div className="mt-12">
-            <a 
-              href="https://fltreeshop.com" 
-              className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-            >
-              Get a Free Quote
-            </a>
+            <LeadCaptureForm />
           </div>
         </div>
       </div>
