@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import GoogleTagManager from '@/components/GoogleTagManager'
 import ConsentBanner from '@/components/ConsentBanner'
@@ -32,6 +33,11 @@ export default function RootLayout({
         </noscript>
         {children}
         <ConsentBanner />
+        <Script 
+          src="https://treeshopterminal.com/terminal-tracker.js"
+          strategy="afterInteractive"
+          onLoad={() => console.log('TreeShop Terminal tracker loaded for treeshop.app')}
+        />
       </body>
     </html>
   )
