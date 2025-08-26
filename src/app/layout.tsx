@@ -262,7 +262,6 @@ export default function RootLayout({
         <Script 
           src="https://treeshopterminal.com/terminal-tracker.js"
           strategy="afterInteractive"
-          onLoad={() => console.log('TreeShop Terminal tracker loaded for fltreeshop.com')}
         />
       </body>
     </html>
