@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
-// Store analytics snapshot from Google Analytics
+// Store complete analytics snapshot from Google Analytics
 export const storeAnalyticsSnapshot = mutation({
   args: {
     timestamp: v.number(),
@@ -11,39 +11,34 @@ export const storeAnalyticsSnapshot = mutation({
     funnel: v.any(),
   },
   handler: async (ctx, args) => {
-    // Store in site settings as a workaround for now
-    const existing = await ctx.db
-      .query("siteSettings")
-      .filter(q => q.eq(q.field("key"), "latestAnalytics"))
-      .first();
+    // Store in a dedicated analytics table
+    await ctx.db.insert("analyticsSnapshots", {
+      ...args,
+      createdAt: Date.now(),
+    });
     
-    if (existing) {
-      await ctx.db.patch(existing._id, {
-        value: args,
-        updatedAt: Date.now(),
-      });
-    } else {
-      await ctx.db.insert("siteSettings", {
-        key: "latestAnalytics",
-        value: args,
-        description: "Latest analytics snapshot from Google Analytics",
-        updatedBy: "terminal-sync",
-        updatedAt: Date.now(),
-      });
+    // Keep only last 24 hours of snapshots
+    const oldSnapshots = await ctx.db
+      .query("analyticsSnapshots")
+      .filter(q => q.lt(q.field("createdAt"), Date.now() - 24 * 60 * 60 * 1000))
+      .collect();
+    
+    for (const snapshot of oldSnapshots) {
+      await ctx.db.delete(snapshot._id);
     }
   },
 });
 
-// Get latest analytics snapshot
+// Get the latest analytics snapshot
 export const getLatestAnalytics = query({
   args: {},
   handler: async (ctx) => {
-    const analytics = await ctx.db
-      .query("siteSettings")
-      .filter(q => q.eq(q.field("key"), "latestAnalytics"))
+    const latest = await ctx.db
+      .query("analyticsSnapshots")
+      .order("desc")
       .first();
     
-    return analytics?.value || null;
+    return latest;
   },
 });
 
@@ -59,45 +54,22 @@ export const trackLiveEvent = mutation({
     userId: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    // Store in analytics events table
-    await ctx.db.insert("analyticsEvents", {
-      eventName: args.eventName,
-      siteSource: args.source,
-      eventData: args.eventData,
-      timestamp: new Date(args.timestamp).toISOString(),
+    await ctx.db.insert("liveEvents", {
+      ...args,
       createdAt: Date.now(),
     });
     
-    // Also store recent events in settings for quick access
-    const recentEventsKey = "recentLiveEvents";
-    const recentEvents = await ctx.db
-      .query("siteSettings")
-      .filter(q => q.eq(q.field("key"), recentEventsKey))
-      .first();
+    // Keep only last 1000 events
+    const oldEvents = await ctx.db
+      .query("liveEvents")
+      .order("desc")
+      .collect();
     
-    const newEvent = {
-      ...args,
-      createdAt: Date.now(),
-    };
-    
-    let eventsList = [];
-    if (recentEvents) {
-      eventsList = recentEvents.value || [];
-      eventsList.unshift(newEvent);
-      eventsList = eventsList.slice(0, 100); // Keep last 100 events
-      
-      await ctx.db.patch(recentEvents._id, {
-        value: eventsList,
-        updatedAt: Date.now(),
-      });
-    } else {
-      await ctx.db.insert("siteSettings", {
-        key: recentEventsKey,
-        value: [newEvent],
-        description: "Recent live events stream",
-        updatedBy: "terminal-sync",
-        updatedAt: Date.now(),
-      });
+    if (oldEvents.length > 1000) {
+      const toDelete = oldEvents.slice(1000);
+      for (const event of toDelete) {
+        await ctx.db.delete(event._id);
+      }
     }
   },
 });
@@ -110,19 +82,8 @@ export const getLiveEvents = query({
   handler: async (ctx, args) => {
     const limit = args.limit || 50;
     
-    // Try to get from recent events cache first
-    const recentEvents = await ctx.db
-      .query("siteSettings")
-      .filter(q => q.eq(q.field("key"), "recentLiveEvents"))
-      .first();
-    
-    if (recentEvents?.value) {
-      return recentEvents.value.slice(0, limit);
-    }
-    
-    // Fallback to querying analytics events
     const events = await ctx.db
-      .query("analyticsEvents")
+      .query("liveEvents")
       .order("desc")
       .take(limit);
     
@@ -150,7 +111,6 @@ export const processLeadEvent = mutation({
       await ctx.db.patch(existingPartial._id, {
         formData: { ...existingPartial.formData, ...args.formData },
         step: args.step,
-        pageUrl: args.source,
         updatedAt: Date.now(),
       });
     } else {
@@ -161,7 +121,6 @@ export const processLeadEvent = mutation({
         pageUrl: args.source,
         step: args.step,
         status: "partial",
-        utmSource: args.source,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
@@ -169,7 +128,7 @@ export const processLeadEvent = mutation({
   },
 });
 
-// Get conversion funnel statistics
+// Get conversion funnel stats
 export const getConversionFunnel = query({
   args: {
     days: v.optional(v.number()),
@@ -180,13 +139,7 @@ export const getConversionFunnel = query({
     
     // Get all events in time period
     const events = await ctx.db
-      .query("analyticsEvents")
-      .filter(q => q.gt(q.field("createdAt"), cutoff))
-      .collect();
-    
-    // Get leads in time period
-    const leads = await ctx.db
-      .query("leads")
+      .query("liveEvents")
       .filter(q => q.gt(q.field("createdAt"), cutoff))
       .collect();
     
@@ -197,17 +150,21 @@ export const getConversionFunnel = query({
       formStep1: events.filter(e => e.eventName === "form_step_1").length,
       formStep2: events.filter(e => e.eventName === "form_step_2").length,
       formSubmits: events.filter(e => e.eventName === "form_submit").length,
-      leads: leads.length,
+      leads: await ctx.db
+        .query("leads")
+        .filter(q => q.gt(q.field("createdAt"), cutoff))
+        .collect()
+        .then(leads => leads.length),
     };
     
     return {
       funnel,
       conversionRate: funnel.pageViews > 0 
         ? ((funnel.leads / funnel.pageViews) * 100).toFixed(2)
-        : "0",
+        : 0,
       formCompletionRate: funnel.formStarts > 0
         ? ((funnel.formSubmits / funnel.formStarts) * 100).toFixed(2)
-        : "0",
+        : 0,
     };
   },
 });

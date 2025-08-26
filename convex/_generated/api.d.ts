@@ -23,7 +23,6 @@ import type * as media from "../media.js";
 import type * as notifications from "../notifications.js";
 import type * as projects from "../projects.js";
 import type * as terminalAnalytics from "../terminalAnalytics.js";
-import type * as terminalSync_analytics from "../terminalSync-analytics.js";
 import type * as terminalSync from "../terminalSync.js";
 import type * as videos from "../videos.js";
 
@@ -46,7 +45,6 @@ declare const fullApi: ApiFromModules<{
   notifications: typeof notifications;
   projects: typeof projects;
   terminalAnalytics: typeof terminalAnalytics;
-  "terminalSync-analytics": typeof terminalSync_analytics;
   terminalSync: typeof terminalSync;
   videos: typeof videos;
 }>;
