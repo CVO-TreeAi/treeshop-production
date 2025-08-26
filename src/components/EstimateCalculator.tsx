@@ -4,36 +4,36 @@ import { useState, useEffect, useRef } from 'react';
 import { LocationService, createLocationService } from '@/lib/services/LocationService';
 import GooglePlacesAutocomplete from '@/components/GooglePlacesAutocomplete';
 
-// TreeShop Base Location - New Smyrna Beach, FL
+// TreeShop Service Center - New Smyrna Beach, FL (INTERNAL)
 const TREESHOP_BASE_COORDS = { lat: 29.0216, lng: -81.0770 };
+// NEVER expose actual address: 3634 Watermelon Lane
 
-// Streamlined Package Pricing Structure - Exactly as specified
+// INTERNAL Pricing Structure (CONFIDENTIAL - NEVER EXPOSE)
 const PACKAGE_PRICING = {
   'small': {
     label: 'Small Package',
     description: '4" DBH & Under',
-    baseRate: 2125, // $2500 - 15%
-    pricePerAcre: 2125
+    pricePerAcre: 2125 // Medium - 15%
   },
   'medium': {
     label: 'Medium Package', 
     description: '6" DBH & Under',
-    baseRate: 2500, // Base rate
-    pricePerAcre: 2500
+    pricePerAcre: 2500 // BASELINE
   },
   'large': {
     label: 'Large Package',
     description: '8" DBH & Under', 
-    baseRate: 3375, // $2500 + 35%
-    pricePerAcre: 3375
+    pricePerAcre: 3375 // Medium + 35%
   },
   'xlarge': {
     label: 'X-Large Package',
     description: '10" DBH & Under',
-    baseRate: 4250, // $2500 + 70%
-    pricePerAcre: 4250
+    pricePerAcre: 4250 // Medium + 70%
   }
 } as const;
+
+// Transport rate: $350/hour (INTERNAL - NEVER EXPOSE)
+const TRANSPORT_RATE_PER_HOUR = 350;
 
 type PackageType = keyof typeof PACKAGE_PRICING;
 
@@ -133,10 +133,10 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           const travelTimeMinutes = propertyLocation.distanceFromBase.durationSeconds / 60;
           const distanceKm = propertyLocation.distanceFromBase.meters / 1000;
           
-          // TreeShop $350/hour transportation model - round trip
+          // Transport: $350/hour for round trip (INTERNAL RATE)
           const roundTripMinutes = travelTimeMinutes * 2;
-          const transportHours = Math.ceil(roundTripMinutes / 60);
-          const transportCost = transportHours * 350;
+          const transportHours = Math.max(1, Math.ceil(roundTripMinutes / 60)); // Minimum 1 hour
+          const transportCost = transportHours * TRANSPORT_RATE_PER_HOUR;
 
           setTransportData({
             time: Math.round(travelTimeMinutes),
@@ -186,10 +186,10 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
 
         const distanceData = zipDistances[zip] || zipDistances['default'];
         
-        // TreeShop $350/hour transportation model
+        // Transport calculation (INTERNAL)
         const roundTripMinutes = distanceData.minutes * 2;
-        const transportHours = Math.ceil(roundTripMinutes / 60);
-        const transportCost = transportHours * 350;
+        const transportHours = Math.max(1, Math.ceil(roundTripMinutes / 60));
+        const transportCost = transportHours * TRANSPORT_RATE_PER_HOUR;
 
         setTransportData({
           time: distanceData.minutes,
@@ -299,28 +299,34 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     console.log('Estimate calculator loaded');
   }, []);
 
-  // Calculate estimate when inputs change
+  // Calculate estimate using EXACT formula
   useEffect(() => {
     if (addressValidated && acres && transportData) {
       const acreage = parseFloat(acres);
       if (acreage > 0) {
         const packageInfo = PACKAGE_PRICING[selectedPackage];
         
-        // Core calculation: (base_rate * acres) + transport_cost + 10% cushion
-        const baseTotal = packageInfo.pricePerAcre * acreage;
-        const beforeCushion = baseTotal + transportData.cost;
-        const cushion = beforeCushion * 0.10; // 10% cushion
-        const finalProposal = beforeCushion + cushion;
+        // EXACT FORMULA (INTERNAL):
+        // 1. Line Item Cost = Package Price × Acreage
+        const lineItemCost = packageInfo.pricePerAcre * acreage;
+        // 2. Transport Cost = Round Trip Hours × $350 (already calculated)
+        const transportCost = transportData.cost;
+        // 3. Subtotal = Line Items + Transport
+        const subtotal = lineItemCost + transportCost;
+        // 4. Cushion = Subtotal × 10%
+        const cushion = subtotal * 0.10;
+        // 5. TOTAL = Subtotal + Cushion (only this shown to customer)
+        const finalTotal = subtotal + cushion;
 
         const estimateData: EstimateData = {
           address,
           acres: acreage,
           package: selectedPackage,
           transportTime: transportData.time,
-          transportCost: transportData.cost,
-          baseTotal,
-          cushion,
-          finalProposal
+          transportCost: transportCost,
+          baseTotal: lineItemCost,
+          cushion: cushion,
+          finalProposal: finalTotal
         };
 
         setEstimate(estimateData);
@@ -359,13 +365,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
             <p className="text-green-400 text-sm mt-2">✓ Address validated and distance calculated</p>
           )}
           {isCalculating && (
-            <p className="text-gray-400 text-sm mt-2">Calculating distance from service area...</p>
-          )}
-          {transportData && (
-            <p className="text-gray-300 text-sm mt-2">
-              Distance: {Math.round(transportData.distance)} miles | 
-              Travel time: {Math.round(transportData.time)} mins
-            </p>
+            <p className="text-gray-400 text-sm mt-2">Calculating your estimate...</p>
           )}
         </div>
 
@@ -479,34 +479,24 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           </div>
         </div>
 
-        {/* Calculation Status and Price Display */}
+        {/* CUSTOMER SEES ONLY FINAL PRICE - NO BREAKDOWN */}
         {estimate && (
           <div className="bg-green-600/10 border border-green-600/30 rounded-lg p-4 mt-6">
             <div className="space-y-3">
-              <div className="text-green-400 font-semibold">✓ Estimate Calculated Successfully</div>
+              <div className="text-green-400 font-semibold text-center">✓ Your Estimate is Ready</div>
               
-              {/* Price Breakdown */}
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-gray-300">
-                  <span>Base Service ({estimate.acres} acres):</span>
-                  <span>${estimate.baseTotal.toFixed(2)}</span>
+              {/* ONLY SHOW FINAL TOTAL - NO BREAKDOWN */}
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white">
+                  ${estimate.finalProposal.toFixed(0)}
                 </div>
-                <div className="flex justify-between text-gray-300">
-                  <span>Transportation ({Math.round(estimate.transportTime)} mins):</span>
-                  <span>${estimate.transportCost.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-gray-300">
-                  <span>Buffer (10%):</span>
-                  <span>${estimate.cushion.toFixed(2)}</span>
-                </div>
-                <div className="border-t border-gray-600 pt-2 flex justify-between text-white font-semibold text-lg">
-                  <span>Total Estimate:</span>
-                  <span className="text-green-400">${estimate.finalProposal.toFixed(2)}</span>
-                </div>
+                <p className="text-sm text-gray-400 mt-2">
+                  Total Project Cost
+                </p>
               </div>
               
               <p className="text-xs text-gray-400 text-center mt-3">
-                This is your instant estimate. Contact us to schedule your service.
+                This estimate includes all services and transportation. Fill out the contact information below to request this service.
               </p>
             </div>
           </div>
