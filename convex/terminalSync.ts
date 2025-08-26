@@ -153,3 +153,32 @@ export const getMultiSiteAnalytics = query({
     };
   },
 });
+
+// Get multi-site statistics (for Sites page)
+export const getMultiSiteStats = query({
+  args: {},
+  handler: async (ctx) => {
+    const leads = await ctx.db.query("leads").collect();
+    const events = await ctx.db.query("analyticsEvents").collect();
+    
+    // Group by source
+    const siteStats = {
+      'fltreeshop.com': {
+        leads: leads.filter(l => !l.siteSource || l.siteSource === 'fltreeshop.com').length,
+        events: events.filter(e => e.siteSource === 'fltreeshop.com').length,
+      },
+      'treeshop.app': {
+        leads: leads.filter(l => l.siteSource === 'treeshop.app').length,
+        events: events.filter(e => e.siteSource === 'treeshop.app').length,
+      }
+    };
+    
+    return {
+      combined: {
+        totalLeads: leads.length,
+        totalEvents: events.length,
+      },
+      bySite: siteStats
+    };
+  },
+});

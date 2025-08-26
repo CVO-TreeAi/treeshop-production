@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { LocationService, createLocationService } from '@/lib/services/LocationService';
+import GooglePlacesAutocomplete from '@/components/GooglePlacesAutocomplete';
 
 // TreeShop Base Location - New Smyrna Beach, FL
 const TREESHOP_BASE_COORDS = { lat: 29.0216, lng: -81.0770 };
@@ -194,16 +195,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     }
   }, [address, acres, selectedPackage, addressValidated, transportData, onEstimateComplete]);
 
-  // Debounced address validation
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (address.length > 10) {
-        validateAddressAndCalculateTransport(address);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [address]);
+  // Note: Address validation is now triggered directly from GooglePlacesAutocomplete onChange
 
   return (
     <div className={`bg-gray-900 rounded-lg p-6 ${className}`}>
@@ -215,18 +207,29 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           <label className="block text-sm font-semibold text-gray-200 mb-2">
             Project Address *
           </label>
-          <input
-            type="text"
+          <GooglePlacesAutocomplete
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(value) => {
+              setAddress(value);
+              // Trigger validation when address changes
+              if (value.length > 10) {
+                validateAddressAndCalculateTransport(value);
+              }
+            }}
             className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
-            placeholder="Enter property address or ZIP code"
+            placeholder="Start typing your address..."
           />
           {addressValidated && (
-            <p className="text-green-400 text-sm mt-2">✓ Address validated</p>
+            <p className="text-green-400 text-sm mt-2">✓ Address validated and distance calculated</p>
           )}
           {isCalculating && (
-            <p className="text-gray-400 text-sm mt-2">Calculating distance...</p>
+            <p className="text-gray-400 text-sm mt-2">Calculating distance from service area...</p>
+          )}
+          {transportData && (
+            <p className="text-gray-300 text-sm mt-2">
+              Distance: {Math.round(transportData.distance)} miles | 
+              Travel time: {Math.round(transportData.time)} mins
+            </p>
           )}
         </div>
 
@@ -269,16 +272,34 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           </div>
         </div>
 
-        {/* Calculation Status */}
+        {/* Calculation Status and Price Display */}
         {estimate && (
           <div className="bg-green-600/10 border border-green-600/30 rounded-lg p-4 mt-6">
-            <div className="text-center">
-              <div className="text-green-400 mb-2">✓ Project Calculated Successfully</div>
-              <div className="text-white text-sm">
-                {estimate.acres} acres • {PACKAGE_PRICING[estimate.package].label}
+            <div className="space-y-3">
+              <div className="text-green-400 font-semibold">✓ Estimate Calculated Successfully</div>
+              
+              {/* Price Breakdown */}
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between text-gray-300">
+                  <span>Base Service ({estimate.acres} acres):</span>
+                  <span>${estimate.baseTotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-gray-300">
+                  <span>Transportation ({Math.round(estimate.transportTime)} mins):</span>
+                  <span>${estimate.transportCost.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-gray-300">
+                  <span>Buffer (10%):</span>
+                  <span>${estimate.cushion.toFixed(2)}</span>
+                </div>
+                <div className="border-t border-gray-600 pt-2 flex justify-between text-white font-semibold text-lg">
+                  <span>Total Estimate:</span>
+                  <span className="text-green-400">${estimate.finalProposal.toFixed(2)}</span>
+                </div>
               </div>
-              <p className="text-white text-xs mt-2">
-                Pricing will be shown on the next step
+              
+              <p className="text-xs text-gray-400 text-center mt-3">
+                This is your instant estimate. Contact us to schedule your service.
               </p>
             </div>
           </div>
