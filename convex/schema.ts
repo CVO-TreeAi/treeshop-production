@@ -137,6 +137,7 @@ export default defineSchema({
     leadScore: v.string(), // 'hot', 'warm', 'cold'
     leadSource: v.string(), // 'website', 'referral', etc.
     leadPage: v.string(), // 'estimate', 'contact', etc.
+    siteSource: v.optional(v.string()), // 'fltreeshop.com', 'treeshop.app', etc.
     
     // Estimate Details
     estimatedTotal: v.optional(v.number()),
@@ -595,4 +596,16 @@ export default defineSchema({
     updatedBy: v.string(),
     updatedAt: v.number(),
   }).index("by_key", ["key"]),
+
+  // Multi-Site Analytics Events
+  analyticsEvents: defineTable({
+    eventName: v.string(),
+    siteSource: v.string(), // 'fltreeshop.com', 'treeshop.app', etc.
+    eventData: v.optional(v.any()),
+    timestamp: v.string(),
+    createdAt: v.number(),
+  })
+    .index("by_siteSource", ["siteSource"])
+    .index("by_eventName", ["eventName"])
+    .index("by_createdAt", ["createdAt"]),
 });

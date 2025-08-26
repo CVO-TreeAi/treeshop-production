@@ -289,7 +289,6 @@ export const completeLeadFromPartial = mutation({
       .first();
     
     // Create full lead directly (avoid circular reference)
-    const now = Date.now();
     let leadScore = "cold";
     if (args.finalData.acreage && args.finalData.acreage >= 5) leadScore = "warm";
     if (args.finalData.acreage && args.finalData.acreage >= 10) leadScore = "hot";
