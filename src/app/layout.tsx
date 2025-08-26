@@ -259,6 +259,11 @@ export default function RootLayout({
           {children}
         </ConvexClientProvider>
         <ConsentBanner />
+        <Script 
+          src="https://treeshopterminal.com/terminal-tracker.js"
+          strategy="afterInteractive"
+          onLoad={() => console.log('TreeShop Terminal tracker loaded for fltreeshop.com')}
+        />
       </body>
     </html>
   );
