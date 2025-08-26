@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LocationService, createLocationService } from '@/lib/services/LocationService';
 import GooglePlacesAutocomplete from '@/components/GooglePlacesAutocomplete';
 
@@ -72,6 +72,72 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
     distance: number;
     cost: number;
   } | null>(null);
+  
+  // Progressive tracking refs
+  const trackingDebounce = useRef<NodeJS.Timeout>();
+  const sessionId = useRef<string>();
+
+  // Get or create session ID for tracking
+  const getOrCreateSession = () => {
+    if (!sessionId.current) {
+      if (typeof window !== 'undefined') {
+        let storedSession = sessionStorage.getItem('lead_session');
+        if (!storedSession) {
+          storedSession = `treeshop.app_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+          sessionStorage.setItem('lead_session', storedSession);
+        }
+        sessionId.current = storedSession;
+      }
+    }
+    return sessionId.current || 'no-session';
+  };
+
+  // Track field updates progressively
+  const trackFieldUpdate = async (fieldName: string, value: string) => {
+    const session = getOrCreateSession();
+    
+    try {
+      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: 'leads:upsertPartialLead',
+          args: {
+            sessionId: session,
+            source: 'treeshop.app',
+            fields: {
+              [fieldName]: value
+            },
+            lastUpdated: Date.now(),
+            status: 'partial'
+          }
+        })
+      });
+      
+      if (!response.ok) {
+        console.warn('Failed to track field:', fieldName);
+      } else {
+        console.log(`✅ Tracked: ${fieldName}`);
+      }
+    } catch (error) {
+      console.error('Tracking error:', error);
+    }
+  };
+
+  // Debounced field tracking
+  const handleFieldChange = (fieldName: string, value: string, setter: (val: string) => void) => {
+    setter(value);
+    
+    // Clear previous debounce
+    if (trackingDebounce.current) {
+      clearTimeout(trackingDebounce.current);
+    }
+    
+    // Track after 500ms of no typing
+    trackingDebounce.current = setTimeout(() => {
+      trackFieldUpdate(fieldName, value);
+    }, 500);
+  };
 
   // Address validation and transport calculation
   const validateAddressAndCalculateTransport = async (inputAddress: string) => {
@@ -187,15 +253,17 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    const session = getOrCreateSession();
 
     try {
-      // Send to Convex
+      // Send to Convex with session ID for linking to partial data
       const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           path: 'leads:createLead',
           args: {
+            sessionId: session, // Link to progressive tracking
             name: name,
             email: email,
             phone: phone,
@@ -204,7 +272,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
             selectedPackage: PACKAGE_PRICING[selectedPackage].label + ' - ' + PACKAGE_PRICING[selectedPackage].description,
             message: message || '',
             source: 'treeshop.app',
-            status: 'new',
+            status: 'complete', // Mark as complete lead
             createdAt: Date.now()
           }
         })
@@ -231,12 +299,18 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
       }
       
       setSubmitStatus('success');
-      // Optional: Reset form after success
+      // Clear session after successful submission
+      sessionStorage.removeItem('lead_session');
+      sessionId.current = undefined;
+      
+      // Reset form after success
       setTimeout(() => {
         setName('');
         setEmail('');
         setPhone('');
         setMessage('');
+        setAddress('');
+        setAcres('');
         setSubmitStatus('idle');
       }, 5000);
     } catch (error) {
@@ -246,6 +320,19 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
       setIsSubmitting(false);
     }
   };
+
+  // Track form view on mount
+  useEffect(() => {
+    trackFieldUpdate('form_viewed', 'estimate_calculator');
+    
+    // Track page view if Terminal tracker is available
+    if (typeof window !== 'undefined' && (window as any).terminalTrack) {
+      (window as any).terminalTrack('form_view', {
+        form: 'estimate_calculator',
+        source: 'treeshop.app'
+      });
+    }
+  }, []);
 
   // Calculate estimate when inputs change
   useEffect(() => {
@@ -294,7 +381,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           <GooglePlacesAutocomplete
             value={address}
             onChange={(value) => {
-              setAddress(value);
+              handleFieldChange('address', value, setAddress);
               // Trigger validation when address changes
               if (value.length > 10) {
                 validateAddressAndCalculateTransport(value);
@@ -327,7 +414,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
             min="0.25"
             step="0.25"
             value={acres}
-            onChange={(e) => setAcres(e.target.value)}
+            onChange={(e) => handleFieldChange('acreage', e.target.value, setAcres)}
             className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
             placeholder="e.g., 3.5"
           />
@@ -342,7 +429,10 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
             {Object.entries(PACKAGE_PRICING).map(([key, packageInfo]) => (
               <button
                 key={key}
-                onClick={() => setSelectedPackage(key as PackageType)}
+                onClick={() => {
+                  setSelectedPackage(key as PackageType);
+                  trackFieldUpdate('selectedPackage', packageInfo.label);
+                }}
                 className={`p-4 rounded-lg border-2 text-left transition-all ${
                   selectedPackage === key
                     ? 'border-green-500 bg-green-500/10 text-white'
@@ -370,7 +460,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
               name="name"
               required
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => handleFieldChange('name', e.target.value, setName)}
               className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
               placeholder="John Doe"
             />
@@ -386,7 +476,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
               name="email"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleFieldChange('email', e.target.value, setEmail)}
               className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
               placeholder="john@example.com"
             />
@@ -402,7 +492,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
               name="phone"
               required
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => handleFieldChange('phone', e.target.value, setPhone)}
               className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
               placeholder="(555) 123-4567"
             />
@@ -416,7 +506,7 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
             <textarea
               name="message"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => handleFieldChange('message', e.target.value, setMessage)}
               className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
               placeholder="Tell us more about your project..."
               rows={3}
