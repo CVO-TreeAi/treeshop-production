@@ -57,9 +57,16 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
   const [address, setAddress] = useState('');
   const [acres, setAcres] = useState('');
   const [selectedPackage, setSelectedPackage] = useState<PackageType>('large');
+  // Contact form fields
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const [isCalculating, setIsCalculating] = useState(false);
   const [estimate, setEstimate] = useState<EstimateData | null>(null);
   const [addressValidated, setAddressValidated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [transportData, setTransportData] = useState<{
     time: number;
     distance: number;
@@ -161,6 +168,83 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
       setTransportData(null);
     }
     setIsCalculating(false);
+  };
+
+  // Submit handler for Convex - CRITICAL FIX
+  const handleSubmit = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (!name || !email || !phone) {
+      alert('Please fill in all required contact information');
+      return;
+    }
+
+    if (!address || !acres) {
+      alert('Please complete the estimate form first');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Send to Convex
+      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: 'leads:createLead',
+          args: {
+            name: name,
+            email: email,
+            phone: phone,
+            address: address,
+            acreage: acres,
+            selectedPackage: PACKAGE_PRICING[selectedPackage].label + ' - ' + PACKAGE_PRICING[selectedPackage].description,
+            message: message || '',
+            source: 'treeshop.app',
+            status: 'new',
+            createdAt: Date.now()
+          }
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      // Track with Terminal if available
+      if (typeof window !== 'undefined' && (window as any).terminalTrack) {
+        (window as any).terminalTrack('lead_submission', {
+          source: 'treeshop.app',
+          package: selectedPackage
+        });
+      }
+
+      // Track with GA4
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'generate_lead', {
+          value: estimate?.finalProposal || 0,
+          currency: 'USD'
+        });
+      }
+      
+      setSubmitStatus('success');
+      // Optional: Reset form after success
+      setTimeout(() => {
+        setName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
+        setSubmitStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Calculate estimate when inputs change
@@ -272,6 +356,74 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
           </div>
         </div>
 
+        {/* Contact Information Section - CRITICAL FIX */}
+        <div className="mt-6 space-y-4">
+          <h4 className="text-lg font-semibold text-white">Contact Information</h4>
+          
+          {/* Name Field */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
+              placeholder="John Doe"
+            />
+          </div>
+
+          {/* Email Field */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
+              placeholder="john@example.com"
+            />
+          </div>
+
+          {/* Phone Field */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
+              placeholder="(555) 123-4567"
+            />
+          </div>
+
+          {/* Message Field */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">
+              Additional Details (Optional)
+            </label>
+            <textarea
+              name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
+              placeholder="Tell us more about your project..."
+              rows={3}
+            />
+          </div>
+        </div>
+
         {/* Calculation Status and Price Display */}
         {estimate && (
           <div className="bg-green-600/10 border border-green-600/30 rounded-lg p-4 mt-6">
@@ -302,6 +454,27 @@ export default function EstimateCalculator({ onEstimateComplete, className = '' 
                 This is your instant estimate. Contact us to schedule your service.
               </p>
             </div>
+          </div>
+        )}
+
+        {/* Submit Button - CRITICAL FIX */}
+        <button
+          onClick={handleSubmit}
+          disabled={isSubmitting || !addressValidated || !acres}
+          className="w-full mt-6 bg-green-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? 'Submitting...' : 'Get Free Estimate'}
+        </button>
+
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="mt-4 bg-green-900 border border-green-500 text-green-300 px-4 py-3 rounded-lg">
+            ✓ Thank you! Your estimate request has been submitted. We'll contact you within 24 hours.
+          </div>
+        )}
+        {submitStatus === 'error' && (
+          <div className="mt-4 bg-red-900 border border-red-500 text-red-300 px-4 py-3 rounded-lg">
+            ✗ There was an error submitting your request. Please try again or call us at (407) 555-8733.
           </div>
         )}
       </div>
