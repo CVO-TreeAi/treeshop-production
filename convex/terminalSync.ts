@@ -182,3 +182,98 @@ export const getMultiSiteStats = query({
     };
   },
 });
+
+// Create a new lead (used when contact info is first entered)
+export const createLead = mutation({
+  args: {
+    name: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    address: v.string(),
+    acreage: v.string(),
+    selectedPackage: v.string(),
+    message: v.optional(v.string()),
+    source: v.string(),
+    status: v.string(),
+    createdAt: v.number(),
+  },
+  handler: async (ctx, args) => {
+    // Create lead in database
+    const leadId = await ctx.db.insert("leads", {
+      name: args.name,
+      email: args.email,
+      phone: args.phone,
+      address: args.address,
+      acreage: parseFloat(args.acreage) || 0,
+      selectedPackage: args.selectedPackage,
+      message: args.message || "",
+      siteSource: args.source,
+      status: args.status,
+      createdAt: args.createdAt,
+      updatedAt: args.createdAt,
+      leadSource: args.source === 'treeshop.app' ? 'website_estimate_v3' : 'website',
+    });
+
+    return { id: leadId, success: true };
+  },
+});
+
+// Update an existing lead with pricing information
+export const updateLead = mutation({
+  args: {
+    leadId: v.optional(v.string()),
+    name: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    address: v.string(),
+    acreage: v.string(),
+    selectedPackage: v.string(),
+    estimatedPrice: v.optional(v.number()),
+    message: v.optional(v.string()),
+    source: v.string(),
+    status: v.string(),
+    pricingType: v.optional(v.string()),
+    updatedAt: v.number(),
+  },
+  handler: async (ctx, args) => {
+    // Find existing lead by email or create new one
+    let lead = await ctx.db
+      .query("leads")
+      .filter(q => q.eq(q.field("email"), args.email))
+      .first();
+
+    if (lead) {
+      // Update existing lead
+      await ctx.db.patch(lead._id, {
+        name: args.name,
+        phone: args.phone,
+        address: args.address,
+        acreage: parseFloat(args.acreage) || 0,
+        selectedPackage: args.selectedPackage,
+        estimatedTotal: args.estimatedPrice,
+        message: args.message || "",
+        status: args.status,
+        updatedAt: args.updatedAt,
+      });
+      return { id: lead._id, success: true };
+    } else {
+      // Create new lead if not found
+      const leadId = await ctx.db.insert("leads", {
+        name: args.name,
+        email: args.email,
+        phone: args.phone,
+        address: args.address,
+        acreage: parseFloat(args.acreage) || 0,
+        selectedPackage: args.selectedPackage,
+        estimatedTotal: args.estimatedPrice,
+        message: args.message || "",
+        siteSource: args.source,
+        status: args.status,
+        createdAt: args.updatedAt,
+        updatedAt: args.updatedAt,
+        leadSource: args.source === 'treeshop.app' ? 'website_estimate_v3' : 'website',
+      });
+      return { id: leadId, success: true };
+    }
+  },
+});
