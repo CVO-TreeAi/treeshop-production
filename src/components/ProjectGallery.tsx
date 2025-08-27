@@ -37,7 +37,7 @@ const projects = [
 
 export default function ProjectGallery() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-16">
+    <section id="gallery" className="max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-16">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
           Real Project <span className="text-green-400">Results</span>

@@ -132,7 +132,7 @@ export default function Hero(){
             Get Free Estimate
           </Link>
           <Link 
-            href="#projects" 
+            href="#gallery" 
             className="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:bg-white/5"
           >
             See Our Work

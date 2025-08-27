@@ -20,7 +20,7 @@ export default function CTASection(){
             🌲 Get Free Estimate
           </Link>
           <Link 
-            href="/services/forestry-mulching" 
+            href="#gallery" 
             className="border border-white/30 hover:bg-white/10 hover:scale-105 text-white font-bold px-10 py-5 rounded-xl text-lg transition-all duration-300 touch-manipulation"
           >
             See Our Work
