@@ -65,36 +65,36 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-black">
       <NavBar />
       
-      <main className="max-w-4xl mx-auto px-4 py-12">
+      <main className="max-w-5xl mx-auto px-4 py-12">
         {/* Article Header */}
-        <header className="mb-12">
+        <header className="mb-16">
           {/* Breadcrumb */}
-          <nav className="text-sm text-gray-400 mb-6">
-            <Link href="/" className="hover:text-green-400">Home</Link>
+          <nav className="text-sm text-gray-600 mb-6">
+            <Link href="/" className="hover:text-green-700">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/articles" className="hover:text-green-400">Blog</Link>
+            <Link href="/articles" className="hover:text-green-700">Blog</Link>
             <span className="mx-2">/</span>
-            <span className="text-white">{post.title}</span>
+            <span className="text-gray-900 font-medium">{post.title}</span>
           </nav>
 
           {/* Article Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-6">
-            <span className="px-3 py-1 bg-green-600/20 text-green-400 rounded-full">{post.category}</span>
-            <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700 mb-6">
+            <span className="px-3 py-1 bg-green-100 text-green-800 border border-green-200 rounded-full font-medium">{post.category}</span>
+            <span className="font-medium">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
             <span>{post.readingTime.text}</span>
-            <span>By {post.author}</span>
+            <span>By <strong className="text-gray-900">{post.author}</strong></span>
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight font-serif">
             {post.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-xl text-gray-300 leading-relaxed mb-8">
+          <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium">
             {post.excerpt}
           </p>
 
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link
                   key={tag}
                   href={`/articles/tag/${tag.toLowerCase()}`}
-                  className="px-3 py-1 bg-gray-800 text-gray-300 hover:bg-green-600 hover:text-black rounded-full text-sm transition-colors"
+                  className="px-3 py-1 bg-gray-100 border border-gray-300 text-gray-800 hover:bg-green-600 hover:text-white hover:border-green-600 rounded-full text-sm transition-colors"
                 >
                   #{tag}
                 </Link>
@@ -126,21 +126,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Article Content */}
-        <article className="prose prose-lg max-w-none">
-          <BlogContent content={post.content} />
+        <article className="max-w-none">
+          <div className="max-w-4xl mx-auto">
+            <BlogContent content={post.content} />
+          </div>
         </article>
 
         {/* Article Footer */}
-        <footer className="mt-16 pt-8 border-t border-gray-800">
+        <footer className="mt-16 pt-8 border-t border-gray-300">
           {/* Author Info */}
-          <div className="bg-gray-900 rounded-lg p-6 mb-8">
+          <div className="bg-gray-50 border border-gray-300 rounded-lg p-6 mb-8">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-black font-bold">
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 {post.author.charAt(0)}
               </div>
               <div>
-                <h3 className="font-semibold text-white mb-2">{post.author}</h3>
-                <p className="text-gray-300 text-sm">
+                <h3 className="font-semibold text-gray-900 mb-2">{post.author}</h3>
+                <p className="text-gray-800 text-sm leading-relaxed">
                   Expert in land clearing, forestry mulching, and property management with years of hands-on experience helping Florida property owners maximize their land's potential.
                 </p>
               </div>
@@ -153,19 +155,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {previousPost && (
                 <Link 
                   href={`/articles/${previousPost.slug}`}
-                  className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors"
+                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all"
                 >
-                  <div className="text-sm text-gray-400 mb-2">← Previous Article</div>
-                  <div className="font-semibold text-white">{previousPost.title}</div>
+                  <div className="text-sm text-gray-600 mb-2">← Previous Article</div>
+                  <div className="font-semibold text-gray-900">{previousPost.title}</div>
                 </Link>
               )}
               {nextPost && (
                 <Link 
                   href={`/articles/${nextPost.slug}`}
-                  className="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors md:text-right"
+                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all md:text-right"
                 >
-                  <div className="text-sm text-gray-400 mb-2">Next Article →</div>
-                  <div className="font-semibold text-white">{nextPost.title}</div>
+                  <div className="text-sm text-gray-600 mb-2">Next Article →</div>
+                  <div className="font-semibold text-gray-900">{nextPost.title}</div>
                 </Link>
               )}
             </div>
@@ -174,17 +176,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Related Articles */}
           {relatedPosts.length > 0 && (
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Related Articles</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost) => (
                   <Link
                     key={relatedPost.slug}
                     href={`/articles/${relatedPost.slug}`}
-                    className="bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors"
+                    className="bg-white border border-gray-300 rounded-lg p-4 hover:shadow-md transition-all"
                   >
-                    <div className="text-sm text-gray-400 mb-2">{relatedPost.category}</div>
-                    <h4 className="font-semibold text-white mb-2 leading-tight">{relatedPost.title}</h4>
-                    <div className="text-sm text-gray-400">{relatedPost.readingTime.text}</div>
+                    <div className="text-sm text-green-700 font-medium mb-2">{relatedPost.category}</div>
+                    <h4 className="font-semibold text-gray-900 mb-2 leading-tight">{relatedPost.title}</h4>
+                    <div className="text-sm text-gray-600">{relatedPost.readingTime.text}</div>
                   </Link>
                 ))}
               </div>
@@ -192,14 +194,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
 
           {/* CTA */}
-          <div className="bg-green-600/10 border border-green-600/30 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Land?</h3>
-            <p className="text-gray-300 mb-6">
+          <div className="bg-green-50 border border-green-300 rounded-lg p-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Land?</h3>
+            <p className="text-gray-800 mb-6">
               Get a professional forestry mulching estimate tailored to your property's specific needs.
             </p>
             <Link
               href="/estimate"
-              className="inline-block bg-green-600 hover:bg-green-500 text-black font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
             >
               Get Free Estimate
             </Link>

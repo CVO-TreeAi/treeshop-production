@@ -1,17 +1,34 @@
-/* TreeAI Design System - Brand Tokens */
+/* TreeShop Terminal Design System - Black & Bright Color Palette */
 :root {
-  /* Brand Colors - Extracted from actual logos */
-  --color-treeshop-blue: #2563eb;
-  --color-treeshop-blue-light: #3b82f6;
-  --color-treeshop-blue-dark: #1d4ed8;
+  /* === CORE PALETTE === */
+  /* Primary Colors */
+  --background: #000000;          /* pure black */
+  --card: #0A0A0A;                /* near-black cards */
+  --accent-green: #00FF41;        /* electric bright green */
+  --accent-white: #FFFFFF;        /* pure white */
   
-  --color-treeai-green: #22c55e;
-  --color-treeai-green-light: #4ade80;
-  --color-treeai-green-dark: #16a34a;
+  /* Secondary Colors */
+  --soft-gray: #1A1A1A;          /* sections, subtle borders */
+  --medium-gray: #2A2A2A;        /* dividers */
+  --muted-green: #00D938;        /* bright tags, icons */
+  --hot-red: #FF0040;            /* bright red alerts */
+  --amber: #FFE500;              /* electric yellow */
   
-  /* Legacy aliases - will be removed */
-  --color-brand-blue: var(--color-treeshop-blue);
-  --color-accent-green: var(--color-treeai-green);
+  /* Supporting Colors */
+  --soft-pink: #FF3D8A;          /* bright pink notifications */
+  --soft-blue: #00BFFF;          /* electric blue info */
+  --light-orange: #FF8C00;       /* bright orange warnings */
+  
+  /* === FONT COLOR SYSTEM === */
+  --font-primary: #FFFFFF;       /* pure white, headers/body */
+  --font-secondary: #CCCCCC;     /* bright gray, helper text */
+  --font-on-accent: #000000;     /* pure black, on neon backgrounds */
+  --font-on-accent-secondary: #0A0A0A; /* card dark, on lighter accents */
+  --font-interactive: #00FF41;   /* electric green for links/buttons */
+  
+  /* Legacy aliases for backward compatibility */
+  --color-brand-blue: var(--soft-blue);
+  --color-accent-green: var(--accent-green);
   
   /* Gradient Tokens - TreeAI Green & Tree Shop Blue Only */
   --gradient-treeshop-primary: linear-gradient(135deg, var(--color-treeshop-blue) 0%, var(--color-treeshop-blue-light) 100%);
@@ -32,37 +49,37 @@
   --gradient-mesh-card: 
     radial-gradient(circle at 50% 0%, hsla(220, 70%, 50%, 0.1) 0%, transparent 50%);
 
-  /* Glass Surfaces */
-  --glass-light: rgba(255, 255, 255, 0.05);
-  --glass-medium: rgba(255, 255, 255, 0.08);
-  --glass-heavy: rgba(255, 255, 255, 0.12);
+  /* Glass Surfaces - Updated for black theme */
+  --glass-light: rgba(255, 255, 255, 0.02);
+  --glass-medium: rgba(255, 255, 255, 0.05);
+  --glass-heavy: rgba(255, 255, 255, 0.08);
   
-  /* Dark Surfaces */
-  --surface-black: #000000;
-  --surface-gray-900: #111827;
-  --surface-gray-800: #1f2937;
-  --surface-gray-700: #374151;
+  /* Dark Surfaces - Pure black theme */
+  --surface-black: var(--background);
+  --surface-gray-900: var(--card);
+  --surface-gray-800: var(--soft-gray);
+  --surface-gray-700: var(--medium-gray);
   
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
-  --text-tertiary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-green-button: #000000;
+  /* Text Colors - Updated for high contrast */
+  --text-primary: var(--font-primary);
+  --text-secondary: var(--font-secondary);
+  --text-tertiary: #999999;
+  --text-muted: #777777;
+  --text-green-button: var(--font-on-accent);
   
-  /* Border Colors */
-  --border-light: rgba(255, 255, 255, 0.1);
-  --border-medium: rgba(255, 255, 255, 0.2);
-  --border-brand: var(--color-brand-blue);
-  --border-accent: var(--color-accent-green);
+  /* Border Colors - Updated for electric theme */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-brand: var(--accent-green);
+  --border-accent: var(--accent-green);
   
-  /* Shadow Tokens */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px rgba(31, 78, 165, 0.3);
-  --shadow-glow-green: 0 0 20px rgba(16, 185, 129, 0.3);
+  /* Shadow Tokens - Enhanced for electric glow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.8), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(0, 255, 65, 0.3);
+  --shadow-glow-green: 0 0 32px rgba(0, 255, 65, 0.4);
   
   /* Border Radius */
   --radius-sm: 0.25rem;   /* 4px */
@@ -216,16 +233,20 @@
 }
 
 .treeai-green-button {
-  background-color: #16a34a !important;
-  color: var(--text-green-button) !important;
+  background-color: var(--accent-green) !important;
+  color: var(--font-on-accent) !important;
   font-weight: bold !important;
   text-shadow: none !important;
+  border: 1px solid var(--accent-green) !important;
+  transition: all 0.2s ease !important;
 }
 
 .treeai-green-button:hover {
-  background-color: #22c55e !important;
-  color: #000000 !important;
+  background-color: var(--muted-green) !important;
+  color: var(--font-on-accent) !important;
   text-shadow: none !important;
+  box-shadow: var(--shadow-glow-green) !important;
+  transform: translateY(-1px) !important;
 }
 
 .treeai-green-button * {
@@ -300,4 +321,111 @@ button.treeai-green-button,
 
 .text-gray-300.treeai-green-button {
   color: black !important;
+}
+
+/* Modern Button System - TreeShop Terminal Style */
+.btn-modern {
+  background: var(--card);
+  color: var(--font-primary);
+  border: 1px solid var(--medium-gray);
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-modern:hover {
+  background: var(--medium-gray);
+  color: var(--accent-green);
+  border-color: var(--accent-green);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary {
+  background: var(--accent-green);
+  color: var(--font-on-accent);
+  border-color: var(--accent-green);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--muted-green);
+  color: var(--font-on-accent);
+  border-color: var(--muted-green);
+  box-shadow: var(--shadow-glow-green);
+}
+
+/* Modern Card System - TreeShop Terminal Style */
+.card-modern {
+  background: var(--card);
+  border: 1px solid var(--medium-gray);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+}
+
+.card-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.12);
+  border-color: var(--accent-green);
+}
+
+.card-modern.selected {
+  background: var(--accent-green);
+  color: var(--font-on-accent);
+  border-color: var(--amber);
+  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.3);
+}
+
+.card-modern.selected h1,
+.card-modern.selected h2,
+.card-modern.selected h3,
+.card-modern.selected h4,
+.card-modern.selected h5,
+.card-modern.selected h6,
+.card-modern.selected p,
+.card-modern.selected span,
+.card-modern.selected div {
+  color: var(--font-on-accent) !important;
+}
+
+/* Mobile-First Grid System */
+.app-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr; /* Mobile: 1 column */
+}
+
+@media (min-width: 640px) {
+  .app-grid { grid-template-columns: repeat(2, 1fr); } /* Tablet: 2 columns */
+}
+
+@media (min-width: 1024px) {
+  .app-grid { grid-template-columns: repeat(3, 1fr); } /* Desktop: 3 columns */
+}
+
+@media (min-width: 1280px) {
+  .app-grid { grid-template-columns: repeat(4, 1fr); } /* Large: 4 columns */
+}
+
+/* Touch-Friendly Sizing */
+@media (max-width: 768px) {
+  .btn-modern {
+    padding: 16px 20px;
+    font-size: 16px;
+    min-height: 48px; /* Minimum touch target */
+  }
+  
+  .card-modern {
+    border-radius: 12px;
+    margin: 8px;
+    padding: 1rem;
+  }
 }

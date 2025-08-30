@@ -75,7 +75,7 @@ export default function Hero(){
               onClick={() => setCurrentImageIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-500 hover:scale-110 ${
                 index === currentImageIndex 
-                  ? 'bg-[var(--color-treeai-green)] scale-125 shadow-lg shadow-green-500/50' 
+                  ? 'bg-[var(--accent-green)] scale-125 shadow-lg shadow-green-500/50' 
                   : 'bg-white/40 hover:bg-white/70'
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -87,7 +87,7 @@ export default function Hero(){
       <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" 
             style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
-          Professional <span style={{ color: '#22c55e', textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>Forestry Mulching</span>
+          Professional <span style={{ color: 'var(--accent-green)', textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>Forestry Mulching</span>
           <br />
           & Land Clearing Services
         </h1>
@@ -96,12 +96,12 @@ export default function Hero(){
         <div className="mb-8 flex justify-center">
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full text-sm sm:text-base font-medium backdrop-blur-sm" 
                style={{ 
-                 backgroundColor: 'rgba(34, 197, 94, 0.15)', 
-                 border: '1px solid rgba(34, 197, 94, 0.4)',
-                 color: '#22c55e',
-                 boxShadow: '0 4px 12px rgba(34, 197, 94, 0.15)'
+                 backgroundColor: 'rgba(0, 255, 65, 0.15)', 
+                 border: '1px solid rgba(0, 255, 65, 0.4)',
+                 color: 'var(--accent-green)',
+                 boxShadow: '0 4px 12px rgba(0, 255, 65, 0.15)'
                }}>
-            <div className="w-6 h-6 bg-[var(--color-treeai-green)] rounded-full flex items-center justify-center">
+            <div className="w-6 h-6 bg-[var(--accent-green)] rounded-full flex items-center justify-center">
               <span className="text-black font-bold text-xs">AI</span>
             </div>
             Industry&apos;s first company powered by TreeAI

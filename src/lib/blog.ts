@@ -44,20 +44,63 @@ function listMdFiles(): string[] {
   }
 }
 
-function readMd(slug: string): { raw: string, meta: Record<string,string> } | null {
+function readMd(slug: string): { raw: string, meta: Record<string,any> } | null {
   try {
     const base = path.join(getSourceDir(), slug)
     const fp = fs.existsSync(base + '.md') ? base + '.md' : fs.existsSync(base + '.mdx') ? base + '.mdx' : null
     if (!fp) return null
     const raw = fs.readFileSync(fp, 'utf8')
-    const meta: Record<string,string> = {}
-    const lines = raw.split('\n')
-    for (const line of lines) {
-      const m = line.match(/^\s*(?:\/\/)?\s*([A-Za-z_-]+):\s*(.+)$/)
-      if (m) meta[m[1].trim()] = m[2].trim()
-      else break
+    const meta: Record<string,any> = {}
+    
+    // Handle YAML frontmatter
+    if (raw.startsWith('---')) {
+      const frontmatterEnd = raw.indexOf('\n---\n', 4)
+      if (frontmatterEnd !== -1) {
+        const frontmatterContent = raw.slice(4, frontmatterEnd)
+        const contentStart = frontmatterEnd + 5
+        
+        // Parse YAML-like frontmatter
+        const lines = frontmatterContent.split('\n')
+        for (const line of lines) {
+          const colonIndex = line.indexOf(':')
+          if (colonIndex > 0) {
+            const key = line.slice(0, colonIndex).trim()
+            let value = line.slice(colonIndex + 1).trim()
+            
+            // Remove quotes if present
+            if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+              value = value.slice(1, -1)
+            }
+            
+            // Handle arrays (tags)
+            if (value.startsWith('[') && value.endsWith(']')) {
+              const arrayContent = value.slice(1, -1)
+              meta[key] = arrayContent.split(',').map(item => item.trim().replace(/['"]/g, ''))
+            } else {
+              meta[key] = value
+            }
+          }
+        }
+        
+        return { raw: raw.slice(contentStart), meta }
+      }
     }
-    return { raw, meta }
+    
+    // Fallback to simple key: value format
+    const lines = raw.split('\n')
+    let contentStart = 0
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i]
+      const m = line.match(/^\s*([A-Za-z_-]+):\s*(.+)$/)
+      if (m) {
+        meta[m[1].trim()] = m[2].trim()
+        contentStart = i + 1
+      } else {
+        break
+      }
+    }
+    
+    return { raw: lines.slice(contentStart).join('\n'), meta }
   } catch {
     return null
   }
@@ -112,20 +155,22 @@ function collectPosts(): BlogPost[] {
     const { raw, meta } = md
     const title = meta.title || slug.replace(/[-_]/g, ' ')
     const excerpt = meta.excerpt || raw.split('\n').slice(0,3).join(' ').slice(0,260)
-    const date = schedule[slug] || new Date().toISOString()
+    const date = meta.date || schedule[slug] || new Date().toISOString()
     const readingTime = computeReading(raw)
+    const published = meta.published !== undefined ? meta.published === true || meta.published === 'true' : (new Date(date).getTime() <= Date.now())
+    
     posts.push({
       slug,
       title,
       excerpt,
       content: raw,
       date,
-      author: meta.author || 'Tree Shop Editorial',
+      author: meta.author || 'ALeX - TreeAI',
       category: meta.category || 'Forestry Mulching',
-      tags: meta.tags ? meta.tags.split(',').map(s=>s.trim()) : [],
+      tags: Array.isArray(meta.tags) ? meta.tags : (meta.tags ? meta.tags.split(',').map(s=>s.trim()) : []),
       coverImage: meta.coverImage,
       readingTime,
-      published: new Date(date).getTime() <= Date.now(),
+      published,
     })
   }
   return posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime())
