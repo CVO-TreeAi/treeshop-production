@@ -7,8 +7,6 @@ interface LeadFormData {
   email: string;
   phone: string;
   address?: string;
-  acreage?: string;
-  selectedPackage?: string;
   message?: string;
 }
 
@@ -18,8 +16,6 @@ export default function LeadCaptureForm() {
     email: '',
     phone: '',
     address: '',
-    acreage: '',
-    selectedPackage: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,8 +38,6 @@ export default function LeadCaptureForm() {
             email: formData.email,
             phone: formData.phone,
             address: formData.address || undefined,
-            acreage: formData.acreage || undefined,
-            selectedPackage: formData.selectedPackage || undefined,
             message: formData.message || undefined,
             source: 'treeshop.app', // MUST BE treeshop.app
             status: 'complete',
@@ -59,15 +53,13 @@ export default function LeadCaptureForm() {
       // Track with Terminal if available
       if (typeof window !== 'undefined' && (window as any).terminalTrack) {
         (window as any).terminalTrack('lead_submission', {
-          source: 'treeshop.app',
-          package: formData.selectedPackage
+          source: 'treeshop.app'
         });
       }
 
       // Track with GA4
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'generate_lead', {
-          value: formData.selectedPackage,
           currency: 'USD'
         });
       }
@@ -79,8 +71,6 @@ export default function LeadCaptureForm() {
         email: '',
         phone: '',
         address: '',
-        acreage: '',
-        selectedPackage: '',
         message: ''
       });
     } catch (error) {
@@ -170,41 +160,6 @@ export default function LeadCaptureForm() {
           />
         </div>
 
-        {/* Acreage */}
-        <div>
-          <label htmlFor="acreage" className="block text-sm font-semibold text-gray-200 mb-2">
-            Estimated Acreage
-          </label>
-          <input
-            type="text"
-            id="acreage"
-            name="acreage"
-            value={formData.acreage}
-            onChange={handleChange}
-            className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
-            placeholder="2.5"
-          />
-        </div>
-
-        {/* Package Selection */}
-        <div>
-          <label htmlFor="selectedPackage" className="block text-sm font-semibold text-gray-200 mb-2">
-            Service Package
-          </label>
-          <select
-            id="selectedPackage"
-            name="selectedPackage"
-            value={formData.selectedPackage}
-            onChange={handleChange}
-            className="w-full bg-black border-2 border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-all"
-          >
-            <option value="">Select a package...</option>
-            <option value="Small Package - 4 DBH">Small Package - 4" DBH & Under</option>
-            <option value="Medium Package - 6 DBH">Medium Package - 6" DBH & Under</option>
-            <option value="Large Package - 8 DBH">Large Package - 8" DBH & Under</option>
-            <option value="Custom">Custom Quote</option>
-          </select>
-        </div>
 
         {/* Message */}
         <div>
