@@ -41,7 +41,7 @@ export const sendLeadNotification = mutation({
       // Mark as failed
       await ctx.db.patch(notificationId, {
         status: "failed",
-        error: error.message,
+        error: (error as Error).message,
         updatedAt: Date.now(),
       });
     }
@@ -73,20 +73,28 @@ export const sendProposalEmail = mutation({
       estimatedDays: estimate.estimatedDays,
     };
 
-    // Send to customer
-    const customerNotificationId = await ctx.runMutation(ctx.api.notifications.sendLeadNotification, {
+    // Send to customer (simplified to avoid circular reference)
+    const customerNotificationId = await ctx.db.insert("notifications", {
       leadId: args.leadId,
       type: "proposal_sent",
       recipientEmail: args.customerEmail,
+      subject: `Your TreeShop Estimate - ${emailData.projectAddress}`,
+      status: "pending",
       data: emailData,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     });
 
-    // Send notification to admin
-    const adminNotificationId = await ctx.runMutation(ctx.api.notifications.sendLeadNotification, {
+    // Send notification to admin (simplified to avoid circular reference)
+    const adminNotificationId = await ctx.db.insert("notifications", {
       leadId: args.leadId,
       type: "admin_new_lead",
-      recipientEmail: "office@fltreeshop.com", // Your admin email
+      recipientEmail: "office@fltreeshop.com",
+      subject: `New Lead: ${emailData.customerName} - ${emailData.projectAddress}`,
+      status: "pending",
       data: emailData,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     });
 
     // Update estimate status
@@ -121,11 +129,15 @@ export const notifyNewLead = mutation({
     };
 
     // Send to admin/sales team
-    const notificationId = await ctx.runMutation(ctx.api.notifications.sendLeadNotification, {
+    const notificationId = await ctx.db.insert("notifications", {
       leadId: args.leadId,
       type: "admin_new_lead",
-      recipientEmail: "office@fltreeshop.com", // Your leads email
+      recipientEmail: "office@fltreeshop.com",
+      subject: `New Lead: ${leadData.name} - ${leadData.address}`,
+      status: "pending",
       data: leadData,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     });
 
     return notificationId;

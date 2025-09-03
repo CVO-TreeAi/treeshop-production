@@ -70,6 +70,7 @@ export const updateBlogPost = mutation({
     category: v.optional(v.string()),
     tags: v.optional(v.array(v.string())),
     status: v.optional(v.string()),
+    publishedAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     const { id, ...updates } = args;
@@ -78,7 +79,7 @@ export const updateBlogPost = mutation({
     if (updates.slug) {
       const existing = await ctx.db
         .query("blogPosts")
-        .withIndex("by_slug", (q) => q.eq("slug", updates.slug))
+        .withIndex("by_slug", (q) => q.eq("slug", updates.slug!))
         .first();
       
       if (existing && existing._id !== id) {
@@ -90,7 +91,7 @@ export const updateBlogPost = mutation({
     if (updates.status === "published") {
       const post = await ctx.db.get(id);
       if (post && post.status !== "published") {
-        updates.publishedAt = Date.now();
+        (updates as any).publishedAt = Date.now();
       }
     }
     
@@ -119,15 +120,16 @@ export const getPublishedPosts = query({
       query = query.filter((q) => q.eq(q.field("category"), args.category));
     }
     
-    if (args.tag) {
-      query = query.filter((q) => 
-        q.field("tags").some((tag) => q.eq(tag, args.tag))
-      );
-    }
-    
-    return await query
+    const posts = await query
       .order("desc")
       .take(args.limit || 10);
+    
+    // Filter by tag if specified (done in memory since Convex doesn't support array.some() in queries)
+    if (args.tag) {
+      return posts.filter(post => post.tags && post.tags.includes(args.tag!));
+    }
+    
+    return posts;
   },
 });
 
@@ -150,19 +152,15 @@ export const getBlogPosts = query({
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    let query = ctx.db.query("blogPosts");
+    const posts = await ctx.db.query("blogPosts").order("desc").collect();
     
-    if (args.status) {
-      query = query.withIndex("by_status", (q) => q.eq("status", args.status));
-    }
-    
-    if (args.category) {
-      query = query.filter((q) => q.eq(q.field("category"), args.category));
-    }
-    
-    return await query
-      .order("desc")
-      .take(args.limit || 50);
+    return posts
+      .filter(post => {
+        if (args.status && post.status !== args.status) return false;
+        if (args.category && post.category !== args.category) return false;
+        return true;
+      })
+      .slice(0, args.limit || 50);
   },
 });
 
@@ -174,19 +172,15 @@ export const getAllPosts = query({
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    let query = ctx.db.query("blogPosts");
+    const posts = await ctx.db.query("blogPosts").order("desc").collect();
     
-    if (args.status) {
-      query = query.withIndex("by_status", (q) => q.eq("status", args.status));
-    }
-    
-    if (args.category) {
-      query = query.filter((q) => q.eq(q.field("category"), args.category));
-    }
-    
-    return await query
-      .order("desc")
-      .take(args.limit || 50);
+    return posts
+      .filter(post => {
+        if (args.status && post.status !== args.status) return false;
+        if (args.category && post.category !== args.category) return false;
+        return true;
+      })
+      .slice(0, args.limit || 50);
   },
 });
 

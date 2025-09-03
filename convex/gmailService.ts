@@ -106,7 +106,7 @@ export const sendGmailEmail = action({
     return { 
       success: false,
       error: "Failed to send email via Gmail API",
-      details: error.message 
+      details: (error as Error).message 
     };
   }
   },

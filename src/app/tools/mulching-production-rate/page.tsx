@@ -244,22 +244,30 @@ export default function MulchingProductionRatePage() {
                     <label for="machineSelector">Quick Machine Selector (Auto-fills GPM)</label>
                     <select id="machineSelector" style="background: #2A2A2A; color: #FFFFFF; border: 2px solid #2D2D2D;">
                         <option value="">Select Machine (or enter GPM manually below)</option>
-                        <optgroup label="CATERPILLAR">
-                            <option value="30">CAT 265 (74 HP) - 30 GPM High Flow</option>
-                            <option value="34">CAT 265 (74 HP) - 34 GPM Max High Flow</option>
-                            <option value="40">CAT 285 XE (134 HP) - 40 GPM High Flow XE</option>
+                        <optgroup label="CATERPILLAR TRACK LOADERS">
+                            <option value="30">CAT 265 - 30 GPM High Flow</option>
+                            <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                            <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
                         </optgroup>
-                        <optgroup label="BOBCAT">
-                            <option value="24">Bobcat T770 (92 HP) - 23-24 GPM</option>
-                            <option value="37">Bobcat T770 (92 HP) - 37 GPM High Flow</option>
-                            <option value="24">Bobcat T870 (100 HP) - 24 GPM Standard</option>
-                            <option value="42">Bobcat T870 (100 HP) - 42 GPM High Flow</option>
+                        <optgroup label="BOBCAT TRACK LOADERS">
+                            <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                            <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                            <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                            <option value="42">Bobcat T870 - 42 GPM High Flow</option>
                         </optgroup>
-                        <optgroup label="JOHN DEERE">
-                            <option value="23">John Deere 333G (100 HP) - 23 GPM</option>
+                        <optgroup label="JOHN DEERE TRACK LOADERS">
+                            <option value="23">John Deere 333G - 23 GPM</option>
                         </optgroup>
-                        <optgroup label="KUBOTA">
-                            <option value="30">Kubota SVL95-2s (97 HP) - ~30 GPM</option>
+                        <optgroup label="KUBOTA TRACK LOADERS">
+                            <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                        </optgroup>
+                        <optgroup label="FECON CARRIERS">
+                            <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                            <option value="80">Fecon FTX200 - 80 GPM</option>
+                            <option value="115">Fecon FTX300 - 115 GPM</option>
+                            <option value="50">Fecon 135VRT - 50 GPM</option>
+                            <option value="80">Fecon 225VST - 80 GPM</option>
+                            <option value="115">Fecon 325VST - 115 GPM</option>
                         </optgroup>
                     </select>
                 </div>
@@ -267,7 +275,7 @@ export default function MulchingProductionRatePage() {
                 <div class="input-row-triple">
                     <div class="input-group">
                         <label for="machineGpm">Machine GPM (High Flow)</label>
-                        <input type="number" id="machineGpm" min="20" max="60" value="30" step="1">
+                        <input type="number" id="machineGpm" min="20" max="120" value="30" step="1">
                     </div>
                     <div class="input-group">
                         <label for="projectSize">Project Size (Acres)</label>

@@ -12,8 +12,11 @@ export const storeAnalyticsSnapshot = mutation({
   },
   handler: async (ctx, args) => {
     // Store in a dedicated analytics table
-    await ctx.db.insert("analyticsSnapshots", {
-      ...args,
+    await ctx.db.insert("analyticsEvents", {
+      eventName: "analytics_snapshot",
+      siteSource: "admin_terminal",
+      eventData: args,
+      timestamp: new Date().toISOString(),
       createdAt: Date.now(),
     });
     

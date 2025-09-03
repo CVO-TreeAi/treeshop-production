@@ -45,7 +45,7 @@ export const sendEmail = httpAction(async (ctx, request) => {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Authorization": `Bearer ${process.env.RESEND_API_KEY || ""}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -75,7 +75,7 @@ export const sendEmail = httpAction(async (ctx, request) => {
     console.error("Email sending error:", error);
     return new Response(JSON.stringify({ 
       error: "Failed to send email",
-      details: error.message 
+      details: (error as Error).message 
     }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

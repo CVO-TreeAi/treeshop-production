@@ -51,19 +51,15 @@ export const getMediaFiles = query({
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    let query = ctx.db.query("mediaFiles");
+    const files = await ctx.db.query("mediaFiles").order("desc").collect();
     
-    if (args.folder) {
-      query = query.withIndex("by_folder", (q) => q.eq("folder", args.folder));
-    }
-    
-    if (args.mimeType) {
-      query = query.filter((q) => q.field("mimeType").startsWith(args.mimeType));
-    }
-    
-    return await query
-      .order("desc")
-      .take(args.limit || 50);
+    return files
+      .filter(file => {
+        if (args.folder && file.folder !== args.folder) return false;
+        if (args.mimeType && !file.mimeType.startsWith(args.mimeType)) return false;
+        return true;
+      })
+      .slice(0, args.limit || 50);
   },
 });
 
