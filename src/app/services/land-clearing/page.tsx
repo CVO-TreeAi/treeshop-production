@@ -130,8 +130,8 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4">
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
-                  alt="CAT 320 excavator complete land clearing project Florida"
+                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
+                  alt="Site clearing and preparation for construction Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -141,7 +141,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
+                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
                   alt="Heavy land clearing equipment removing vegetation Florida"
                   className="w-full h-full object-cover"
                 />
@@ -152,8 +152,8 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
-                  alt="Precision land clearing with Diamond Mowers Florida"
+                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
+                  alt="Site clearing precision work Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -167,8 +167,8 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4 px-24">
               <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-blue-500">
                 <img 
-                  src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
-                  alt="Land clearing equipment working day and night Florida"
+                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
+                  alt="Firebreak trail and land clearing operations Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>

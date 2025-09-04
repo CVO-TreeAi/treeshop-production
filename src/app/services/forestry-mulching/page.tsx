@@ -93,7 +93,7 @@ export default function ForestryMulchingPage(){
               <div className="relative aspect-video overflow-hidden">
                 <img 
                   src="/project-images/cat-265-fecon-blackhawk-fueling.jpg" 
-                  alt="FECON Blackhawk forestry mulcher on CAT 299D3 in Central Florida" 
+                  alt="FECON Blackhawk forestry mulcher on CAT 265 in Central Florida" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -231,13 +231,13 @@ The key differentiator is our commitment to ecological preservation: instead of 
             Our fleet of specialized forestry mulching equipment ensures efficient, precise clearing for every project size and terrain type across Florida.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {/* CAT 299D3 with FECON Blackhawk */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* CAT 265 with FECON Blackhawk */}
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-square overflow-hidden">
                 <img 
                   src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
-                  alt="CAT 299D3 forestry mulcher aerial view Florida"
+                  alt="CAT 265 forestry mulcher aerial view Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -264,28 +264,13 @@ The key differentiator is our commitment to ecological preservation: instead of 
               </div>
             </div>
 
-            {/* FECON Mulcher Closeup */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
-              <div className="relative aspect-square overflow-hidden">
-                <img 
-                  src="/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg"
-                  alt="FECON BK7618 forestry mulcher closeup professional attachment"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <h3 className="font-bold text-sm">FECON BK7618</h3>
-                  <p className="text-xs opacity-90">Mulching Head</p>
-                </div>
-              </div>
-            </div>
 
             {/* Project in Action */}
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-square overflow-hidden">
                 <img 
                   src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
-                  alt="CAT 299D3 forestry mulching project in action Central Florida"
+                  alt="CAT 265 forestry mulching project in action Central Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
