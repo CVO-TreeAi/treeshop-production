@@ -165,11 +165,11 @@ The key differentiator is our commitment to ecological preservation: instead of 
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold text-white">High-Flow Skid Steers</h4>
-                  <p className="text-sm">100+ HP machines with advanced hydraulic flow for maximum mulching head performance</p>
+                  <p className="text-sm">Professional grade equipment with advanced hydraulic flow for maximum mulching head performance</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Professional Mulching Heads</h4>
-                  <p className="text-sm">72&quot; cutting width, carbide teeth, handles trees up to 12&quot; diameter</p>
+                  <p className="text-sm">72&quot; cutting width, knives for maximum productivity and cleanest finish, handles trees up to 12&quot; diameter</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Track Machines</h4>
@@ -180,14 +180,6 @@ The key differentiator is our commitment to ecological preservation: instead of 
           </div>
         </section>
 
-        {/* Lead capture CTA to access simulator in pricing tool */}
-        <section className="mb-16">
-          <div className="bg-gray-900 rounded-lg p-6 text-center">
-            <h2 className="text-3xl font-bold mb-4">See It For Your Property</h2>
-            <p className="text-gray-300 mb-6">Try the interactive DBH simulator inside our estimate tool and get your proposal.</p>
-            <Link href="/estimate" className="inline-block bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-8 py-3 rounded-lg transition-colors">Open Estimate Tool</Link>
-          </div>
-        </section>
 
         {/* Auto-scrolling Benefits List */}
         <section className="mb-16">
@@ -228,7 +220,6 @@ The key differentiator is our commitment to ecological preservation: instead of 
             </div>
             <div className="bg-gray-900 rounded-lg p-6">
               <p className="text-gray-300 mb-4">These benefits showcase forestry mulching&apos;s comprehensive advantages. Every land management challenge is unique, and our approach ensures optimal ecological and economic outcomes.</p>
-              <Link href="/estimate" className="inline-block bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-6 py-3 rounded-lg transition-colors">Get My Estimate</Link>
             </div>
           </div>
         </section>
@@ -437,17 +428,6 @@ The key differentiator is our commitment to ecological preservation: instead of 
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="bg-gray-900 rounded-lg p-6 sm:p-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">Ready to Reclaim Your Land?</h2>
-          <p className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">Get a free estimate with detailed site assessment and pricing options</p>
-          <Link 
-            href="/estimate" 
-            className="bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
-          >
-            Get Free Estimate Now
-          </Link>
-        </section>
       </main>
       <Footer />
     </div>
