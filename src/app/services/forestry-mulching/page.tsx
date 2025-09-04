@@ -124,6 +124,51 @@ export default function ForestryMulchingPage(){
           </div>
         </section>
 
+        {/* Cocoa Beach Before & After Showcase */}
+        <section className="mb-8 sm:mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Cocoa Beach: Mulched then Selective Clearing
+            </h2>
+            <p className="text-gray-300 max-w-3xl mx-auto">
+              Professional forestry mulching followed by selective clearing to preserve mature trees while creating usable space.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 rounded-lg overflow-hidden max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Before */}
+              <div className="relative aspect-video">
+                <img 
+                  src="/project-images/cocoa-beach-before-dense-vegetation.jpg" 
+                  alt="Dense vegetation before forestry mulching in Cocoa Beach Florida" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3 bg-red-600 text-white px-3 py-1 text-sm rounded font-semibold">BEFORE</div>
+              </div>
+              
+              {/* After */}
+              <div className="relative aspect-video">
+                <img 
+                  src="/project-images/cocoa-beach-after-selective-clearing.jpg" 
+                  alt="Selective clearing results preserving mature trees Cocoa Beach Florida" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3 bg-[var(--color-treeai-green)] text-black px-3 py-1 text-sm rounded font-semibold">AFTER</div>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Cocoa Beach Selective Clearing Project</h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                This project demonstrates our precision approach: initial forestry mulching to manage undergrowth, 
+                followed by selective clearing to preserve valuable mature trees while creating functional open space. 
+                The result showcases professional land management that balances usability with environmental preservation.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* What is Forestry Mulching */}
         <section className="mb-8 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Understanding Forestry Mulching: A Comprehensive Guide</h2>
