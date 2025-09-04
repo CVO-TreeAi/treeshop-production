@@ -292,7 +292,7 @@ export default function LandClearingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/orlando-site-preparation-mapping.jpg"
+                  src="/project-images/wetlands-mapper.jpg"
                   alt="Orlando site preparation land classification mapping Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -312,7 +312,7 @@ export default function LandClearingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/polk-city-wetland-buffer-project-2.jpg"
+                  src="/project-images/pol-city-wetland-buffer-project-2.jpg"
                   alt="Polk City wetland buffer management project Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
