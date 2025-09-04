@@ -32,8 +32,8 @@ export default function BlogPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight border-b-4 border-green-600 pb-4">
             The TreeShop <span className="text-green-600">Tribune</span>
           </h1>
-          <div className="text-lg text-gray-600 mb-2 italic">Florida&apos;s Premier Tree Industry Newspaper</div>
-          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
+          <div className="text-lg text-white mb-2 italic">Florida&apos;s Premier Tree Industry Newspaper</div>
+          <p className="text-base sm:text-lg text-white max-w-3xl mx-auto leading-relaxed font-medium">
             Real stories from the field. Industry insights you won&apos;t find anywhere else. 
             Written by the people who actually do the work.
           </p>
@@ -59,7 +59,7 @@ export default function BlogPage() {
                       {featuredPost.title}
                     </Link>
                   </h3>
-                  <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed font-medium">
+                  <p className="text-white text-base sm:text-lg mb-6 leading-relaxed font-medium">
                     {featuredPost.excerpt}
                   </p>
                   <div className="flex items-center justify-between">
@@ -134,7 +134,7 @@ export default function BlogPage() {
                           </Link>
                         </h3>
                         
-                        <p className="text-gray-300 mb-4 leading-relaxed font-medium text-base">
+                        <p className="text-white mb-4 leading-relaxed font-medium text-base">
                           {post.excerpt}
                         </p>
                         
@@ -171,7 +171,7 @@ export default function BlogPage() {
               <div className="text-center py-16">
                 <div className="text-6xl mb-4">📝</div>
                 <h3 className="text-xl font-semibold text-white mb-2">No articles yet</h3>
-                <p className="text-gray-300 mb-6">
+                <p className="text-white mb-6">
                   We&apos;re working on some great content for you. Check back soon!
                 </p>
                 <Link href="/estimate" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
@@ -228,7 +228,7 @@ export default function BlogPage() {
               <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
                 📬 Subscribe to the Tribune
               </h3>
-              <p className="text-gray-300 text-sm mb-4">
+              <p className="text-white text-sm mb-4">
                 Get weekly field reports, industry insider stories, and contractor tales delivered straight to your inbox.
               </p>
               <form className="space-y-3">
@@ -249,7 +249,7 @@ export default function BlogPage() {
             {/* CTA */}
             <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 text-center">
               <h3 className="text-lg font-semibold text-white mb-3">Need Professional Help?</h3>
-              <p className="text-gray-300 text-sm mb-4">
+              <p className="text-white text-sm mb-4">
                 Get a free proposal for your land clearing or forestry mulching project.
               </p>
               <Link 
