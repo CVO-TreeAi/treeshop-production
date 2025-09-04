@@ -9,7 +9,7 @@ export const TREESHOP_BUSINESS_DATA = {
     serviceArea: "Central Florida",
     established: "2018",
     website: "treeshopterminal.com",
-    phone: "(386) 427-3455",
+    phone: "(386) 843-5266",
     email: "info@fltreeshop.com",
     adminEmail: "office@fltreeshop.com"
   },

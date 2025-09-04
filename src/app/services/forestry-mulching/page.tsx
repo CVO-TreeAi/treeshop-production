@@ -83,7 +83,7 @@ export default function ForestryMulchingPage(){
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-white mb-2">6&quot; DBH Project Transformation</h3>
+                <h3 className="font-bold text-white mb-2">8&quot; DBH at Avon Park</h3>
                 <p className="text-gray-400 text-sm">Central Florida residential lot - selective clearing preserving mature trees while removing dense undergrowth</p>
               </div>
             </div>
@@ -100,8 +100,8 @@ export default function ForestryMulchingPage(){
                 <div className="absolute bottom-2 left-2 bg-[var(--color-treeshop-blue)] text-white px-2 py-1 text-xs rounded font-semibold">EQUIPMENT</div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-white mb-2">FECON Blackhawk in Action</h3>
-                <p className="text-gray-400 text-sm">Our CAT 299D3 with FECON Blackhawk attachment delivering precision forestry mulching across Florida</p>
+                <h3 className="font-bold text-white mb-2">CAT 265 in Action</h3>
+                <p className="text-gray-400 text-sm">Our CAT 265 delivering precision forestry mulching across Florida</p>
               </div>
             </div>
 
@@ -117,8 +117,8 @@ export default function ForestryMulchingPage(){
                 <div className="absolute bottom-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs rounded">RESULTS</div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-white mb-2">15-Acre Project Complete</h3>
-                <p className="text-gray-400 text-sm">Large-scale forestry mulching in Volusia County - transforming overgrown land into usable, fire-safe property</p>
+                <h3 className="font-bold text-white mb-2">Lehigh Acres .23 Acre 6&quot; DBH</h3>
+                <p className="text-gray-400 text-sm">Client was going to possibly sell the land - precision forestry mulching for property preparation</p>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold text-white">High-Flow Skid Steers</h4>
-                  <p className="text-sm">Professional grade equipment with advanced hydraulic flow for maximum mulching head performance</p>
+                  <p className="text-sm">65 HP machines with advanced hydraulic flow for maximum mulching head performance</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Professional Mulching Heads</h4>
@@ -242,7 +242,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 text-white">
-                  <h3 className="font-bold text-sm">CAT 299D3</h3>
+                  <h3 className="font-bold text-sm">CAT 265</h3>
                   <p className="text-xs opacity-90">FECON Blackhawk</p>
                 </div>
               </div>
@@ -397,6 +397,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
             <ul className="text-sm text-gray-300 space-y-1">
               <li>• Defined finish points — exact diameter specifications</li>
               <li>• All cleared material stays as natural mulch</li>
+              <li>• Includes underbrush, shrubs, and palmettos</li>
               <li>• Optional site review when required; final quote provided</li>
             </ul>
           </div>

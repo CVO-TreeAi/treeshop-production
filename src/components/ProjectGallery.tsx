@@ -7,21 +7,21 @@ const projects = [
     id: '1',
     location: 'Avon Park, FL',
     packageSize: 'Large Package (8" DBH)',
-    description: 'Real estate transformation for competitive market advantage. Property sold the week after completion - in a competitive market, every advantage can be the one that helps you win.',
+    description: 'Client was able to begin planning for building since no plan was in place yet. Cut hauling and excavation costs since all material processed on-site as natural mulch.',
     beforeImage: '/project-images/avon-park-land-clearing-before-dense-vegetation.jpg',
     afterImage: '/project-images/avon-park-land-clearing-after-forestry-mulching.jpg',
-    acreage: '0.25 acres',
+    acreage: '0.18 acres',
     timeframe: '1 day'
   },
   {
     id: '2',
     location: 'Lehigh Acres, FL',
     packageSize: 'Medium Package (6" DBH)',
-    description: 'Custom barndominium site preparation for builder. Land prepped for builder to design and layout his dream home construction project.',
+    description: 'Client was selling land - forestry mulching to improve property presentation and market value.',
     beforeImage: '/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg',
     afterImage: '/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg',
-    acreage: '5 acres',
-    timeframe: '2 days'
+    acreage: '0.23 acres',
+    timeframe: '1 day'
   },
   {
     id: '3',
@@ -30,7 +30,7 @@ const projects = [
     description: 'Property maintenance to control wild pig issues. Vegetation reduced to manageable level so landowner can maintain with his own tractor equipment going forward.',
     beforeImage: '/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg',
     afterImage: '/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg',
-    acreage: '3 acres',
+    acreage: '2.31 acres',
     timeframe: '2 days'
   }
 ]
