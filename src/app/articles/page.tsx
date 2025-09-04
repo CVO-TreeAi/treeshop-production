@@ -77,7 +77,7 @@ export default function BlogPage() {
                     </Link>
                   </div>
                 </div>
-                <div className="bg-gray-50 rounded-lg flex items-center justify-center p-4">
+                <div className="bg-gray-800 rounded-lg flex items-center justify-center p-4">
                   {featuredPost.coverImage ? (
                     <img 
                       src={featuredPost.coverImage} 
@@ -85,9 +85,9 @@ export default function BlogPage() {
                       className="w-32 h-32 object-cover rounded-lg"
                     />
                   ) : (
-                    <div className="text-center text-gray-600">
+                    <div className="text-center text-gray-300">
                       <div className="text-4xl mb-2">🌲</div>
-                      <div className="text-sm font-medium">Featured Article</div>
+                      <div className="text-sm font-medium text-gray-300">Featured Article</div>
                     </div>
                   )}
                 </div>
