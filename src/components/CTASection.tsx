@@ -9,7 +9,7 @@ export default function CTASection(){
           Ready to Reclaim Your Land?
         </h2>
         <p className="text-white/90 text-lg sm:text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
-          Get a free estimate. On-site review available if required for your property. 
+          Get a free proposal. On-site review available if required for your property. 
           We respond to all requests within 4 hours during business hours.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -17,7 +17,7 @@ export default function CTASection(){
             href="/estimate" 
             className="glass-morphism hover:scale-105 hover:shadow-glow text-white font-bold px-10 py-5 rounded-xl text-lg transition-all duration-300 touch-manipulation"
           >
-            🌲 Get Free Estimate
+            🌲 Get Free Proposal
           </Link>
           <Link 
             href="#gallery" 

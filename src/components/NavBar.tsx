@@ -42,7 +42,7 @@ export default function NavBar(){
               <span className="whitespace-nowrap">(386) 843-5266</span>
             </a>
             <Link href="/estimate" className="bg-green-600 hover:bg-green-500 text-black hover:text-black px-4 xl:px-5 py-2 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform border border-green-500/50 text-sm xl:text-base text-center whitespace-nowrap">
-              Get Free Estimate
+              Get Free Proposal
             </Link>
           </div>
 
@@ -110,7 +110,7 @@ export default function NavBar(){
                   className="flex items-center justify-center bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg text-base transition-all duration-200 min-w-[120px]"
                   onClick={() => setIsOpen(false)}
                 >
-                  Get Free Estimate
+                  Get Free Proposal
                 </Link>
               </div>
               

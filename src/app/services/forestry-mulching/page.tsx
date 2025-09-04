@@ -21,7 +21,7 @@ export default function ForestryMulchingPage(){
             href="/estimate" 
             className="bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
           >
-            Get Free Estimate
+            Get Free Proposal
           </Link>
         </div>
 
@@ -175,7 +175,7 @@ export default function ForestryMulchingPage(){
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div>
               <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-                Forestry mulching is a revolutionary land management technique that transforms landscape restoration. Unlike traditional clearing methods involving multiple machines, burning, or hauling debris, our advanced mulching approach uses specialized equipment with rotating drums and precision steel teeth to simultaneously cut, grind, and clear vegetation in a single, environmentally conscious pass.
+                Forestry mulching is a revolutionary land management technique that transforms landscape restoration. Unlike traditional clearing methods involving multiple machines, burning, or hauling debris, our advanced mulching approach uses specialized equipment with rotating drums to simultaneously cut, grind, and clear vegetation in a single, environmentally conscious pass.
 
 The key differentiator is our commitment to ecological preservation: instead of creating waste, we convert vegetation into a protective mulch layer that actively enhances soil health, prevents erosion, and supports natural ecosystem regeneration.
               </p>
@@ -276,24 +276,8 @@ The key differentiator is our commitment to ecological preservation: instead of 
             Our fleet of specialized forestry mulching equipment ensures efficient, precise clearing for every project size and terrain type across Florida.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {/* CAT 265 with FECON Blackhawk */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
-              <div className="relative aspect-square overflow-hidden">
-                <img 
-                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
-                  alt="CAT 265 forestry mulcher aerial view Florida"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <h3 className="font-bold text-sm">CAT 265</h3>
-                  <p className="text-xs opacity-90">FECON Blackhawk</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CAT 265 Skid Steer */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* CAT 265 Equipment */}
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-square overflow-hidden">
                 <img 
@@ -304,23 +288,22 @@ The key differentiator is our commitment to ecological preservation: instead of 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 text-white">
                   <h3 className="font-bold text-sm">CAT 265</h3>
-                  <p className="text-xs opacity-90">Next Gen Skid Steer</p>
+                  <p className="text-xs opacity-90">Professional Equipment</p>
                 </div>
               </div>
             </div>
 
-
-            {/* Project in Action */}
+            {/* Project Results */}
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-square overflow-hidden">
                 <img 
                   src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
-                  alt="CAT 265 forestry mulching project in action Central Florida"
+                  alt="CAT 265 forestry mulching project results Central Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 text-white">
-                  <h3 className="font-bold text-sm">In Action</h3>
+                  <h3 className="font-bold text-sm">Professional Results</h3>
                   <p className="text-xs opacity-90">Central Florida</p>
                 </div>
               </div>
@@ -332,7 +315,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
               href="/estimate" 
               className="bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-6 py-3 rounded-lg transition-colors inline-block"
             >
-              See Equipment on Your Property
+              Get Your Proposal
             </Link>
           </div>
         </section>
@@ -428,7 +411,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
               <li>• Defined finish points — exact diameter specifications</li>
               <li>• All cleared material stays as natural mulch</li>
               <li>• Includes underbrush, shrubs, and palmettos</li>
-              <li>• Optional site review when required; final quote provided</li>
+              <li>• Optional site review when required; final proposal provided</li>
             </ul>
           </div>
         </section>
@@ -455,6 +438,10 @@ The key differentiator is our commitment to ecological preservation: instead of 
             <div className="border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-[var(--color-treeai-green)] mb-3">How do you handle wet or soft ground?</h3>
               <p className="text-gray-300">Our track machines have low ground pressure (4-6 PSI) similar to a person walking. We can work in conditions where wheeled equipment would get stuck or cause damage.</p>
+            </div>
+            <div className="border border-gray-800 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-[var(--color-treeai-green)] mb-3">Is a permit required for Forestry Mulching?</h3>
+              <p className="text-gray-300">Permit requirements vary by location and project scope. We recommend checking with your local building department or environmental agency. Many forestry mulching projects don't require permits, but it's always best to verify local regulations before beginning work.</p>
             </div>
           </div>
         </section>

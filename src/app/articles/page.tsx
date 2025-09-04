@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { getAllPosts, getAllCategories, getAllTags } from '@/lib/blog'
-import LightNavBar from '@/components/LightNavBar'
-import LightFooter from '@/components/LightFooter'
+import NavBar from '@/components/NavBar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Tree Service Blog - Land Clearing & Forestry Mulching Tips | The Tree Shop',
@@ -23,17 +23,17 @@ export default function BlogPage() {
   const recentPosts = posts.slice(1, 7)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <LightNavBar />
+    <div className="min-h-screen bg-black">
+      <NavBar />
       
       <main className="max-w-6xl mx-auto px-4 py-6 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight border-b-4 border-green-600 pb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight border-b-4 border-green-600 pb-4">
             The TreeShop <span className="text-green-600">Tribune</span>
           </h1>
           <div className="text-lg text-gray-600 mb-2 italic">Florida&apos;s Premier Tree Industry Newspaper</div>
-          <p className="text-base sm:text-lg text-black max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
             Real stories from the field. Industry insights you won&apos;t find anywhere else. 
             Written by the people who actually do the work.
           </p>
@@ -42,10 +42,10 @@ export default function BlogPage() {
         {/* Featured Article (if exists) */}
         {featuredPost && (
           <section className="mb-8 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center gap-3 border-l-4 border-red-600 pl-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-3 border-l-4 border-red-600 pl-4">
               📰 <span>Today&apos;s Lead Story</span>
             </h2>
-            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden shadow-lg">
               <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 p-4 sm:p-6 lg:p-8">
                 <div>
                   <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-600 mb-4">
@@ -55,11 +55,11 @@ export default function BlogPage() {
                     <span>{featuredPost.readingTime.text}</span>
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 leading-tight">
-                    <Link href={`/articles/${featuredPost.slug}`} className="text-gray-900 hover:text-green-700 transition-colors">
+                    <Link href={`/articles/${featuredPost.slug}`} className="text-white hover:text-green-400 transition-colors">
                       {featuredPost.title}
                     </Link>
                   </h3>
-                  <p className="text-black text-base sm:text-lg mb-6 leading-relaxed font-medium">
+                  <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed font-medium">
                     {featuredPost.excerpt}
                   </p>
                   <div className="flex items-center justify-between">
@@ -99,14 +99,14 @@ export default function BlogPage() {
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 flex items-center gap-3 border-l-4 border-blue-600 pl-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-3 border-l-4 border-blue-600 pl-4">
               📝 <span>Latest from the Field</span>
             </h2>
             
             {recentPosts.length > 0 ? (
               <div className="space-y-6 sm:space-y-8">
                 {recentPosts.map((post) => (
-                  <article key={post.slug} className="bg-white border border-gray-300 rounded-lg p-4 sm:p-6 hover:shadow-md transition-all hover:border-green-500">
+                  <article key={post.slug} className="bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 hover:shadow-md transition-all hover:border-green-500">
                     <div className="flex gap-4">
                       {/* Small image */}
                       {post.coverImage && (
@@ -128,13 +128,13 @@ export default function BlogPage() {
                           <span>{post.readingTime.text}</span>
                         </div>
                         
-                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">
-                          <Link href={`/articles/${post.slug}`} className="text-gray-900 hover:text-green-700 transition-colors">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight">
+                          <Link href={`/articles/${post.slug}`} className="text-white hover:text-green-400 transition-colors">
                             {post.title}
                           </Link>
                         </h3>
                         
-                        <p className="text-black mb-4 leading-relaxed font-medium text-base">
+                        <p className="text-gray-300 mb-4 leading-relaxed font-medium text-base">
                           {post.excerpt}
                         </p>
                         
@@ -170,8 +170,8 @@ export default function BlogPage() {
             ) : (
               <div className="text-center py-16">
                 <div className="text-6xl mb-4">📝</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No articles yet</h3>
-                <p className="text-gray-700 mb-6">
+                <h3 className="text-xl font-semibold text-white mb-2">No articles yet</h3>
+                <p className="text-gray-300 mb-6">
                   We&apos;re working on some great content for you. Check back soon!
                 </p>
                 <Link href="/estimate" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
@@ -185,8 +185,8 @@ export default function BlogPage() {
           <div className="space-y-6 lg:space-y-8">
             {/* Categories */}
             {categories.length > 0 && (
-              <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-4 flex items-center gap-2">
                   📂 Tribune Sections
                 </h3>
                 <div className="space-y-2">
@@ -194,7 +194,7 @@ export default function BlogPage() {
                     <Link 
                       key={category}
                       href={`/articles/category/${category.toLowerCase()}`}
-                      className="block text-gray-800 hover:text-green-700 transition-colors font-medium"
+                      className="block text-gray-300 hover:text-green-400 transition-colors font-medium"
                     >
                       {category}
                     </Link>
@@ -205,8 +205,8 @@ export default function BlogPage() {
 
             {/* Popular Tags */}
             {tags.length > 0 && (
-              <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                   🏷️ Story Tags
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -214,7 +214,7 @@ export default function BlogPage() {
                     <Link 
                       key={tag}
                       href={`/articles/tag/${tag.toLowerCase()}`}
-                      className="px-3 py-1 bg-white border border-gray-300 text-gray-800 hover:bg-green-600 hover:text-white hover:border-green-600 rounded-full text-sm transition-colors"
+                      className="px-3 py-1 bg-gray-800 border border-gray-600 text-gray-300 hover:bg-green-600 hover:text-white hover:border-green-600 rounded-full text-sm transition-colors"
                     >
                       #{tag}
                     </Link>
@@ -224,18 +224,18 @@ export default function BlogPage() {
             )}
 
             {/* Newsletter Signup */}
-            <div className="bg-green-50 border border-green-300 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-800 mb-3 flex items-center gap-2">
+            <div className="bg-gray-900 border border-green-600 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
                 📬 Subscribe to the Tribune
               </h3>
-              <p className="text-gray-800 text-sm mb-4">
+              <p className="text-gray-300 text-sm mb-4">
                 Get weekly field reports, industry insider stories, and contractor tales delivered straight to your inbox.
               </p>
               <form className="space-y-3">
                 <input
                   type="email"
                   placeholder="your@email.com"
-                  className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-gray-900 text-sm focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600"
+                  className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white text-sm focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600"
                 />
                 <button
                   type="submit"
@@ -247,23 +247,23 @@ export default function BlogPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-6 text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Need Professional Help?</h3>
-              <p className="text-gray-800 text-sm mb-4">
-                Get a free estimate for your land clearing or forestry mulching project.
+            <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 text-center">
+              <h3 className="text-lg font-semibold text-white mb-3">Need Professional Help?</h3>
+              <p className="text-gray-300 text-sm mb-4">
+                Get a free proposal for your land clearing or forestry mulching project.
               </p>
               <Link 
                 href="/estimate"
                 className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm"
               >
-                Get Free Estimate
+                Get Free Proposal
               </Link>
             </div>
           </div>
         </div>
       </main>
       
-      <LightFooter />
+      <Footer />
     </div>
   )
 }

@@ -92,7 +92,7 @@ export default function LocationsPage() {
             href="/estimate" 
             className="bg-amber-600 hover:bg-amber-500 text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
           >
-            Get AI-Powered Estimate
+            Get AI-Powered Proposal
           </Link>
         </div>
 
@@ -136,7 +136,7 @@ export default function LocationsPage() {
                   </h3>
                   <p className="text-sm text-gray-400 mb-2">{city.county}</p>
                   <div className="text-xs text-amber-500 group-hover:text-amber-400">
-                    Forestry Mulching • Land Clearing • Stump Grinding
+                    Forestry Mulching • Land Clearing
                   </div>
                 </Link>
               ))}
@@ -147,7 +147,7 @@ export default function LocationsPage() {
         {/* Services Offered */}
         <section className="mb-12 bg-gray-900 rounded-lg p-6 sm:p-8">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Services Available in All Locations</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="text-center">
               <div className="text-4xl mb-4">🌲</div>
               <h3 className="text-xl font-semibold text-amber-400 mb-2">Forestry Mulching</h3>
@@ -159,9 +159,9 @@ export default function LocationsPage() {
               <p className="text-gray-300 text-sm">Complete site preparation with grubbing and root raking. Solid, construction-ready ground for development projects.</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-4">🪵</div>
-              <h3 className="text-xl font-semibold text-amber-400 mb-2">Stump Grinding</h3>
-              <p className="text-gray-300 text-sm">Professional stump removal and grinding services. Clean finish for landscaping and property improvement projects.</p>
+              <div className="text-4xl mb-4">🌲</div>
+              <h3 className="text-xl font-semibold text-amber-400 mb-2">Forestry Mulching</h3>
+              <p className="text-gray-300 text-sm">Advanced mulching techniques for different property types. Ecological restoration and habitat management solutions.</p>
             </div>
           </div>
         </section>
@@ -219,13 +219,13 @@ export default function LocationsPage() {
         <section className="bg-amber-600 rounded-lg p-6 sm:p-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4 leading-tight">Ready to Get Started?</h2>
           <p className="text-black/80 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">
-            Get your AI-powered forestry estimate for any Florida location. Fast, accurate, and tailored to your property.
+            Get your AI-powered forestry proposal for any Florida location. Fast, accurate, and tailored to your property.
           </p>
           <Link 
             href="/estimate" 
             className="bg-black hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
           >
-            Start Your Estimate Now
+            Start Your Proposal Now
           </Link>
         </section>
       </main>

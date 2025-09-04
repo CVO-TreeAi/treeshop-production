@@ -27,7 +27,7 @@ export default function Footer(){
             href="/estimate" 
             className="btn-modern btn-primary"
           >
-            Get Free Estimate
+            Get Free Proposal
           </Link>
         </div>
         

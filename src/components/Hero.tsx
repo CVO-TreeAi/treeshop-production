@@ -129,7 +129,7 @@ export default function Hero(){
             className="font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:transform hover:scale-105 treeai-green-button text-black hover:text-black"
             style={{ color: '#000000 !important' }}
           >
-            Get Free Estimate
+            Get Free Proposal
           </Link>
           <Link 
             href="#gallery" 

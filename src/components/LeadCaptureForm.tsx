@@ -90,7 +90,7 @@ export default function LeadCaptureForm() {
 
   return (
     <div className="bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold text-white mb-6">Get Your Free Estimate</h2>
+      <h2 className="text-3xl font-bold text-white mb-6">Get Your Free Proposal</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
@@ -183,13 +183,13 @@ export default function LeadCaptureForm() {
           disabled={isSubmitting}
           className="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? 'Submitting...' : 'Get Free Estimate'}
+          {isSubmitting ? 'Submitting...' : 'Get Free Proposal'}
         </button>
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
           <div className="bg-green-900 border border-green-500 text-green-300 px-4 py-3 rounded-lg">
-            ✓ Thank you! Your estimate request has been submitted. We'll contact you within 24 hours.
+            ✓ Thank you! Your proposal request has been submitted. We'll contact you within 24 hours.
           </div>
         )}
         {submitStatus === 'error' && (

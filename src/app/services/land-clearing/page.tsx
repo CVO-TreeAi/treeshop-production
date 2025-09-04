@@ -3,7 +3,7 @@ import Image from 'next/image';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import AutoScrollList from '@/components/AutoScrollList';
-import ProjectGallery from '@/components/ProjectGallery';
+// import ProjectGallery from '@/components/ProjectGallery'; // Temporarily removed to avoid confusion
 
 export default function LandClearingPage(){
   return (
@@ -130,7 +130,7 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4">
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
+                  src="/project-images/site-clearing-preparation.jpg"
                   alt="Site clearing and preparation for construction Florida"
                   className="w-full h-full object-cover"
                 />
@@ -141,7 +141,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
+                  src="/project-images/cocoa-beach-final-clearing.jpg"
                   alt="Heavy land clearing equipment removing vegetation Florida"
                   className="w-full h-full object-cover"
                 />
@@ -152,7 +152,7 @@ export default function LandClearingPage(){
               </div>
               <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
+                  src="/project-images/site-clearing-precision.jpg"
                   alt="Site clearing precision work Florida"
                   className="w-full h-full object-cover"
                 />
@@ -167,7 +167,7 @@ export default function LandClearingPage(){
             <div className="flex justify-center gap-4 mb-4 px-24">
               <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-blue-500">
                 <img 
-                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
+                  src="/project-images/firebreak-trail-clearing.jpg"
                   alt="Firebreak trail and land clearing operations Florida"
                   className="w-full h-full object-cover"
                 />
@@ -191,51 +191,31 @@ export default function LandClearingPage(){
               </div>
             </div>
             
-            {/* Third Row - 4 smaller images */}
-            <div className="flex justify-center gap-3">
-              <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
+            {/* Project Portfolio - 3 showcase images */}
+            <div className="flex justify-center gap-4">
+              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/okeechobee-land-clearing-before-dense-forest-undergrowth.jpg"
-                  alt="Residential land clearing Orlando Florida"
+                  src="/project-images/land-clearing-project-1.jpg"
+                  alt="Professional land clearing project Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-2 left-2 text-white">
-                  <p className="text-xs font-semibold">Residential</p>
-                </div>
               </div>
-              <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/lehigh-acres-land-clearing-before-thick-undergrowth.jpg"
-                  alt="Commercial land clearing Central Florida"
+                  src="/project-images/land-clearing-project-3.jpg"
+                  alt="Professional site preparation Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-2 left-2 text-white">
-                  <p className="text-xs font-semibold">Commercial</p>
-                </div>
               </div>
-              <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
                 <img 
-                  src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
-                  alt="Infrastructure land clearing project Florida"
+                  src="/project-images/land-clearing-project-4.jpg"
+                  alt="Expert land clearing services Central Florida"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-2 left-2 text-white">
-                  <p className="text-xs font-semibold">Infrastructure</p>
-                </div>
-              </div>
-              <div className="w-36 h-36 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
-                  alt="Agricultural land clearing Central Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-2 left-2 text-white">
-                  <p className="text-xs font-semibold">Agricultural</p>
-                </div>
               </div>
             </div>
           </div>
@@ -311,29 +291,20 @@ export default function LandClearingPage(){
             {/* Orlando Wetland Project */}
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
-                <div className="absolute inset-0 grid grid-cols-2">
-                  <div className="relative">
-                    <img 
-                      src="/project-images/avon-park-land-clearing-before-dense-vegetation.jpg"
-                      alt="Dense vegetation before land clearing project Florida"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs rounded">BEFORE</div>
-                  </div>
-                  <div className="relative">
-                    <img 
-                      src="/project-images/avon-park-land-clearing-after-forestry-mulching.jpg"
-                      alt="Cleared and prepared land after professional land clearing Florida"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 text-xs rounded">AFTER</div>
-                  </div>
+                <img 
+                  src="/project-images/orlando-site-preparation-mapping.jpg"
+                  alt="Orlando site preparation land classification mapping Florida"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-3 left-3 text-white">
+                  <span className="bg-blue-600 text-white px-2 py-1 text-xs rounded">MAPPING DATA</span>
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-white mb-2 text-lg">Complete Site Preparation - Orlando, FL</h3>
-                <p className="text-gray-400 text-sm mb-3">6.2 acres | Commercial development preparation with wetland buffer compliance</p>
-                <p className="text-gray-300 text-sm">Total vegetation removal and site preparation for construction. Preserved required wetland buffers while maximizing developable area.</p>
+                <p className="text-gray-400 text-sm mb-3">Land classification mapping | Permit coordination support</p>
+                <p className="text-gray-300 text-sm">Client pulled permit and provided environmental data to make part of the land usable. Legend showed land mapping includes marshes, cypress, dry flatwoods, low intensity urban, rural, and other coniferous wetlands.</p>
               </div>
             </div>
 
@@ -341,8 +312,8 @@ export default function LandClearingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/lehigh-acres-land-clearing-after-professional-mulching.jpg"
-                  alt="Professional wetland land clearing project Orlando Florida"
+                  src="/project-images/polk-city-wetland-buffer-project-2.jpg"
+                  alt="Polk City wetland buffer management project Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -351,9 +322,9 @@ export default function LandClearingPage(){
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-white mb-2 text-lg">Wetland Buffer Management</h3>
-                <p className="text-gray-400 text-sm mb-3">3.8 acres | Environmental compliance clearing</p>
-                <p className="text-gray-300 text-sm">Precision clearing around protected wetland areas. Selective removal maintains ecological integrity while creating usable development space.</p>
+                <h3 className="font-bold text-white mb-2 text-lg">Wetland Buffer Management - Polk City, FL</h3>
+                <p className="text-gray-400 text-sm mb-3">0.29 acres cleared | 1.59 acres total property</p>
+                <p className="text-gray-300 text-sm">Mulched 0.29 acres at 6" DBH leaving 50ft buffer and rest of land untouched to preserve wetlands. Total property was 1.59 acres with careful environmental compliance.</p>
               </div>
             </div>
           </div>
@@ -364,9 +335,16 @@ export default function LandClearingPage(){
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Florida Land Clearing Expertise</h2>
           <p className="text-center text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">Specialized techniques for Florida's unique environmental landscape</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="border border-gray-700 rounded-lg p-4 sm:p-6 text-center">
+            <div className="border border-blue-600 rounded-lg p-4 sm:p-6 text-center bg-blue-600/10">
+              <div className="mb-3">
+                <img 
+                  src="/project-images/wetlands-mapper.jpg"
+                  alt="Wetlands Mapper tool for environmental compliance Florida"
+                  className="w-12 h-12 mx-auto rounded object-cover"
+                />
+              </div>
               <h3 className="text-base sm:text-lg font-semibold text-blue-400 mb-2">Wetland Compliance</h3>
-              <p className="text-xs text-gray-300 leading-relaxed">Expert navigation of Florida's strict wetland preservation regulations</p>
+              <p className="text-xs text-gray-300 leading-relaxed">We can pull up the Wetlands Mapper to determine if historic data shows areas classified as wetlands and provide that data to our clients for proper compliance planning.</p>
             </div>
             <div className="border border-blue-600 rounded-lg p-6 text-center bg-blue-600/10">
               <h3 className="text-lg font-semibold text-blue-400 mb-2">Hurricane Prep</h3>
@@ -391,8 +369,7 @@ export default function LandClearingPage(){
           </div>
         </section>
 
-        {/* Project Gallery with Before/After Examples */}
-        <ProjectGallery />
+        {/* Project Gallery temporarily removed to avoid confusion with forestry mulching projects */}
 
         {/* Top 10 Land Clearing Questions */}
         <section className="mb-16">
@@ -412,7 +389,7 @@ export default function LandClearingPage(){
             </div>
             <div className="border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-400 mb-3">What equipment is used for land clearing?</h3>
-              <p className="text-gray-300">Professional land clearing uses excavators, bulldozers, brush cutters, stump grinders, and specialized attachments. High-capacity machines with 180+ HP ensure efficient and comprehensive site preparation.</p>
+              <p className="text-gray-300">Professional land clearing uses excavators, bulldozers, brush cutters, stump grinders, and specialized attachments. Professional machines with 65-100 HP deliver efficient and comprehensive site preparation.</p>
             </div>
             <div className="border border-gray-800 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-400 mb-3">How long does land clearing take?</h3>
