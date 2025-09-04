@@ -210,7 +210,7 @@ The key differentiator is our commitment to ecological preservation: instead of 
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold text-white">High-Flow Skid Steers</h4>
-                  <p className="text-sm">65 HP machines with advanced hydraulic flow for maximum mulching head performance</p>
+                  <p className="text-sm">Professional grade equipment with advanced hydraulic flow for maximum mulching head performance</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Professional Mulching Heads</h4>
