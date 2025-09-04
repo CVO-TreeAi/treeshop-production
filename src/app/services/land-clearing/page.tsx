@@ -292,7 +292,7 @@ export default function LandClearingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/polk-city-wetland-buffer-project.jpg"
+                  src="/project-images/orlando-wetlands-mapping.jpg"
                   alt="Orlando site preparation land classification mapping Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
