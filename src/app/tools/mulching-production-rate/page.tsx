@@ -256,7 +256,7 @@ export default function MulchingProductionRatePage() {
                             <option value="42">Bobcat T870 - 42 GPM High Flow</option>
                         </optgroup>
                         <optgroup label="JOHN DEERE TRACK LOADERS">
-                            <option value="23">John Deere 333G - 23 GPM</option>
+                            <option value="41">John Deere 333G - 41.1 GPM</option>
                         </optgroup>
                         <optgroup label="KUBOTA TRACK LOADERS">
                             <option value="30">Kubota SVL95-2s - 30 GPM</option>
