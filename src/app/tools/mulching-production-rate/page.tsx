@@ -499,9 +499,10 @@ export default function MulchingProductionRatePage() {
             const totalTimeSavings = tuningTime - fusionTime;
             const totalCostSavings = tuningOperatingCosts - fusionOperatingCosts;
             const totalProfitIncrease = fusionProfit - tuningProfit;
+            const profitPerAcre = totalCostSavings / projectSize;
             savingsHighlight.innerHTML = \`
                 🎉 Plug-n-Play ROI: Same revenue, \${totalTimeSavings.toFixed(1)} hours less work!<br>
-                💰 $\${totalCostSavings.toFixed(0)} additional profit from efficiency
+                💰 $\${totalCostSavings.toFixed(0)} additional profit ($\${profitPerAcre.toFixed(0)}/acre)
             \`;
             savingsHighlight.style.display = 'block';
             console.log('UpdateResults completed');
