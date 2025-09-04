@@ -371,24 +371,24 @@ The key differentiator is our commitment to ecological preservation: instead of 
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">DBH Package Specifications</h2>
              <p className="text-center text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">Choose exactly what gets cleared based on tree diameter (DBH)</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="border border-gray-700 rounded-lg p-4 sm:p-6 text-center">
+            <div className="border border-[var(--color-treeai-green)] rounded-lg p-4 sm:p-6 text-center bg-[var(--color-treeai-green)]/10">
               <h3 className="text-base sm:text-lg font-semibold text-[var(--color-treeai-green)] mb-2">Small Package</h3>
               <div className="text-xs sm:text-sm font-semibold text-[var(--color-treeai-green)] mb-3">4&quot; DBH &amp; Under</div>
               <p className="text-xs text-gray-300 leading-relaxed">Light clearing — preserves trees larger than 4 inches diameter</p>
             </div>
-            <div className="border border-[var(--color-treeshop-blue)] rounded-lg p-6 text-center bg-[var(--color-treeshop-blue)]/10">
+            <div className="border border-[var(--color-treeai-green)] rounded-lg p-6 text-center bg-[var(--color-treeai-green)]/15">
               <h3 className="text-lg font-semibold text-[var(--color-treeai-green)] mb-2">Medium Package</h3>
-              <div className="text-sm font-semibold text-amber-500 mb-3">6&quot; DBH &amp; Under</div>
+              <div className="text-sm font-semibold text-[var(--color-treeai-green)] mb-3">6&quot; DBH &amp; Under</div>
               <p className="text-xs text-gray-300">Moderate clearing — preserves trees larger than 6 inches diameter</p>
             </div>
-            <div className="border border-gray-700 rounded-lg p-6 text-center">
+            <div className="border border-[var(--color-treeai-green)] rounded-lg p-6 text-center bg-[var(--color-treeai-green)]/20">
               <h3 className="text-lg font-semibold text-[var(--color-treeai-green)] mb-2">Large Package</h3>
-              <div className="text-sm font-semibold text-red-500 mb-3">8&quot; DBH &amp; Under</div>
+              <div className="text-sm font-semibold text-[var(--color-treeai-green)] mb-3">8&quot; DBH &amp; Under</div>
               <p className="text-xs text-gray-300">Heavy clearing — preserves trees larger than 8 inches diameter</p>
             </div>
-            <div className="border border-violet-600 rounded-lg p-6 text-center bg-violet-600/10">
+            <div className="border border-[var(--color-treeai-green)] rounded-lg p-6 text-center bg-[var(--color-treeai-green)]/25">
               <h3 className="text-lg font-semibold text-[var(--color-treeai-green)] mb-2">X-Large Package</h3>
-              <div className="text-sm font-semibold text-violet-500 mb-3">10&quot; DBH &amp; Under</div>
+              <div className="text-sm font-semibold text-[var(--color-treeai-green)] mb-3">10&quot; DBH &amp; Under</div>
               <p className="text-xs text-gray-300">Maximum clearing — preserves trees larger than 10 inches diameter</p>
             </div>
           </div>
