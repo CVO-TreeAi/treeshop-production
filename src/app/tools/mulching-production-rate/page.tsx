@@ -456,10 +456,6 @@ export default function MulchingProductionRatePage() {
                     <div class="result-title">Standard Mulcher</div>
                     <div class="result-value">\${tuningTime.toFixed(1)}h</div>
                     <div class="result-details">
-                        <div style="margin-bottom: 12px; font-size: 0.9rem; color: #B0B0B0;">
-                            \${maxDbh}" DBH × \${projectSize} acres = \${inchAcres.toFixed(1)} I-A<br>
-                            Production Rate: \${tuningProductionRate.toFixed(2)} I-A/h
-                        </div>
                         <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $\${quotedRevenue.toFixed(0)}</div>
                         <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $\${tuningOperatingCosts.toFixed(0)}</div>
                         <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $\${tuningProfit.toFixed(0)}</div>
@@ -477,10 +473,6 @@ export default function MulchingProductionRatePage() {
                     <div class="result-title">Plug-n-Play Technology</div>
                     <div class="result-value">\${fusionTime.toFixed(1)}h</div>
                     <div class="result-details">
-                        <div style="margin-bottom: 12px; font-size: 0.9rem; color: #B0B0B0;">
-                            \${maxDbh}" DBH × \${projectSize} acres = \${inchAcres.toFixed(1)} I-A<br>
-                            Production Rate: \${fusionProductionRate.toFixed(2)} I-A/h
-                        </div>
                         <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $\${quotedRevenue.toFixed(0)}</div>
                         <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $\${fusionOperatingCosts.toFixed(0)}</div>
                         <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $\${fusionProfit.toFixed(0)}</div>
