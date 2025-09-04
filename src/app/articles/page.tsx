@@ -194,7 +194,7 @@ export default function BlogPage() {
                     <Link 
                       key={category}
                       href={`/articles/category/${category.toLowerCase()}`}
-                      className="block text-gray-300 hover:text-green-400 transition-colors font-medium"
+                      className="block text-white hover:text-green-400 transition-colors font-medium"
                     >
                       {category}
                     </Link>
