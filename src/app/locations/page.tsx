@@ -124,22 +124,20 @@ export default function LocationsPage() {
               <p className="text-gray-300 text-base sm:text-lg">{region.description}</p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {region.cities.map((city) => (
-                <Link 
-                  key={city.slug}
-                  href={`/locations/${city.slug}`}
-                  className="bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-green-500 rounded-lg p-4 transition-all duration-300 group"
-                >
-                  <h3 className="text-lg font-semibold text-white group-hover:text-green-400 transition-colors mb-1">
-                    {city.name}
-                  </h3>
-                  <p className="text-sm text-gray-400 mb-2">{city.county}</p>
-                  <div className="text-xs text-green-400 group-hover:text-green-300">
-                    Forestry Mulching • Land Clearing
+            <div className="bg-gray-900 rounded-lg p-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {region.cities.map((city) => (
+                  <div key={city.slug} className="text-center">
+                    <h3 className="text-white font-medium text-sm">
+                      {city.name}
+                    </h3>
+                    <p className="text-gray-400 text-xs">{city.county}</p>
                   </div>
-                </Link>
-              ))}
+                ))}
+              </div>
+              <div className="mt-4 pt-4 border-t border-gray-700 text-center">
+                <p className="text-green-400 font-semibold text-sm">Forestry Mulching • Land Clearing</p>
+              </div>
             </div>
           </section>
         ))}
