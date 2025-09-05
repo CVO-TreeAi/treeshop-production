@@ -2,214 +2,144 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { format } from 'date-fns'
-import { getPostBySlug, getAllPosts } from '@/lib/blog'
+import ReactMarkdown from 'react-markdown'
+import { getArticleBySlug, getAllArticles } from '@/lib/articles'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
-import BlogContent from '@/components/blog/BlogContent'
 
-interface BlogPostPageProps {
+interface ArticlePageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
+  const articles = getAllArticles()
+  return articles.map((article) => ({
+    slug: article.slug,
   }))
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const article = getArticleBySlug(slug)
 
-  if (!post) {
+  if (!article) {
     return {
-      title: 'Post Not Found | The Tree Shop Blog',
+      title: 'Article Not Found | TreeShop Tribune',
     }
   }
 
   return {
-    title: `${post.title} | The Tree Shop Blog`,
-    description: post.excerpt,
+    title: `${article.title} | TreeShop Tribune`,
+    description: article.description,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: article.title,
+      description: article.description,
       type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      images: post.coverImage ? [post.coverImage] : undefined,
+      publishedTime: article.date,
+      authors: [article.author],
+      images: article.coverImage ? [article.coverImage] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: post.coverImage ? [post.coverImage] : undefined,
+      title: article.title,
+      description: article.description,
+      images: article.coverImage ? [article.coverImage] : undefined,
     },
   }
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const article = getArticleBySlug(slug)
 
-  if (!post) {
+  if (!article) {
     notFound()
   }
 
-  const allPosts = getAllPosts()
-  const currentIndex = allPosts.findIndex(p => p.slug === slug)
-  const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null
-  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null
-  const relatedPosts = allPosts
-    .filter(p => p.slug !== slug && p.category === post.category)
-    .slice(0, 3)
-
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-black text-white">
       <NavBar />
       
-      <main className="max-w-5xl mx-auto px-4 py-12">
+      <main className="max-w-4xl mx-auto px-4 py-6 sm:py-12">
         {/* Article Header */}
-        <header className="mb-16">
-          {/* Breadcrumb */}
-          <nav className="text-sm text-gray-600 mb-6">
-            <Link href="/" className="hover:text-green-700">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/articles" className="hover:text-green-700">Blog</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">{post.title}</span>
-          </nav>
-
-          {/* Article Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700 mb-6">
-            <span className="px-3 py-1 bg-green-100 text-green-800 border border-green-200 rounded-full font-medium">{post.category}</span>
-            <span className="font-medium">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-            <span>{post.readingTime.text}</span>
-            <span>By <strong className="text-gray-900">{post.author}</strong></span>
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-400 mb-4">
+            <span className="px-3 py-1 treeai-green-button rounded-full font-medium">{article.category}</span>
+            <span>{format(new Date(article.date), 'MMMM d, yyyy')}</span>
+            <span>{article.readingTime}</span>
           </div>
-
-          {/* Title */}
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight font-serif">
-            {post.title}
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+            {article.title}
           </h1>
+          
+          <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
+            <span>By {article.author}</span>
+            {article.tags.length > 0 && (
+              <>
+                <span>•</span>
+                <div className="flex gap-2">
+                  {article.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="text-green-400">#{tag}</span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
-          {/* Excerpt */}
-          <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium">
-            {post.excerpt}
-          </p>
-
-          {/* Cover Image */}
-          {post.coverImage && (
-            <div className="mb-8">
-              <img
-                src={post.coverImage}
-                alt={post.title}
-                className="w-full rounded-lg"
-              />
-            </div>
-          )}
-
-          {/* Tags */}
-          {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
-              {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/articles/tag/${tag.toLowerCase()}`}
-                  className="px-3 py-1 bg-gray-100 border border-gray-300 text-gray-800 hover:bg-green-600 hover:text-white hover:border-green-600 rounded-full text-sm transition-colors"
-                >
-                  #{tag}
-                </Link>
-              ))}
-            </div>
-          )}
-        </header>
+        {/* Cover Image */}
+        {article.coverImage && (
+          <div className="mb-8 sm:mb-12">
+            <img 
+              src={article.coverImage} 
+              alt={article.title}
+              className="w-full h-64 sm:h-96 object-cover rounded-lg shadow-lg"
+            />
+          </div>
+        )}
 
         {/* Article Content */}
-        <article className="max-w-none">
-          <div className="max-w-4xl mx-auto">
-            <BlogContent content={post.content} />
-          </div>
-        </article>
+        <div className="prose prose-lg prose-invert max-w-none mb-12">
+          <ReactMarkdown
+            className="text-gray-300 leading-relaxed"
+            components={{
+              h1: ({ children }) => <h1 className="text-2xl sm:text-3xl font-bold text-white mb-6">{children}</h1>,
+              h2: ({ children }) => <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 mt-8">{children}</h2>,
+              h3: ({ children }) => <h3 className="text-lg sm:text-xl font-semibold text-green-400 mb-3 mt-6">{children}</h3>,
+              p: ({ children }) => <p className="text-gray-300 mb-4 leading-relaxed">{children}</p>,
+              ul: ({ children }) => <ul className="text-gray-300 mb-4 space-y-2 pl-6">{children}</ul>,
+              li: ({ children }) => <li className="list-disc text-gray-300">{children}</li>,
+              strong: ({ children }) => <strong className="text-white font-semibold">{children}</strong>,
+              a: ({ href, children }) => (
+                <Link href={href || '#'} className="text-green-400 hover:text-green-300 underline">
+                  {children}
+                </Link>
+              ),
+            }}
+          >
+            {article.content}
+          </ReactMarkdown>
+        </div>
 
         {/* Article Footer */}
-        <footer className="mt-16 pt-8 border-t border-gray-300">
-          {/* Author Info */}
-          <div className="bg-gray-50 border border-gray-300 rounded-lg p-6 mb-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                {post.author.charAt(0)}
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">{post.author}</h3>
-                <p className="text-gray-800 text-sm leading-relaxed">
-                  Expert in land clearing, forestry mulching, and property management with years of hands-on experience helping Florida property owners maximize their land's potential.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          {(previousPost || nextPost) && (
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {previousPost && (
-                <Link 
-                  href={`/articles/${previousPost.slug}`}
-                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all"
-                >
-                  <div className="text-sm text-gray-600 mb-2">← Previous Article</div>
-                  <div className="font-semibold text-gray-900">{previousPost.title}</div>
-                </Link>
-              )}
-              {nextPost && (
-                <Link 
-                  href={`/articles/${nextPost.slug}`}
-                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all md:text-right"
-                >
-                  <div className="text-sm text-gray-600 mb-2">Next Article →</div>
-                  <div className="font-semibold text-gray-900">{nextPost.title}</div>
-                </Link>
-              )}
-            </div>
-          )}
-
-          {/* Related Articles */}
-          {relatedPosts.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {relatedPosts.map((relatedPost) => (
-                  <Link
-                    key={relatedPost.slug}
-                    href={`/articles/${relatedPost.slug}`}
-                    className="bg-white border border-gray-300 rounded-lg p-4 hover:shadow-md transition-all"
-                  >
-                    <div className="text-sm text-green-700 font-medium mb-2">{relatedPost.category}</div>
-                    <h4 className="font-semibold text-gray-900 mb-2 leading-tight">{relatedPost.title}</h4>
-                    <div className="text-sm text-gray-600">{relatedPost.readingTime.text}</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* CTA */}
-          <div className="bg-green-50 border border-green-300 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Land?</h3>
-            <p className="text-gray-800 mb-6">
+        <footer className="border-t border-gray-700 pt-8">
+          <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Ready for Professional Forestry Mulching?</h3>
+            <p className="text-gray-300 mb-6">
               Get a professional forestry mulching estimate tailored to your property's specific needs.
             </p>
             <Link
               href="/estimate"
-              className="inline-block treeai-green-button font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="treeai-green-button font-semibold px-8 py-3 rounded-lg transition-colors"
             >
               Get Free Estimate
             </Link>
           </div>
         </footer>
       </main>
-
+      
       <Footer />
     </div>
-  )
+  );
 }
