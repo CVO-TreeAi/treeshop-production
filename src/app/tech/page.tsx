@@ -16,14 +16,6 @@ export const metadata: Metadata = {
 export default function TechPage() {
   const solutions = [
     {
-      name: 'TreeAI',
-      status: 'Available on iOS',
-      description: 'AI-powered estimation and project analysis for professional tree care operations.',
-      features: ['Smart pricing analysis', 'Project risk assessment', 'Equipment optimization', 'Crew scheduling intelligence'],
-      cta: 'Download on App Store',
-      href: '#treeai'
-    },
-    {
       name: 'TreeShop Maps',
       status: 'In App Store Review',
       description: 'Professional site planning and GPS-guided execution for precise forestry mulching and land clearing.',
@@ -53,12 +45,12 @@ export default function TechPage() {
           </h1>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Professional software solutions built specifically for the tree care industry. 
-            From AI-powered estimation to GPS-guided execution.
+            GPS-guided planning and complete business operations.
           </p>
         </div>
 
         {/* Solutions Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
           {solutions.map((solution) => (
             <div key={solution.name} className="bg-gray-900 border border-gray-700 rounded-lg p-6">
               <div className="flex items-center justify-between mb-4">
