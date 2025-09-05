@@ -48,8 +48,9 @@ export default function NavBar(){
                 <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Mulching</div>
               </Link>
               
-              <Link href="/locations" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important' }}>Service Areas</Link>
-              <Link href="/articles" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important' }}>About</Link>
+              <Link href="/tech" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>Technology</Link>
+              <Link href="/locations" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>Service Areas</Link>
+              <Link href="/articles" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>About</Link>
             </div>
           </div>
 
@@ -125,6 +126,13 @@ export default function NavBar(){
               
               {/* Other Nav Items */}
               <div className="space-y-2">
+                <Link 
+                  href="/tech" 
+                  className="block p-3 text-white font-medium hover:bg-gray-800 rounded-lg transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Technology
+                </Link>
                 <Link 
                   href="/locations" 
                   className="block p-3 text-white font-medium hover:bg-gray-800 rounded-lg transition-colors duration-200"

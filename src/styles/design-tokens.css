@@ -308,10 +308,23 @@ header nav a *,
 header nav Link,
 header nav Link *,
 header nav button,
-header nav button * {
+header nav button *,
+nav a,
+nav a *,
+nav Link,
+nav Link *,
+nav button,
+nav button * {
   color: #00FF41 !important;
   -webkit-text-fill-color: #00FF41 !important;
   text-shadow: none !important;
+}
+
+/* Specific navigation overrides */
+.hidden.lg\\:flex a,
+.hidden.lg\\:flex Link {
+  color: #00FF41 !important;
+  -webkit-text-fill-color: #00FF41 !important;
 }
 
 /* NUCLEAR OPTION - Force black text on green buttons */
