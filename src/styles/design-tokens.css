@@ -302,23 +302,15 @@ button.treeai-green-button,
   text-decoration-color: #000000 !important;
 }
 
-/* SELECTIVE NAVIGATION TEXT OVERRIDE */
-header nav a,
-header nav button,
-nav a,
-nav button {
+/* ONLY HEADER NAVIGATION TEXT - NOT PAGE CONTENT */
+header.sticky nav a:not(.treeai-green-button),
+header.sticky nav button:not(.treeai-green-button) {
   color: #00FF41 !important;
   -webkit-text-fill-color: #00FF41 !important;
   text-shadow: none !important;
 }
 
-/* Target specific navigation elements */
-header nav div div a {
-  color: #00FF41 !important;
-  -webkit-text-fill-color: #00FF41 !important;
-}
-
-/* MAXIMUM SPECIFICITY OVERRIDE */
+/* SPECIFIC NAVIGATION LINKS ONLY */
 .nav-link-force-green,
 .nav-link-force-green:link,
 .nav-link-force-green:visited,
@@ -329,6 +321,27 @@ header nav div div a {
   -webkit-text-fill-color: #00FF41 !important;
   text-shadow: none !important;
   background-clip: unset !important;
+}
+
+/* Header sticky navigation only */
+header.sticky .nav-link-force-green {
+  color: #00FF41 !important;
+  -webkit-text-fill-color: #00FF41 !important;
+}
+
+/* RESTORE NORMAL PAGE CONTENT */
+main *,
+section *,
+div:not(.nav-link-force-green) {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Hero section should be bright white with shadows */
+.hero-content h1,
+.hero-content p {
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
 }
 
 /* NUCLEAR OPTION - Force black text on green buttons */
