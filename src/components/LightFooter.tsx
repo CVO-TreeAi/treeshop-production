@@ -16,7 +16,7 @@ export default function LightFooter() {
           </div>
           <Link 
             href="/estimate" 
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors"
+            className="treeai-green-button font-semibold px-6 py-2 rounded-lg transition-colors"
           >
             Get Free Estimate
           </Link>

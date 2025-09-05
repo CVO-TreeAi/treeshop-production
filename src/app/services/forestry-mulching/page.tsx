@@ -19,7 +19,7 @@ export default function ForestryMulchingPage(){
           </p>
           <Link 
             href="/estimate" 
-            className="bg-[var(--color-treeai-green)] hover:bg-[var(--color-treeai-green-light)] text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
+            className="treeai-green-button font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
           >
             Get Free Estimate
           </Link>

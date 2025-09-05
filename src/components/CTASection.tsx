@@ -15,7 +15,7 @@ export default function CTASection(){
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             href="/estimate" 
-            className="glass-morphism hover:scale-105 hover:shadow-glow text-white font-bold px-10 py-5 rounded-xl text-lg transition-all duration-300 touch-manipulation"
+            className="treeai-green-button hover:scale-105 hover:shadow-glow font-bold px-10 py-5 rounded-xl text-lg transition-all duration-300 touch-manipulation"
           >
             🌲 Get Free Estimate
           </Link>

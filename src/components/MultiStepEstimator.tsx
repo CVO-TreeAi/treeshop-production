@@ -60,6 +60,11 @@ export default function MultiStepEstimator() {
   const [priceRange, setPriceRange] = useState<{min: number, max: number} | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
+  // Address validation
+  const [addressSuggestions, setAddressSuggestions] = useState<string[]>([]);
+  const [isValidatingAddress, setIsValidatingAddress] = useState(false);
+  const [addressValid, setAddressValid] = useState<boolean | null>(null);
+  
   // Calculate transport based on ZIP
   const calculateTransport = (zip: string) => {
     const zipDistances: Record<string, { miles: number; minutes: number }> = {
@@ -142,7 +147,7 @@ export default function MultiStepEstimator() {
             name,
             email,
             phone,
-            address: `${streetAddress}, ${city}, ${state} ${zipCode}`,
+            address: streetAddress ? `${streetAddress}, ${city}, ${state} ${zipCode}` : `${city}, ${state} ${zipCode}`,
             zipCode: zipCode,
             acreage: 0,
             selectedPackage: 'Not Selected',
@@ -231,10 +236,51 @@ export default function MultiStepEstimator() {
     }
   };
 
+  // Address validation function
+  const validateAddress = async (address: string, city: string, state: string, zipCode: string) => {
+    if (!city || !state || !zipCode) return false;
+    
+    setIsValidatingAddress(true);
+    try {
+      const fullAddress = address ? `${address}, ${city}, ${state} ${zipCode}` : `${city}, ${state} ${zipCode}`;
+      
+      // Using a simple validation for now - check if ZIP code is valid Florida ZIP
+      const floridaZipRegex = /^3[0-4]\d{3}$/; // Florida ZIP codes start with 30-34
+      
+      if (!floridaZipRegex.test(zipCode)) {
+        setAddressValid(false);
+        return false;
+      }
+      
+      // Simple city validation - check if it's not empty and has reasonable length
+      if (city.length < 2 || city.length > 50) {
+        setAddressValid(false);
+        return false;
+      }
+      
+      setAddressValid(true);
+      return true;
+      
+    } catch (error) {
+      console.error('Address validation error:', error);
+      setAddressValid(false);
+      return false;
+    } finally {
+      setIsValidatingAddress(false);
+    }
+  };
+  
   // Navigation handlers
   const handleStep1Submit = async () => {
     if (!name || !email || !phone || !city || !state || !zipCode) {
       alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Validate address before proceeding
+    const isAddressValid = await validateAddress(streetAddress, city, state, zipCode);
+    if (!isAddressValid) {
+      alert('Please enter a valid Florida address with a valid ZIP code.');
       return;
     }
     
@@ -480,18 +526,43 @@ export default function MultiStepEstimator() {
                 type="text"
                 maxLength={5}
                 value={zipCode}
-                onChange={(e) => setZipCode(e.target.value.replace(/\D/g, ''))}
-                className="w-full bg-black border-2 border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-green-500 focus:outline-none"
+                onChange={(e) => {
+                  const newZip = e.target.value.replace(/\D/g, '');
+                  setZipCode(newZip);
+                  if (newZip.length === 5 && city && state) {
+                    validateAddress(streetAddress, city, state, newZip);
+                  }
+                }}
+                className={`w-full bg-black border-2 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none ${
+                  addressValid === false ? 'border-red-500 focus:border-red-500' : 
+                  addressValid === true ? 'border-green-500 focus:border-green-500' : 
+                  'border-gray-600 focus:border-green-500'
+                }`}
                 placeholder="32801"
               />
+              {isValidatingAddress && (
+                <div className="mt-2 text-blue-400 text-sm flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                  Validating address...
+                </div>
+              )}
+              {addressValid === false && (
+                <div className="mt-2 text-red-400 text-sm">❌ Please enter a valid Florida ZIP code</div>
+              )}
+              {addressValid === true && (
+                <div className="mt-2 text-green-400 text-sm">✅ Address validated</div>
+              )}
             </div>
           </div>
 
           <button
             onClick={handleStep1Submit}
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
+            disabled={isValidatingAddress}
+            className={`w-full font-bold py-4 px-6 rounded-lg transition-colors text-lg ${
+              isValidatingAddress ? 'bg-gray-600 cursor-not-allowed' : 'treeai-green-button hover:bg-green-700'
+            }`}
           >
-            Continue to Service Selection →
+            {isValidatingAddress ? 'Validating Address...' : 'Continue to Service Selection →'}
           </button>
         </div>
       )}

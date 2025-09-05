@@ -181,7 +181,7 @@ export default function LeadCaptureForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full treeai-green-button font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'Submitting...' : 'Get Free Estimate'}
         </button>

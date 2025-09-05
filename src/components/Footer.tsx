@@ -25,7 +25,7 @@ export default function Footer(){
           {/* CTA Button */}
           <Link 
             href="/estimate" 
-            className="btn-modern btn-primary"
+            className="treeai-green-button px-6 py-2 rounded-lg"
           >
             Get Free Estimate
           </Link>

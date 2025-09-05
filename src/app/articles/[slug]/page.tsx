@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </p>
             <Link
               href="/estimate"
-              className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              className="inline-block treeai-green-button font-semibold px-8 py-3 rounded-lg transition-colors"
             >
               Get Free Estimate
             </Link>
