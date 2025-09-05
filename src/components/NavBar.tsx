@@ -29,56 +29,27 @@ export default function NavBar(){
           
           {/* Center: Desktop Navigation */}
           <div className="hidden lg:flex flex-1 justify-center">
-            <div className="flex items-center gap-8">
-              {/* Services Dropdown */}
-              <div className="relative">
-                <button
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                  className="flex items-center gap-2 font-medium transition-colors duration-200 py-2"
-                  style={{ color: '#ffffff !important' }}
-                >
-                  <span style={{ color: '#ffffff !important' }}>Services</span>
-                  <svg className="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                
-                {/* Dropdown Menu */}
-                {servicesOpen && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-64 bg-gray-900 border border-gray-700 rounded-xl shadow-xl z-50"
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    <div className="p-2">
-                      <Link 
-                        href="/services/land-clearing" 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 group"
-                      >
-                        <div className="text-2xl">🏞️</div>
-                        <div>
-                          <div className="text-white font-semibold group-hover:text-green-400">Land Clearing</div>
-                          <div className="text-gray-400 text-sm">Complete site preparation</div>
-                        </div>
-                      </Link>
-                      <Link 
-                        href="/services/forestry-mulching" 
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 group"
-                      >
-                        <div className="text-2xl">🌲</div>
-                        <div>
-                          <div className="text-white font-semibold group-hover:text-green-400">Forestry Mulching</div>
-                          <div className="text-gray-400 text-sm">Selective vegetation management</div>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
+            <div className="flex items-center gap-6">
+              <Link 
+                href="/services/land-clearing" 
+                className="text-center font-medium transition-colors duration-200 hover:text-green-400"
+                style={{ color: '#00FF41 !important' }}
+              >
+                <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Land</div>
+                <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Clearing</div>
+              </Link>
               
-              <Link href="/locations" className="font-medium transition-colors duration-200" style={{ color: '#ffffff !important' }}>Locations</Link>
-              <Link href="/articles" className="font-medium transition-colors duration-200" style={{ color: '#ffffff !important' }}>About</Link>
+              <Link 
+                href="/services/forestry-mulching" 
+                className="text-center font-medium transition-colors duration-200 hover:text-green-400"
+                style={{ color: '#00FF41 !important' }}
+              >
+                <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Forestry</div>
+                <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Mulching</div>
+              </Link>
+              
+              <Link href="/locations" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important' }}>Service Areas</Link>
+              <Link href="/articles" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important' }}>About</Link>
             </div>
           </div>
 
@@ -159,7 +130,7 @@ export default function NavBar(){
                   className="block p-3 text-white font-medium hover:bg-gray-800 rounded-lg transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
-                  Locations
+                  Service Areas
                 </Link>
                 <Link 
                   href="/articles" 

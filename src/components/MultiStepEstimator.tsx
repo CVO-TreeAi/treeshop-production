@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 
 // FORESTRY MULCHING - ACCURATE FIXED PRICING
 const FORESTRY_PACKAGES = {
-  'small': { label: 'Small Package', description: '4" DBH & Under', pricePerAcre: 2125 },
-  'medium': { label: 'Medium Package', description: '6" DBH & Under', pricePerAcre: 2500 },
-  'large': { label: 'Large Package', description: '8" DBH & Under', pricePerAcre: 3375 },
-  'xlarge': { label: 'X-Large Package', description: '10" DBH & Under', pricePerAcre: 4250 }
+  'small': { label: 'Small Package', description: '4" DBH & Under', pricePerAcre: 2200 },
+  'medium': { label: 'Medium Package', description: '6" DBH & Under', pricePerAcre: 2596 },
+  'large': { label: 'Large Package', description: '8" DBH & Under', pricePerAcre: 3063 },
+  'xlarge': { label: 'X-Large Package', description: '10" DBH & Under', pricePerAcre: 3614 }
 };
 
 // LAND CLEARING - DAY RATE AGREEMENT (NOT FIXED PRICING)
@@ -21,7 +21,7 @@ const LAND_CLEARING_DAYS_ESTIMATE = { // Estimated days by project size
   'xlarge': { minDays: 5, maxDays: 7, label: 'X-Large Project', description: 'Heavy clearing (5-7 days)' }
 };
 
-const TRANSPORT_RATE = 350; // $350/hour round trip
+const TRANSPORT_RATE = 250; // $250/hour round trip
 const DEBRIS_TRUCKS_PER_ACRE = 13.5; // Average 12-15 trucks per acre, using midpoint
 const YARDS_PER_TRUCK = 10; // Standard dump truck capacity
 
@@ -60,10 +60,6 @@ export default function MultiStepEstimator() {
   const [priceRange, setPriceRange] = useState<{min: number, max: number} | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Address validation
-  const [addressSuggestions, setAddressSuggestions] = useState<string[]>([]);
-  const [isValidatingAddress, setIsValidatingAddress] = useState(false);
-  const [addressValid, setAddressValid] = useState<boolean | null>(null);
   
   // Calculate transport based on ZIP
   const calculateTransport = (zip: string) => {
@@ -277,10 +273,9 @@ export default function MultiStepEstimator() {
       return;
     }
     
-    // Validate address before proceeding
-    const isAddressValid = await validateAddress(streetAddress, city, state, zipCode);
-    if (!isAddressValid) {
-      alert('Please enter a valid Florida address with a valid ZIP code.');
+    // Basic ZIP validation for Florida
+    if (!/^3[0-4]\d{3}$/.test(zipCode)) {
+      alert('Please enter a valid Florida ZIP code.');
       return;
     }
     
@@ -526,43 +521,18 @@ export default function MultiStepEstimator() {
                 type="text"
                 maxLength={5}
                 value={zipCode}
-                onChange={(e) => {
-                  const newZip = e.target.value.replace(/\D/g, '');
-                  setZipCode(newZip);
-                  if (newZip.length === 5 && city && state) {
-                    validateAddress(streetAddress, city, state, newZip);
-                  }
-                }}
-                className={`w-full bg-black border-2 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none ${
-                  addressValid === false ? 'border-red-500 focus:border-red-500' : 
-                  addressValid === true ? 'border-green-500 focus:border-green-500' : 
-                  'border-gray-600 focus:border-green-500'
-                }`}
+                onChange={(e) => setZipCode(e.target.value.replace(/\D/g, ''))}
+                className="w-full bg-black border-2 border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-green-500 focus:outline-none"
                 placeholder="32801"
               />
-              {isValidatingAddress && (
-                <div className="mt-2 text-blue-400 text-sm flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-                  Validating address...
-                </div>
-              )}
-              {addressValid === false && (
-                <div className="mt-2 text-red-400 text-sm">❌ Please enter a valid Florida ZIP code</div>
-              )}
-              {addressValid === true && (
-                <div className="mt-2 text-green-400 text-sm">✅ Address validated</div>
-              )}
             </div>
           </div>
 
           <button
             onClick={handleStep1Submit}
-            disabled={isValidatingAddress}
-            className={`w-full font-bold py-4 px-6 rounded-lg transition-colors text-lg ${
-              isValidatingAddress ? 'bg-gray-600 cursor-not-allowed' : 'treeai-green-button hover:bg-green-700'
-            }`}
+            className="w-full treeai-green-button font-bold py-4 px-6 rounded-lg transition-colors text-lg"
           >
-            {isValidatingAddress ? 'Validating Address...' : 'Continue to Service Selection →'}
+            Continue to Service Selection →
           </button>
         </div>
       )}

@@ -302,6 +302,18 @@ button.treeai-green-button,
   text-decoration-color: #000000 !important;
 }
 
+/* FORCE ALL NAVIGATION TEXT TO BE VISIBLE */
+header nav a,
+header nav a *,
+header nav Link,
+header nav Link *,
+header nav button,
+header nav button * {
+  color: #00FF41 !important;
+  -webkit-text-fill-color: #00FF41 !important;
+  text-shadow: none !important;
+}
+
 /* NUCLEAR OPTION - Force black text on green buttons */
 .treeai-green-button,
 .treeai-green-button:link,

@@ -4,10 +4,10 @@ import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'TreeAI Forestry Services - Florida Locations | Forestry Mulching & Land Clearing',
-  description: 'Professional forestry mulching and land clearing services across Florida. Serving 50+ cities with AI-powered estimates, DBH selective clearing, and expert results.',
+  title: 'TreeShop Service Areas - Florida Forestry Mulching & Land Clearing | Central Florida',
+  description: 'TreeShop provides professional forestry mulching and land clearing services across Central Florida. Serving 30+ cities with expert equipment and transparent pricing.',
   alternates: {
-    canonical: 'https://treeai.us/treeshop/locations'
+    canonical: 'https://treeshop.app/locations'
   }
 };
 
@@ -83,35 +83,35 @@ export default function LocationsPage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            TreeAI Forestry Services <span className="text-amber-500">Across Florida</span>
+            TreeShop <span className="text-green-400">Service Areas</span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-            Professional forestry mulching and land clearing services in <strong>{totalCities}+ Florida cities</strong>. AI-powered estimates, DBH selective clearing, and expert results for your property.
+            Professional forestry mulching and land clearing services across <strong>{totalCities}+ Central Florida cities</strong>. Expert equipment, transparent pricing, and reliable results for your property.
           </p>
           <Link 
             href="/estimate" 
-            className="bg-amber-600 hover:bg-amber-500 text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
+            className="treeai-green-button font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
           >
-            Get AI-Powered Estimate
+            Get Free Estimate
           </Link>
         </div>
 
         {/* Service Coverage Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <div className="bg-gray-900 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-amber-400">{totalCities}+</div>
+            <div className="text-2xl font-bold text-green-400">{totalCities}+</div>
             <div className="text-sm text-gray-300">Cities Served</div>
           </div>
           <div className="bg-gray-900 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-amber-400">4</div>
+            <div className="text-2xl font-bold text-green-400">4</div>
             <div className="text-sm text-gray-300">Service Regions</div>
           </div>
           <div className="bg-gray-900 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-amber-400">AI</div>
-            <div className="text-sm text-gray-300">Powered Estimates</div>
+            <div className="text-2xl font-bold text-green-400">2016</div>
+            <div className="text-sm text-gray-300">Since</div>
           </div>
           <div className="bg-gray-900 rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold text-amber-400">DBH</div>
+            <div className="text-2xl font-bold text-green-400">DBH</div>
             <div className="text-sm text-gray-300">Selective Clearing</div>
           </div>
         </div>
@@ -129,14 +129,14 @@ export default function LocationsPage() {
                 <Link 
                   key={city.slug}
                   href={`/locations/${city.slug}`}
-                  className="bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-amber-500 rounded-lg p-4 transition-all duration-300 group"
+                  className="bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-green-500 rounded-lg p-4 transition-all duration-300 group"
                 >
-                  <h3 className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors mb-1">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-green-400 transition-colors mb-1">
                     {city.name}
                   </h3>
                   <p className="text-sm text-gray-400 mb-2">{city.county}</p>
-                  <div className="text-xs text-amber-500 group-hover:text-amber-400">
-                    Forestry Mulching • Land Clearing • Stump Grinding
+                  <div className="text-xs text-green-400 group-hover:text-green-300">
+                    Forestry Mulching • Land Clearing
                   </div>
                 </Link>
               ))}
@@ -144,24 +144,29 @@ export default function LocationsPage() {
           </section>
         ))}
 
-        {/* Services Offered */}
+        {/* Services Available */}
         <section className="mb-12 bg-gray-900 rounded-lg p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Services Available in All Locations</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-4xl mb-4">🌲</div>
-              <h3 className="text-xl font-semibold text-amber-400 mb-2">Forestry Mulching</h3>
-              <p className="text-gray-300 text-sm">AI-powered DBH selective clearing with 4", 6", 8" packages. Preserves desired trees, creates natural mulch ground cover.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-white">TreeShop Services Available in All Areas</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-800 rounded-lg p-6 text-center">
+              <h3 className="text-2xl font-semibold text-green-400 mb-4">Forestry Mulching</h3>
+              <p className="text-gray-300 text-sm mb-4">Selective vegetation management with DBH packages (4", 6", 8", 10"). Preserves mature trees, creates natural mulch ground cover.</p>
+              <div className="text-xs text-gray-400 space-y-1">
+                <div>• Small Package: 4" DBH & Under</div>
+                <div>• Medium Package: 6" DBH & Under</div>
+                <div>• Large Package: 8" DBH & Under</div>
+                <div>• X-Large Package: 10" DBH & Under</div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🚜</div>
-              <h3 className="text-xl font-semibold text-amber-400 mb-2">Land Clearing</h3>
-              <p className="text-gray-300 text-sm">Complete site preparation with grubbing and root raking. Solid, construction-ready ground for development projects.</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🪵</div>
-              <h3 className="text-xl font-semibold text-amber-400 mb-2">Stump Grinding</h3>
-              <p className="text-gray-300 text-sm">Professional stump removal and grinding services. Clean finish for landscaping and property improvement projects.</p>
+            <div className="bg-gray-800 rounded-lg p-6 text-center">
+              <h3 className="text-2xl font-semibold text-green-400 mb-4">Land Clearing</h3>
+              <p className="text-gray-300 text-sm mb-4">Complete site preparation for construction and development. Day rate agreements with transparent pricing.</p>
+              <div className="text-xs text-gray-400 space-y-1">
+                <div>• Site preparation and grubbing</div>
+                <div>• Root raking and debris removal</div>
+                <div>• Construction-ready ground</div>
+                <div>• Day rate: $4,500/day</div>
+              </div>
             </div>
           </div>
         </section>
