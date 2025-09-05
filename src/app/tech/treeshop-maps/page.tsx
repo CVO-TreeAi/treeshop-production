@@ -132,7 +132,7 @@ export default function TreeShopMapsPage() {
           <div className="bg-gray-900 border border-gray-700 rounded-lg p-8">
             <h3 className="text-2xl font-bold text-white mb-4">Get Early Access</h3>
             <p className="text-gray-300 mb-6">
-              TreeShop Maps is currently in App Store review. Join our waitlist to be notified when it's available.
+              TreeShop Maps is currently in App Store review. Contact TreeShop for early access information.
             </p>
             <Link 
               href="/estimate"

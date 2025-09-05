@@ -28,7 +28,7 @@ export default function TechPage() {
       status: 'In Development',
       description: 'Complete business operations platform connecting customer websites directly to field operations.',
       features: ['Live project updates', 'Sales automation', 'Customer communication', 'Business intelligence'],
-      cta: 'Join Waitlist',
+      cta: 'Contact TreeShop',
       href: '#treeshopops'
     }
   ];
