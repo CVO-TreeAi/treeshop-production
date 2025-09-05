@@ -302,13 +302,11 @@ button.treeai-green-button,
   text-decoration-color: #000000 !important;
 }
 
-/* NUCLEAR NAVIGATION TEXT OVERRIDE */
-header *,
-nav *,
-.hidden *,
-[class*="hidden"] *,
-[class*="lg:flex"] *,
-[class*="justify-center"] * {
+/* SELECTIVE NAVIGATION TEXT OVERRIDE */
+header nav a,
+header nav button,
+nav a,
+nav button {
   color: #00FF41 !important;
   -webkit-text-fill-color: #00FF41 !important;
   text-shadow: none !important;

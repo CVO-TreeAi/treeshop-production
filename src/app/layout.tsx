@@ -4,6 +4,7 @@ import Script from 'next/script';
 import "./globals.css";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import ConsentBanner from "@/components/ConsentBanner";
+import DevelopmentBanner from "@/components/DevelopmentBanner";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 
 const geistSans = Geist({
