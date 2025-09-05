@@ -48,9 +48,9 @@ export default function NavBar(){
                 <div className="text-sm leading-tight" style={{ color: '#00FF41 !important' }}>Mulching</div>
               </Link>
               
-              <Link href="/tech" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>Technology</Link>
-              <Link href="/locations" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>Service Areas</Link>
-              <Link href="/articles" className="font-medium transition-colors duration-200 hover:text-green-400" style={{ color: '#00FF41 !important', WebkitTextFillColor: '#00FF41 !important' }}>About</Link>
+              <Link href="/tech" className="nav-link-force-green font-medium transition-colors duration-200 hover:text-green-400">Technology</Link>
+              <Link href="/locations" className="nav-link-force-green font-medium transition-colors duration-200 hover:text-green-400">Service Areas</Link>
+              <Link href="/articles" className="nav-link-force-green font-medium transition-colors duration-200 hover:text-green-400">About</Link>
             </div>
           </div>
 

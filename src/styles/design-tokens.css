@@ -302,29 +302,35 @@ button.treeai-green-button,
   text-decoration-color: #000000 !important;
 }
 
-/* FORCE ALL NAVIGATION TEXT TO BE VISIBLE */
-header nav a,
-header nav a *,
-header nav Link,
-header nav Link *,
-header nav button,
-header nav button *,
-nav a,
-nav a *,
-nav Link,
-nav Link *,
-nav button,
-nav button * {
+/* NUCLEAR NAVIGATION TEXT OVERRIDE */
+header *,
+nav *,
+.hidden *,
+[class*="hidden"] *,
+[class*="lg:flex"] *,
+[class*="justify-center"] * {
   color: #00FF41 !important;
   -webkit-text-fill-color: #00FF41 !important;
   text-shadow: none !important;
 }
 
-/* Specific navigation overrides */
-.hidden.lg\\:flex a,
-.hidden.lg\\:flex Link {
+/* Target specific navigation elements */
+header nav div div a {
   color: #00FF41 !important;
   -webkit-text-fill-color: #00FF41 !important;
+}
+
+/* MAXIMUM SPECIFICITY OVERRIDE */
+.nav-link-force-green,
+.nav-link-force-green:link,
+.nav-link-force-green:visited,
+.nav-link-force-green:hover,
+.nav-link-force-green:active,
+.nav-link-force-green:focus {
+  color: #00FF41 !important;
+  -webkit-text-fill-color: #00FF41 !important;
+  text-shadow: none !important;
+  background-clip: unset !important;
 }
 
 /* NUCLEAR OPTION - Force black text on green buttons */

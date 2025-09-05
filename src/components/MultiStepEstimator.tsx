@@ -383,13 +383,8 @@ export default function MultiStepEstimator() {
         timestamp: new Date().toISOString()
       });
       
-      // Show success message
-      alert('Your estimate request has been submitted! We\'ll contact you within 24 hours.');
-      
-      // Redirect to home page after short delay
-      setTimeout(() => {
-        router.push('/');
-      }, 1500);
+      // Redirect to thank you page with conversion tracking
+      router.push('/thank-you');
     } else {
       // Log error for debugging
       console.error('❌ Failed to submit lead');
