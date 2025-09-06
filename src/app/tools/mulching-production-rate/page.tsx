@@ -236,17 +236,38 @@ export default function MulchingProductionRatePage() {
       const resultsGrid = document.getElementById('packageResults');
       
       if (!machineEl || !modeEl || !daysEl || !hoursPerDayEl || !dbhEl || !rateEl || !costEl || !resultsGrid) {
+        console.log('Max mode elements missing:', {
+          machineEl: !!machineEl,
+          modeEl: !!modeEl,
+          daysEl: !!daysEl,
+          hoursPerDayEl: !!hoursPerDayEl,
+          dbhEl: !!dbhEl,
+          rateEl: !!rateEl,
+          costEl: !!costEl,
+          resultsGrid: !!resultsGrid
+        });
         setTimeout(updateResults, 100);
         return;
       }
       
-      const gpm = parseFloat(machineEl.value) || 30;
+      const gpm = parseFloat(machineEl.value);
       const isPlugAndPlay = modeEl.value === 'fusion';
       const availableDays = parseFloat(daysEl.value) || 5;
       const hoursPerDay = parseFloat(hoursPerDayEl.value) || 8;
       const maxDbh = parseFloat(dbhEl.value) || 6;
       const hourlyRate = parseFloat(rateEl.value) || 500;
       const hourlyOperatingCost = parseFloat(costEl.value) || 175;
+      
+      // If no machine selected, show prompt
+      if (!gpm || isNaN(gpm)) {
+        resultsGrid.innerHTML = `
+          <div class="result-card" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <div style="font-size: 1.2rem; color: #E0E0E0; margin-bottom: 10px;">🌲</div>
+            <div style="font-size: 1rem; color: #B0B0B0;">Select your machine to see maximum capacity and profit projections</div>
+          </div>
+        `;
+        return;
+      }
       
       const productionRate = calculateProductionRate(gpm, isPlugAndPlay);
       const totalAvailableHours = availableDays * hoursPerDay;
@@ -268,7 +289,7 @@ export default function MulchingProductionRatePage() {
       const dailyOperatingCosts = dailyHours * hourlyOperatingCost;
       const dailyProfit = dailyRevenue - dailyOperatingCosts;
       
-      const machineName = machineEl.options[machineEl.selectedIndex].text;
+      const machineName = machineEl.selectedIndex > 0 ? machineEl.options[machineEl.selectedIndex].text : 'Machine';
       const modeText = isPlugAndPlay ? 'Plug-n-Play' : 'Standard';
       
       resultsGrid.innerHTML = `
@@ -760,9 +781,9 @@ export default function MulchingProductionRatePage() {
                         <option value="115">Fecon 325VST - 115 GPM</option>
                       </optgroup>
                     </select>
-                    <select id="compareMode1" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                    <select id="compareMode1" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion" selected>Plug-n-Play</option>
+                      <option value="fusion">Plug-n-Play</option>
                     </select>
                   </div>
                   <div className="input-group">
@@ -795,9 +816,9 @@ export default function MulchingProductionRatePage() {
                         <option value="115">Fecon 325VST - 115 GPM</option>
                       </optgroup>
                     </select>
-                    <select id="compareMode2" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                    <select id="compareMode2" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion" selected>Plug-n-Play</option>
+                      <option value="fusion">Plug-n-Play</option>
                     </select>
                   </div>
                   <div className="input-group">
@@ -830,9 +851,9 @@ export default function MulchingProductionRatePage() {
                         <option value="115">Fecon 325VST - 115 GPM</option>
                       </optgroup>
                     </select>
-                    <select id="compareMode3" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                    <select id="compareMode3" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion" selected>Plug-n-Play</option>
+                      <option value="fusion">Plug-n-Play</option>
                     </select>
                   </div>
                 </div>
@@ -894,9 +915,9 @@ export default function MulchingProductionRatePage() {
                         <option value="115">Fecon 325VST - 115 GPM</option>
                       </optgroup>
                     </select>
-                    <select id="maxMode" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                    <select id="maxMode" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion" selected>Plug-n-Play</option>
+                      <option value="fusion">Plug-n-Play</option>
                     </select>
                   </div>
                   <div className="input-group">
