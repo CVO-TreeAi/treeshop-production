@@ -759,7 +759,8 @@ export default function MulchingProductionRatePage() {
                   </select>
                 </div>
 
-                <div className="input-row">
+                {/* Compact input layout */}
+                <div className="input-row-triple">
                   <div className="input-group">
                     <label htmlFor="selectedMachine">Selected Machine</label>
                     <div id="selectedMachine" style={{ 
@@ -775,22 +776,22 @@ export default function MulchingProductionRatePage() {
                     <input type="hidden" id="machineGpm" defaultValue="30" />
                   </div>
                   <div className="input-group">
-                    <label htmlFor="projectSize">Project Size (Acres)</label>
+                    <label htmlFor="projectSize">Acres</label>
                     <input type="number" id="projectSize" min="0.1" max="100" defaultValue="1" step="0.1" />
                   </div>
                   <div className="input-group">
-                    <label htmlFor="maxDbh">Max DBH (inches)</label>
+                    <label htmlFor="maxDbh">Max DBH</label>
                     <input type="number" id="maxDbh" min="1" max="30" defaultValue="6" step="0.5" />
                   </div>
                 </div>
 
                 <div className="input-row">
                   <div className="input-group">
-                    <label htmlFor="hourlyRate">Hourly Billing Rate ($)</label>
+                    <label htmlFor="hourlyRate">Rate ($/hr)</label>
                     <input type="number" id="hourlyRate" min="100" max="1000" defaultValue="500" step="25" />
                   </div>
                   <div className="input-group">
-                    <label htmlFor="hourlyOperatingCost">Operating Cost ($)</label>
+                    <label htmlFor="hourlyOperatingCost">Cost ($/hr)</label>
                     <input type="number" id="hourlyOperatingCost" min="50" max="500" defaultValue="175" step="25" />
                   </div>
                 </div>
