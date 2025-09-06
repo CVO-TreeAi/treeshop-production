@@ -345,10 +345,32 @@ export default function MulchingProductionRatePage() {
     function handleMachineSelection() {
       const selector = document.getElementById('machineSelector') as HTMLSelectElement;
       const gpmInput = document.getElementById('machineGpm') as HTMLInputElement;
+      const gpmGroup = document.getElementById('gpmInputGroup');
+      const selectedMachine = document.getElementById('selectedMachine');
       
       if (selector?.value && gpmInput) {
+        // Set the GPM value
         gpmInput.value = selector.value;
+        
+        // Show selected machine, hide manual GPM input
+        if (selectedMachine && gpmGroup) {
+          const machineName = selector.options[selector.selectedIndex].text;
+          selectedMachine.innerHTML = `
+            <div style="padding: 12px 14px; background: #2A2A2A; border: 2px solid var(--tech-green); border-radius: 8px; color: var(--tech-green); font-weight: 600;">
+              Selected: ${machineName}
+            </div>
+          `;
+          selectedMachine.style.display = 'block';
+          gpmGroup.style.display = 'none';
+        }
+        
         updateResults();
+      } else {
+        // Show manual GPM input when no machine selected
+        if (selectedMachine && gpmGroup) {
+          selectedMachine.style.display = 'none';
+          gpmGroup.style.display = 'block';
+        }
       }
     }
 
@@ -690,33 +712,47 @@ export default function MulchingProductionRatePage() {
               {/* Single Mode Inputs */}
               <div id="singleModeInputs" className="mode-inputs">
                 <div className="input-group" style={{ marginBottom: '25px' }}>
-                  <label htmlFor="machineSelector">Quick Machine Selector (Auto-fills GPM)</label>
+                  <label htmlFor="machineSelector">Select Your Machine</label>
                   <select id="machineSelector" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
                     <option value="">Select Machine (or enter GPM manually below)</option>
                     <optgroup label="CATERPILLAR TRACK LOADERS">
-                      <option value="30">CAT 265 - 30 GPM High Flow</option>
-                      <option value="34">CAT 265 - 34 GPM Max High Flow</option>
-                      <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                      <option value="34">CAT 265</option>
+                      <option value="34">CAT 275</option>
+                      <option value="34">CAT 285</option>
+                      <option value="32">CAT 299D3</option>
+                      <option value="40">CAT 275 XE</option>
+                      <option value="40">CAT 285 XE</option>
+                      <option value="40">CAT 299D3 XE</option>
+                      <option value="40">CAT 299D3 XE Land Management</option>
                     </optgroup>
                     <optgroup label="BOBCAT TRACK LOADERS">
-                      <option value="24">Bobcat T770 - 24 GPM Standard</option>
-                      <option value="37">Bobcat T770 - 37 GPM High Flow</option>
-                      <option value="24">Bobcat T870 - 24 GPM Standard</option>
-                      <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                      <option value="30.3">Bobcat T76</option>
+                      <option value="30.5">Bobcat T740</option>
+                      <option value="36.6">Bobcat T770</option>
+                      <option value="36.6">Bobcat T86</option>
+                      <option value="42">Bobcat T86 (Super Flow)</option>
+                      <option value="36.6">Bobcat T870</option>
                     </optgroup>
-                    <optgroup label="JOHN DEERE TRACK LOADERS">
-                      <option value="41">John Deere 333G - 41.1 GPM</option>
+                    <optgroup label="ASV TRACK LOADERS">
+                      <option value="30.5">ASV VT-75</option>
+                      <option value="34.3">ASV VT-80</option>
+                      <option value="34.3">ASV VT-80 Forestry</option>
+                      <option value="36.8">ASV VT-100</option>
+                      <option value="36.8">ASV VT-100 Forestry</option>
+                      <option value="50">ASV RT-135</option>
+                      <option value="50">ASV RT-135 Forestry</option>
                     </optgroup>
                     <optgroup label="KUBOTA TRACK LOADERS">
-                      <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                      <option value="29.3">Kubota SVL75-2</option>
+                      <option value="40">Kubota SVL95-2</option>
                     </optgroup>
                     <optgroup label="FECON CARRIERS">
-                      <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                      <option value="80">Fecon FTX200 - 80 GPM</option>
-                      <option value="115">Fecon FTX300 - 115 GPM</option>
-                      <option value="50">Fecon 135VRT - 50 GPM</option>
-                      <option value="80">Fecon 225VST - 80 GPM</option>
-                      <option value="115">Fecon 325VST - 115 GPM</option>
+                      <option value="60">Fecon FTX150-2</option>
+                      <option value="80">Fecon FTX200</option>
+                      <option value="115">Fecon FTX300</option>
+                      <option value="50">Fecon 135VRT</option>
+                      <option value="80">Fecon 225VST</option>
+                      <option value="115">Fecon 325VST</option>
                     </optgroup>
                   </select>
                 </div>
@@ -724,7 +760,10 @@ export default function MulchingProductionRatePage() {
                 <div className="input-row-triple">
                   <div className="input-group">
                     <label htmlFor="machineGpm">Machine GPM (High Flow)</label>
-                    <input type="number" id="machineGpm" min="20" max="120" defaultValue="30" step="1" />
+                    <div id="selectedMachine" style={{ display: 'none' }}></div>
+                    <div id="gpmInputGroup">
+                      <input type="number" id="machineGpm" min="20" max="120" defaultValue="30" step="1" />
+                    </div>
                   </div>
                   <div className="input-group">
                     <label htmlFor="projectSize">Project Size (Acres)</label>
