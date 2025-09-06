@@ -88,7 +88,7 @@ export default function MulchingProductionRatePage() {
           </div>
         </div>
         <div class="result-card fusion">
-          <div class="result-title">Plug-n-Play Technology</div>
+          <div class="result-title">Fecon Fusion Technology</div>
           <div class="result-value">${results.fusionTime.toFixed(1)}h</div>
           <div class="result-details">
             <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Days Needed:</strong> ${Math.ceil(results.fusionTime / 6).toFixed(0)} days</div>
@@ -155,7 +155,7 @@ export default function MulchingProductionRatePage() {
         return {
           ...machine,
           gpm,
-          machineName: machineName + (isPlugAndPlay ? ' (Plug-n-Play)' : ' (Standard)'),
+          machineName: machineName + (isPlugAndPlay ? ' (Fecon Fusion Upgrade)' : ' (Standard)'),
           time,
           operatingCosts,
           isPlugAndPlay
@@ -290,7 +290,7 @@ export default function MulchingProductionRatePage() {
       const dailyProfit = dailyRevenue - dailyOperatingCosts;
       
       const machineName = machineEl.selectedIndex > 0 ? machineEl.options[machineEl.selectedIndex].text : 'Machine';
-      const modeText = isPlugAndPlay ? 'Plug-n-Play' : 'Standard';
+      const modeText = isPlugAndPlay ? 'Fecon Fusion Upgrade' : 'Standard';
       
       resultsGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, var(--tech-green), #38A169); border-radius: 12px; color: white;">
@@ -748,13 +748,22 @@ export default function MulchingProductionRatePage() {
                       <option value="29.3">Kubota SVL75-2</option>
                       <option value="40">Kubota SVL95-2</option>
                     </optgroup>
-                    <optgroup label="FECON CARRIERS">
+                    <optgroup label="PURPOSE-BUILT FORESTRY TRACTORS">
                       <option value="60">Fecon FTX150-2</option>
                       <option value="80">Fecon FTX200</option>
                       <option value="115">Fecon FTX300</option>
                       <option value="50">Fecon 135VRT</option>
                       <option value="80">Fecon 225VST</option>
                       <option value="115">Fecon 325VST</option>
+                    </optgroup>
+                    <optgroup label="WHEEL LOADERS">
+                      <option value="91">Barko 930B</option>
+                    </optgroup>
+                    <optgroup label="SPECIALIZED FORESTRY MACHINES">
+                      <option value="60">SuperTrak SK200TR</option>
+                      <option value="42">PrimeTech PT-175</option>
+                      <option value="98">PrimeTech PT-300</option>
+                      <option value="153">PrimeTech PT-475</option>
                     </optgroup>
                   </select>
                 </div>
@@ -835,7 +844,7 @@ export default function MulchingProductionRatePage() {
                         <option value="29.3">Kubota SVL75-2</option>
                         <option value="40">Kubota SVL95-2</option>
                       </optgroup>
-                      <optgroup label="FECON CARRIERS">
+                      <optgroup label="PURPOSE-BUILT FORESTRY TRACTORS">
                         <option value="60">Fecon FTX150-2</option>
                         <option value="80">Fecon FTX200</option>
                         <option value="115">Fecon FTX300</option>
@@ -843,10 +852,19 @@ export default function MulchingProductionRatePage() {
                         <option value="80">Fecon 225VST</option>
                         <option value="115">Fecon 325VST</option>
                       </optgroup>
+                      <optgroup label="WHEEL LOADERS">
+                        <option value="91">Barko 930B</option>
+                      </optgroup>
+                      <optgroup label="SPECIALIZED FORESTRY MACHINES">
+                        <option value="60">SuperTrak SK200TR</option>
+                        <option value="42">PrimeTech PT-175</option>
+                        <option value="98">PrimeTech PT-300</option>
+                        <option value="153">PrimeTech PT-475</option>
+                      </optgroup>
                     </select>
                     <select id="compareMode1" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion">Plug-n-Play</option>
+                      <option value="fusion">Fecon Fusion Upgrade</option>
                     </select>
                   </div>
                   <div className="input-group">
@@ -884,7 +902,7 @@ export default function MulchingProductionRatePage() {
                         <option value="29.3">Kubota SVL75-2</option>
                         <option value="40">Kubota SVL95-2</option>
                       </optgroup>
-                      <optgroup label="FECON CARRIERS">
+                      <optgroup label="PURPOSE-BUILT FORESTRY TRACTORS">
                         <option value="60">Fecon FTX150-2</option>
                         <option value="80">Fecon FTX200</option>
                         <option value="115">Fecon FTX300</option>
@@ -892,10 +910,19 @@ export default function MulchingProductionRatePage() {
                         <option value="80">Fecon 225VST</option>
                         <option value="115">Fecon 325VST</option>
                       </optgroup>
+                      <optgroup label="WHEEL LOADERS">
+                        <option value="91">Barko 930B</option>
+                      </optgroup>
+                      <optgroup label="SPECIALIZED FORESTRY MACHINES">
+                        <option value="60">SuperTrak SK200TR</option>
+                        <option value="42">PrimeTech PT-175</option>
+                        <option value="98">PrimeTech PT-300</option>
+                        <option value="153">PrimeTech PT-475</option>
+                      </optgroup>
                     </select>
                     <select id="compareMode2" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion">Plug-n-Play</option>
+                      <option value="fusion">Fecon Fusion Upgrade</option>
                     </select>
                   </div>
                   <div className="input-group">
@@ -933,7 +960,7 @@ export default function MulchingProductionRatePage() {
                         <option value="29.3">Kubota SVL75-2</option>
                         <option value="40">Kubota SVL95-2</option>
                       </optgroup>
-                      <optgroup label="FECON CARRIERS">
+                      <optgroup label="PURPOSE-BUILT FORESTRY TRACTORS">
                         <option value="60">Fecon FTX150-2</option>
                         <option value="80">Fecon FTX200</option>
                         <option value="115">Fecon FTX300</option>
@@ -941,10 +968,19 @@ export default function MulchingProductionRatePage() {
                         <option value="80">Fecon 225VST</option>
                         <option value="115">Fecon 325VST</option>
                       </optgroup>
+                      <optgroup label="WHEEL LOADERS">
+                        <option value="91">Barko 930B</option>
+                      </optgroup>
+                      <optgroup label="SPECIALIZED FORESTRY MACHINES">
+                        <option value="60">SuperTrak SK200TR</option>
+                        <option value="42">PrimeTech PT-175</option>
+                        <option value="98">PrimeTech PT-300</option>
+                        <option value="153">PrimeTech PT-475</option>
+                      </optgroup>
                     </select>
                     <select id="compareMode3" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion">Plug-n-Play</option>
+                      <option value="fusion">Fecon Fusion Upgrade</option>
                     </select>
                   </div>
                 </div>
@@ -1011,7 +1047,7 @@ export default function MulchingProductionRatePage() {
                         <option value="29.3">Kubota SVL75-2</option>
                         <option value="40">Kubota SVL95-2</option>
                       </optgroup>
-                      <optgroup label="FECON CARRIERS">
+                      <optgroup label="PURPOSE-BUILT FORESTRY TRACTORS">
                         <option value="60">Fecon FTX150-2</option>
                         <option value="80">Fecon FTX200</option>
                         <option value="115">Fecon FTX300</option>
@@ -1019,10 +1055,19 @@ export default function MulchingProductionRatePage() {
                         <option value="80">Fecon 225VST</option>
                         <option value="115">Fecon 325VST</option>
                       </optgroup>
+                      <optgroup label="WHEEL LOADERS">
+                        <option value="91">Barko 930B</option>
+                      </optgroup>
+                      <optgroup label="SPECIALIZED FORESTRY MACHINES">
+                        <option value="60">SuperTrak SK200TR</option>
+                        <option value="42">PrimeTech PT-175</option>
+                        <option value="98">PrimeTech PT-300</option>
+                        <option value="153">PrimeTech PT-475</option>
+                      </optgroup>
                     </select>
                     <select id="maxMode" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
                       <option value="standard">Standard Mulcher</option>
-                      <option value="fusion">Plug-n-Play</option>
+                      <option value="fusion">Fecon Fusion Upgrade</option>
                     </select>
                   </div>
                   <div className="input-group">
@@ -1059,7 +1104,7 @@ export default function MulchingProductionRatePage() {
             
               <div className="results-grid" id="packageResults">
                 <div className="result-card">Loading Standard Mulcher...</div>
-                <div className="result-card fusion">Loading Plug-n-Play Technology...</div>
+                <div className="result-card fusion">Loading Fecon Fusion Technology...</div>
               </div>
 
             </div>
