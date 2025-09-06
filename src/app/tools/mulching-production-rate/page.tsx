@@ -452,8 +452,13 @@ export default function MulchingProductionRatePage() {
         document.getElementById('hourlyRateMax')?.addEventListener('input', updateResults);
         document.getElementById('hourlyOperatingCostMax')?.addEventListener('input', updateResults);
         
-        // Initialize with single mode
+        // Initialize with single mode and trigger machine selection check
         switchMode('single');
+        
+        // Check if machine is already selected on page load
+        setTimeout(() => {
+          handleMachineSelection();
+        }, 200);
       }
     }, 100);
     
