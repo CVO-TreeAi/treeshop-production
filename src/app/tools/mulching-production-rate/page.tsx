@@ -355,7 +355,7 @@ export default function MulchingProductionRatePage() {
           // Update selected machine display
           const machineName = selector.options[selector.selectedIndex].text;
           selectedMachine.innerHTML = machineName;
-          selectedMachine.style.color = 'var(--tech-green)';
+          selectedMachine.style.color = '#FFFFFF';
           selectedMachine.style.borderColor = 'var(--tech-green)';
           selectedMachine.style.fontWeight = '600';
         } else {
