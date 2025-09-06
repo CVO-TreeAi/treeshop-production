@@ -756,43 +756,43 @@ export default function MulchingProductionRatePage() {
                     <select id="compareMachine1" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
                       <option value="">Select Current Machine</option>
                       <optgroup label="CATERPILLAR TRACK LOADERS">
-                        <option value="34">CAT 265 - 34 GPM High Flow</option>
-                        <option value="34">CAT 275 - 34 GPM High Flow</option>
-                        <option value="34">CAT 285 - 34 GPM High Flow</option>
-                        <option value="32">CAT 299D3 - 32 GPM High Flow</option>
-                        <option value="40">CAT 275 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 285 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE Land Management - 40 GPM High Flow</option>
+                        <option value="34">CAT 265</option>
+                        <option value="34">CAT 275</option>
+                        <option value="34">CAT 285</option>
+                        <option value="32">CAT 299D3</option>
+                        <option value="40">CAT 275 XE</option>
+                        <option value="40">CAT 285 XE</option>
+                        <option value="40">CAT 299D3 XE</option>
+                        <option value="40">CAT 299D3 XE Land Management</option>
                       </optgroup>
                       <optgroup label="BOBCAT TRACK LOADERS">
-                        <option value="30.3">Bobcat T76 - 30.3 GPM High Flow</option>
-                        <option value="30.5">Bobcat T740 - 30.5 GPM High Flow</option>
-                        <option value="36.6">Bobcat T770 - 36.6 GPM High Flow</option>
-                        <option value="36.6">Bobcat T86 - 36.6 GPM High Flow</option>
-                        <option value="42">Bobcat T86 (Super Flow) - 42 GPM High Flow</option>
-                        <option value="36.6">Bobcat T870 - 36.6 GPM High Flow</option>
+                        <option value="30.3">Bobcat T76</option>
+                        <option value="30.5">Bobcat T740</option>
+                        <option value="36.6">Bobcat T770</option>
+                        <option value="36.6">Bobcat T86</option>
+                        <option value="42">Bobcat T86 (Super Flow)</option>
+                        <option value="36.6">Bobcat T870</option>
                       </optgroup>
                       <optgroup label="ASV TRACK LOADERS">
-                        <option value="30.5">ASV VT-75 - 30.5 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 - 34.3 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 Forestry - 34.3 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 - 36.8 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 Forestry - 36.8 GPM High Flow</option>
-                        <option value="50">ASV RT-135 - 50 GPM High Flow</option>
-                        <option value="50">ASV RT-135 Forestry - 50 GPM High Flow</option>
+                        <option value="30.5">ASV VT-75</option>
+                        <option value="34.3">ASV VT-80</option>
+                        <option value="34.3">ASV VT-80 Forestry</option>
+                        <option value="36.8">ASV VT-100</option>
+                        <option value="36.8">ASV VT-100 Forestry</option>
+                        <option value="50">ASV RT-135</option>
+                        <option value="50">ASV RT-135 Forestry</option>
                       </optgroup>
                       <optgroup label="KUBOTA TRACK LOADERS">
-                        <option value="29.3">Kubota SVL75-2 - 29.3 GPM High Flow</option>
-                        <option value="40">Kubota SVL95-2 - 40 GPM High Flow</option>
+                        <option value="29.3">Kubota SVL75-2</option>
+                        <option value="40">Kubota SVL95-2</option>
                       </optgroup>
                       <optgroup label="FECON CARRIERS">
-                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                        <option value="80">Fecon FTX200 - 80 GPM</option>
-                        <option value="115">Fecon FTX300 - 115 GPM</option>
-                        <option value="50">Fecon 135VRT - 50 GPM</option>
-                        <option value="80">Fecon 225VST - 80 GPM</option>
-                        <option value="115">Fecon 325VST - 115 GPM</option>
+                        <option value="60">Fecon FTX150-2</option>
+                        <option value="80">Fecon FTX200</option>
+                        <option value="115">Fecon FTX300</option>
+                        <option value="50">Fecon 135VRT</option>
+                        <option value="80">Fecon 225VST</option>
+                        <option value="115">Fecon 325VST</option>
                       </optgroup>
                     </select>
                     <select id="compareMode1" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
@@ -805,43 +805,43 @@ export default function MulchingProductionRatePage() {
                     <select id="compareMachine2" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
                       <option value="">Select Upgrade Machine</option>
                       <optgroup label="CATERPILLAR TRACK LOADERS">
-                        <option value="34">CAT 265 - 34 GPM High Flow</option>
-                        <option value="34">CAT 275 - 34 GPM High Flow</option>
-                        <option value="34">CAT 285 - 34 GPM High Flow</option>
-                        <option value="32">CAT 299D3 - 32 GPM High Flow</option>
-                        <option value="40">CAT 275 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 285 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE Land Management - 40 GPM High Flow</option>
+                        <option value="34">CAT 265</option>
+                        <option value="34">CAT 275</option>
+                        <option value="34">CAT 285</option>
+                        <option value="32">CAT 299D3</option>
+                        <option value="40">CAT 275 XE</option>
+                        <option value="40">CAT 285 XE</option>
+                        <option value="40">CAT 299D3 XE</option>
+                        <option value="40">CAT 299D3 XE Land Management</option>
                       </optgroup>
                       <optgroup label="BOBCAT TRACK LOADERS">
-                        <option value="30.3">Bobcat T76 - 30.3 GPM High Flow</option>
-                        <option value="30.5">Bobcat T740 - 30.5 GPM High Flow</option>
-                        <option value="36.6">Bobcat T770 - 36.6 GPM High Flow</option>
-                        <option value="36.6">Bobcat T86 - 36.6 GPM High Flow</option>
-                        <option value="42">Bobcat T86 (Super Flow) - 42 GPM High Flow</option>
-                        <option value="36.6">Bobcat T870 - 36.6 GPM High Flow</option>
+                        <option value="30.3">Bobcat T76</option>
+                        <option value="30.5">Bobcat T740</option>
+                        <option value="36.6">Bobcat T770</option>
+                        <option value="36.6">Bobcat T86</option>
+                        <option value="42">Bobcat T86 (Super Flow)</option>
+                        <option value="36.6">Bobcat T870</option>
                       </optgroup>
                       <optgroup label="ASV TRACK LOADERS">
-                        <option value="30.5">ASV VT-75 - 30.5 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 - 34.3 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 Forestry - 34.3 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 - 36.8 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 Forestry - 36.8 GPM High Flow</option>
-                        <option value="50">ASV RT-135 - 50 GPM High Flow</option>
-                        <option value="50">ASV RT-135 Forestry - 50 GPM High Flow</option>
+                        <option value="30.5">ASV VT-75</option>
+                        <option value="34.3">ASV VT-80</option>
+                        <option value="34.3">ASV VT-80 Forestry</option>
+                        <option value="36.8">ASV VT-100</option>
+                        <option value="36.8">ASV VT-100 Forestry</option>
+                        <option value="50">ASV RT-135</option>
+                        <option value="50">ASV RT-135 Forestry</option>
                       </optgroup>
                       <optgroup label="KUBOTA TRACK LOADERS">
-                        <option value="29.3">Kubota SVL75-2 - 29.3 GPM High Flow</option>
-                        <option value="40">Kubota SVL95-2 - 40 GPM High Flow</option>
+                        <option value="29.3">Kubota SVL75-2</option>
+                        <option value="40">Kubota SVL95-2</option>
                       </optgroup>
                       <optgroup label="FECON CARRIERS">
-                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                        <option value="80">Fecon FTX200 - 80 GPM</option>
-                        <option value="115">Fecon FTX300 - 115 GPM</option>
-                        <option value="50">Fecon 135VRT - 50 GPM</option>
-                        <option value="80">Fecon 225VST - 80 GPM</option>
-                        <option value="115">Fecon 325VST - 115 GPM</option>
+                        <option value="60">Fecon FTX150-2</option>
+                        <option value="80">Fecon FTX200</option>
+                        <option value="115">Fecon FTX300</option>
+                        <option value="50">Fecon 135VRT</option>
+                        <option value="80">Fecon 225VST</option>
+                        <option value="115">Fecon 325VST</option>
                       </optgroup>
                     </select>
                     <select id="compareMode2" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
@@ -854,43 +854,43 @@ export default function MulchingProductionRatePage() {
                     <select id="compareMachine3" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
                       <option value="">Select Third Machine (Optional)</option>
                       <optgroup label="CATERPILLAR TRACK LOADERS">
-                        <option value="34">CAT 265 - 34 GPM High Flow</option>
-                        <option value="34">CAT 275 - 34 GPM High Flow</option>
-                        <option value="34">CAT 285 - 34 GPM High Flow</option>
-                        <option value="32">CAT 299D3 - 32 GPM High Flow</option>
-                        <option value="40">CAT 275 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 285 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE Land Management - 40 GPM High Flow</option>
+                        <option value="34">CAT 265</option>
+                        <option value="34">CAT 275</option>
+                        <option value="34">CAT 285</option>
+                        <option value="32">CAT 299D3</option>
+                        <option value="40">CAT 275 XE</option>
+                        <option value="40">CAT 285 XE</option>
+                        <option value="40">CAT 299D3 XE</option>
+                        <option value="40">CAT 299D3 XE Land Management</option>
                       </optgroup>
                       <optgroup label="BOBCAT TRACK LOADERS">
-                        <option value="30.3">Bobcat T76 - 30.3 GPM High Flow</option>
-                        <option value="30.5">Bobcat T740 - 30.5 GPM High Flow</option>
-                        <option value="36.6">Bobcat T770 - 36.6 GPM High Flow</option>
-                        <option value="36.6">Bobcat T86 - 36.6 GPM High Flow</option>
-                        <option value="42">Bobcat T86 (Super Flow) - 42 GPM High Flow</option>
-                        <option value="36.6">Bobcat T870 - 36.6 GPM High Flow</option>
+                        <option value="30.3">Bobcat T76</option>
+                        <option value="30.5">Bobcat T740</option>
+                        <option value="36.6">Bobcat T770</option>
+                        <option value="36.6">Bobcat T86</option>
+                        <option value="42">Bobcat T86 (Super Flow)</option>
+                        <option value="36.6">Bobcat T870</option>
                       </optgroup>
                       <optgroup label="ASV TRACK LOADERS">
-                        <option value="30.5">ASV VT-75 - 30.5 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 - 34.3 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 Forestry - 34.3 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 - 36.8 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 Forestry - 36.8 GPM High Flow</option>
-                        <option value="50">ASV RT-135 - 50 GPM High Flow</option>
-                        <option value="50">ASV RT-135 Forestry - 50 GPM High Flow</option>
+                        <option value="30.5">ASV VT-75</option>
+                        <option value="34.3">ASV VT-80</option>
+                        <option value="34.3">ASV VT-80 Forestry</option>
+                        <option value="36.8">ASV VT-100</option>
+                        <option value="36.8">ASV VT-100 Forestry</option>
+                        <option value="50">ASV RT-135</option>
+                        <option value="50">ASV RT-135 Forestry</option>
                       </optgroup>
                       <optgroup label="KUBOTA TRACK LOADERS">
-                        <option value="29.3">Kubota SVL75-2 - 29.3 GPM High Flow</option>
-                        <option value="40">Kubota SVL95-2 - 40 GPM High Flow</option>
+                        <option value="29.3">Kubota SVL75-2</option>
+                        <option value="40">Kubota SVL95-2</option>
                       </optgroup>
                       <optgroup label="FECON CARRIERS">
-                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                        <option value="80">Fecon FTX200 - 80 GPM</option>
-                        <option value="115">Fecon FTX300 - 115 GPM</option>
-                        <option value="50">Fecon 135VRT - 50 GPM</option>
-                        <option value="80">Fecon 225VST - 80 GPM</option>
-                        <option value="115">Fecon 325VST - 115 GPM</option>
+                        <option value="60">Fecon FTX150-2</option>
+                        <option value="80">Fecon FTX200</option>
+                        <option value="115">Fecon FTX300</option>
+                        <option value="50">Fecon 135VRT</option>
+                        <option value="80">Fecon 225VST</option>
+                        <option value="115">Fecon 325VST</option>
                       </optgroup>
                     </select>
                     <select id="compareMode3" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
@@ -932,43 +932,43 @@ export default function MulchingProductionRatePage() {
                     <select id="maxMachine" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
                       <option value="">Select Your Machine</option>
                       <optgroup label="CATERPILLAR TRACK LOADERS">
-                        <option value="34">CAT 265 - 34 GPM High Flow</option>
-                        <option value="34">CAT 275 - 34 GPM High Flow</option>
-                        <option value="34">CAT 285 - 34 GPM High Flow</option>
-                        <option value="32">CAT 299D3 - 32 GPM High Flow</option>
-                        <option value="40">CAT 275 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 285 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE - 40 GPM High Flow</option>
-                        <option value="40">CAT 299D3 XE Land Management - 40 GPM High Flow</option>
+                        <option value="34">CAT 265</option>
+                        <option value="34">CAT 275</option>
+                        <option value="34">CAT 285</option>
+                        <option value="32">CAT 299D3</option>
+                        <option value="40">CAT 275 XE</option>
+                        <option value="40">CAT 285 XE</option>
+                        <option value="40">CAT 299D3 XE</option>
+                        <option value="40">CAT 299D3 XE Land Management</option>
                       </optgroup>
                       <optgroup label="BOBCAT TRACK LOADERS">
-                        <option value="30.3">Bobcat T76 - 30.3 GPM High Flow</option>
-                        <option value="30.5">Bobcat T740 - 30.5 GPM High Flow</option>
-                        <option value="36.6">Bobcat T770 - 36.6 GPM High Flow</option>
-                        <option value="36.6">Bobcat T86 - 36.6 GPM High Flow</option>
-                        <option value="42">Bobcat T86 (Super Flow) - 42 GPM High Flow</option>
-                        <option value="36.6">Bobcat T870 - 36.6 GPM High Flow</option>
+                        <option value="30.3">Bobcat T76</option>
+                        <option value="30.5">Bobcat T740</option>
+                        <option value="36.6">Bobcat T770</option>
+                        <option value="36.6">Bobcat T86</option>
+                        <option value="42">Bobcat T86 (Super Flow)</option>
+                        <option value="36.6">Bobcat T870</option>
                       </optgroup>
                       <optgroup label="ASV TRACK LOADERS">
-                        <option value="30.5">ASV VT-75 - 30.5 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 - 34.3 GPM High Flow</option>
-                        <option value="34.3">ASV VT-80 Forestry - 34.3 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 - 36.8 GPM High Flow</option>
-                        <option value="36.8">ASV VT-100 Forestry - 36.8 GPM High Flow</option>
-                        <option value="50">ASV RT-135 - 50 GPM High Flow</option>
-                        <option value="50">ASV RT-135 Forestry - 50 GPM High Flow</option>
+                        <option value="30.5">ASV VT-75</option>
+                        <option value="34.3">ASV VT-80</option>
+                        <option value="34.3">ASV VT-80 Forestry</option>
+                        <option value="36.8">ASV VT-100</option>
+                        <option value="36.8">ASV VT-100 Forestry</option>
+                        <option value="50">ASV RT-135</option>
+                        <option value="50">ASV RT-135 Forestry</option>
                       </optgroup>
                       <optgroup label="KUBOTA TRACK LOADERS">
-                        <option value="29.3">Kubota SVL75-2 - 29.3 GPM High Flow</option>
-                        <option value="40">Kubota SVL95-2 - 40 GPM High Flow</option>
+                        <option value="29.3">Kubota SVL75-2</option>
+                        <option value="40">Kubota SVL95-2</option>
                       </optgroup>
                       <optgroup label="FECON CARRIERS">
-                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                        <option value="80">Fecon FTX200 - 80 GPM</option>
-                        <option value="115">Fecon FTX300 - 115 GPM</option>
-                        <option value="50">Fecon 135VRT - 50 GPM</option>
-                        <option value="80">Fecon 225VST - 80 GPM</option>
-                        <option value="115">Fecon 325VST - 115 GPM</option>
+                        <option value="60">Fecon FTX150-2</option>
+                        <option value="80">Fecon FTX200</option>
+                        <option value="115">Fecon FTX300</option>
+                        <option value="50">Fecon 135VRT</option>
+                        <option value="80">Fecon 225VST</option>
+                        <option value="115">Fecon 325VST</option>
                       </optgroup>
                     </select>
                     <select id="maxMode" defaultValue="fusion" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
