@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 
 export default function MulchingProductionRatePage() {
   useEffect(() => {
+    let currentMode = 'single'; // 'single', 'compare', or 'max'
+
     // Calculator functions
     function calculateProductionRate(gpm: number, fusionBonus = false) {
       let baseRate = (gpm / 30) * 1.0;
@@ -13,7 +15,47 @@ export default function MulchingProductionRatePage() {
       return baseRate;
     }
 
+    function calculateMachineResults(machineGpm: number, projectSize: number, maxDbh: number, hourlyRate: number, hourlyOperatingCost: number) {
+      const tuningProductionRate = calculateProductionRate(machineGpm, false);
+      const fusionProductionRate = calculateProductionRate(machineGpm, true);
+      
+      const inchAcres = maxDbh * projectSize;
+      const tuningTime = inchAcres / tuningProductionRate;
+      const fusionTime = inchAcres / fusionProductionRate;
+      
+      const quotedRevenue = tuningTime * hourlyRate;
+      const tuningOperatingCosts = tuningTime * hourlyOperatingCost;
+      const tuningProfit = quotedRevenue - tuningOperatingCosts;
+      const fusionOperatingCosts = fusionTime * hourlyOperatingCost;
+      const fusionProfit = quotedRevenue - fusionOperatingCosts;
+      
+      const timeReduction = ((tuningTime - fusionTime) / tuningTime * 100);
+      const costSavings = tuningOperatingCosts - fusionOperatingCosts;
+      
+      return {
+        tuningTime,
+        fusionTime,
+        quotedRevenue,
+        tuningOperatingCosts,
+        tuningProfit,
+        fusionOperatingCosts,
+        fusionProfit,
+        timeReduction,
+        costSavings
+      };
+    }
+
     function updateResults() {
+      if (currentMode === 'single') {
+        updateSingleResults();
+      } else if (currentMode === 'compare') {
+        updateCompareResults();
+      } else {
+        updateMaxResults();
+      }
+    }
+
+    function updateSingleResults() {
       const gpmEl = document.getElementById('machineGpm') as HTMLInputElement;
       const sizeEl = document.getElementById('projectSize') as HTMLInputElement;
       const dbhEl = document.getElementById('maxDbh') as HTMLInputElement;
@@ -32,49 +74,251 @@ export default function MulchingProductionRatePage() {
       const hourlyRate = parseFloat(rateEl.value) || 500;
       const hourlyOperatingCost = parseFloat(costEl.value) || 175;
       
-      const tuningProductionRate = calculateProductionRate(machineGpm, false);
-      const fusionProductionRate = calculateProductionRate(machineGpm, true);
-      
-      const inchAcres = maxDbh * projectSize;
-      const tuningTime = inchAcres / tuningProductionRate;
-      const fusionTime = inchAcres / fusionProductionRate;
-      
-      const quotedRevenue = tuningTime * hourlyRate;
-      const tuningOperatingCosts = tuningTime * hourlyOperatingCost;
-      const tuningProfit = quotedRevenue - tuningOperatingCosts;
-      const fusionOperatingCosts = fusionTime * hourlyOperatingCost;
-      const fusionProfit = quotedRevenue - fusionOperatingCosts;
-      
-      const timeReduction = ((tuningTime - fusionTime) / tuningTime * 100);
-      const costSavings = tuningOperatingCosts - fusionOperatingCosts;
+      const results = calculateMachineResults(machineGpm, projectSize, maxDbh, hourlyRate, hourlyOperatingCost);
       
       resultsGrid.innerHTML = `
         <div class="result-card">
           <div class="result-title">Standard Mulcher</div>
-          <div class="result-value">${tuningTime.toFixed(1)}h</div>
+          <div class="result-value">${results.tuningTime.toFixed(1)}h</div>
           <div class="result-details">
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Days Needed:</strong> ${Math.ceil(tuningTime / 6).toFixed(0)} days</div>
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $${quotedRevenue.toFixed(0)}</div>
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${tuningOperatingCosts.toFixed(0)}</div>
-            <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $${tuningProfit.toFixed(0)}</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Days Needed:</strong> ${Math.ceil(results.tuningTime / 6).toFixed(0)} days</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $${results.quotedRevenue.toFixed(0)}</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${results.tuningOperatingCosts.toFixed(0)}</div>
+            <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $${results.tuningProfit.toFixed(0)}</div>
           </div>
         </div>
         <div class="result-card fusion">
           <div class="result-title">Plug-n-Play Technology</div>
-          <div class="result-value">${fusionTime.toFixed(1)}h</div>
+          <div class="result-value">${results.fusionTime.toFixed(1)}h</div>
           <div class="result-details">
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Days Needed:</strong> ${Math.ceil(fusionTime / 6).toFixed(0)} days</div>
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $${quotedRevenue.toFixed(0)}</div>
-            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${fusionOperatingCosts.toFixed(0)}</div>
-            <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $${fusionProfit.toFixed(0)}</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Days Needed:</strong> ${Math.ceil(results.fusionTime / 6).toFixed(0)} days</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $${results.quotedRevenue.toFixed(0)}</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${results.fusionOperatingCosts.toFixed(0)}</div>
+            <div style="color: var(--tech-green); font-weight: 600;"><strong>Profit:</strong> $${results.fusionProfit.toFixed(0)}</div>
             <div style="font-size: 0.85rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,166,81,0.3); color: var(--tech-green);">
-              ⚡ ${timeReduction.toFixed(1)}% faster<br>
-              💰 $${costSavings.toFixed(0)} additional profit
+              ⚡ ${results.timeReduction.toFixed(1)}% faster<br>
+              💰 $${results.costSavings.toFixed(0)} additional profit
             </div>
           </div>
         </div>
       `;
+    }
+
+    function updateCompareResults() {
+      const machine1Sel = document.getElementById('compareMachine1') as HTMLSelectElement;
+      const machine2Sel = document.getElementById('compareMachine2') as HTMLSelectElement;
+      const machine3Sel = document.getElementById('compareMachine3') as HTMLSelectElement;
+      const mode1 = (document.getElementById('compareMode1') as HTMLSelectElement)?.value || 'fusion';
+      const mode2 = (document.getElementById('compareMode2') as HTMLSelectElement)?.value || 'fusion';
+      const mode3 = (document.getElementById('compareMode3') as HTMLSelectElement)?.value || 'fusion';
+      const sizeEl = document.getElementById('projectSizeCompare') as HTMLInputElement;
+      const dbhEl = document.getElementById('maxDbhCompare') as HTMLInputElement;
+      const rateEl = document.getElementById('hourlyRateCompare') as HTMLInputElement;
+      const costEl = document.getElementById('hourlyOperatingCostCompare') as HTMLInputElement;
+      const resultsGrid = document.getElementById('packageResults');
       
+      if (!machine1Sel || !sizeEl || !dbhEl || !rateEl || !costEl || !resultsGrid) {
+        setTimeout(updateResults, 100);
+        return;
+      }
+      
+      const projectSize = parseFloat(sizeEl.value) || 1;
+      const maxDbh = parseFloat(dbhEl.value) || 6;
+      const hourlyRate = parseFloat(rateEl.value) || 500;
+      const hourlyOperatingCost = parseFloat(costEl.value) || 175;
+      
+      const machines = [
+        { selector: machine1Sel, mode: mode1, name: 'Machine 1', color: 'var(--primary-red)' },
+        { selector: machine2Sel, mode: mode2, name: 'Machine 2', color: 'var(--tech-green)' },
+        { selector: machine3Sel, mode: mode3, name: 'Machine 3', color: 'var(--accent-blue)' }
+      ].filter(machine => machine.selector?.value);
+      
+      if (machines.length === 0) {
+        resultsGrid.innerHTML = '<div class="result-card">Select machines to compare...</div>';
+        return;
+      }
+      
+      // Calculate results for all machines
+      const machineResults = machines.map(machine => {
+        const gpm = parseFloat(machine.selector.value);
+        const machineName = machine.selector.options[machine.selector.selectedIndex].text;
+        const isPlugAndPlay = machine.mode === 'fusion';
+        
+        const tuningProductionRate = calculateProductionRate(gpm, false);
+        const fusionProductionRate = calculateProductionRate(gpm, true);
+        const productionRate = isPlugAndPlay ? fusionProductionRate : tuningProductionRate;
+        
+        const inchAcres = maxDbh * projectSize;
+        const time = inchAcres / productionRate;
+        const operatingCosts = time * hourlyOperatingCost;
+        
+        return {
+          ...machine,
+          gpm,
+          machineName: machineName + (isPlugAndPlay ? ' (Plug-n-Play)' : ' (Standard)'),
+          time,
+          operatingCosts,
+          isPlugAndPlay
+        };
+      });
+      
+      // Find the longest time (slowest machine) to set baseline revenue
+      const maxTime = Math.max(...machineResults.map(m => m.time));
+      const baselineRevenue = maxTime * hourlyRate;
+      
+      // Calculate final results with baseline revenue
+      const finalResults = machineResults.map(machine => ({
+        ...machine,
+        revenue: baselineRevenue,
+        profit: baselineRevenue - machine.operatingCosts
+      }));
+      
+      // Sort by profit (highest first) for better display
+      finalResults.sort((a, b) => b.profit - a.profit);
+      
+      let resultsHTML = '';
+      
+      // Add comparison header
+      resultsHTML += `
+        <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 20px; padding: 15px; background: #2A2A2A; border-radius: 8px;">
+          <div style="color: #E0E0E0; font-size: 0.9rem; margin-bottom: 5px;">Baseline Revenue (Slowest Machine)</div>
+          <div style="color: var(--tech-green); font-size: 1.2rem; font-weight: 700;">$${baselineRevenue.toFixed(0)}</div>
+        </div>
+      `;
+      
+      finalResults.forEach((machine, index) => {
+        const timeDiff = index > 0 ? finalResults[0].time - machine.time : 0;
+        const profitDiff = index > 0 ? machine.profit - finalResults[0].profit : 0;
+        const isFirst = index === 0;
+        
+        resultsHTML += `
+          <div class="result-card" style="border-left-color: ${machine.color}; ${isFirst ? 'border: 2px solid var(--tech-green);' : ''}">
+            ${isFirst ? '<div style="position: absolute; top: -10px; right: 10px; background: var(--tech-green); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">BEST</div>' : ''}
+            <div style="position: relative;">
+              <div class="result-title">${machine.machineName}</div>
+              <div class="result-value" style="color: ${machine.color};">${machine.time.toFixed(1)}h</div>
+              <div class="result-details">
+                <div style="margin-bottom: 8px; color: #E0E0E0;">
+                  <strong>Days:</strong> ${Math.ceil(machine.time / 6)} | 
+                  <strong>GPM:</strong> ${machine.gpm} | 
+                  <strong>Mode:</strong> ${machine.isPlugAndPlay ? 'PnP' : 'Std'}
+                </div>
+                <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Revenue:</strong> $${machine.revenue.toFixed(0)}</div>
+                <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${machine.operatingCosts.toFixed(0)}</div>
+                <div style="color: ${machine.color}; font-weight: 600;"><strong>Profit:</strong> $${machine.profit.toFixed(0)}</div>
+                ${!isFirst ? `
+                  <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #2D2D2D; font-size: 0.85rem;">
+                    <div style="color: ${timeDiff > 0 ? 'var(--tech-green)' : 'var(--primary-red)'};">
+                      <strong>vs Best:</strong> ${timeDiff > 0 ? '+' : ''}${timeDiff.toFixed(1)}h ${timeDiff > 0 ? 'slower' : 'faster'}
+                    </div>
+                    <div style="color: ${profitDiff > 0 ? 'var(--tech-green)' : 'var(--primary-red)'};">
+                      <strong>Profit:</strong> ${profitDiff > 0 ? '+' : ''}$${Math.abs(profitDiff).toFixed(0)} ${profitDiff > 0 ? 'more' : 'less'}
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      resultsGrid.innerHTML = resultsHTML;
+    }
+
+    function updateMaxResults() {
+      const machineEl = document.getElementById('maxMachine') as HTMLSelectElement;
+      const modeEl = document.getElementById('maxMode') as HTMLSelectElement;
+      const daysEl = document.getElementById('availableDays') as HTMLInputElement;
+      const hoursPerDayEl = document.getElementById('hoursPerDay') as HTMLInputElement;
+      const dbhEl = document.getElementById('maxDbhMax') as HTMLInputElement;
+      const rateEl = document.getElementById('hourlyRateMax') as HTMLInputElement;
+      const costEl = document.getElementById('hourlyOperatingCostMax') as HTMLInputElement;
+      const resultsGrid = document.getElementById('packageResults');
+      
+      if (!machineEl || !modeEl || !daysEl || !hoursPerDayEl || !dbhEl || !rateEl || !costEl || !resultsGrid) {
+        setTimeout(updateResults, 100);
+        return;
+      }
+      
+      const gpm = parseFloat(machineEl.value) || 30;
+      const isPlugAndPlay = modeEl.value === 'fusion';
+      const availableDays = parseFloat(daysEl.value) || 5;
+      const hoursPerDay = parseFloat(hoursPerDayEl.value) || 8;
+      const maxDbh = parseFloat(dbhEl.value) || 6;
+      const hourlyRate = parseFloat(rateEl.value) || 500;
+      const hourlyOperatingCost = parseFloat(costEl.value) || 175;
+      
+      const productionRate = calculateProductionRate(gpm, isPlugAndPlay);
+      const totalAvailableHours = availableDays * hoursPerDay;
+      
+      // Calculate max acres: Total Hours × Production Rate ÷ DBH
+      const maxAcres = (totalAvailableHours * productionRate) / maxDbh;
+      
+      // Calculate financial projections
+      const totalRevenue = totalAvailableHours * hourlyRate;
+      const totalOperatingCosts = totalAvailableHours * hourlyOperatingCost;
+      const totalProfit = totalRevenue - totalOperatingCosts;
+      const profitPerAcre = totalProfit / maxAcres;
+      const revenuePerAcre = totalRevenue / maxAcres;
+      
+      // Daily breakdown
+      const dailyHours = hoursPerDay;
+      const dailyAcres = (dailyHours * productionRate) / maxDbh;
+      const dailyRevenue = dailyHours * hourlyRate;
+      const dailyOperatingCosts = dailyHours * hourlyOperatingCost;
+      const dailyProfit = dailyRevenue - dailyOperatingCosts;
+      
+      const machineName = machineEl.options[machineEl.selectedIndex].text;
+      const modeText = isPlugAndPlay ? 'Plug-n-Play' : 'Standard';
+      
+      resultsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, var(--tech-green), #38A169); border-radius: 12px; color: white;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">Planning Summary</h3>
+          <div style="font-size: 1rem; opacity: 0.9;">${machineName} (${modeText}) • ${availableDays} Days • ${hoursPerDay}h/day</div>
+        </div>
+
+        <div class="result-card" style="border-left-color: var(--tech-green); flex: 1;">
+          <div class="result-title">Maximum Capacity</div>
+          <div class="result-value" style="color: var(--tech-green);">${maxAcres.toFixed(1)} acres</div>
+          <div class="result-details">
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Total Hours:</strong> ${totalAvailableHours}h</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Production Rate:</strong> ${productionRate.toFixed(2)} I-A/h</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Max DBH:</strong> ${maxDbh}"</div>
+            <div style="color: var(--tech-green); font-weight: 600;"><strong>Capacity:</strong> ${maxAcres.toFixed(1)} acres total</div>
+          </div>
+        </div>
+
+        <div class="result-card" style="border-left-color: var(--primary-red); flex: 1;">
+          <div class="result-title">Revenue Potential</div>
+          <div class="result-value" style="color: var(--primary-red);">$${totalRevenue.toFixed(0)}</div>
+          <div class="result-details">
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Rate:</strong> $${hourlyRate}/hour</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Per Acre:</strong> $${revenuePerAcre.toFixed(0)}/acre</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Operating:</strong> $${totalOperatingCosts.toFixed(0)}</div>
+            <div style="color: var(--tech-green); font-weight: 600;"><strong>Net Profit:</strong> $${totalProfit.toFixed(0)}</div>
+          </div>
+        </div>
+
+        <div class="result-card" style="border-left-color: var(--accent-blue); flex: 1;">
+          <div class="result-title">Daily Breakdown</div>
+          <div class="result-value" style="color: var(--accent-blue);">${dailyAcres.toFixed(1)} acres/day</div>
+          <div class="result-details">
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Daily Hours:</strong> ${dailyHours}h</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Daily Revenue:</strong> $${dailyRevenue.toFixed(0)}</div>
+            <div style="margin-bottom: 8px; color: #E0E0E0;"><strong>Daily Operating:</strong> $${dailyOperatingCosts.toFixed(0)}</div>
+            <div style="color: var(--tech-green); font-weight: 600;"><strong>Daily Profit:</strong> $${dailyProfit.toFixed(0)}</div>
+          </div>
+        </div>
+
+        <div style="grid-column: 1 / -1; text-align: center; margin-top: 30px; padding: 20px; background: #2A2A2A; border-radius: 8px;">
+          <div style="color: #E0E0E0; font-size: 0.9rem; margin-bottom: 10px;">🎯 <strong>Expectation Management</strong></div>
+          <div style="color: #B0B0B0; font-size: 0.85rem; line-height: 1.5;">
+            <strong>Max Capacity:</strong> ${maxAcres.toFixed(1)} acres in ${availableDays} days<br>
+            <strong>Profit per Acre:</strong> $${profitPerAcre.toFixed(0)} • <strong>Total Profit:</strong> $${totalProfit.toFixed(0)}<br>
+            <em>Based on ${maxDbh}" max DBH, ${hoursPerDay}h/day operation, ${modeText} mulcher</em>
+          </div>
+        </div>
+      `;
     }
 
     function handleMachineSelection() {
@@ -87,6 +331,42 @@ export default function MulchingProductionRatePage() {
       }
     }
 
+    function switchMode(mode: 'single' | 'compare' | 'max') {
+      currentMode = mode;
+      
+      // Update tab appearances
+      const singleTab = document.getElementById('singleTab');
+      const compareTab = document.getElementById('compareTab');
+      const maxTab = document.getElementById('maxTab');
+      const singleInputs = document.getElementById('singleModeInputs');
+      const compareInputs = document.getElementById('compareModeInputs');
+      const maxInputs = document.getElementById('maxModeInputs');
+      
+      // Remove active from all tabs
+      singleTab?.classList.remove('active');
+      compareTab?.classList.remove('active');
+      maxTab?.classList.remove('active');
+      
+      // Hide all inputs
+      if (singleInputs) singleInputs.style.display = 'none';
+      if (compareInputs) compareInputs.style.display = 'none';
+      if (maxInputs) maxInputs.style.display = 'none';
+      
+      // Show active tab and inputs
+      if (mode === 'single') {
+        singleTab?.classList.add('active');
+        if (singleInputs) singleInputs.style.display = 'block';
+      } else if (mode === 'compare') {
+        compareTab?.classList.add('active');
+        if (compareInputs) compareInputs.style.display = 'block';
+      } else {
+        maxTab?.classList.add('active');
+        if (maxInputs) maxInputs.style.display = 'block';
+      }
+      
+      updateResults();
+    }
+
     // Initialize
     const initTimer = setInterval(() => {
       const elements = ['machineSelector', 'machineGpm', 'projectSize', 'maxDbh', 'hourlyRate', 'hourlyOperatingCost'];
@@ -95,6 +375,7 @@ export default function MulchingProductionRatePage() {
       if (allReady) {
         clearInterval(initTimer);
         
+        // Single mode event listeners
         document.getElementById('machineSelector')?.addEventListener('change', handleMachineSelection);
         document.getElementById('machineGpm')?.addEventListener('input', updateResults);
         document.getElementById('projectSize')?.addEventListener('input', updateResults);
@@ -102,7 +383,34 @@ export default function MulchingProductionRatePage() {
         document.getElementById('hourlyRate')?.addEventListener('input', updateResults);
         document.getElementById('hourlyOperatingCost')?.addEventListener('input', updateResults);
         
-        updateResults();
+        // Tab event listeners
+        document.getElementById('singleTab')?.addEventListener('click', () => switchMode('single'));
+        document.getElementById('compareTab')?.addEventListener('click', () => switchMode('compare'));
+        document.getElementById('maxTab')?.addEventListener('click', () => switchMode('max'));
+        
+        // Compare mode event listeners
+        document.getElementById('compareMachine1')?.addEventListener('change', updateResults);
+        document.getElementById('compareMachine2')?.addEventListener('change', updateResults);
+        document.getElementById('compareMachine3')?.addEventListener('change', updateResults);
+        document.getElementById('compareMode1')?.addEventListener('change', updateResults);
+        document.getElementById('compareMode2')?.addEventListener('change', updateResults);
+        document.getElementById('compareMode3')?.addEventListener('change', updateResults);
+        document.getElementById('projectSizeCompare')?.addEventListener('input', updateResults);
+        document.getElementById('maxDbhCompare')?.addEventListener('input', updateResults);
+        document.getElementById('hourlyRateCompare')?.addEventListener('input', updateResults);
+        document.getElementById('hourlyOperatingCostCompare')?.addEventListener('input', updateResults);
+        
+        // Max mode event listeners
+        document.getElementById('maxMachine')?.addEventListener('change', updateResults);
+        document.getElementById('maxMode')?.addEventListener('change', updateResults);
+        document.getElementById('availableDays')?.addEventListener('input', updateResults);
+        document.getElementById('hoursPerDay')?.addEventListener('input', updateResults);
+        document.getElementById('maxDbhMax')?.addEventListener('input', updateResults);
+        document.getElementById('hourlyRateMax')?.addEventListener('input', updateResults);
+        document.getElementById('hourlyOperatingCostMax')?.addEventListener('input', updateResults);
+        
+        // Initialize with single mode
+        switchMode('single');
       }
     }, 100);
     
@@ -307,6 +615,38 @@ export default function MulchingProductionRatePage() {
           font-weight: 600;
           box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
+
+        .tab-container {
+          display: flex;
+          margin-bottom: 20px;
+          border-bottom: 2px solid #2D2D2D;
+        }
+
+        .tab-button {
+          background: transparent;
+          border: none;
+          padding: 12px 20px;
+          color: #B0B0B0;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          border-bottom: 3px solid transparent;
+          transition: all 0.2s ease;
+        }
+
+        .tab-button:hover {
+          color: #E0E0E0;
+          background: rgba(255,255,255,0.05);
+        }
+
+        .tab-button.active {
+          color: var(--primary-red);
+          border-bottom-color: var(--primary-red);
+        }
+
+        .mode-inputs {
+          margin-bottom: 20px;
+        }
       `}</style>
 
       {/* Calculator Section */}
@@ -318,63 +658,268 @@ export default function MulchingProductionRatePage() {
                 <h2 className="panel-title">Forestry Mulching Calculator</h2>
                 <div className="panel-icon">🌲</div>
               </div>
+
+              {/* Tab Navigation */}
+              <div className="tab-container">
+                <button id="singleTab" className="tab-button active">Single Machine</button>
+                <button id="compareTab" className="tab-button">Compare Machines</button>
+                <button id="maxTab" className="tab-button">Max Planning</button>
+              </div>
             
-              {/* Machine Selector */}
-              <div className="input-group" style={{ marginBottom: '25px' }}>
-                <label htmlFor="machineSelector">Quick Machine Selector (Auto-fills GPM)</label>
-                <select id="machineSelector" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
-                  <option value="">Select Machine (or enter GPM manually below)</option>
-                  <optgroup label="CATERPILLAR TRACK LOADERS">
-                    <option value="30">CAT 265 - 30 GPM High Flow</option>
-                    <option value="34">CAT 265 - 34 GPM Max High Flow</option>
-                    <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
-                  </optgroup>
-                  <optgroup label="BOBCAT TRACK LOADERS">
-                    <option value="24">Bobcat T770 - 24 GPM Standard</option>
-                    <option value="37">Bobcat T770 - 37 GPM High Flow</option>
-                    <option value="24">Bobcat T870 - 24 GPM Standard</option>
-                    <option value="42">Bobcat T870 - 42 GPM High Flow</option>
-                  </optgroup>
-                  <optgroup label="JOHN DEERE TRACK LOADERS">
-                    <option value="41">John Deere 333G - 41.1 GPM</option>
-                  </optgroup>
-                  <optgroup label="KUBOTA TRACK LOADERS">
-                    <option value="30">Kubota SVL95-2s - 30 GPM</option>
-                  </optgroup>
-                  <optgroup label="FECON CARRIERS">
-                    <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                    <option value="80">Fecon FTX200 - 80 GPM</option>
-                    <option value="115">Fecon FTX300 - 115 GPM</option>
-                    <option value="50">Fecon 135VRT - 50 GPM</option>
-                    <option value="80">Fecon 225VST - 80 GPM</option>
-                    <option value="115">Fecon 325VST - 115 GPM</option>
-                  </optgroup>
-                </select>
+              {/* Single Mode Inputs */}
+              <div id="singleModeInputs" className="mode-inputs">
+                <div className="input-group" style={{ marginBottom: '25px' }}>
+                  <label htmlFor="machineSelector">Quick Machine Selector (Auto-fills GPM)</label>
+                  <select id="machineSelector" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
+                    <option value="">Select Machine (or enter GPM manually below)</option>
+                    <optgroup label="CATERPILLAR TRACK LOADERS">
+                      <option value="30">CAT 265 - 30 GPM High Flow</option>
+                      <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                      <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                    </optgroup>
+                    <optgroup label="BOBCAT TRACK LOADERS">
+                      <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                      <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                      <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                      <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                    </optgroup>
+                    <optgroup label="JOHN DEERE TRACK LOADERS">
+                      <option value="41">John Deere 333G - 41.1 GPM</option>
+                    </optgroup>
+                    <optgroup label="KUBOTA TRACK LOADERS">
+                      <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                    </optgroup>
+                    <optgroup label="FECON CARRIERS">
+                      <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                      <option value="80">Fecon FTX200 - 80 GPM</option>
+                      <option value="115">Fecon FTX300 - 115 GPM</option>
+                      <option value="50">Fecon 135VRT - 50 GPM</option>
+                      <option value="80">Fecon 225VST - 80 GPM</option>
+                      <option value="115">Fecon 325VST - 115 GPM</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+                <div className="input-row-triple">
+                  <div className="input-group">
+                    <label htmlFor="machineGpm">Machine GPM (High Flow)</label>
+                    <input type="number" id="machineGpm" min="20" max="120" defaultValue="30" step="1" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="projectSize">Project Size (Acres)</label>
+                    <input type="number" id="projectSize" min="0.1" max="100" defaultValue="1" step="0.1" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="maxDbh">Max DBH (inches)</label>
+                    <input type="number" id="maxDbh" min="1" max="30" defaultValue="6" step="0.5" />
+                  </div>
+                </div>
+
+                <div className="input-row">
+                  <div className="input-group">
+                    <label htmlFor="hourlyRate">Hourly Billing Rate ($)</label>
+                    <input type="number" id="hourlyRate" min="100" max="1000" defaultValue="500" step="25" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="hourlyOperatingCost">Operating Cost ($)</label>
+                    <input type="number" id="hourlyOperatingCost" min="50" max="500" defaultValue="175" step="25" />
+                  </div>
+                </div>
               </div>
 
-              <div className="input-row-triple">
-                <div className="input-group">
-                  <label htmlFor="machineGpm">Machine GPM (High Flow)</label>
-                  <input type="number" id="machineGpm" min="20" max="120" defaultValue="30" step="1" />
+              {/* Compare Mode Inputs */}
+              <div id="compareModeInputs" className="mode-inputs" style={{ display: 'none' }}>
+                <div className="input-row-triple">
+                  <div className="input-group">
+                    <label htmlFor="compareMachine1">Machine 1 (Current)</label>
+                    <select id="compareMachine1" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
+                      <option value="">Select Current Machine</option>
+                      <optgroup label="CATERPILLAR TRACK LOADERS">
+                        <option value="30">CAT 265 - 30 GPM High Flow</option>
+                        <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                        <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                      </optgroup>
+                      <optgroup label="BOBCAT TRACK LOADERS">
+                        <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                        <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                        <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                        <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                      </optgroup>
+                      <optgroup label="JOHN DEERE TRACK LOADERS">
+                        <option value="41">John Deere 333G - 41.1 GPM</option>
+                      </optgroup>
+                      <optgroup label="KUBOTA TRACK LOADERS">
+                        <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                      </optgroup>
+                      <optgroup label="FECON CARRIERS">
+                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                        <option value="80">Fecon FTX200 - 80 GPM</option>
+                        <option value="115">Fecon FTX300 - 115 GPM</option>
+                        <option value="50">Fecon 135VRT - 50 GPM</option>
+                        <option value="80">Fecon 225VST - 80 GPM</option>
+                        <option value="115">Fecon 325VST - 115 GPM</option>
+                      </optgroup>
+                    </select>
+                    <select id="compareMode1" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                      <option value="standard">Standard Mulcher</option>
+                      <option value="fusion" selected>Plug-n-Play</option>
+                    </select>
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="compareMachine2">Machine 2 (Upgrade Option)</label>
+                    <select id="compareMachine2" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
+                      <option value="">Select Upgrade Machine</option>
+                      <optgroup label="CATERPILLAR TRACK LOADERS">
+                        <option value="30">CAT 265 - 30 GPM High Flow</option>
+                        <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                        <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                      </optgroup>
+                      <optgroup label="BOBCAT TRACK LOADERS">
+                        <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                        <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                        <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                        <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                      </optgroup>
+                      <optgroup label="JOHN DEERE TRACK LOADERS">
+                        <option value="41">John Deere 333G - 41.1 GPM</option>
+                      </optgroup>
+                      <optgroup label="KUBOTA TRACK LOADERS">
+                        <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                      </optgroup>
+                      <optgroup label="FECON CARRIERS">
+                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                        <option value="80">Fecon FTX200 - 80 GPM</option>
+                        <option value="115">Fecon FTX300 - 115 GPM</option>
+                        <option value="50">Fecon 135VRT - 50 GPM</option>
+                        <option value="80">Fecon 225VST - 80 GPM</option>
+                        <option value="115">Fecon 325VST - 115 GPM</option>
+                      </optgroup>
+                    </select>
+                    <select id="compareMode2" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                      <option value="standard">Standard Mulcher</option>
+                      <option value="fusion" selected>Plug-n-Play</option>
+                    </select>
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="compareMachine3">Machine 3 (Optional)</label>
+                    <select id="compareMachine3" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
+                      <option value="">Select Third Machine (Optional)</option>
+                      <optgroup label="CATERPILLAR TRACK LOADERS">
+                        <option value="30">CAT 265 - 30 GPM High Flow</option>
+                        <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                        <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                      </optgroup>
+                      <optgroup label="BOBCAT TRACK LOADERS">
+                        <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                        <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                        <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                        <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                      </optgroup>
+                      <optgroup label="JOHN DEERE TRACK LOADERS">
+                        <option value="41">John Deere 333G - 41.1 GPM</option>
+                      </optgroup>
+                      <optgroup label="KUBOTA TRACK LOADERS">
+                        <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                      </optgroup>
+                      <optgroup label="FECON CARRIERS">
+                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                        <option value="80">Fecon FTX200 - 80 GPM</option>
+                        <option value="115">Fecon FTX300 - 115 GPM</option>
+                        <option value="50">Fecon 135VRT - 50 GPM</option>
+                        <option value="80">Fecon 225VST - 80 GPM</option>
+                        <option value="115">Fecon 325VST - 115 GPM</option>
+                      </optgroup>
+                    </select>
+                    <select id="compareMode3" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                      <option value="standard">Standard Mulcher</option>
+                      <option value="fusion" selected>Plug-n-Play</option>
+                    </select>
+                  </div>
                 </div>
-                <div className="input-group">
-                  <label htmlFor="projectSize">Project Size (Acres)</label>
-                  <input type="number" id="projectSize" min="0.1" max="100" defaultValue="1" step="0.1" />
+
+                {/* Shared project parameters for comparison */}
+                <div className="input-row">
+                  <div className="input-group">
+                    <label htmlFor="projectSize">Project Size (Acres)</label>
+                    <input type="number" id="projectSizeCompare" min="0.1" max="100" defaultValue="1" step="0.1" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="maxDbh">Max DBH (inches)</label>
+                    <input type="number" id="maxDbhCompare" min="1" max="30" defaultValue="6" step="0.5" />
+                  </div>
                 </div>
-                <div className="input-group">
-                  <label htmlFor="maxDbh">Max DBH (inches)</label>
-                  <input type="number" id="maxDbh" min="1" max="30" defaultValue="6" step="0.5" />
+
+                <div className="input-row">
+                  <div className="input-group">
+                    <label htmlFor="hourlyRate">Hourly Billing Rate ($)</label>
+                    <input type="number" id="hourlyRateCompare" min="100" max="1000" defaultValue="500" step="25" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="hourlyOperatingCost">Operating Cost ($)</label>
+                    <input type="number" id="hourlyOperatingCostCompare" min="50" max="500" defaultValue="175" step="25" />
+                  </div>
                 </div>
               </div>
 
-              <div className="input-row">
-                <div className="input-group">
-                  <label htmlFor="hourlyRate">Hourly Billing Rate ($)</label>
-                  <input type="number" id="hourlyRate" min="100" max="1000" defaultValue="500" step="25" />
+              {/* Max Mode Inputs */}
+              <div id="maxModeInputs" className="mode-inputs" style={{ display: 'none' }}>
+                <div className="input-row">
+                  <div className="input-group">
+                    <label htmlFor="maxMachine">Your Machine</label>
+                    <select id="maxMachine" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
+                      <option value="">Select Your Machine</option>
+                      <optgroup label="CATERPILLAR TRACK LOADERS">
+                        <option value="30">CAT 265 - 30 GPM High Flow</option>
+                        <option value="34">CAT 265 - 34 GPM Max High Flow</option>
+                        <option value="40">CAT 285 XE - 40 GPM High Flow XE</option>
+                      </optgroup>
+                      <optgroup label="BOBCAT TRACK LOADERS">
+                        <option value="24">Bobcat T770 - 24 GPM Standard</option>
+                        <option value="37">Bobcat T770 - 37 GPM High Flow</option>
+                        <option value="24">Bobcat T870 - 24 GPM Standard</option>
+                        <option value="42">Bobcat T870 - 42 GPM High Flow</option>
+                      </optgroup>
+                      <optgroup label="JOHN DEERE TRACK LOADERS">
+                        <option value="41">John Deere 333G - 41.1 GPM</option>
+                      </optgroup>
+                      <optgroup label="KUBOTA TRACK LOADERS">
+                        <option value="30">Kubota SVL95-2s - 30 GPM</option>
+                      </optgroup>
+                      <optgroup label="FECON CARRIERS">
+                        <option value="60">Fecon FTX150-2 - 60 GPM</option>
+                        <option value="80">Fecon FTX200 - 80 GPM</option>
+                        <option value="115">Fecon FTX300 - 115 GPM</option>
+                        <option value="50">Fecon 135VRT - 50 GPM</option>
+                        <option value="80">Fecon 225VST - 80 GPM</option>
+                        <option value="115">Fecon 325VST - 115 GPM</option>
+                      </optgroup>
+                    </select>
+                    <select id="maxMode" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D', marginTop: '8px' }}>
+                      <option value="standard">Standard Mulcher</option>
+                      <option value="fusion" selected>Plug-n-Play</option>
+                    </select>
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="availableDays">Available Days</label>
+                    <input type="number" id="availableDays" min="1" max="30" defaultValue="5" step="1" />
+                    <label htmlFor="hoursPerDay" style={{ marginTop: '8px' }}>Hours per Day</label>
+                    <input type="number" id="hoursPerDay" min="4" max="12" defaultValue="8" step="0.5" style={{ marginTop: '4px' }} />
+                  </div>
                 </div>
-                <div className="input-group">
-                  <label htmlFor="hourlyOperatingCost">Operating Cost ($)</label>
-                  <input type="number" id="hourlyOperatingCost" min="50" max="500" defaultValue="175" step="25" />
+
+                <div className="input-row-triple">
+                  <div className="input-group">
+                    <label htmlFor="maxDbhMax">Max DBH (inches)</label>
+                    <input type="number" id="maxDbhMax" min="1" max="30" defaultValue="6" step="0.5" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="hourlyRateMax">Hourly Billing Rate ($)</label>
+                    <input type="number" id="hourlyRateMax" min="100" max="1000" defaultValue="500" step="25" />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="hourlyOperatingCostMax">Operating Cost ($)</label>
+                    <input type="number" id="hourlyOperatingCostMax" min="50" max="500" defaultValue="175" step="25" />
+                  </div>
                 </div>
               </div>
             </div>
