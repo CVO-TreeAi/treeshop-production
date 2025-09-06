@@ -345,32 +345,29 @@ export default function MulchingProductionRatePage() {
     function handleMachineSelection() {
       const selector = document.getElementById('machineSelector') as HTMLSelectElement;
       const gpmInput = document.getElementById('machineGpm') as HTMLInputElement;
-      const gpmGroup = document.getElementById('gpmInputGroup');
       const selectedMachine = document.getElementById('selectedMachine');
       
-      if (selector?.value && gpmInput) {
-        // Set the GPM value
-        gpmInput.value = selector.value;
-        
-        // Show selected machine, hide manual GPM input
-        if (selectedMachine && gpmGroup) {
+      if (selector && gpmInput && selectedMachine) {
+        if (selector.value) {
+          // Set the hidden GPM value
+          gpmInput.value = selector.value;
+          
+          // Update selected machine display
           const machineName = selector.options[selector.selectedIndex].text;
-          selectedMachine.innerHTML = `
-            <div style="padding: 12px 14px; background: #2A2A2A; border: 2px solid var(--tech-green); border-radius: 8px; color: var(--tech-green); font-weight: 600;">
-              Selected: ${machineName}
-            </div>
-          `;
-          selectedMachine.style.display = 'block';
-          gpmGroup.style.display = 'none';
+          selectedMachine.innerHTML = machineName;
+          selectedMachine.style.color = 'var(--tech-green)';
+          selectedMachine.style.borderColor = 'var(--tech-green)';
+          selectedMachine.style.fontWeight = '600';
+        } else {
+          // No machine selected
+          selectedMachine.innerHTML = 'No machine selected';
+          selectedMachine.style.color = '#B0B0B0';
+          selectedMachine.style.borderColor = '#2D2D2D';
+          selectedMachine.style.fontWeight = '500';
+          gpmInput.value = '30';
         }
         
         updateResults();
-      } else {
-        // Show manual GPM input when no machine selected
-        if (selectedMachine && gpmGroup) {
-          selectedMachine.style.display = 'none';
-          gpmGroup.style.display = 'block';
-        }
       }
     }
 
@@ -719,7 +716,7 @@ export default function MulchingProductionRatePage() {
                 <div className="input-group" style={{ marginBottom: '25px' }}>
                   <label htmlFor="machineSelector">Select Your Machine</label>
                   <select id="machineSelector" style={{ background: '#2A2A2A', color: '#FFFFFF', border: '2px solid #2D2D2D' }}>
-                    <option value="">Select Machine (or enter GPM manually below)</option>
+                    <option value="">Select Your Machine</option>
                     <optgroup label="CATERPILLAR TRACK LOADERS">
                       <option value="34">CAT 265</option>
                       <option value="34">CAT 275</option>
@@ -762,13 +759,20 @@ export default function MulchingProductionRatePage() {
                   </select>
                 </div>
 
-                <div className="input-row-triple">
+                <div className="input-row">
                   <div className="input-group">
-                    <label htmlFor="machineGpm">Machine GPM (High Flow)</label>
-                    <div id="selectedMachine" style={{ display: 'none' }}></div>
-                    <div id="gpmInputGroup">
-                      <input type="number" id="machineGpm" min="20" max="120" defaultValue="30" step="1" />
+                    <label htmlFor="selectedMachine">Selected Machine</label>
+                    <div id="selectedMachine" style={{ 
+                      padding: '12px 14px', 
+                      background: '#2A2A2A', 
+                      border: '2px solid #2D2D2D', 
+                      borderRadius: '8px', 
+                      color: '#B0B0B0', 
+                      fontSize: '0.95rem' 
+                    }}>
+                      No machine selected
                     </div>
+                    <input type="hidden" id="machineGpm" defaultValue="30" />
                   </div>
                   <div className="input-group">
                     <label htmlFor="projectSize">Project Size (Acres)</label>
