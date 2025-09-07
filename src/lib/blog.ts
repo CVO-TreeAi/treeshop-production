@@ -23,8 +23,8 @@ export interface BlogPost {
 export interface BlogPostPreview extends Omit<BlogPost, 'content'> {}
 
 // Config
-const SOURCE_DIR_DEFAULT = path.join(process.cwd(), 'src', 'content', 'blog')
-const SCHEDULE_DB = path.join(process.cwd(), '.next-cache', 'blog-schedule.json')
+const SOURCE_DIR_DEFAULT = path.join(process.cwd(), 'content', 'articles')
+const SCHEDULE_DB = path.join(process.cwd(), '.next-cache', 'articles-schedule.json')
 
 function getSourceDir() {
   return process.env.BLOG_SOURCE_DIR || SOURCE_DIR_DEFAULT
