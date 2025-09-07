@@ -4,6 +4,7 @@ import ValueProps from '@/components/ValueProps'
 import ProjectGallery from '@/components/ProjectGallery'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
 import Footer from '@/components/Footer'
+import SubstackEmbed from '@/components/SubstackEmbed'
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
       <NavBar />
       <Hero />
       <ValueProps />
+      
+      
       <ProjectGallery />
       <section id="estimate" className="py-16 px-4">
         <LeadCaptureForm />

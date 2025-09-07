@@ -3,24 +3,36 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
-import { getArticleBySlug, getAllArticles } from '@/lib/articles'
+import { getPostBySlug, getAllPosts } from '@/lib/blog'
+import { getSubstackPostBySlug, getSubstackPosts } from '@/lib/substack'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
+import SubstackEmbed from '@/components/SubstackEmbed'
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const articles = getAllArticles()
-  return articles.map((article) => ({
+  // Get both local and Substack articles for static generation
+  const localArticles = getAllPosts()
+  const substackArticles = await getSubstackPosts()
+  
+  const allArticles = [...substackArticles, ...localArticles]
+  
+  return allArticles.map((article) => ({
     slug: article.slug,
   }))
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params
-  const article = getArticleBySlug(slug)
+  
+  // Try to get article from Substack first, then local
+  let article = await getSubstackPostBySlug(slug)
+  if (!article) {
+    article = getPostBySlug(slug)
+  }
 
   if (!article) {
     return {
@@ -30,10 +42,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   return {
     title: `${article.title} | TreeShop Tribune`,
-    description: article.description,
+    description: article.excerpt,
     openGraph: {
       title: article.title,
-      description: article.description,
+      description: article.excerpt,
       type: 'article',
       publishedTime: article.date,
       authors: [article.author],
@@ -42,7 +54,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     twitter: {
       card: 'summary_large_image',
       title: article.title,
-      description: article.description,
+      description: article.excerpt,
       images: article.coverImage ? [article.coverImage] : undefined,
     },
   }
@@ -50,7 +62,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params
-  const article = getArticleBySlug(slug)
+  
+  // Try to get article from Substack first, then local
+  let article = await getSubstackPostBySlug(slug)
+  if (!article) {
+    article = getPostBySlug(slug)
+  }
 
   if (!article) {
     notFound()
@@ -66,7 +83,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gray-400 mb-4">
             <span className="px-3 py-1 treeai-green-button rounded-full font-medium">{article.category}</span>
             <span>{format(new Date(article.date), 'MMMM d, yyyy')}</span>
-            <span>{article.readingTime}</span>
+            <span>{article.readingTime.text}</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
@@ -102,7 +119,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {/* Article Content */}
         <div className="prose prose-lg prose-invert max-w-none mb-12">
           <ReactMarkdown
-            className="text-gray-300 leading-relaxed"
             components={{
               h1: ({ children }) => <h1 className="text-2xl sm:text-3xl font-bold text-white mb-6">{children}</h1>,
               h2: ({ children }) => <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 mt-8">{children}</h2>,
@@ -121,6 +137,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             {article.content}
           </ReactMarkdown>
         </div>
+
 
         {/* Article Footer */}
         <footer className="border-t border-gray-700 pt-8">
