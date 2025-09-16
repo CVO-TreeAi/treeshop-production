@@ -188,7 +188,7 @@ export class ResearchAgent {
       ],
       'land clearing equipment': [
         'CAT 259D3 skid steer can handle attachments up to 3,000 lbs',
-        'Fecon attachments increase productivity by 40% over traditional methods',
+        'Professional mulching attachments increase productivity by 40% over traditional methods',
         'Modern mulchers reduce equipment downtime through improved design'
       ]
     };

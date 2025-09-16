@@ -143,7 +143,7 @@ export class SEOOptimizationAgent {
       {
         triggers: ['equipment', 'mulcher', 'machinery'],
         anchor: 'our professional equipment',
-        url: '/articles/florida-forestry-mulching-cat-skid-steer-fecon-blackhawk'
+        url: '/articles/florida-forestry-mulching-cat-skid-steer-professional-mulcher'
       }
     ];
 

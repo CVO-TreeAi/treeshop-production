@@ -170,15 +170,15 @@ export default function WebsiteContentManager({ onContentChange }: WebsiteConten
       projects: [
         {
           id: 'proj-1',
-          title: '2024 CAT 265 with Fecon BlackHawk Forestry Mulcher',
+          title: '2024 CAT 265 with Professional Forestry Mulcher',
           description: 'Our flagship forestry mulcher ready for operation, showcasing the power and precision needed for Florida\'s toughest clearing jobs.',
-          imageUrl: '/treeshop/images/cat-265-fecon-blackhawk-fueling.jpg',
+          imageUrl: '/treeshop/images/cat-265-forestry-mulcher-fueling.jpg',
           category: 'Equipment',
           location: 'Central Florida',
-          equipment: 'CAT 265 with Fecon BlackHawk',
+          equipment: 'CAT 265 with Forestry Mulcher',
           order: 1,
           isActive: true,
-          seoAltText: 'CAT 265 excavator with Fecon BlackHawk forestry mulching attachment being fueled in Florida'
+          seoAltText: 'CAT 265 excavator with professional forestry mulching attachment being fueled in Florida'
         },
         {
           id: 'proj-2',
@@ -206,15 +206,15 @@ export default function WebsiteContentManager({ onContentChange }: WebsiteConten
         },
         {
           id: 'proj-4',
-          title: 'First CAT machine with Fecon BlackHawk Fusion - R&D partnership',
-          description: 'Innovative testing of the Fecon BlackHawk Fusion attachment, showcasing our commitment to cutting-edge forestry technology.',
+          title: 'First CAT machine with Advanced Mulching System - R&D partnership',
+          description: 'Innovative testing of the advanced mulching system attachment, showcasing our commitment to cutting-edge forestry technology.',
           imageUrl: '/treeshop/images/cat-299d3-fusion-blackhawk-testing.jpg',
           category: 'Innovation',
-          equipment: 'CAT 299D3 with Fecon BlackHawk Fusion',
+          equipment: 'CAT 299D3 with Advanced Mulching System',
           completionDate: '2024',
           order: 4,
           isActive: true,
-          seoAltText: 'CAT 299D3 testing new Fecon BlackHawk Fusion forestry mulching attachment in research and development partnership'
+          seoAltText: 'CAT 299D3 testing new advanced forestry mulching attachment in research and development partnership'
         },
         {
           id: 'proj-5',
@@ -250,14 +250,14 @@ export default function WebsiteContentManager({ onContentChange }: WebsiteConten
         },
         {
           id: 'proj-8',
-          title: 'Tree Shop operating Fecon 135 mulching equipment',
-          description: 'Our specialized Fecon 135 mulching equipment designed for precision forestry work and efficient land management.',
-          imageUrl: '/treeshop/images/fecon-135-specialized-equipment.jpg',
+          title: 'Tree Shop operating specialized mulching equipment',
+          description: 'Our specialized mulching equipment designed for precision forestry work and efficient land management.',
+          imageUrl: '/treeshop/images/specialized-mulching-equipment.jpg',
           category: 'Equipment',
-          equipment: 'Fecon 135',
+          equipment: 'Specialized Mulcher',
           order: 8,
           isActive: true,
-          seoAltText: 'Tree Shop operator using Fecon 135 specialized forestry mulching equipment for precision land clearing'
+          seoAltText: 'Tree Shop operator using specialized forestry mulching equipment for precision land clearing'
         }
       ],
       isPublished: true
@@ -268,9 +268,9 @@ export default function WebsiteContentManager({ onContentChange }: WebsiteConten
       equipment: [
         {
           id: 'eq-1',
-          title: 'CAT 265 with Fecon BlackHawk Forestry Mulcher',
+          title: 'CAT 265 with Professional Forestry Mulcher',
           description: 'Our flagship forestry mulcher featuring precision cutting and mulching capabilities for challenging terrain.',
-          imageUrl: '/treeshop/images/cat-265-fecon-blackhawk-fueling.jpg',
+          imageUrl: '/treeshop/images/cat-265-forestry-mulcher-fueling.jpg',
           category: 'Forestry Mulcher',
           make: 'Caterpillar',
           model: '265',
@@ -279,7 +279,7 @@ export default function WebsiteContentManager({ onContentChange }: WebsiteConten
           featured: true,
           order: 1,
           isActive: true,
-          seoAltText: 'CAT 265 excavator with Fecon BlackHawk forestry mulching attachment',
+          seoAltText: 'CAT 265 excavator with professional forestry mulching attachment',
           tags: ['Heavy Duty', 'Forestry', 'Mulching']
         },
         {

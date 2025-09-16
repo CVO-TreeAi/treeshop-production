@@ -7,8 +7,8 @@ import { useState, useEffect } from 'react';
 
 const heroImages = [
   {
-    src: "/project-images/cat-265-fecon-blackhawk-fueling.jpg",
-    alt: "CAT 265 with Fecon Blackhawk - Professional Forestry Mulching Equipment"
+    src: "/project-images/cat-265-forestry-mulcher-fueling.jpg",
+    alt: "CAT 265 with Forestry Mulcher - Professional Mulching Equipment"
   },
   {
     src: "/project-images/avon-park-land-clearing-after-forestry-mulching.jpg",
@@ -110,17 +110,7 @@ export default function Hero(){
 
         <p className="text-xl sm:text-2xl text-white mb-12 max-w-4xl mx-auto leading-relaxed" 
            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
-          Trusted Florida team since 2016. Purpose-built{' '}
-          <a 
-            href="https://fecon.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="inline-flex items-center px-3 py-1.5 mx-1 rounded-md bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
-            style={{ backgroundColor: '#DC2626', color: '#FFFFFF' }}
-          >
-            Fecon
-          </a>{' '}
-          drum mulchers deliver eco-friendly, low-impact clearing that opens up your land while preserving what matters.
+          Trusted Florida team since 2016. Professional drum mulchers deliver eco-friendly, low-impact clearing that opens up your land while preserving what matters.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">

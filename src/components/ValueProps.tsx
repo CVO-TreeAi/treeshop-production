@@ -2,7 +2,7 @@
 const items = [
   { title: 'DBH Package System', desc: 'Industry-first Small, Medium, Large packages - we invented precise diameter clearing', slug: 'dbh-package-system-explained', icon: '🎯' },
   { title: 'Land Freedom Philosophy', desc: 'Your land, your vision. No need for massive equipment to open up possibilities', slug: 'land-freedom-forestry-mulching-benefits', icon: '🌄' },
-  { title: 'Fecon Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'fecon-drum-mulchers-in-florida', icon: '⚙️' },
+  { title: 'Advanced Drum Technology', desc: 'Purpose-built mulchers specifically designed for Florida vegetation and terrain', slug: 'advanced-drum-mulchers-in-florida', icon: '⚙️' },
   { title: 'Eco-Friendly Process', desc: 'Low-impact clearing that enriches soil and prevents erosion naturally', slug: 'eco-friendly-forestry-mulching', icon: '🌱' },
   { title: 'Industry Leadership', desc: 'Pioneers of TreeAI and advanced tools that revolutionize customer experience', slug: 'treeai-precision-clearing', icon: '🚀' },
   { title: 'High-Value Solutions', desc: 'Maximum land utility with minimal environmental disruption and defined finish points', slug: 'high-value-forestry-mulching-outcomes', icon: '💎' },

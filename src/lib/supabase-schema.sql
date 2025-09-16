@@ -508,7 +508,7 @@ VALUES ('sales@fltreeshop.com', 'Sales Rep', 'sales', true, true, true, 'sales-f
 -- Sample equipment
 INSERT INTO equipment (name, type, model, year, status, hourly_rate)
 VALUES 
-    ('CAT 299D3 with Fecon Mulcher', 'mulcher', '299D3', 2023, 'available', 275.00),
+    ('CAT 299D3 with Forestry Mulcher', 'mulcher', '299D3', 2023, 'available', 275.00),
     ('CAT 262D3 Skid Steer', 'skid_steer', '262D3', 2022, 'available', 125.00),
     ('Ford F-550 Dump Truck', 'truck', 'F-550', 2021, 'available', 85.00);
 */

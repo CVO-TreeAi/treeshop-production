@@ -56,7 +56,7 @@ export default async function CityPage({ params }: Props) {
           <div className="lg:col-span-2 bg-gray-900 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-white mb-4">What We Do in {city.name}</h2>
             <p className="text-gray-300 mb-4">
-              We use Fecon drum mulchers to selectively clear underbrush, palmettos, and saplings while preserving mature trees. Our largest package is 10" DBH & Under, ensuring a clean, usable landscape without debris hauling or burning.
+              We use professional drum mulchers to selectively clear underbrush, palmettos, and saplings while preserving mature trees. Our largest package is 10" DBH & Under, ensuring a clean, usable landscape without debris hauling or burning.
             </p>
             <ul className="text-gray-300 space-y-2">
               <li>• 1–5 acres per day depending on density and DBH package</li>
@@ -96,7 +96,7 @@ export default async function CityPage({ params }: Props) {
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
+                  src="/project-images/cat-265-forestry-mulcher-fueling.jpg"
                   alt={`CAT 299D3 forestry mulching equipment working in Central Florida near ${city.name}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />

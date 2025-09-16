@@ -92,8 +92,8 @@ export default function ForestryMulchingPage(){
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg" 
-                  alt="FECON Blackhawk forestry mulcher on CAT 265 in Central Florida" 
+                  src="/project-images/cat-265-forestry-mulcher-fueling.jpg"
+                  alt="Professional forestry mulcher on CAT 265 in Central Florida" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -281,8 +281,8 @@ The key differentiator is our commitment to ecological preservation: instead of 
             <div className="bg-gray-900 rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
               <div className="relative aspect-square overflow-hidden">
                 <img 
-                  src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
-                  alt="CAT 265 forestry mulcher with FECON attachment Florida"
+                  src="/project-images/cat-265-forestry-mulcher-fueling.jpg"
+                  alt="CAT 265 forestry mulcher with professional attachment Florida"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

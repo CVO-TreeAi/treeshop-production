@@ -261,13 +261,13 @@ export default function MulchingProductionRatePage() {
                         <optgroup label="KUBOTA TRACK LOADERS">
                             <option value="30">Kubota SVL95-2s - 30 GPM</option>
                         </optgroup>
-                        <optgroup label="FECON CARRIERS">
-                            <option value="60">Fecon FTX150-2 - 60 GPM</option>
-                            <option value="80">Fecon FTX200 - 80 GPM</option>
-                            <option value="115">Fecon FTX300 - 115 GPM</option>
-                            <option value="50">Fecon 135VRT - 50 GPM</option>
-                            <option value="80">Fecon 225VST - 80 GPM</option>
-                            <option value="115">Fecon 325VST - 115 GPM</option>
+                        <optgroup label="SPECIALIZED FORESTRY CARRIERS">
+                            <option value="60">FTX150-2 Forestry Carrier - 60 GPM</option>
+                            <option value="80">FTX200 Forestry Carrier - 80 GPM</option>
+                            <option value="115">FTX300 Forestry Carrier - 115 GPM</option>
+                            <option value="50">135VRT Mulching Unit - 50 GPM</option>
+                            <option value="80">225VST Mulching Unit - 80 GPM</option>
+                            <option value="115">325VST Mulching Unit - 115 GPM</option>
                         </optgroup>
                     </select>
                 </div>

@@ -161,7 +161,7 @@ export default async function CountyPage({ params }: { params: CountyParams }) {
         <section className="relative bg-gradient-to-b from-green-900 to-green-700 text-white py-20">
           <div className="absolute inset-0">
             <Image
-              src="/project-images/cat-265-fecon-blackhawk-fueling.jpg"
+              src="/project-images/cat-265-forestry-mulcher-fueling.jpg"
               alt={`Forestry mulching equipment in ${countyData.name}`}
               fill
               className="object-cover opacity-20"

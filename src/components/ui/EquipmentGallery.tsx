@@ -27,28 +27,28 @@ export interface EquipmentGalleryProps {
 
 const defaultImages: EquipmentImage[] = [
   {
-    id: 'cat-265-fecon-blackhawk-fueling',
-    filename: '/treeshop/images/projects/cat-265-fecon-blackhawk-fueling.jpg',
-    title: '2024 CAT 265 with Fecon BlackHawk',
-    description: 'Fueling up our 2024 CAT 265 with its Fecon BlackHawk forestry mulcher for another productive day of land clearing.',
-    alt: '2024 CAT 265 tracked loader with Fecon BlackHawk forestry mulcher attachment during fueling',
+    id: 'cat-265-forestry-mulcher-fueling',
+    filename: '/treeshop/images/projects/cat-265-forestry-mulcher-fueling.jpg',
+    title: '2024 CAT 265 with Professional Forestry Mulcher',
+    description: 'Fueling up our 2024 CAT 265 with its professional forestry mulcher for another productive day of land clearing.',
+    alt: '2024 CAT 265 tracked loader with professional forestry mulcher attachment during fueling',
     category: 'equipment',
-    equipment: 'CAT 265 with Fecon BlackHawk',
+    equipment: 'CAT 265 with Forestry Mulcher',
     featured: true,
-    seoTags: ['CAT 265', 'Fecon BlackHawk', 'forestry mulcher', 'land clearing equipment', 'professional forestry']
+    seoTags: ['CAT 265', 'forestry mulcher', 'land clearing equipment', 'professional forestry']
   },
   {
     id: 'cat-299d3-blackhawk-4-5-acres',
     filename: '/treeshop/images/projects/cat-299d3-blackhawk-4-5-acres.jpg',
     title: '2022 CAT 299D3 After 4.5 Acre Project',
-    description: 'Sun-baked 2022 CAT 299D3 with Fecon BlackHawk after completing an 8-inch mulching project covering 4.5 acres of dense vegetation.',
-    alt: '2022 CAT 299D3 compact track loader with Fecon BlackHawk mulcher after completing 4.5 acre land clearing project',
+    description: 'Sun-baked 2022 CAT 299D3 with forestry mulcher after completing an 8-inch mulching project covering 4.5 acres of dense vegetation.',
+    alt: '2022 CAT 299D3 compact track loader with professional mulcher after completing 4.5 acre land clearing project',
     category: 'mulching',
-    equipment: 'CAT 299D3 with Fecon BlackHawk',
+    equipment: 'CAT 299D3 with Forestry Mulcher',
     projectSize: '4.5 acres',
     location: 'Central Florida',
     featured: true,
-    seoTags: ['CAT 299D3', 'Fecon BlackHawk', 'land clearing', '4.5 acres', 'forestry mulching', 'Florida']
+    seoTags: ['CAT 299D3', 'forestry mulcher', 'land clearing', '4.5 acres', 'forestry mulching', 'Florida']
   },
   {
     id: 'cat-309-selective-logging',
@@ -65,24 +65,24 @@ const defaultImages: EquipmentImage[] = [
   {
     id: 'cat-299d3-fusion-blackhawk-testing',
     filename: '/treeshop/images/projects/cat-299d3-fusion-blackhawk-testing.jpg',
-    title: 'First CAT with Fecon BlackHawk Fusion',
-    description: 'Tree Shop Caterpillar 299D3 running the Fecon BlackHawk Fusion - allegedly the first company to run a Fecon BlackHawk Fusion on a CAT machine. We were honored to be directly involved with testing and development of next generation software and equipment.',
-    alt: 'Tree Shop CAT 299D3 with Fecon BlackHawk Fusion mulcher attachment during R&D testing phase',
+    title: 'First CAT with Advanced Mulching System',
+    description: 'Tree Shop Caterpillar 299D3 running the advanced mulching system - allegedly the first company to test this innovative attachment on a CAT machine. We were honored to be directly involved with testing and development of next generation software and equipment.',
+    alt: 'Tree Shop CAT 299D3 with advanced mulcher attachment during R&D testing phase',
     category: 'equipment',
-    equipment: 'CAT 299D3 with Fecon BlackHawk Fusion',
+    equipment: 'CAT 299D3 with Advanced Mulching System',
     featured: true,
-    seoTags: ['CAT 299D3', 'Fecon BlackHawk Fusion', 'R&D testing', 'Tree Shop', 'innovation', 'forestry technology']
+    seoTags: ['CAT 299D3', 'advanced mulching', 'R&D testing', 'Tree Shop', 'innovation', 'forestry technology']
   },
   {
     id: 'cat-299d3-fusion-side-view',
     filename: '/treeshop/images/projects/cat-299d3-fusion-side-view.jpg',
-    title: 'CAT 299D3 with Fusion BlackHawk',
-    description: 'Side profile shot of CAT 299D3 equipped with the innovative Fusion BlackHawk mulching attachment.',
-    alt: 'Side view of CAT 299D3 compact track loader with Fecon BlackHawk Fusion forestry mulcher attachment',
+    title: 'CAT 299D3 with Advanced Mulching System',
+    description: 'Side profile shot of CAT 299D3 equipped with the innovative advanced mulching attachment.',
+    alt: 'Side view of CAT 299D3 compact track loader with advanced forestry mulcher attachment',
     category: 'equipment',
-    equipment: 'CAT 299D3 with Fecon BlackHawk Fusion',
+    equipment: 'CAT 299D3 with Advanced Mulching System',
     featured: false,
-    seoTags: ['CAT 299D3', 'Fecon BlackHawk Fusion', 'forestry mulcher', 'equipment profile']
+    seoTags: ['CAT 299D3', 'advanced mulching', 'forestry mulcher', 'equipment profile']
   },
   {
     id: 'fae-forestry-mulcher-fine-mulch',
@@ -108,15 +108,15 @@ const defaultImages: EquipmentImage[] = [
     seoTags: ['burn pile', 'land clearing', 'debris removal', 'site preparation', 'controlled burning', 'Florida']
   },
   {
-    id: 'fecon-135-specialized-equipment',
-    filename: '/treeshop/images/projects/fecon-135-specialized-equipment.jpg',
-    title: 'Tree Shop Fecon 135 Operations',
-    description: 'Tree Shop running the specialized Fecon 135 mulching equipment for precision forestry operations.',
-    alt: 'Tree Shop operating Fecon 135 specialized forestry mulching equipment for precision land clearing',
+    id: 'specialized-mulching-equipment',
+    filename: '/treeshop/images/projects/specialized-mulching-equipment.jpg',
+    title: 'Tree Shop Specialized Mulcher Operations',
+    description: 'Tree Shop running the specialized mulching equipment for precision forestry operations.',
+    alt: 'Tree Shop operating specialized forestry mulching equipment for precision land clearing',
     category: 'equipment',
-    equipment: 'Fecon 135',
+    equipment: 'Specialized Mulcher',
     featured: true,
-    seoTags: ['Fecon 135', 'Tree Shop', 'specialized equipment', 'precision forestry', 'professional operations']
+    seoTags: ['specialized mulcher', 'Tree Shop', 'specialized equipment', 'precision forestry', 'professional operations']
   }
 ]
 

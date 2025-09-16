@@ -72,7 +72,7 @@ export default function WorkOrdersPage() {
         assignedCrew: {
           leadTechnician: 'Mike Rodriguez',
           assistants: ['Carlos Martinez', 'David Thompson'],
-          equipment: ['Fecon FMS075', 'Support Truck', 'Chainsaw Kit']
+          equipment: ['FMS075 Forestry Mulcher', 'Support Truck', 'Chainsaw Kit']
         },
         location: {
           address: '123 Oak Street, Brooksville, FL 34601',
@@ -113,7 +113,7 @@ export default function WorkOrdersPage() {
         assignedCrew: {
           leadTechnician: 'Tom Wilson',
           assistants: ['Jake Anderson', 'Luis Gomez', 'Steve Johnson'],
-          equipment: ['Fecon FMS150', 'Fecon FMS075', 'Water Truck', 'Support Truck']
+          equipment: ['FMS150 Forestry Mulcher', 'FMS075 Forestry Mulcher', 'Water Truck', 'Support Truck']
         },
         location: {
           address: '456 Industrial Drive, Spring Hill, FL 34609',
@@ -155,7 +155,7 @@ export default function WorkOrdersPage() {
         assignedCrew: {
           leadTechnician: 'Carlos Martinez',
           assistants: ['David Thompson'],
-          equipment: ['Fecon FMS075', 'Mini Excavator']
+          equipment: ['FMS075 Forestry Mulcher', 'Mini Excavator']
         },
         location: {
           address: '789 Pine Road, Inverness, FL 34450',

@@ -298,7 +298,7 @@ export default function ProposalPDF({ data }: ProposalPDFProps) {
             <View style={styles.featureGrid}>
               <View style={styles.featureItem}>
                 <Text style={styles.featureTitle}>🚜 Professional Equipment</Text>
-                <Text style={styles.featureDescription}>CAT forestry mulchers & Fecon attachments</Text>
+                <Text style={styles.featureDescription}>CAT forestry mulchers & specialized attachments</Text>
               </View>
               <View style={styles.featureItem}>
                 <Text style={styles.featureTitle}>🌱 Eco-Friendly Process</Text>

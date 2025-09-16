@@ -171,7 +171,7 @@ export default function SimpleProposalPDF({ data }: SimpleProposalPDFProps) {
         {/* TreeShop Value & Process */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Why Choose TreeShop Florida?</Text>
-          <Text style={styles.text}>• Professional equipment: CAT forestry mulchers & Fecon attachments</Text>
+          <Text style={styles.text}>• Professional equipment: CAT forestry mulchers & specialized attachments</Text>
           <Text style={styles.text}>• Eco-friendly selective clearing - preserves soil & nutrients</Text>
           <Text style={styles.text}>• Licensed & insured with comprehensive coverage</Text>
           <Text style={styles.text}>• Fast turnaround: 1-3 days for most projects</Text>
