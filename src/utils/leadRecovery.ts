@@ -28,11 +28,10 @@ export const retryFailedLeads = async () => {
 
   for (const lead of failedLeads) {
     try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
+      const response = await fetch('/api/leads/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          path: 'leads:create',
           args: {
             name: lead.name,
             email: lead.email,

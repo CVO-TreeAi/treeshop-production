@@ -55,11 +55,9 @@ export default function MultiStepEstimator() {
   const [debrisHandling, setDebrisHandling] = useState<'haul' | 'leave'>('leave');
   
   // Lead tracking
-  const [leadId, setLeadId] = useState<string | null>(null);
   const [finalPrice, setFinalPrice] = useState<number>(0);
   const [priceRange, setPriceRange] = useState<{min: number, max: number} | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isCreatingLead, setIsCreatingLead] = useState(false);
   
   // Calculate transport based on ZIP
   const calculateTransport = (zip: string) => {
@@ -130,124 +128,6 @@ export default function MultiStepEstimator() {
     }
   };
 
-  // Create lead when moving from contact to service
-  const createLead = async (retryCount = 0): Promise<boolean> => {
-    console.log('📝 Creating new lead with Step 1 data...', retryCount > 0 ? `(Retry ${retryCount})` : '');
-    try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: 'leads:create',
-          args: {
-            name,
-            email,
-            phone,
-            address: `${streetAddress}, ${city}, ${state} ${zipCode}`,
-            zipCode: zipCode,
-            acreage: 0,
-            selectedPackage: 'Not Selected',
-            obstacles: [],
-            leadScore: 'warm',
-            leadSource: 'website_estimate_v3',
-            leadPage: 'estimate',
-            siteSource: 'treeshop.app',
-            status: 'new',
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-          }
-        })
-      });
-
-      console.log('Response status:', response.status);
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Lead created response from Convex:', data);
-
-        // Extract the actual ID from the response
-        const actualId = data?.value?.id || data?.id || data?._id;
-        if (actualId) {
-          setLeadId(actualId);
-          console.log('✅ Lead ID stored:', actualId);
-          return true;
-        } else {
-          console.error('❌ No ID returned from Convex, response:', data);
-          // If no ID but response is OK, might be a temporary issue
-          if (retryCount < 2) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            return createLead(retryCount + 1);
-          }
-          return false;
-        }
-      } else {
-        const errorText = await response.text();
-        console.error('❌ Lead creation failed:', response.status, errorText);
-
-        // Retry on 5xx errors or timeout
-        if (response.status >= 500 && retryCount < 2) {
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          return createLead(retryCount + 1);
-        }
-        return false;
-      }
-    } catch (error) {
-      console.error('❌ Lead creation error:', error);
-
-      // Network error or timeout - retry
-      if (retryCount < 2) {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        return createLead(retryCount + 1);
-      }
-      return false;
-    }
-  };
-
-  // Update lead with full details
-  const updateLead = async () => {
-    const pricing = calculatePrice();
-    
-    console.log('📝 Final update...', 'Lead ID:', leadId);
-    if (!leadId) {
-      console.error('No lead ID for final update');
-      return false;
-    }
-    
-    try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: 'leads:update',
-          args: {
-            id: leadId,
-            estimatedTotal: serviceType === 'forestry' ? pricing.fixed : pricing.min,
-            notes: `${message || ''}${
-              serviceType === 'land-clearing' ? 
-              ` | Day Rate Agreement | Est. ${LAND_CLEARING_DAYS_ESTIMATE[selectedPackage as keyof typeof LAND_CLEARING_DAYS_ESTIMATE]?.minDays}-${
-                LAND_CLEARING_DAYS_ESTIMATE[selectedPackage as keyof typeof LAND_CLEARING_DAYS_ESTIMATE]?.maxDays} days | ${
-                debrisHandling === 'haul' ? 'Debris haul-away requested' : 'No debris hauling'
-              }` : ''
-            }`,
-            status: 'contacted',
-            updatedAt: Date.now()
-          }
-        })
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('📤 Lead update response from Convex:', data);
-      } else {
-        console.error('❌ Lead update failed:', response.status, response.statusText);
-      }
-      
-      return response.ok;
-    } catch (error) {
-      console.error('Lead update error:', error);
-      return false;
-    }
-  };
 
   // Navigation handlers
   const handleStep1Submit = async () => {
@@ -256,28 +136,8 @@ export default function MultiStepEstimator() {
       return;
     }
 
-    setIsCreatingLead(true);
-
-    try {
-      const success = await createLead();
-      if (success) {
-        setCurrentStep('service');
-      } else {
-        // More helpful error message with fallback option
-        const userChoice = confirm(
-          'We\'re having trouble saving your information right now. \n\n' +
-          'Would you like to continue anyway? Your information will be submitted at the end.\n\n' +
-          'Or you can try again by clicking Cancel.'
-        );
-
-        if (userChoice) {
-          // Continue without lead ID - will create lead at final submit
-          setCurrentStep('service');
-        }
-      }
-    } finally {
-      setIsCreatingLead(false);
-    }
+    // Just move to next step - we'll submit everything at the end
+    setCurrentStep('service');
   };
 
   const handleStep2Submit = async () => {
@@ -285,75 +145,13 @@ export default function MultiStepEstimator() {
       alert('Please select a package and enter acreage');
       return;
     }
-    
-    // Update lead with Step 2 data
-    console.log('📝 Saving Step 2 data...', 'Lead ID:', leadId);
-    if (!leadId) {
-      console.error('No lead ID to update');
-      return;
-    }
-    
-    try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: 'leads:update',
-          args: {
-            id: leadId,
-            acreage: parseFloat(acres) || 0,
-            selectedPackage: serviceType === 'forestry' 
-              ? FORESTRY_PACKAGES[selectedPackage as keyof typeof FORESTRY_PACKAGES]?.label 
-              : LAND_CLEARING_DAYS_ESTIMATE[selectedPackage as keyof typeof LAND_CLEARING_DAYS_ESTIMATE]?.label,
-            status: 'qualified',
-            updatedAt: Date.now()
-          }
-        })
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Step 2 data saved:', data);
-      }
-    } catch (error) {
-      console.error('Error saving Step 2:', error);
-    }
-    
+
+    // Just move to next step - we'll submit everything at the end
     setCurrentStep('details');
   };
 
   const handleStep3Submit = async () => {
-    // Update lead with Step 3 data
-    console.log('📝 Saving Step 3 data...', 'Lead ID:', leadId);
-    if (!leadId) {
-      console.error('No lead ID to update');
-      setCurrentStep('price');
-      return;
-    }
-    
-    try {
-      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          path: 'leads:update',
-          args: {
-            id: leadId,
-            notes: message || '',
-            status: 'quoted',
-            updatedAt: Date.now()
-          }
-        })
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Step 3 data saved:', data);
-      }
-    } catch (error) {
-      console.error('Error saving Step 3:', error);
-    }
-    
+    // Just move to next step - we'll submit everything at the end
     setCurrentStep('price');
   };
 
@@ -361,66 +159,36 @@ export default function MultiStepEstimator() {
     setIsSubmitting(true);
 
     try {
-      // If no lead ID (failed to create initially), try creating now
-      if (!leadId) {
-        console.log('No lead ID found, creating lead now...');
-        const createSuccess = await createLead();
-        if (!createSuccess) {
-          // If still can't create, save to localStorage as backup
-          const leadData = {
+      // Always create a new lead with all the collected data
+      console.log('Creating lead with complete data...');
+
+      const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: 'terminalSync:createLead',
+          args: {
             name,
             email,
             phone,
             address: `${streetAddress}, ${city}, ${state} ${zipCode}`,
-            zipCode,
-            serviceType,
-            acres,
-            selectedPackage,
-            debrisHandling,
-            message,
-            price: serviceType === 'forestry' ? finalPrice : priceRange,
-            timestamp: new Date().toISOString()
-          };
+            acreage: acres || '0',
+            selectedPackage: serviceType === 'forestry'
+              ? FORESTRY_PACKAGES[selectedPackage as keyof typeof FORESTRY_PACKAGES]?.label
+              : LAND_CLEARING_DAYS_ESTIMATE[selectedPackage as keyof typeof LAND_CLEARING_DAYS_ESTIMATE]?.label,
+            message: `${serviceType === 'forestry' ? 'Forestry Mulching' : 'Land Clearing'} | ${message || ''} | Price: $${
+              serviceType === 'forestry' ? finalPrice.toFixed(0) : `${priceRange?.min.toFixed(0)}-${priceRange?.max.toFixed(0)}`
+            }`,
+            source: 'treeshop.app',
+            status: 'quoted',
+            createdAt: Date.now()
+          }
+        })
+      });
 
-          // Save to localStorage
-          const existingLeads = JSON.parse(localStorage.getItem('failed_leads') || '[]');
-          existingLeads.push(leadData);
-          localStorage.setItem('failed_leads', JSON.stringify(existingLeads));
-
-          console.error('❌ Could not submit to Convex, saved to localStorage:', leadData);
-
-          // Still show success to user but with phone number
-          alert(
-            'Your estimate request has been received! \n\n' +
-            'Please call us at (321) 314-8668 to confirm your estimate, or we\'ll contact you within 24 hours.\n\n' +
-            'Reference your estimate for: ' + name
-          );
-
-          // Redirect after delay
-          setTimeout(() => {
-            router.push('/');
-          }, 2000);
-
-          setIsSubmitting(false);
-          return;
-        }
-      }
-
-      // Update the lead with final details
-      const success = await updateLead();
-
-      if (success || !leadId) {
-        // Log success for verification
-        console.log('✅ Lead successfully submitted:', {
-          leadId,
-          name,
-          email,
-          phone,
-          serviceType,
-          acres,
-          price: serviceType === 'forestry' ? finalPrice : priceRange,
-          timestamp: new Date().toISOString()
-        });
+      if (response.ok) {
+        const data = await response.json();
+        console.log('✅ Lead successfully submitted:', data);
 
         // Show success message
         alert('Your estimate request has been submitted! We\'ll contact you within 24 hours.');
@@ -430,9 +198,8 @@ export default function MultiStepEstimator() {
           router.push('/');
         }, 1500);
       } else {
-        // Save to localStorage as backup
+        // If submission fails, save to localStorage as backup
         const leadData = {
-          leadId,
           name,
           email,
           phone,
@@ -447,20 +214,24 @@ export default function MultiStepEstimator() {
           timestamp: new Date().toISOString()
         };
 
+        // Save to localStorage
         const existingLeads = JSON.parse(localStorage.getItem('failed_leads') || '[]');
         existingLeads.push(leadData);
         localStorage.setItem('failed_leads', JSON.stringify(existingLeads));
 
-        console.error('❌ Update failed, saved to localStorage:', leadData);
+        console.error('❌ Could not submit to Convex, saved to localStorage:', leadData);
 
+        // Still show success to user but with phone number
         alert(
           'Your estimate request has been received! \n\n' +
-          'Please call us at (321) 314-8668 to confirm your estimate, or we\'ll contact you within 24 hours.'
+          'Please call us at (321) 314-8668 to confirm your estimate, or we\'ll contact you within 24 hours.\n\n' +
+          'Reference your estimate for: ' + name
         );
 
+        // Redirect after delay
         setTimeout(() => {
           router.push('/');
-        }, 1500);
+        }, 2000);
       }
     } catch (error) {
       console.error('Final submission error:', error);
@@ -601,10 +372,9 @@ export default function MultiStepEstimator() {
 
           <button
             onClick={handleStep1Submit}
-            disabled={isCreatingLead}
-            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
           >
-            {isCreatingLead ? 'Saving Information...' : 'Continue to Service Selection →'}
+            Continue to Service Selection →
           </button>
         </div>
       )}
