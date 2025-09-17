@@ -4,7 +4,6 @@ import ValueProps from '@/components/ValueProps'
 import ProjectGallery from '@/components/ProjectGallery'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
 import Footer from '@/components/Footer'
-import DevNotification from '@/components/DevNotification'
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <LeadCaptureForm />
       </section>
       <Footer />
-      <DevNotification />
     </div>
   );
 }
