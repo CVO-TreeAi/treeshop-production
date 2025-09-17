@@ -59,6 +59,7 @@ export default function MultiStepEstimator() {
   const [finalPrice, setFinalPrice] = useState<number>(0);
   const [priceRange, setPriceRange] = useState<{min: number, max: number} | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCreatingLead, setIsCreatingLead] = useState(false);
   
   // Calculate transport based on ZIP
   const calculateTransport = (zip: string) => {
@@ -130,8 +131,8 @@ export default function MultiStepEstimator() {
   };
 
   // Create lead when moving from contact to service
-  const createLead = async () => {
-    console.log('📝 Creating new lead with Step 1 data...');
+  const createLead = async (retryCount = 0): Promise<boolean> => {
+    console.log('📝 Creating new lead with Step 1 data...', retryCount > 0 ? `(Retry ${retryCount})` : '');
     try {
       const response = await fetch('https://earnest-lemming-634.convex.cloud/api/mutation', {
         method: 'POST',
@@ -157,30 +158,47 @@ export default function MultiStepEstimator() {
           }
         })
       });
-      
+
       console.log('Response status:', response.status);
-      
+
       if (response.ok) {
         const data = await response.json();
         console.log('✅ Lead created response from Convex:', data);
-        
+
         // Extract the actual ID from the response
-        const actualId = data?.value?.id || data?.id;
+        const actualId = data?.value?.id || data?.id || data?._id;
         if (actualId) {
           setLeadId(actualId);
           console.log('✅ Lead ID stored:', actualId);
           return true;
         } else {
-          console.error('❌ No ID returned from Convex');
+          console.error('❌ No ID returned from Convex, response:', data);
+          // If no ID but response is OK, might be a temporary issue
+          if (retryCount < 2) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return createLead(retryCount + 1);
+          }
           return false;
         }
       } else {
         const errorText = await response.text();
         console.error('❌ Lead creation failed:', response.status, errorText);
+
+        // Retry on 5xx errors or timeout
+        if (response.status >= 500 && retryCount < 2) {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          return createLead(retryCount + 1);
+        }
         return false;
       }
     } catch (error) {
       console.error('❌ Lead creation error:', error);
+
+      // Network error or timeout - retry
+      if (retryCount < 2) {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        return createLead(retryCount + 1);
+      }
       return false;
     }
   };
@@ -237,12 +255,28 @@ export default function MultiStepEstimator() {
       alert('Please fill in all required fields');
       return;
     }
-    
-    const success = await createLead();
-    if (success) {
-      setCurrentStep('service');
-    } else {
-      alert('There was an error saving your information. Please try again.');
+
+    setIsCreatingLead(true);
+
+    try {
+      const success = await createLead();
+      if (success) {
+        setCurrentStep('service');
+      } else {
+        // More helpful error message with fallback option
+        const userChoice = confirm(
+          'We\'re having trouble saving your information right now. \n\n' +
+          'Would you like to continue anyway? Your information will be submitted at the end.\n\n' +
+          'Or you can try again by clicking Cancel.'
+        );
+
+        if (userChoice) {
+          // Continue without lead ID - will create lead at final submit
+          setCurrentStep('service');
+        }
+      }
+    } finally {
+      setIsCreatingLead(false);
     }
   };
 
@@ -325,37 +359,115 @@ export default function MultiStepEstimator() {
 
   const handleFinalSubmit = async () => {
     setIsSubmitting(true);
-    
-    // Update the lead with final details
-    const success = await updateLead();
-    
-    if (success) {
-      // Log success for verification
-      console.log('✅ Lead successfully submitted to Convex:', {
-        leadId,
-        name,
-        email,
-        phone,
-        serviceType,
-        acres,
-        price: serviceType === 'forestry' ? finalPrice : priceRange,
-        timestamp: new Date().toISOString()
-      });
-      
-      // Show success message
-      alert('Your estimate request has been submitted! We\'ll contact you within 24 hours.');
-      
-      // Redirect to home page after short delay
-      setTimeout(() => {
-        router.push('/');
-      }, 1500);
-    } else {
-      // Log error for debugging
-      console.error('❌ Failed to submit lead');
-      alert('There was an error submitting your request. Please try again or call us directly.');
+
+    try {
+      // If no lead ID (failed to create initially), try creating now
+      if (!leadId) {
+        console.log('No lead ID found, creating lead now...');
+        const createSuccess = await createLead();
+        if (!createSuccess) {
+          // If still can't create, save to localStorage as backup
+          const leadData = {
+            name,
+            email,
+            phone,
+            address: `${streetAddress}, ${city}, ${state} ${zipCode}`,
+            zipCode,
+            serviceType,
+            acres,
+            selectedPackage,
+            debrisHandling,
+            message,
+            price: serviceType === 'forestry' ? finalPrice : priceRange,
+            timestamp: new Date().toISOString()
+          };
+
+          // Save to localStorage
+          const existingLeads = JSON.parse(localStorage.getItem('failed_leads') || '[]');
+          existingLeads.push(leadData);
+          localStorage.setItem('failed_leads', JSON.stringify(existingLeads));
+
+          console.error('❌ Could not submit to Convex, saved to localStorage:', leadData);
+
+          // Still show success to user but with phone number
+          alert(
+            'Your estimate request has been received! \n\n' +
+            'Please call us at (321) 314-8668 to confirm your estimate, or we\'ll contact you within 24 hours.\n\n' +
+            'Reference your estimate for: ' + name
+          );
+
+          // Redirect after delay
+          setTimeout(() => {
+            router.push('/');
+          }, 2000);
+
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      // Update the lead with final details
+      const success = await updateLead();
+
+      if (success || !leadId) {
+        // Log success for verification
+        console.log('✅ Lead successfully submitted:', {
+          leadId,
+          name,
+          email,
+          phone,
+          serviceType,
+          acres,
+          price: serviceType === 'forestry' ? finalPrice : priceRange,
+          timestamp: new Date().toISOString()
+        });
+
+        // Show success message
+        alert('Your estimate request has been submitted! We\'ll contact you within 24 hours.');
+
+        // Redirect to home page after short delay
+        setTimeout(() => {
+          router.push('/');
+        }, 1500);
+      } else {
+        // Save to localStorage as backup
+        const leadData = {
+          leadId,
+          name,
+          email,
+          phone,
+          address: `${streetAddress}, ${city}, ${state} ${zipCode}`,
+          zipCode,
+          serviceType,
+          acres,
+          selectedPackage,
+          debrisHandling,
+          message,
+          price: serviceType === 'forestry' ? finalPrice : priceRange,
+          timestamp: new Date().toISOString()
+        };
+
+        const existingLeads = JSON.parse(localStorage.getItem('failed_leads') || '[]');
+        existingLeads.push(leadData);
+        localStorage.setItem('failed_leads', JSON.stringify(existingLeads));
+
+        console.error('❌ Update failed, saved to localStorage:', leadData);
+
+        alert(
+          'Your estimate request has been received! \n\n' +
+          'Please call us at (321) 314-8668 to confirm your estimate, or we\'ll contact you within 24 hours.'
+        );
+
+        setTimeout(() => {
+          router.push('/');
+        }, 1500);
+      }
+    } catch (error) {
+      console.error('Final submission error:', error);
+      alert('There was an error submitting your request. Please call us at (321) 314-8668 or try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitting(false);
   };
 
   // Update price when relevant fields change
@@ -489,9 +601,10 @@ export default function MultiStepEstimator() {
 
           <button
             onClick={handleStep1Submit}
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
+            disabled={isCreatingLead}
+            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-lg transition-colors text-lg"
           >
-            Continue to Service Selection →
+            {isCreatingLead ? 'Saving Information...' : 'Continue to Service Selection →'}
           </button>
         </div>
       )}

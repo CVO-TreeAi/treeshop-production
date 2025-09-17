@@ -5,6 +5,7 @@ import "./globals.css";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import ConsentBanner from "@/components/ConsentBanner";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
+import LeadRecoveryInit from "@/components/LeadRecoveryInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -266,6 +267,7 @@ export default function RootLayout({
         />
         <ConvexClientProvider>
           {children}
+          <LeadRecoveryInit />
         </ConvexClientProvider>
         <ConsentBanner />
       </body>
