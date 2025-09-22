@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Script from 'next/script'
 
 const heroImages = [
   {
@@ -120,6 +121,11 @@ export default function TreeShopLanding() {
       })
 
       if (response.ok) {
+        // Trigger Google Ads conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          (window as any).gtag_report_conversion();
+        }
+
         setSubmitMessage('Thank you! We\'ll contact you within 24 hours.')
         setFormData({
           name: '',
@@ -146,6 +152,40 @@ export default function TreeShopLanding() {
   }
 
   return (
+    <>
+      {/* Google Analytics Tag */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-GC2Y1WH6N2"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GC2Y1WH6N2');
+          gtag('config', 'AW-11045992121');
+        `}
+      </Script>
+
+      {/* Google Ads Conversion Tracking Event Snippet */}
+      <Script id="google-ads-conversion-function" strategy="afterInteractive">
+        {`
+          function gtag_report_conversion(url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+              'send_to': 'AW-11045992121/0yGLCJmlv5kYELntkZMp',
+              'event_callback': callback
+            });
+            return false;
+          }
+        `}
+      </Script>
+
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-black overflow-hidden">
@@ -388,5 +428,6 @@ export default function TreeShopLanding() {
         </div>
       </footer>
     </div>
+    </>
   )
 }
