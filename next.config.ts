@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com maps.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos maps.gstatic.com *.googleapis.com; frame-src 'self' *.youtube.com *.youtube-nocookie.com; connect-src 'self' *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com maps.googleapis.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com maps.googleapis.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos maps.gstatic.com *.googleapis.com; frame-src 'self' *.youtube.com *.youtube-nocookie.com; connect-src 'self' *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com maps.googleapis.com www.google.com;"
           },
           {
             key: 'X-Frame-Options',
