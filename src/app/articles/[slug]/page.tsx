@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { format } from 'date-fns'
+import { getSubstackPostBySlug, fetchSubstackPosts } from '@/lib/substack'
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
@@ -12,24 +13,44 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  // Get both local and Substack posts
+  const localPosts = getAllPosts()
+  const substackPosts = await fetchSubstackPosts()
+
+  const allSlugs = [
+    ...localPosts.map((post) => ({ slug: post.slug })),
+    ...substackPosts.map((post) => ({ slug: post.slug }))
+  ]
+
+  return allSlugs
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+
+  // Try Substack first
+  let post = await getSubstackPostBySlug(slug)
+
+  // Fall back to local posts
+  if (!post) {
+    const localPost = getPostBySlug(slug)
+    if (localPost) {
+      post = {
+        ...localPost,
+        link: '',
+        id: localPost.slug
+      } as any
+    }
+  }
 
   if (!post) {
     return {
-      title: 'Post Not Found | The Tree Shop Blog',
+      title: 'Article Not Found | The Tree Shop',
     }
   }
 
   return {
-    title: `${post.title} | The Tree Shop Blog`,
+    title: `${post.title} | The Tree Shop`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -37,175 +58,120 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: post.coverImage ? [post.coverImage] : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: post.coverImage ? [post.coverImage] : undefined,
     },
   }
 }
 
+// Revalidate every 10 minutes for Substack content
+export const revalidate = 600
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+
+  // Try Substack first
+  let post = await getSubstackPostBySlug(slug)
+  let isSubstack = true
+
+  // Fall back to local posts
+  if (!post) {
+    const localPost = getPostBySlug(slug)
+    if (localPost) {
+      post = {
+        ...localPost,
+        link: '',
+        id: localPost.slug
+      } as any
+      isSubstack = false
+    }
+  }
 
   if (!post) {
     notFound()
   }
 
-  const allPosts = getAllPosts()
-  const currentIndex = allPosts.findIndex(p => p.slug === slug)
-  const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null
-  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null
-  const relatedPosts = allPosts
-    .filter(p => p.slug !== slug && p.category === post.category)
-    .slice(0, 3)
-
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-black">
       <NavBar />
-      
-      <main className="max-w-5xl mx-auto px-4 py-12">
+
+      <main className="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+        {/* Back Link */}
+        <Link
+          href="/articles"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-green-400 mb-8 text-sm"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to articles
+        </Link>
+
         {/* Article Header */}
-        <header className="mb-16">
-          {/* Breadcrumb */}
-          <nav className="text-sm text-gray-600 mb-6">
-            <Link href="/" className="hover:text-green-700">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/articles" className="hover:text-green-700">Blog</Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900 font-medium">{post.title}</span>
-          </nav>
-
-          {/* Article Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700 mb-6">
-            <span className="px-3 py-1 bg-green-100 text-green-800 border border-green-200 rounded-full font-medium">{post.category}</span>
-            <span className="font-medium">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-            <span>{post.readingTime.text}</span>
-            <span>By <strong className="text-gray-900">{post.author}</strong></span>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight font-serif">
+        <header className="mb-12">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
             {post.title}
           </h1>
 
-          {/* Excerpt */}
-          <p className="text-xl text-gray-700 leading-relaxed mb-8 font-medium">
-            {post.excerpt}
-          </p>
-
-          {/* Cover Image */}
-          {post.coverImage && (
-            <div className="mb-8">
-              <img
-                src={post.coverImage}
-                alt={post.title}
-                className="w-full rounded-lg"
-              />
-            </div>
-          )}
-
-          {/* Tags */}
-          {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
-              {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/articles/tag/${tag.toLowerCase()}`}
-                  className="px-3 py-1 bg-gray-100 border border-gray-300 text-gray-800 hover:bg-green-600 hover:text-white hover:border-green-600 rounded-full text-sm transition-colors"
+          <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+            <time>{format(new Date(post.date), 'MMMM d, yyyy')}</time>
+            <span>•</span>
+            <span>{post.readingTime.text}</span>
+            {isSubstack && (
+              <>
+                <span>•</span>
+                <a
+                  href={(post as any).link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-green-400"
                 >
-                  #{tag}
-                </Link>
-              ))}
-            </div>
-          )}
+                  View on Substack
+                </a>
+              </>
+            )}
+          </div>
         </header>
 
         {/* Article Content */}
-        <article className="max-w-none">
-          <div className="max-w-4xl mx-auto">
+        <article className="prose prose-invert prose-lg max-w-none
+          prose-headings:text-white prose-headings:font-semibold
+          prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+          prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+          prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
+          prose-a:text-green-400 prose-a:no-underline hover:prose-a:text-green-300
+          prose-strong:text-white prose-strong:font-semibold
+          prose-ul:text-gray-300 prose-ul:my-6 prose-li:my-2
+          prose-ol:text-gray-300 prose-ol:my-6
+          prose-blockquote:border-l-4 prose-blockquote:border-gray-700 prose-blockquote:pl-4
+          prose-blockquote:text-gray-400 prose-blockquote:italic prose-blockquote:my-8
+          prose-img:rounded-lg prose-img:my-8
+          prose-hr:border-gray-800 prose-hr:my-12">
+          {isSubstack ? (
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          ) : (
             <BlogContent content={post.content} />
-          </div>
+          )}
         </article>
 
-        {/* Article Footer */}
-        <footer className="mt-16 pt-8 border-t border-gray-300">
-          {/* Author Info */}
-          <div className="bg-gray-50 border border-gray-300 rounded-lg p-6 mb-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                {post.author.charAt(0)}
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">{post.author}</h3>
-                <p className="text-gray-800 text-sm leading-relaxed">
-                  Expert in land clearing, forestry mulching, and property management with years of hands-on experience helping Florida property owners maximize their land's potential.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          {(previousPost || nextPost) && (
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {previousPost && (
-                <Link 
-                  href={`/articles/${previousPost.slug}`}
-                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all"
-                >
-                  <div className="text-sm text-gray-600 mb-2">← Previous Article</div>
-                  <div className="font-semibold text-gray-900">{previousPost.title}</div>
-                </Link>
-              )}
-              {nextPost && (
-                <Link 
-                  href={`/articles/${nextPost.slug}`}
-                  className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-all md:text-right"
-                >
-                  <div className="text-sm text-gray-600 mb-2">Next Article →</div>
-                  <div className="font-semibold text-gray-900">{nextPost.title}</div>
-                </Link>
-              )}
+        {/* Simple Footer */}
+        <footer className="mt-16 pt-8 border-t border-gray-800">
+          {isSubstack && (
+            <div className="text-center">
+              <p className="text-gray-400 mb-4">
+                Enjoyed this article?
+              </p>
+              <a
+                href="https://mrtreeshop.substack.com/subscribe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                </svg>
+                Subscribe on Substack
+              </a>
             </div>
           )}
-
-          {/* Related Articles */}
-          {relatedPosts.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {relatedPosts.map((relatedPost) => (
-                  <Link
-                    key={relatedPost.slug}
-                    href={`/articles/${relatedPost.slug}`}
-                    className="bg-white border border-gray-300 rounded-lg p-4 hover:shadow-md transition-all"
-                  >
-                    <div className="text-sm text-green-700 font-medium mb-2">{relatedPost.category}</div>
-                    <h4 className="font-semibold text-gray-900 mb-2 leading-tight">{relatedPost.title}</h4>
-                    <div className="text-sm text-gray-600">{relatedPost.readingTime.text}</div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* CTA */}
-          <div className="bg-green-50 border border-green-300 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Land?</h3>
-            <p className="text-gray-800 mb-6">
-              Get a professional forestry mulching estimate tailored to your property's specific needs.
-            </p>
-            <Link
-              href="/estimate"
-              className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-            >
-              Get Free Estimate
-            </Link>
-          </div>
         </footer>
       </main>
 
