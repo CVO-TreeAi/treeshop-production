@@ -53,13 +53,20 @@ const nextConfig: NextConfig = {
   
   // Security headers
   async headers() {
+    // More permissive CSP for development
+    const isDevelopment = process.env.NODE_ENV === 'development'
+
+    const cspValue = isDevelopment
+      ? "default-src 'self' localhost:* ws://localhost:* http://localhost:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' localhost:* *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com maps.googleapis.com *.doubleclick.net *.googlesyndication.com *.googleadservices.com; style-src 'self' 'unsafe-inline' localhost:* fonts.googleapis.com *.googletagmanager.com; font-src 'self' localhost:* fonts.gstatic.com data:; img-src 'self' data: blob: localhost:* *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos maps.gstatic.com *.googleapis.com *.doubleclick.net *.google.com *.google-analytics.com; frame-src 'self' localhost:* *.youtube.com *.youtube-nocookie.com *.googletagmanager.com *.doubleclick.net; connect-src 'self' ws://localhost:* http://localhost:* *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com *.analytics.google.com maps.googleapis.com www.google.com *.googletagmanager.com *.doubleclick.net;"
+      : "default-src 'self' https: wss:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: *.vercel.app *.treeshop.app *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com maps.googleapis.com *.doubleclick.net *.googlesyndication.com *.googleadservices.com *.gstatic.com cdn.jsdelivr.net unpkg.com; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com *.googletagmanager.com cdn.jsdelivr.net unpkg.com; font-src 'self' fonts.gstatic.com data: https:; img-src 'self' data: blob: https: *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos maps.gstatic.com *.googleapis.com *.doubleclick.net *.google.com *.google-analytics.com *.gstatic.com *.ytimg.com; frame-src 'self' https: *.youtube.com *.youtube-nocookie.com *.googletagmanager.com *.doubleclick.net *.stripe.com; connect-src 'self' https: wss: *.vercel.app *.treeshop.app *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com *.analytics.google.com maps.googleapis.com www.google.com *.googletagmanager.com *.doubleclick.net vitals.vercel-insights.com;"
+
     return [
       {
         source: '/(.*)',
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.youtube.com *.stripe.com *.googleapis.com maps.googleapis.com *.doubleclick.net *.googlesyndication.com *.googleadservices.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.googletagmanager.com; font-src 'self' fonts.gstatic.com data:; img-src 'self' data: blob: *.youtube.com *.googletagmanager.com *.stripe.com *.unsplash.com picsum.photos maps.gstatic.com *.googleapis.com *.doubleclick.net *.google.com *.google-analytics.com; frame-src 'self' *.youtube.com *.youtube-nocookie.com *.googletagmanager.com *.doubleclick.net; connect-src 'self' *.convex.cloud *.googleapis.com api.stripe.com *.google-analytics.com *.analytics.google.com maps.googleapis.com www.google.com *.googletagmanager.com *.doubleclick.net;"
+            value: cspValue
           },
           {
             key: 'X-Frame-Options',
