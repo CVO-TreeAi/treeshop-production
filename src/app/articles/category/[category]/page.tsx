@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { format } from 'date-fns'
-import { getPostsByCategory, getAllCategories } from '@/lib/blog'
+import { getArticlesByCategory, getAllCategories } from '@/lib/articles'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 
@@ -11,15 +11,15 @@ interface CategoryPageProps {
 }
 
 export async function generateStaticParams() {
-  const categories = getAllCategories()
+  const categories = await getAllCategories()
   return categories.map((category) => ({
-    category: category.toLowerCase(),
+    category: category.toLowerCase().replace(/\s+/g, '-'),
   }))
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { category } = await params
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1)
+  const formattedCategory = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
   
   return {
     title: `${formattedCategory} Articles | The Tree Shop Blog`,
@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = await params
-  const posts = getPostsByCategory(category)
+  const posts = await getArticlesByCategory(category)
   
   if (posts.length === 0) {
     notFound()
   }
 
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1)
+  const formattedCategory = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -68,7 +68,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
                 <span className="px-3 py-1 bg-green-600/20 text-green-400 rounded-full">{post.category}</span>
                 <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-                <span>{post.readingTime.text}</span>
+                <span>{post.readTime}</span>
               </div>
               
               <h2 className="text-2xl font-semibold text-white mb-3 leading-tight">
@@ -77,7 +77,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </Link>
               </h2>
               
-              <p className="text-gray-300 mb-4 leading-relaxed">
+              <p className="text-white mb-4 leading-relaxed">
                 {post.excerpt}
               </p>
               
