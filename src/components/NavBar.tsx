@@ -7,6 +7,7 @@ import Image from 'next/image'
 
 export default function NavBar(){
   const [isOpen, setIsOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
 
   return (
     <header className="border-b border-gray-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/40 sticky top-0 z-50">
@@ -28,15 +29,51 @@ export default function NavBar(){
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            <Link href="/services/land-clearing" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
-              Land Clearing
-            </Link>
-            <Link href="/services/forestry-mulching" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
-              Forestry Mulching
-            </Link>
-            <Link href="/services/stump-grinding" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
-              Stump Grinding
-            </Link>
+            {/* Services Dropdown */}
+            <div className="relative">
+              <button
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+                className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 flex items-center gap-1"
+              >
+                Services
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Services Dropdown Menu */}
+              {servicesOpen && (
+                <div
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                  className="absolute top-full left-0 w-56 bg-gray-900/95 backdrop-blur border border-gray-700 rounded-md shadow-xl z-50 py-2"
+                >
+                  <Link
+                    href="/services/land-clearing"
+                    className="block px-4 py-3 text-white hover:text-blue-400 hover:bg-gray-800/50 transition-colors duration-200 text-sm"
+                  >
+                    <div className="font-medium">Land Clearing</div>
+                    <div className="text-xs text-gray-400">Complete site preparation</div>
+                  </Link>
+                  <Link
+                    href="/services/forestry-mulching"
+                    className="block px-4 py-3 text-white hover:text-blue-400 hover:bg-gray-800/50 transition-colors duration-200 text-sm"
+                  >
+                    <div className="font-medium">Forestry Mulching</div>
+                    <div className="text-xs text-gray-400">Eco-friendly vegetation management</div>
+                  </Link>
+                  <Link
+                    href="/services/stump-grinding"
+                    className="block px-4 py-3 text-white hover:text-blue-400 hover:bg-gray-800/50 transition-colors duration-200 text-sm"
+                  >
+                    <div className="font-medium">Stump Grinding</div>
+                    <div className="text-xs text-gray-400">Professional stump removal</div>
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link href="/articles" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Articles
             </Link>
@@ -105,45 +142,51 @@ export default function NavBar(){
           <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md border-b border-gray-800 shadow-xl">
             <div className="px-4 py-6 space-y-4">
               {/* Navigation Links */}
-              <div className="space-y-2">
-                <Link
-                  href="/services/land-clearing"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Land Clearing
-                </Link>
-                <Link
-                  href="/services/forestry-mulching"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Forestry Mulching
-                </Link>
-                <Link
-                  href="/services/stump-grinding"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Stump Grinding
-                </Link>
+              <div className="space-y-1">
+                {/* Services Section */}
+                <div className="border-b border-gray-800 pb-3 mb-3">
+                  <div className="text-green-500 font-bold text-sm mb-2 px-3">SERVICES</div>
+                  <Link
+                    href="/services/land-clearing"
+                    className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Land Clearing
+                  </Link>
+                  <Link
+                    href="/services/forestry-mulching"
+                    className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Forestry Mulching
+                  </Link>
+                  <Link
+                    href="/services/stump-grinding"
+                    className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Stump Grinding
+                  </Link>
+                </div>
+
+                {/* Other Pages */}
                 <Link
                   href="/articles"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                  className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
                   onClick={() => setIsOpen(false)}
                 >
                   Articles
                 </Link>
                 <Link
                   href="/locations"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                  className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
                   onClick={() => setIsOpen(false)}
                 >
                   Service Areas
                 </Link>
                 <Link
                   href="/reviews"
-                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                  className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
                   onClick={() => setIsOpen(false)}
                 >
                   Reviews
