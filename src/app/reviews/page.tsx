@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import NavBar from '@/components/NavBar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Customer Reviews & Testimonials | Tree Shop Central Florida',
@@ -201,6 +203,7 @@ const categories = [
 export default function ReviewsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
+      <NavBar />
       {/* Hero Section */}
       <section className="relative py-16 px-4 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-6xl mx-auto text-center">
@@ -435,6 +438,8 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }
