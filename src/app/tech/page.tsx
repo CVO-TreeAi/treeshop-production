@@ -6,6 +6,52 @@ import Image from 'next/image'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 
+export const metadata: Metadata = {
+  title: 'TreeAI Technology | The Tree Service Operating System | TreeShop',
+  description: 'TreeAI revolutionizes tree service operations with TreeScore, AFISS assessment, and systematic profitability. Join the waitlist for Q2 2026 launch. Founding members get 50% off.',
+  keywords: 'TreeAI, tree service software, TreeScore, AFISS, tree care technology, arborist software, land clearing software, systematic tree service, tree service operating system',
+  openGraph: {
+    title: 'TreeAI Technology | The Tree Service Operating System',
+    description: 'Finally, tree service math that actually works. TreeAI delivers systematic operations, precise pricing, and scalable profitability. Join the waitlist for Q2 2026.',
+    type: 'website',
+    url: 'https://treeshop.app/tech',
+    siteName: 'TreeShop',
+    images: [
+      {
+        url: '/project-images/cat-265-forestry-mulcher-fueling.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'TreeAI Technology - Professional Tree Service Operations',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TreeAI Technology | The Tree Service Operating System',
+    description: 'Finally, tree service math that actually works. TreeScore, AFISS assessment, and systematic profitability. Join the Q2 2026 waitlist.',
+    images: ['/project-images/cat-265-forestry-mulcher-fueling.jpg'],
+    creator: '@TreeShopLLC',
+    site: '@TreeShopLLC',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your actual verification code
+  },
+  alternates: {
+    canonical: 'https://treeshop.app/tech',
+  },
+}
+
 const coreFeatures = [
   {
     feature: "TreeScore & StumpScore",

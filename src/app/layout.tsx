@@ -19,12 +19,67 @@ const geistMono = Geist_Mono({
   display: "swap"
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://treeai.us/treeshop'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://treeshop.app'
 
 export const metadata: Metadata = {
-  title: 'TreeAI Forestry Services | AI-Powered Land Clearing & Forestry Mulching in Florida',
-  description: 'Professional forestry mulching and land clearing across Florida. AI-powered estimates, selective DBH packages, eco‑friendly mulch finish, fast scheduling.',
-  alternates: { canonical: siteUrl },
+  metadataBase: new URL('https://treeshop.app'),
+  title: {
+    default: 'TreeShop | Professional Land Clearing, Forestry Mulching & Tree Services in Central Florida',
+    template: '%s | TreeShop'
+  },
+  description: 'Professional land clearing, forestry mulching, and stump grinding services in Central Florida. Licensed, insured, and equipped with CAT machinery. Get your free estimate today.',
+  keywords: ['land clearing', 'forestry mulching', 'stump grinding', 'tree service', 'Central Florida', 'professional tree care', 'CAT equipment', 'licensed arborists', 'TreeAI technology'],
+  authors: [{ name: 'TreeShop Team' }],
+  creator: 'TreeShop LLC',
+  publisher: 'TreeShop LLC',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName: 'TreeShop',
+    title: 'TreeShop | Professional Tree Services & TreeAI Technology in Central Florida',
+    description: 'Professional land clearing, forestry mulching, and stump grinding services. Experience the TreeShop difference with systematic operations and TreeAI technology.',
+    images: [
+      {
+        url: '/project-images/cat-265-forestry-mulcher-fueling.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'TreeShop Professional Land Clearing and Forestry Services with CAT Equipment',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TreeShop | Professional Tree Services & TreeAI Technology',
+    description: 'Professional land clearing, forestry mulching, and stump grinding in Central Florida. Licensed, insured, and revolutionizing tree care with TreeAI technology.',
+    images: ['/project-images/cat-265-forestry-mulcher-fueling.jpg'],
+    creator: '@TreeShopLLC',
+    site: '@TreeShopLLC',
+  },
+  verification: {
+    google: 'your-google-site-verification-code', // Replace with actual verification code
+    yandex: 'your-yandex-verification-code', // If needed
+    yahoo: 'your-yahoo-verification-code', // If needed
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      'en-US': '/',
+      'es-US': '/es', // If you add Spanish support
+    },
+  },
+  category: 'business',
   icons: {
     icon: [
       { url: '/treeai.png', sizes: '32x32', type: 'image/png' },
@@ -82,19 +137,25 @@ export default function RootLayout({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "TreeAI Forestry Services",
-    "description": "Professional forestry mulching and land clearing services across Florida. AI-powered estimates, eco-friendly solutions, and expert results for properties of all sizes.",
-    "image": `${siteUrl}/treeai.png`,
+    "name": "Tree Shop LLC",
+    "alternateName": "TreeShop",
+    "description": "Professional land clearing, forestry mulching, and stump grinding services in Central Florida. Licensed, insured, and equipped with CAT machinery for reliable, systematic tree care operations.",
+    "url": siteUrl,
     "logo": {
       "@type": "ImageObject",
-      "url": `${siteUrl}/treeai.png`,
-      "width": "512",
-      "height": "512"
+      "url": `${siteUrl}/treeshop/images/branding/treeshop-logo-land-clearing-company.png`,
+      "width": "400",
+      "height": "400"
     },
+    "image": [
+      `${siteUrl}/project-images/cat-265-forestry-mulcher-fueling.jpg`,
+      `${siteUrl}/project-images/avon-park-land-clearing-after-forestry-mulching.jpg`,
+      `${siteUrl}/project-images/land-clearing-project-1.jpg`
+    ],
     "@id": siteUrl,
     "url": siteUrl,
-    "telephone": "+1-407-555-8733",
-    "email": "contact@treeai.us",
+    "telephone": "+1-386-843-5266",
+    "email": "office@fltreeshop.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Forestry Lane",
@@ -138,7 +199,7 @@ export default function RootLayout({
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Forestry Mulching Services",
+      "name": "Professional Tree Services",
       "itemListElement": [
         {
           "@type": "Offer",
