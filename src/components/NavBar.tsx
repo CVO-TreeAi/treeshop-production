@@ -74,6 +74,9 @@ export default function NavBar(){
               )}
             </div>
 
+            <Link href="/tech" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
+              Technology
+            </Link>
             <Link href="/articles" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Articles
             </Link>
@@ -170,6 +173,13 @@ export default function NavBar(){
                 </div>
 
                 {/* Other Pages */}
+                <Link
+                  href="/tech"
+                  className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Technology
+                </Link>
                 <Link
                   href="/articles"
                   className="block text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50"
