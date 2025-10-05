@@ -40,7 +40,7 @@ export default function NavBar(){
             <Link href="/locations" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Service Areas
             </Link>
-            <Link href="/#reviews" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
+            <Link href="/reviews" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Reviews
             </Link>
           </div>
@@ -132,7 +132,7 @@ export default function NavBar(){
                   Service Areas
                 </Link>
                 <Link
-                  href="/#reviews"
+                  href="/reviews"
                   className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
                   onClick={() => setIsOpen(false)}
                 >
