@@ -236,26 +236,26 @@ export default function TechPage() {
 
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8">
               <h3 className="text-2xl font-bold text-green-400 mb-6">TreeAI Solution</h3>
-              <ul className="space-y-3 text-white">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span className="text-white">Mathematical precision in pricing - no more guesswork</span>
+                  <span style={{color: '#ffffff'}}>Mathematical precision in pricing - no more guesswork</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span className="text-white">Accurate time estimates within ±5%</span>
+                  <span style={{color: '#ffffff'}}>Accurate time estimates within ±5%</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span className="text-white">Real-time equipment cost tracking and ROI calculation</span>
+                  <span style={{color: '#ffffff'}}>Real-time equipment cost tracking and ROI calculation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span className="text-white">Know profit margins before you start, not after you finish</span>
+                  <span style={{color: '#ffffff'}}>Know profit margins before you start, not after you finish</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span className="text-white">Systematic operations that scale without chaos</span>
+                  <span style={{color: '#ffffff'}}>Systematic operations that scale without chaos</span>
                 </li>
               </ul>
             </div>
