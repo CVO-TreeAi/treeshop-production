@@ -34,6 +34,9 @@ export default function NavBar(){
             <Link href="/services/forestry-mulching" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Forestry Mulching
             </Link>
+            <Link href="/services/stump-grinding" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
+              Stump Grinding
+            </Link>
             <Link href="/articles" className="text-white hover:text-blue-400 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50">
               Articles
             </Link>
@@ -116,6 +119,13 @@ export default function NavBar(){
                   onClick={() => setIsOpen(false)}
                 >
                   Forestry Mulching
+                </Link>
+                <Link
+                  href="/services/stump-grinding"
+                  className="block text-white hover:text-blue-400 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-gray-800/50"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Stump Grinding
                 </Link>
                 <Link
                   href="/articles"
