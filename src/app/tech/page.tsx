@@ -8,54 +8,54 @@ import Footer from '@/components/Footer'
 
 const coreFeatures = [
   {
-    feature: "TreeAI Automated Scoring",
-    result: "Precise valuations in seconds, not hours",
-    description: "Proprietary algorithms analyze property factors to generate accurate pricing automatically."
+    feature: "TreeScore & StumpScore",
+    result: "No more '$2,000 tree' guesswork",
+    description: "Mathematical formulas that analyze height, diameter, and complexity for consistent, accurate pricing every time."
   },
   {
-    feature: "Equipment ROI Calculator",
-    result: "Know when gear pays for itself",
-    description: "Track equipment performance and profitability across all jobs to optimize your fleet."
+    feature: "AFISS Site Assessment",
+    result: "Protect margins on difficult jobs",
+    description: "Systematic complexity scoring across 5 categories ensures you're paid appropriately for challenging site conditions."
   },
   {
-    feature: "Real-time Job Costing",
-    result: "Track margins as work happens",
-    description: "Live cost tracking and margin analysis ensures every job maintains profitability."
+    feature: "Points per Hour (PpH) System",
+    result: "Transform crew performance measurement",
+    description: "Move beyond 'we worked 8 hours' to actionable business intelligence showing actual productivity."
   },
   {
-    feature: "Intelligent Route Optimization",
-    result: "25% more jobs per day",
-    description: "AI-powered scheduling maximizes crew efficiency and reduces travel time."
+    feature: "DOC Workflow Management",
+    result: "Zero information loss from lead to invoice",
+    description: "Document-Oriented Customer system captures details once, uses them everywhere - no more blind crews."
   },
   {
-    feature: "Predictive Maintenance",
-    result: "90% reduction in equipment downtime",
-    description: "Prevent costly breakdowns with data-driven maintenance scheduling."
+    feature: "Equipment Loadout Costing",
+    result: "Know true hourly rates for every machine",
+    description: "Track real equipment costs including maintenance, fuel, and depreciation for accurate job costing."
   },
   {
-    feature: "Dynamic Pricing Engine",
-    result: "Optimize profits on every estimate",
-    description: "Market-aware pricing that adjusts based on demand, competition, and capacity."
+    feature: "Employee Cost Management",
+    result: "1.7x burden rate precision",
+    description: "Calculate true employee costs including taxes, benefits, and overhead for accurate labor pricing."
   },
   {
-    feature: "Crew Performance Analytics",
-    result: "Identify top performers instantly",
-    description: "Data-driven insights into crew productivity and efficiency metrics."
+    feature: "Proposal Generation System",
+    result: "2 hours → 15 minutes proposal creation",
+    description: "Professional multi-service proposals automatically generated from TreeScore assessments."
   },
   {
-    feature: "Customer Lifecycle Management",
-    result: "3x higher repeat business rates",
-    description: "Automated follow-ups and relationship management for sustained growth."
+    feature: "Business Intelligence Dashboard",
+    result: "100+ metrics across 9 categories",
+    description: "Complete visibility into operations, finances, marketing, safety, and performance."
   },
   {
-    feature: "Regulatory Compliance Tracking",
-    result: "Zero permit delays or violations",
-    description: "Automated compliance monitoring for all local regulations and requirements."
+    feature: "Mobile-First Field Operations",
+    result: "Native iOS app with offline capability",
+    description: "Field crews use devices they already have - no expensive proprietary hardware required."
   },
   {
-    feature: "Financial Forecasting",
-    result: "Plan growth with mathematical precision",
-    description: "Predictive models for cash flow, capacity planning, and strategic decisions."
+    feature: "Systematic Quality Control",
+    result: "96% first-time quality rate",
+    description: "AFISS-driven protocols ensure consistent quality and safety across all crews and jobs."
   }
 ]
 
@@ -119,12 +119,20 @@ export default function TechPage() {
             </h1>
           )}
 
-          <p className="text-xl text-white mb-12 max-w-4xl mx-auto leading-relaxed">
-            TreeShop represents the complete transformation of tree care operations through
-            <span className="text-green-400"> TreeAI technology</span> and
-            <span className="text-green-400"> mathematical precision</span>.
-            This is the future of profitable tree care.
-          </p>
+          <div className="max-w-4xl mx-auto mb-8">
+            <h2 className="text-2xl font-bold text-green-400 mb-4">
+              Finally, Tree Service Math That Actually Works
+            </h2>
+            <p className="text-xl text-white mb-6 leading-relaxed">
+              Tree Shop LLC has spent three years proving what the rest of the industry refuses to believe:
+              <span className="text-green-400"> tree service can be systematic, profitable, and scalable</span> without
+              sacrificing quality or safety.
+            </p>
+            <p className="text-lg text-white">
+              <span className="text-green-500 font-bold">TreeAI</span> is that system—built by arborists,
+              refined by 1,000+ jobs, and now available to tree service professionals who are tired of guessing.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
@@ -141,9 +149,81 @@ export default function TechPage() {
             </button>
           </div>
 
-          <p className="text-green-400 text-sm">
-            The choice is simple: evolve or become obsolete.
+          <p className="text-green-400 font-bold text-lg">
+            Launch Q2 2025
           </p>
+        </div>
+      </section>
+
+      {/* The Problem Section */}
+      <section className="py-20 px-4 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-white">
+            The Problem <span className="text-green-500">TreeAI</span> Solves
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-8">
+              <h3 className="text-2xl font-bold text-red-400 mb-6">The Broken Cycle</h3>
+              <ul className="space-y-3 text-white">
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 mt-1">✗</span>
+                  <span>Estimators guess at pricing and hope they're close</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 mt-1">✗</span>
+                  <span>Time estimates wrong by 30-50%</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 mt-1">✗</span>
+                  <span>Equipment costs eat margins - no one tracks true hourly rates</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 mt-1">✗</span>
+                  <span>Profitable jobs and money-losers look identical until reconciliation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 mt-1">✗</span>
+                  <span>Growth means hiring more people to do more guessing</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8">
+              <h3 className="text-2xl font-bold text-green-400 mb-6">TreeAI Solution</h3>
+              <ul className="space-y-3 text-white">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-500 mt-1">✓</span>
+                  <span>Mathematical precision in pricing - no more guesswork</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-500 mt-1">✓</span>
+                  <span>Accurate time estimates within ±5%</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-500 mt-1">✓</span>
+                  <span>Real-time equipment cost tracking and ROI calculation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-500 mt-1">✓</span>
+                  <span>Know profit margins before you start, not after you finish</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-500 mt-1">✓</span>
+                  <span>Systematic operations that scale without chaos</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-xl text-white mb-4">
+              <span className="font-bold">Tree Shop LLC faced these exact problems.</span>
+            </p>
+            <p className="text-lg text-green-400">
+              TreeAI was built to solve them.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -227,6 +307,50 @@ export default function TechPage() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Proven Results */}
+      <section className="py-20 px-4 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 text-white">
+            Real Results from <span className="text-green-500">Tree Shop LLC</span>
+          </h2>
+          <p className="text-xl text-center text-white mb-16">
+            After 3 years and 1,000+ jobs, TreeAI delivers measurable business transformation
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-green-500 mb-2">±5%</div>
+              <div className="text-white font-medium mb-2">Estimating Accuracy</div>
+              <div className="text-gray-400 text-sm">vs. ±40% traditional</div>
+            </div>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-green-500 mb-2">15 min</div>
+              <div className="text-white font-medium mb-2">Proposal Creation</div>
+              <div className="text-gray-400 text-sm">vs. 2 hours traditional</div>
+            </div>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-green-500 mb-2">+12%</div>
+              <div className="text-white font-medium mb-2">Gross Profit Margin</div>
+              <div className="text-gray-400 text-sm">systematic optimization</div>
+            </div>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-green-500 mb-2">96%</div>
+              <div className="text-white font-medium mb-2">First-Time Quality</div>
+              <div className="text-gray-400 text-sm">AFISS-driven protocols</div>
+            </div>
+          </div>
+
+          <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8 text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              These aren't projections. This is actual data from a real tree service company.
+            </h3>
+            <p className="text-lg text-green-400">
+              Tree Shop LLC exists to prove TreeAI works in the real world.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -439,49 +563,103 @@ export default function TechPage() {
 
       {/* Final Waitlist CTA */}
       <section id="waitlist" className="py-20 px-4 bg-gradient-to-r from-green-900/50 to-green-800/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6 text-white">
-            Ready to <span className="text-green-400">Transform</span> Your Operations?
-          </h2>
-          <p className="text-xl text-white mb-8">
-            Join the waitlist and be among the first tree care professionals to access TreeShop technology.
-          </p>
-
-          <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 max-w-2xl mx-auto">
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Company Name"
-                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-              />
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-              />
-              <select className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white">
-                <option value="">Company Size</option>
-                <option value="1-5">1-5 employees</option>
-                <option value="6-20">6-20 employees</option>
-                <option value="21-50">21-50 employees</option>
-                <option value="50+">50+ employees</option>
-              </select>
-              <button
-                type="submit"
-                className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Join the TreeShop Revolution
-              </button>
-            </form>
-
-            <p className="text-sm text-gray-400 mt-4 text-center">
-              Early access includes free training and implementation support
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-white">
+              Join the <span className="text-green-400">TreeAI</span> Waitlist
+            </h2>
+            <p className="text-xl text-white mb-4">
+              Launch Q2 2025 - Limited to first 100 tree service companies
             </p>
+            <p className="text-green-400 font-bold text-lg">
+              Stop guessing. Start systematizing. Scale profitably.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Founding Member Benefits
+              </h3>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white"><span className="text-green-400 font-bold">50% discount</span> for first year</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white">Lifetime priority support</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white">Feature request influence</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white">Free 30-day launch program <span className="text-green-400">($2,500 value)</span></span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white">Beta access to new features</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-white">Founding member community access</span>
+                </div>
+              </div>
+
+              <div className="bg-yellow-900/20 border border-yellow-800/50 rounded-lg p-6">
+                <h4 className="text-lg font-bold text-yellow-400 mb-2">ROI Guarantee</h4>
+                <p className="text-white text-sm">
+                  If TreeAI doesn't improve your gross profit margin by at least the cost of your subscription
+                  within 90 days, we'll refund your money.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
+              <h3 className="text-xl font-bold text-white mb-6 text-center">Reserve Your Founding Member Spot</h3>
+
+              <form className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Company Name"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                />
+                <select className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white">
+                  <option value="">Current Annual Revenue</option>
+                  <option value="under-250k">Under $250K</option>
+                  <option value="250k-500k">$250K - $500K</option>
+                  <option value="500k-1m">$500K - $1M</option>
+                  <option value="1m-plus">$1M+</option>
+                </select>
+                <textarea
+                  placeholder="What's your biggest challenge with current operations? (Optional)"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white h-24 resize-none"
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Join TreeAI Waitlist - Founding Member
+                </button>
+              </form>
+
+              <p className="text-sm text-gray-400 mt-4 text-center">
+                Tree Shop LLC took three years to prove this works.<br/>
+                <span className="text-white">You can start using it in Q2 2025.</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
