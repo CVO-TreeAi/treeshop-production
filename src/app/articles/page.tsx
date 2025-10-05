@@ -211,13 +211,13 @@ export default function ArticlesPage() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-green-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-green-400 transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-white mb-4 leading-relaxed">
                     {article.excerpt}
                   </p>
-                  <div className="flex items-center justify-between text-sm text-gray-300">
+                  <div className="flex items-center justify-between text-sm text-white">
                     <span>{format(new Date(article.date), 'MMM d, yyyy')}</span>
                     <span>{article.readTime}</span>
                   </div>
@@ -232,7 +232,7 @@ export default function ArticlesPage() {
       <section className="py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold text-white">
               All Articles
               {filteredArticles.length !== allArticles.length && (
                 <span className="text-green-500 ml-2">({filteredArticles.length} results)</span>
@@ -271,13 +271,13 @@ export default function ArticlesPage() {
                   </div>
 
                   <div className="p-4">
-                    <h3 className="text-lg font-bold mb-2 group-hover:text-green-400 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-green-400 transition-colors line-clamp-2">
                       {article.title}
                     </h3>
                     <p className="text-white mb-3 text-sm leading-relaxed line-clamp-3">
                       {article.excerpt}
                     </p>
-                    <div className="flex items-center justify-between text-xs text-gray-300">
+                    <div className="flex items-center justify-between text-xs text-white">
                       <span>{format(new Date(article.date), 'MMM d')}</span>
                       <span>{article.readTime}</span>
                     </div>
