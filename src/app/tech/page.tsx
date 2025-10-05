@@ -185,23 +185,17 @@ export default function TechPage() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <a
               href="#waitlist"
               className="bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
             >
               Join the Waitlist
             </a>
-            <button
-              onClick={() => setHeroVariant(heroVariant === 'A' ? 'B' : 'A')}
-              className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black font-bold px-8 py-4 rounded-lg text-lg transition-all"
-            >
-              Test Variant {heroVariant === 'A' ? 'B' : 'A'}
-            </button>
           </div>
 
           <p className="text-green-400 font-bold text-lg">
-            Launch Q2 2025
+            Launch Q2 2026
           </p>
         </div>
       </section>
@@ -219,23 +213,23 @@ export default function TechPage() {
               <ul className="space-y-3 text-white">
                 <li className="flex items-start gap-3">
                   <span className="text-red-500 mt-1">✗</span>
-                  <span>Estimators guess at pricing and hope they're close</span>
+                  <span className="text-white">Estimators guess at pricing and hope they're close</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-500 mt-1">✗</span>
-                  <span>Time estimates wrong by 30-50%</span>
+                  <span className="text-white">Time estimates wrong by 30-50%</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-500 mt-1">✗</span>
-                  <span>Equipment costs eat margins - no one tracks true hourly rates</span>
+                  <span className="text-white">Equipment costs eat margins - no one tracks true hourly rates</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-500 mt-1">✗</span>
-                  <span>Profitable jobs and money-losers look identical until reconciliation</span>
+                  <span className="text-white">Profitable jobs and money-losers look identical until reconciliation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-500 mt-1">✗</span>
-                  <span>Growth means hiring more people to do more guessing</span>
+                  <span className="text-white">Growth means hiring more people to do more guessing</span>
                 </li>
               </ul>
             </div>
@@ -245,23 +239,23 @@ export default function TechPage() {
               <ul className="space-y-3 text-white">
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span>Mathematical precision in pricing - no more guesswork</span>
+                  <span className="text-white">Mathematical precision in pricing - no more guesswork</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span>Accurate time estimates within ±5%</span>
+                  <span className="text-white">Accurate time estimates within ±5%</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span>Real-time equipment cost tracking and ROI calculation</span>
+                  <span className="text-white">Real-time equipment cost tracking and ROI calculation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span>Know profit margins before you start, not after you finish</span>
+                  <span className="text-white">Know profit margins before you start, not after you finish</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-green-500 mt-1">✓</span>
-                  <span>Systematic operations that scale without chaos</span>
+                  <span className="text-white">Systematic operations that scale without chaos</span>
                 </li>
               </ul>
             </div>
@@ -620,7 +614,7 @@ export default function TechPage() {
               Join the <span className="text-green-400">TreeAI</span> Waitlist
             </h2>
             <p className="text-xl text-white mb-4">
-              Launch Q2 2025 - Limited to first 100 tree service companies
+              Launch Q2 2026 - Limited to first 100 tree service companies
             </p>
             <p className="text-green-400 font-bold text-lg">
               Stop guessing. Start systematizing. Scale profitably.
@@ -748,7 +742,7 @@ export default function TechPage() {
 
               <p className="text-sm text-gray-400 mt-4 text-center">
                 Tree Shop LLC took three years to prove this works.<br/>
-                <span className="text-white">You can start using it in Q2 2025.</span>
+                <span className="text-white">You can start using it in Q2 2026.</span>
               </p>
             </div>
           </div>
