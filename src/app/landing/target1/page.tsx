@@ -69,6 +69,8 @@ const showcaseImages = [
 export default function TreeShopLanding() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [currentShowcaseIndex, setCurrentShowcaseIndex] = useState(0)
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
+  const [userLocation, setUserLocation] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -85,6 +87,25 @@ export default function TreeShopLanding() {
     'Stump Grinding',
     'Multiple Services'
   ]
+
+  // All testimonials for rotation
+  const allTestimonials = [
+    { quote: "In my 25 years in business, I have never experienced such a great service when dealing with a service provider", author: "Cajina", location: "Verified Customer" },
+    { quote: "The Tree Shop is one of the best businesses I have ever dealt with", author: "Snowden", location: "Verified Customer" },
+    { quote: "I would give 10 stars if I could, but I can only give 5. Excellent company, excellent staff", author: "Millos", location: "Verified Customer" },
+    { quote: "Every piece of my work from the first phone call to post the work done was extraordinary!", author: "Dolcimascolo", location: "Verified Customer" },
+    { quote: "The service was by far the most professional and helpful. Very cost efficient and fair. Forever customer!", author: "Brown", location: "Verified Customer" },
+    { quote: "We look for local family owned businesses to work with and Lacey and Jeremiah are great to work with", author: "Scott-Poulin", location: "Verified Customer" },
+    { quote: "The Tree Shop did an amazing job! They were fair priced and showed up on time", author: "Singley", location: "Verified Customer" },
+    { quote: "This company is amazing and the people they employ are the nicest and most honest humans", author: "Symphorien-Saavedra", location: "Verified Customer" },
+    { quote: "Lacey and Jeremiah are wonderful to work with... They deserve 10 Stars", author: "Nelson", location: "Verified Customer" },
+    { quote: "The tree shop was exceptional!!! They explained the whole process clearly", author: "Heiman", location: "Verified Customer" },
+    { quote: "I saw their work on YouTube and thought why not... I'm so glad I did", author: "Thomas", location: "Verified Customer" },
+    { quote: "You couldn't go wrong with this company? very reliable on time communicated with us the whole time", author: "Mendez", location: "Verified Customer" }
+  ]
+
+  // Central Florida cities for location detection
+  const centralFloridaCities = ['Orlando', 'Tampa', 'Lakeland', 'Clermont', 'Winter Garden', 'Leesburg', 'Mount Dora', 'Apopka', 'Sanford', 'Kissimmee', 'St. Cloud', 'Haines City', 'Bartow', 'Plant City', 'Brandon', 'Riverview', 'Valrico', 'Seffner', 'Dover', 'Thonotosassa']
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -104,6 +125,41 @@ export default function TreeShopLanding() {
     }, 3000);
 
     return () => clearInterval(showcaseInterval);
+  }, []);
+
+  // Progressive Enhancement: Location Detection
+  useEffect(() => {
+    const detectUserLocation = async () => {
+      try {
+        // Try IP-based geolocation first
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+
+        if (data.city && centralFloridaCities.includes(data.city)) {
+          setUserLocation(data.city);
+        } else if (data.region === 'Florida') {
+          setUserLocation('Central Florida');
+        } else {
+          setUserLocation('Central Florida');
+        }
+      } catch (error) {
+        // Fallback to Central Florida if geolocation fails
+        setUserLocation('Central Florida');
+      }
+    };
+
+    detectUserLocation();
+  }, []);
+
+  // Progressive Enhancement: Testimonial Rotation
+  useEffect(() => {
+    const testimonialInterval = setInterval(() => {
+      setCurrentTestimonialIndex((prevIndex) =>
+        prevIndex === allTestimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 8000); // Rotate every 8 seconds
+
+    return () => clearInterval(testimonialInterval);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -145,10 +201,42 @@ export default function TreeShopLanding() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    let value = e.target.value;
+
+    // Smart phone formatting
+    if (e.target.name === 'phone') {
+      value = value.replace(/\D/g, ''); // Remove non-digits
+      if (value.length >= 6) {
+        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+      } else if (value.length >= 3) {
+        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+      }
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     })
+  }
+
+  // Smart city auto-complete for address field
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({
+      ...formData,
+      address: value
+    });
+
+    // Auto-suggest cities if user location is detected
+    if (userLocation && !value.toLowerCase().includes(userLocation.toLowerCase()) && value.length > 10) {
+      const addressParts = value.split(',');
+      if (addressParts.length === 1) {
+        setFormData({
+          ...formData,
+          address: `${value}, ${userLocation}, FL`
+        });
+      }
+    }
   }
 
   return (
@@ -222,7 +310,7 @@ export default function TreeShopLanding() {
 
           <p className="text-xl sm:text-2xl text-white mb-8"
              style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
-            Forestry Mulching • Land Clearing • Stump Grinding
+            {userLocation ? `Serving ${userLocation}` : 'Serving Central Florida'} • Forestry Mulching • Land Clearing • Stump Grinding
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -364,41 +452,24 @@ export default function TreeShopLanding() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-              <div className="flex text-yellow-500 mb-3">
-                {'★'.repeat(5)}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "In my 25 years in business, I have never experienced such a great service when dealing with a service provider"
-              </p>
-              <div className="text-green-500 font-bold">- Cajina</div>
-              <div className="text-gray-500 text-sm">Verified Customer</div>
-            </div>
+            {/* Dynamic Rotating Testimonials */}
+            {[0, 1, 2].map((offset) => {
+              const testimonialIndex = (currentTestimonialIndex + offset) % allTestimonials.length;
+              const testimonial = allTestimonials[testimonialIndex];
 
-            {/* Testimonial 2 */}
-            <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-              <div className="flex text-yellow-500 mb-3">
-                {'★'.repeat(5)}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "The Tree Shop is one of the best businesses I have ever dealt with"
-              </p>
-              <div className="text-green-500 font-bold">- Snowden</div>
-              <div className="text-gray-500 text-sm">Verified Customer</div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
-              <div className="flex text-yellow-500 mb-3">
-                {'★'.repeat(5)}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "I would give 10 stars if I could, but I can only give 5. Excellent company, excellent staff"
-              </p>
-              <div className="text-green-500 font-bold">- Millos</div>
-              <div className="text-gray-500 text-sm">Verified Customer</div>
-            </div>
+              return (
+                <div key={offset} className="bg-gray-900/50 p-6 rounded-lg border border-gray-800 transition-all duration-500">
+                  <div className="flex text-yellow-500 mb-3">
+                    {'★'.repeat(5)}
+                  </div>
+                  <p className="text-gray-300 mb-4 italic">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="text-green-500 font-bold">- {testimonial.author}</div>
+                  <div className="text-gray-500 text-sm">{testimonial.location}</div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Additional Reviews Carousel */}
@@ -478,10 +549,10 @@ export default function TreeShopLanding() {
       <section className="py-12 px-4 bg-gradient-to-r from-green-900/50 to-green-800/50 border-y border-green-700/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            <span className="text-green-400">Limited Time:</span> Free Site Visit & Detailed Estimate
+            <span className="text-green-400">Free</span> Site Visit & Detailed Estimate
           </h2>
           <p className="text-gray-300 mb-6">
-            Book this week and save on your land clearing project. No obligation, no pressure - just honest advice.
+            Professional assessment of your land clearing project. No obligation, no pressure - just honest advice and fair pricing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -498,7 +569,7 @@ export default function TreeShopLanding() {
             </a>
           </div>
           <div className="mt-4 text-green-400 text-sm font-bold">
-            ⏰ Offer expires in 7 days • ✓ No hidden fees • ✓ Licensed & insured
+            ✓ No hidden fees • ✓ Licensed & insured • ✓ Same day response
           </div>
         </div>
       </section>
@@ -573,9 +644,9 @@ export default function TreeShopLanding() {
                   name="address"
                   required
                   value={formData.address}
-                  onChange={handleChange}
+                  onChange={handleAddressChange}
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                  placeholder="Property Address *"
+                  placeholder={userLocation ? `Property Address in ${userLocation} *` : "Property Address *"}
                 />
               </div>
 
