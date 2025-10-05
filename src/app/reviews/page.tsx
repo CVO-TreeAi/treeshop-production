@@ -207,7 +207,7 @@ export default function ReviewsPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Customer Reviews & <span className="text-green-500">Testimonials</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-3xl mx-auto">
             Read what our 500+ satisfied customers have to say about TreeShop's professional land clearing,
             forestry mulching, and stump grinding services across Central Florida.
           </p>
@@ -216,19 +216,19 @@ export default function ReviewsPage() {
           <div className="grid md:grid-cols-4 gap-6 mb-12">
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-500 mb-2">500+</div>
-              <div className="text-gray-400">Happy Customers</div>
+              <div className="text-white">Happy Customers</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-500 mb-2">98%</div>
-              <div className="text-gray-400">Satisfaction Rate</div>
+              <div className="text-white">Satisfaction Rate</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-500 mb-2">5.0</div>
-              <div className="text-gray-400">Average Rating</div>
+              <div className="text-white">Average Rating</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-500 mb-2">10+</div>
-              <div className="text-gray-400">Years Experience</div>
+              <div className="text-white">Years Experience</div>
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@ export default function ReviewsPage() {
               <h2 className="text-3xl font-bold mb-6">
                 About <span className="text-green-500">TreeShop</span>
               </h2>
-              <div className="space-y-4 text-gray-300">
+              <div className="space-y-4 text-white">
                 <p>
                   TreeShop is Central Florida's premier land clearing and forestry services company,
                   founded with a vision to transform the tree care industry through professionalism,
@@ -263,14 +263,14 @@ export default function ReviewsPage() {
               <div className="mt-8 grid grid-cols-2 gap-6">
                 <div className="bg-black/50 p-4 rounded-lg border border-gray-800">
                   <h3 className="font-bold text-green-500 mb-2">Our Mission</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-white">
                     To provide professional, reliable, and cost-effective land clearing services
                     while building lasting relationships with our customers.
                   </p>
                 </div>
                 <div className="bg-black/50 p-4 rounded-lg border border-gray-800">
                   <h3 className="font-bold text-green-500 mb-2">Our Values</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-white">
                     Honesty, professionalism, fair pricing, and treating every customer
                     with the respect they deserve.
                   </p>
@@ -343,14 +343,14 @@ export default function ReviewsPage() {
                       </div>
 
                       {/* Quote */}
-                      <blockquote className="text-gray-300 mb-4 italic">
+                      <blockquote className="text-white mb-4 italic">
                         "{testimonial.quote}"
                       </blockquote>
 
                       {/* Author Info */}
                       <div className="border-t border-gray-800 pt-4">
                         <div className="text-green-500 font-bold">- {testimonial.author}</div>
-                        <div className="text-gray-500 text-sm">{testimonial.location}</div>
+                        <div className="text-gray-400 text-sm">{testimonial.location}</div>
                         <div className="text-green-400 text-sm font-medium mt-1">
                           Service: {testimonial.service}
                         </div>
@@ -370,7 +370,7 @@ export default function ReviewsPage() {
           <h2 className="text-3xl font-bold mb-6">
             Ready to Join Our <span className="text-green-400">Happy Customers?</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-white mb-8">
             Experience the TreeShop difference for yourself. Get your free estimate today!
           </p>
 
@@ -405,7 +405,7 @@ export default function ReviewsPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-black/50 p-6 rounded-lg border border-gray-800 text-center">
               <h3 className="text-xl font-bold mb-3 text-green-500">Forestry Mulching</h3>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-white text-sm mb-4">
                 Eco-friendly land clearing that grinds vegetation into beneficial mulch layer.
               </p>
               <a href="/services/forestry-mulching" className="text-green-400 hover:text-green-300 text-sm font-medium">
@@ -415,7 +415,7 @@ export default function ReviewsPage() {
 
             <div className="bg-black/50 p-6 rounded-lg border border-gray-800 text-center">
               <h3 className="text-xl font-bold mb-3 text-green-500">Land Clearing</h3>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-white text-sm mb-4">
                 Complete removal of vegetation and debris for construction-ready sites.
               </p>
               <a href="/services/land-clearing" className="text-green-400 hover:text-green-300 text-sm font-medium">
@@ -425,7 +425,7 @@ export default function ReviewsPage() {
 
             <div className="bg-black/50 p-6 rounded-lg border border-gray-800 text-center">
               <h3 className="text-xl font-bold mb-3 text-green-500">Stump Grinding</h3>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-white text-sm mb-4">
                 Professional stump removal with grinding, hauling, and site restoration options.
               </p>
               <a href="/services/stump-grinding" className="text-green-400 hover:text-green-300 text-sm font-medium">
