@@ -11,431 +11,255 @@ export default function LandClearingPage(){
       <NavBar />
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-12 text-center">
         {/* Hero Section */}
-        <div className="text-center mb-8 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Complete <span className="text-blue-500">Land Clearing</span> for Solid Ground
+        <div className="text-center mb-16">
+          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Turn Your <span className="text-green-500">Raw Land</span> into a Clean Slate
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-            When you need <strong>bare earth ready for construction</strong>, we remove all organic material to create solid, compactable ground. Complete grubbing and root raking ensures your foundation starts right.
+          <p className="text-xl text-white max-w-4xl mx-auto mb-8 leading-relaxed">
+            We transform overgrown, unusable land into <strong className="text-green-400">clean, buildable space</strong> ready for whatever you're planning.
           </p>
-          <div className="bg-gray-900 border border-blue-500 rounded-lg p-4 max-w-2xl mx-auto mb-6">
-            <p className="text-blue-400 font-semibold mb-2">🚧 TreeAI Technology in Development</p>
-            <p className="text-gray-300 text-sm">Our AI land clearing system is still training. Until then, we charge reliable day rates based on project scope and provide custom quotes after site assessment.</p>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
+              <div className="text-3xl mb-3">🏗️</div>
+              <h3 className="text-lg font-bold text-white mb-2">Ready to Build</h3>
+              <p className="text-gray-300 text-sm">Clean, solid ground perfect for construction, foundations, and development</p>
+            </div>
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
+              <div className="text-3xl mb-3">🌱</div>
+              <h3 className="text-lg font-bold text-white mb-2">Fresh Start</h3>
+              <p className="text-gray-300 text-sm">Remove all unwanted vegetation, stumps, and debris for a completely clean property</p>
+            </div>
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
+              <div className="text-3xl mb-3">⚡</div>
+              <h3 className="text-lg font-bold text-white mb-2">Fast Results</h3>
+              <p className="text-gray-300 text-sm">Most projects completed in 1-3 days with professional CAT equipment</p>
+            </div>
           </div>
-          <Link 
-            href="/estimate" 
-            className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
+
+          <Link
+            href="/estimate"
+            className="bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
           >
-            Get Custom Land Clearing Quote
+            Get Your Free Estimate
           </Link>
         </div>
 
 
-        {/* Pricing Section */}
-        <section className="mb-8 sm:mb-16">
-          <div className="bg-gradient-to-r from-blue-600/20 to-blue-400/10 border border-blue-600/30 rounded-lg p-6 sm:p-8 max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Florida Land Clearing Investment</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-blue-400 mb-4">Typical Florida Range</h3>
-                <div className="text-3xl font-bold text-white mb-2">$15,000 - $30,000</div>
-                <div className="text-blue-300 mb-4">per acre</div>
-                <p className="text-gray-300 text-sm">Pricing varies significantly based on vegetation density, terrain complexity, environmental restrictions, and project specifications.</p>
+        {/* What You Get */}
+        <section className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12 text-white">
+              What You Get with <span className="text-green-500">TreeShop Land Clearing</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="text-left">
+                <h3 className="text-xl font-bold text-green-400 mb-4">Before We Start:</h3>
+                <ul className="space-y-3 text-white">
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Free site visit and honest assessment</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Clear explanation of what we'll do</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Upfront pricing with no hidden fees</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Timeline you can count on</span>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-blue-400 mb-4">Our Approach</h3>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">•</span>
-                    <span>Day-rate pricing for transparency</span>
+
+              <div className="text-left">
+                <h3 className="text-xl font-bold text-green-400 mb-4">After We're Done:</h3>
+                <ul className="space-y-3 text-white">
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Clean, buildable land ready for construction</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">•</span>
-                    <span>Custom quotes after site assessment</span>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>All debris removed and disposed of properly</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">•</span>
-                    <span>No surprises - detailed scope upfront</span>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Solid ground you can build on with confidence</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">•</span>
-                    <span>Project-specific equipment selection</span>
+                  <li className="flex items-center gap-3">
+                    <span className="text-green-500">✓</span>
+                    <span>Your project can move forward immediately</span>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className="mt-6 text-center">
-              <Link href="/estimate" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                Get Your Project Quote
+
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8 text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Simple Process, Professional Results</h3>
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <div className="text-2xl mb-2">1️⃣</div>
+                  <div className="text-white font-bold">Free Visit</div>
+                  <div className="text-gray-300 text-sm">We come see your land</div>
+                </div>
+                <div>
+                  <div className="text-2xl mb-2">2️⃣</div>
+                  <div className="text-white font-bold">Clear Plan</div>
+                  <div className="text-gray-300 text-sm">Honest estimate & timeline</div>
+                </div>
+                <div>
+                  <div className="text-2xl mb-2">3️⃣</div>
+                  <div className="text-white font-bold">Clean Results</div>
+                  <div className="text-gray-300 text-sm">Buildable land, ready to go</div>
+                </div>
+              </div>
+              <Link
+                href="/estimate"
+                className="bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-lg text-lg transition-all"
+              >
+                Start with a Free Visit
               </Link>
             </div>
           </div>
         </section>
 
-        {/* What Makes Land Clearing Different */}
-        <section className="mb-8 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Land Clearing: Complete Site Preparation</h2>
+        {/* Simple Results */}
+        <section className="mb-16">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-900 rounded-lg p-6 mb-6">
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">What Land Clearing Accomplishes</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <ul className="space-y-3 text-gray-300 text-sm sm:text-base">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Complete organic material removal</strong> - trees, stumps, roots, brush</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Grubbing and root raking</strong> - eliminates subsurface obstacles</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Solid, compactable ground</strong> - ready for construction foundations</span>
-                  </li>
-                </ul>
-                <ul className="space-y-3 text-gray-300 text-sm sm:text-base">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Debris removal and disposal</strong> - clean site delivery</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Grade preparation</strong> - ready for compaction and building</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">✓</span>
-                    <span><strong>Construction-ready site</strong> - zero organic interference</span>
-                  </li>
-                </ul>
+            <h2 className="text-3xl font-bold text-center mb-8 text-white">
+              Perfect for These <span className="text-green-500">Projects</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-3xl mb-3">🏠</div>
+                <h3 className="text-lg font-bold text-white mb-2">New Home Construction</h3>
+                <p className="text-gray-300 text-sm">Clean foundation area for your dream home</p>
+              </div>
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-3xl mb-3">🏢</div>
+                <h3 className="text-lg font-bold text-white mb-2">Commercial Development</h3>
+                <p className="text-gray-300 text-sm">Large-scale site preparation for business projects</p>
+              </div>
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-3xl mb-3">🚜</div>
+                <h3 className="text-lg font-bold text-white mb-2">Agricultural Land</h3>
+                <p className="text-gray-300 text-sm">Convert forest to farmable, usable land</p>
+              </div>
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-3xl mb-3">🛣️</div>
+                <h3 className="text-lg font-bold text-white mb-2">Access Roads</h3>
+                <p className="text-gray-300 text-sm">Create pathways and driveways through wooded areas</p>
               </div>
             </div>
-            <div className="text-center bg-gray-800/50 rounded-lg p-4">
-              <p className="text-gray-300 text-sm italic">
-                "Land clearing creates a blank canvas - solid earth ready for whatever you're building. No roots, no stumps, no organic material to compromise your foundation."
+
+            <div className="bg-gray-800 rounded-lg p-6 text-center">
+              <h3 className="text-xl font-bold text-white mb-3">
+                "From jungle to job site in days, not months"
+              </h3>
+              <p className="text-green-400 font-medium">
+                - That's the TreeShop difference
               </p>
             </div>
           </div>
         </section>
 
-        {/* Land Clearing Photo Gallery - Cool Pattern */}
-        <section className="mb-8 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Land Clearing Projects Across Florida</h2>
-          <p className="text-center text-gray-300 mb-8 max-w-3xl mx-auto">
-            From dense forest to construction-ready ground - see our comprehensive land clearing projects in action.
+        {/* Customer Results */}
+        <section className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8 text-white">
+              Real <span className="text-green-500">Customer Results</span>
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-yellow-500 mb-3">{'★'.repeat(5)}</div>
+                <p className="text-white italic mb-4">
+                  "They cleared 3 acres for our new home. Professional, fast, and left it perfect for construction."
+                </p>
+                <div className="text-green-400 font-bold">- Sarah M.</div>
+                <div className="text-gray-400 text-sm">New Home Construction</div>
+              </div>
+
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-yellow-500 mb-3">{'★'.repeat(5)}</div>
+                <p className="text-white italic mb-4">
+                  "Great company! They cleared my property quickly and did an excellent job."
+                </p>
+                <div className="text-green-400 font-bold">- Aixala</div>
+                <div className="text-gray-400 text-sm">Property Development</div>
+              </div>
+
+              <div className="bg-gray-900 rounded-lg p-6 text-center">
+                <div className="text-yellow-500 mb-3">{'★'.repeat(5)}</div>
+                <p className="text-white italic mb-4">
+                  "Fair pricing, showed up on time, and did exactly what we discussed."
+                </p>
+                <div className="text-green-400 font-bold">- Rhodes</div>
+                <div className="text-gray-400 text-sm">Commercial Project</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Simple FAQ */}
+        <section className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12 text-white">
+              Common <span className="text-green-500">Questions</span>
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-gray-900 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">How much does land clearing cost?</h3>
+                <p className="text-white">Every property is different. We provide free estimates after seeing your land in person. No surprises, no hidden fees.</p>
+              </div>
+
+              <div className="bg-gray-900 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">How long does it take?</h3>
+                <p className="text-white">Most projects take 1-3 days. Larger properties might take a week. We'll give you an exact timeline with your estimate.</p>
+              </div>
+
+              <div className="bg-gray-900 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">What about permits?</h3>
+                <p className="text-white">We help you understand what permits you need and can guide you through the process. We know the local requirements.</p>
+              </div>
+
+              <div className="bg-gray-900 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">What happens to all the debris?</h3>
+                <p className="text-white">We haul everything away and dispose of it properly. You get clean land with nothing left behind.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="bg-green-500 rounded-lg p-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-4">
+            Ready to Transform Your Land?
+          </h2>
+          <p className="text-black text-lg mb-6">
+            Get a free estimate and see how we can turn your raw land into exactly what you need.
           </p>
-          
-          {/* Hexagonal Pattern Gallery */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* First Row - 3 images */}
-            <div className="flex justify-center gap-4 mb-4">
-              <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/site-clearing-preparation.jpg"
-                  alt="Site clearing and preparation for construction Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <p className="text-xs font-semibold">Site Preparation</p>
-                </div>
-              </div>
-              <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/cocoa-beach-final-clearing.jpg"
-                  alt="Heavy land clearing equipment removing vegetation Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <p className="text-xs font-semibold">Heavy Clearing</p>
-                </div>
-              </div>
-              <div className="w-48 h-48 relative overflow-hidden rounded-2xl transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/site-clearing-precision.jpg"
-                  alt="Site clearing precision work Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <p className="text-xs font-semibold">Precision Work</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Second Row - 2 images offset */}
-            <div className="flex justify-center gap-4 mb-4 px-24">
-              <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-blue-500">
-                <img 
-                  src="/project-images/firebreak-trail-clearing.jpg"
-                  alt="Firebreak trail and land clearing operations Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-bold">24/7 Operations</p>
-                  <p className="text-xs">Professional Results</p>
-                </div>
-              </div>
-              <div className="w-56 h-56 relative overflow-hidden rounded-3xl transform hover:scale-105 transition-transform duration-300 border-2 border-blue-500">
-                <img 
-                  src="/project-images/okeechobee-land-clearing-after-forestry-mulching-complete.jpg"
-                  alt="Complete debris removal land clearing Orlando Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <p className="text-sm font-bold">Complete Cleanup</p>
-                  <p className="text-xs">Debris Removal</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Project Portfolio - 3 showcase images */}
-            <div className="flex justify-center gap-4">
-              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/land-clearing-project-1.jpg"
-                  alt="Professional land clearing project Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
-              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/land-clearing-project-3.jpg"
-                  alt="Professional site preparation Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
-              <div className="w-40 h-40 relative overflow-hidden rounded-lg transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/project-images/land-clearing-project-4.jpg"
-                  alt="Expert land clearing services Central Florida"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/estimate"
+              className="bg-black hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-lg text-lg transition-all"
+            >
+              Get Free Estimate
+            </Link>
+            <a
+              href="tel:3868435266"
+              className="border-2 border-black text-black hover:bg-black hover:text-white font-bold px-8 py-4 rounded-lg text-lg transition-all"
+            >
+              Call: (386) 843-5266
+            </a>
           </div>
-
-          {/* Call to Action */}
-          <div className="mt-12 text-center">
-            <div className="bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-blue-400 mb-3">Ready for Solid Ground?</h3>
-              <p className="text-gray-300 mb-4 text-sm">Every project is unique. Let us assess your site and provide a custom land clearing solution.</p>
-              <Link href="/estimate" className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                Schedule Site Assessment
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Lead capture CTA */}
-        <section className="mb-16">
-          <div className="bg-gray-900 rounded-lg p-6 text-center">
-            <h2 className="text-3xl font-bold mb-4">Your Land, Our Expertise</h2>
-            <p className="text-gray-300 mb-6">Get a comprehensive site assessment and precise land clearing proposal.</p>
-            <Link href="/estimate" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3 rounded-lg transition-colors">Start Assessment</Link>
-          </div>
-        </section>
-
-        {/* Auto-scrolling Benefits List */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Benefits of Professional Land Clearing</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-900 rounded-lg p-6">
-              <AutoScrollList
-                className="h-80"
-                speed={28}
-                items={[
-                  'Complete Site Preparation – total vegetation and obstacle removal',
-                  'Enhanced Property Value – creates buildable, developable land',
-                  'Regulatory Compliance – meets local and state development standards',
-                  'Storm and Flood Mitigation – reduces vegetation-related risks',
-                  'Infrastructure Protection – creates safe zones around utilities',
-                  'Emergency Response Ready – rapid clearing for critical projects',
-                  'Erosion Control – professional grading prevents future issues',
-                  'Environmental Impact Assessment – detailed pre-clearing surveys',
-                  'Native Species Protection – selective clearing strategies',
-                  'Wetland Buffer Management – precise clearing near sensitive areas',
-                  'Construction Efficiency – faster project initiation',
-                  'Permit Assistance – support through local regulatory processes',
-                  'Safety Enhancement – remove hazardous vegetation and debris',
-                  'Comprehensive Debris Removal – total site clearance',
-                  'Pre-Construction Planning – accurate site evaluation',
-                  'Equipment Diversity – machines for every terrain and project',
-                  'Urban and Rural Project Support',
-                  'Insurance and Liability Management',
-                  'Cost-Effective Total Site Preparation',
-                  'Rapid Turnaround Times'
-                ]}
-              />
-            </div>
-            <div className="bg-gray-900 rounded-lg p-6">
-              <p className="text-gray-300 mb-4">This list auto-scrolls with our comprehensive land clearing benefits. Hover to pause.</p>
-              <Link href="/estimate" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors">Get Project Quote</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Before & After Project Transformations */}
-        <section className="mb-8 sm:mb-16">
-          <h2 className="text-3xl font-bold mb-6 sm:mb-8 text-center">Land Clearing Project Transformations</h2>
-          <p className="text-center text-gray-300 mb-8 max-w-3xl mx-auto">
-            See dramatic before and after results from our comprehensive land clearing projects across Florida.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Orlando Wetland Project */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden group">
-              <div className="relative aspect-video overflow-hidden">
-                <img 
-                  src="/project-images/orlando-wetlands-mapping.jpg"
-                  alt="Orlando site preparation land classification mapping Florida"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <span className="bg-blue-600 text-white px-2 py-1 text-xs rounded">MAPPING DATA</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-white mb-2 text-lg">Complete Site Preparation - Orlando, FL</h3>
-                <p className="text-gray-400 text-sm mb-3">Land classification mapping | Permit coordination support</p>
-                <p className="text-gray-300 text-sm">Client pulled permit and provided environmental data to make part of the land usable. Legend showed land mapping includes marshes, cypress, dry flatwoods, low intensity urban, rural, and other coniferous wetlands.</p>
-              </div>
-            </div>
-
-            {/* Wetland Management Project */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden group">
-              <div className="relative aspect-video overflow-hidden">
-                <img 
-                  src="/project-images/pol-city-wetland-buffer-project-2.jpg"
-                  alt="Polk City wetland buffer management project Florida"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <span className="bg-blue-600 text-white px-2 py-1 text-xs rounded">WETLAND COMPLIANT</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-white mb-2 text-lg">Wetland Buffer Management - Polk City, FL</h3>
-                <p className="text-gray-400 text-sm mb-3">0.29 acres cleared | 1.59 acres total property</p>
-                <p className="text-gray-300 text-sm">Mulched 0.29 acres at 6" DBH leaving 50ft buffer and rest of land untouched to preserve wetlands. Total property was 1.59 acres with careful environmental compliance.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Florida-Specific Considerations */}
-        <section className="mb-8 sm:mb-16 bg-gray-900 rounded-lg p-4 sm:p-6 lg:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Florida Land Clearing Expertise</h2>
-          <p className="text-center text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">Specialized techniques for Florida's unique environmental landscape</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <div className="border border-blue-600 rounded-lg p-4 sm:p-6 text-center bg-blue-600/10">
-              <div className="mb-3">
-                <img 
-                  src="/project-images/wetlands-mapper.jpg"
-                  alt="Wetlands Mapper tool for environmental compliance Florida"
-                  className="w-12 h-12 mx-auto rounded object-cover"
-                />
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold text-blue-400 mb-2">Wetland Compliance</h3>
-              <p className="text-xs text-gray-300 leading-relaxed">We can pull up the Wetlands Mapper to determine if historic data shows areas classified as wetlands and provide that data to our clients for proper compliance planning.</p>
-            </div>
-            <div className="border border-blue-600 rounded-lg p-6 text-center bg-blue-600/10">
-              <h3 className="text-lg font-semibold text-blue-400 mb-2">Hurricane Prep</h3>
-              <p className="text-xs text-gray-300">Emergency clearing and storm damage recovery services</p>
-            </div>
-            <div className="border border-gray-700 rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold text-blue-400 mb-2">Native Species</h3>
-              <p className="text-xs text-gray-300">Preservation strategies for Florida's unique ecological zones</p>
-            </div>
-            <div className="border border-violet-600 rounded-lg p-6 text-center bg-violet-600/10">
-              <h3 className="text-lg font-semibold text-blue-400 mb-2">Environmental Impact</h3>
-              <p className="text-xs text-gray-300">Comprehensive environmental assessment and mitigation</p>
-            </div>
-          </div>
-          <div className="bg-gray-800/50 rounded-lg p-4 mt-6">
-            <h4 className="font-semibold text-white mb-2">Our Florida Land Clearing Commitment:</h4>
-            <ul className="text-sm text-gray-300 space-y-1">
-              <li>• Full regulatory compliance</li>
-              <li>• Minimal environmental disruption</li>
-              <li>• Preservation of native ecosystems</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Project Gallery temporarily removed to avoid confusion with forestry mulching projects */}
-
-        {/* Top 10 Land Clearing Questions */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Top 10 Land Clearing Questions in Florida</h2>
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">What is the difference between land clearing and forestry mulching?</h3>
-              <p className="text-gray-300">Land clearing involves complete site preparation, removing all vegetation, roots, and obstacles. Forestry mulching focuses on vegetation management, leaving mulch on the ground. Land clearing provides a blank slate for construction, while mulching preserves ground cover.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">How much does land clearing cost in Florida?</h3>
-              <p className="text-gray-300">Land clearing in Florida typically ranges from $15,000 to $30,000 per acre depending on project specifics like vegetation density, terrain complexity, environmental restrictions, and accessibility. TreeAI uses day-rate pricing while our AI system is in development, providing transparent custom quotes after site assessment.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">Do I need permits for land clearing in Florida?</h3>
-              <p className="text-gray-300">Yes, most land clearing projects require permits. Regulations vary by county and project type. Permits are crucial for wetland protection, environmental conservation, and ensuring compliance with local building codes.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">What equipment is used for land clearing?</h3>
-              <p className="text-gray-300">Professional land clearing uses excavators, bulldozers, brush cutters, stump grinders, and specialized attachments. Professional machines with 65-100 HP deliver efficient and comprehensive site preparation.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">How long does land clearing take?</h3>
-              <p className="text-gray-300">Project duration depends on site size and complexity. Typically, 1-5 acres can be cleared in 1-3 days. Factors like terrain, vegetation density, and environmental considerations impact timeline.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">What is grubbing in land clearing?</h3>
-              <p className="text-gray-300">Grubbing is the process of removing root systems and underground obstacles. It involves excavating and removing stumps, roots, and other below-ground vegetation to prepare the site for construction.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">Can I clear land myself or do I need professionals?</h3>
-              <p className="text-gray-300">While small projects might be DIY, professional land clearing is recommended for complex sites. Professionals ensure regulatory compliance, environmental protection, and efficient site preparation.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">What happens to the debris after land clearing?</h3>
-              <p className="text-gray-300">Debris is completely removed from the site. We handle disposal, recycling, or repurposing of vegetation, stumps, and surface materials according to local regulations and environmental best practices.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">When is the best time for land clearing in Florida?</h3>
-              <p className="text-gray-300">Late fall to early spring (November-March) is ideal. Cooler temperatures and lower humidity reduce environmental impact and make clearing more efficient. Avoid rainy seasons and wildlife breeding periods.</p>
-            </div>
-            <div className="border border-gray-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">What environmental considerations are there for land clearing?</h3>
-              <p className="text-gray-300">We prioritize environmental protection by conducting pre-clearing surveys, preserving native species, minimizing ecosystem disruption, and ensuring compliance with Florida's strict environmental regulations.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-blue-600 rounded-lg p-6 sm:p-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">Need Solid Ground for Construction?</h2>
-          <p className="text-white/90 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">Complete land clearing with grubbing and root raking. Day-rate pricing, custom quotes, professional results.</p>
-          <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-            <div className="bg-white/10 rounded-lg p-4">
-              <p className="text-white font-semibold text-sm">✓ Complete organic material removal</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4">
-              <p className="text-white font-semibold text-sm">✓ Construction-ready solid ground</p>
-            </div>
-          </div>
-          <Link 
-            href="/estimate" 
-            className="bg-black hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg inline-block transition-colors touch-manipulation"
-          >
-            Get Your Land Clearing Quote
-          </Link>
         </section>
       </main>
       <Footer />

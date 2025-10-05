@@ -1,8 +1,6 @@
-'use client'
-
-import { useState } from 'react'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 
@@ -45,7 +43,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Add your actual verification code
+    google: 'your-google-verification-code',
   },
   alternates: {
     canonical: 'https://treeshop.app/tech',
@@ -145,76 +143,16 @@ const roleFeatures = [
 ]
 
 export default function TechPage() {
-  const [activeTab, setActiveTab] = useState('features')
-  const [heroVariant, setHeroVariant] = useState('A')
-  const [formData, setFormData] = useState({
-    companyName: '',
-    email: '',
-    phone: '',
-    currentRevenue: '',
-    operationsChallenges: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState('')
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitMessage('')
-
-    try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const result = await response.json()
-
-      if (response.ok) {
-        setSubmitMessage(result.message)
-        setFormData({
-          companyName: '',
-          email: '',
-          phone: '',
-          currentRevenue: '',
-          operationsChallenges: ''
-        })
-      } else {
-        setSubmitMessage(result.error || 'Something went wrong. Please try again.')
-      }
-    } catch (error) {
-      setSubmitMessage('Something went wrong. Please try again or call us directly.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
   return (
     <div className="min-h-screen bg-black text-white">
       <NavBar />
 
-      {/* Hero Section - A/B Test */}
+      {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-6xl mx-auto text-center">
-          {heroVariant === 'A' ? (
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white">
-              The <span className="text-green-500">TreeShop</span> Era Has Begun
-            </h1>
-          ) : (
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white">
-              Run <span className="text-green-500">TreeShop</span>. Or Run Traditional.
-            </h1>
-          )}
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white">
+            The <span className="text-green-500">TreeShop</span> Era Has Begun
+          </h1>
 
           <div className="max-w-4xl mx-auto mb-8">
             <h2 className="text-2xl font-bold text-green-400 mb-4">
@@ -342,76 +280,27 @@ export default function TechPage() {
             Revolutionary technology that transforms every aspect of tree care operations
           </p>
 
-          {/* Tab Navigation */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-gray-800 rounded-lg p-1">
-              <button
-                onClick={() => setActiveTab('features')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  activeTab === 'features'
-                    ? 'bg-green-500 text-black'
-                    : 'text-white hover:text-green-400'
-                }`}
-              >
-                Feature → Result
-              </button>
-              <button
-                onClick={() => setActiveTab('roles')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  activeTab === 'roles'
-                    ? 'bg-green-500 text-black'
-                    : 'text-white hover:text-green-400'
-                }`}
-              >
-                By Role
-              </button>
-            </div>
-          </div>
-
-          {/* Feature → Result Tab */}
-          {activeTab === 'features' && (
-            <div className="grid lg:grid-cols-2 gap-8">
-              {coreFeatures.map((item, index) => (
-                <div key={index} className="bg-black/50 border border-gray-800 rounded-lg p-6 hover:border-green-800/50 transition-colors">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-green-400 mb-2">
-                        {item.feature}
-                      </h3>
-                      <p className="text-xl font-bold text-white mb-3">
-                        {item.result}
-                      </p>
-                    </div>
-                    <div className="text-green-500 text-2xl">→</div>
+          {/* Core Features */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {coreFeatures.map((item, index) => (
+              <div key={index} className="bg-black/50 border border-gray-800 rounded-lg p-6 hover:border-green-800/50 transition-colors">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-green-400 mb-2">
+                      {item.feature}
+                    </h3>
+                    <p className="text-xl font-bold text-white mb-3">
+                      {item.result}
+                    </p>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="text-green-500 text-2xl">→</div>
                 </div>
-              ))}
-            </div>
-          )}
-
-          {/* By Role Tab */}
-          {activeTab === 'roles' && (
-            <div className="grid md:grid-cols-2 gap-8">
-              {roleFeatures.map((roleData, index) => (
-                <div key={index} className="bg-black/50 border border-gray-800 rounded-lg p-6">
-                  <h3 className="text-2xl font-bold text-green-500 mb-6">
-                    {roleData.role}
-                  </h3>
-                  <ul className="space-y-3">
-                    {roleData.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-white">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
+                <p className="text-gray-300 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -725,80 +614,24 @@ export default function TechPage() {
             <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
               <h3 className="text-xl font-bold text-white mb-6 text-center">Reserve Your Founding Member Spot</h3>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="companyName"
-                  required
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  placeholder="Company Name"
-                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                />
-                <select
-                  name="currentRevenue"
-                  required
-                  value={formData.currentRevenue}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                >
-                  <option value="">Current Annual Revenue</option>
-                  <option value="under-250k">Under $250K</option>
-                  <option value="250k-500k">$250K - $500K</option>
-                  <option value="500k-1m">$500K - $1M</option>
-                  <option value="1m-plus">$1M+</option>
-                </select>
-                <textarea
-                  name="operationsChallenges"
-                  value={formData.operationsChallenges}
-                  onChange={handleChange}
-                  placeholder="What's your biggest challenge with current operations? (Optional)"
-                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white h-24 resize-none"
-                />
+              <p className="text-center text-green-400 font-bold mb-6">
+                🚧 Waitlist form coming soon - Contact us directly for early access
+              </p>
 
-                {submitMessage && (
-                  <div className={`text-center p-4 rounded-lg text-sm ${
-                    submitMessage.includes('Welcome') || submitMessage.includes('Founding Member')
-                      ? 'bg-green-900/50 text-green-400 border border-green-700'
-                      : 'bg-red-900/50 text-red-400 border border-red-700'
-                  }`}>
-                    {submitMessage}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 disabled:bg-gray-600 disabled:cursor-not-allowed"
+              <div className="text-center space-y-4">
+                <a
+                  href="mailto:office@fltreeshop.com?subject=TreeAI%20Waitlist%20-%20Founding%20Member%20Interest"
+                  className="block bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                      Joining Waitlist...
-                    </span>
-                  ) : (
-                    'Join TreeAI Waitlist - Founding Member'
-                  )}
-                </button>
-              </form>
+                  Email for TreeAI Waitlist
+                </a>
+                <a
+                  href="tel:3868435266"
+                  className="block border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black font-bold py-4 px-6 rounded-lg text-lg transition-all"
+                >
+                  Call: (386) 843-5266
+                </a>
+              </div>
 
               <p className="text-sm text-gray-400 mt-4 text-center">
                 Tree Shop LLC took three years to prove this works.<br/>
