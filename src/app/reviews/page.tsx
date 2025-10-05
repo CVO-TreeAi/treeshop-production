@@ -211,27 +211,27 @@ export default function ReviewsPage() {
             Customer Reviews & <span className="text-green-500">Testimonials</span>
           </h1>
           <p className="text-xl text-white mb-8 max-w-3xl mx-auto">
-            Read what our 500+ satisfied customers have to say about TreeShop's professional land clearing,
+            Read what our satisfied customers have to say about TreeShop's professional land clearing,
             forestry mulching, and stump grinding services across Central Florida.
           </p>
 
           {/* Statistics */}
           <div className="grid md:grid-cols-4 gap-6 mb-12">
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl font-bold text-green-500 mb-2">500+</div>
-              <div className="text-white">Happy Customers</div>
+              <div className="text-3xl font-bold text-green-500 mb-2">$2M</div>
+              <div className="text-white">Insurance Coverage</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl font-bold text-green-500 mb-2">98%</div>
-              <div className="text-white">Satisfaction Rate</div>
+              <div className="text-3xl font-bold text-green-500 mb-2">24/7</div>
+              <div className="text-white">Emergency Service</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl font-bold text-green-500 mb-2">5.0</div>
-              <div className="text-white">Average Rating</div>
+              <div className="text-3xl font-bold text-green-500 mb-2">CAT</div>
+              <div className="text-white">Professional Equipment</div>
             </div>
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl font-bold text-green-500 mb-2">10+</div>
-              <div className="text-white">Years Experience</div>
+              <div className="text-3xl font-bold text-green-500 mb-2">FL</div>
+              <div className="text-white">Licensed & Bonded</div>
             </div>
           </div>
         </div>

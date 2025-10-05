@@ -341,7 +341,7 @@ export default function TreeShopLanding() {
             Why <span className="text-green-500">Central Florida</span> Trusts Us
           </h2>
           <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-            Over 500+ properties cleared. Licensed, insured, and equipped with the latest CAT machinery.
+            Licensed, insured, and equipped with the latest CAT machinery serving Central Florida.
           </p>
 
           {/* Benefits Grid */}
@@ -529,20 +529,20 @@ export default function TreeShopLanding() {
           <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8">
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-green-500 mb-2">500+</div>
-                <div className="text-gray-400">Properties Cleared</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-500 mb-2">98%</div>
-                <div className="text-gray-400">Customer Satisfaction</div>
+                <div className="text-3xl font-bold text-green-500 mb-2">$2M</div>
+                <div className="text-gray-400">Insurance Coverage</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-green-500 mb-2">24/7</div>
                 <div className="text-gray-400">Emergency Response</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-green-500 mb-2">$2M</div>
-                <div className="text-gray-400">Insurance Coverage</div>
+                <div className="text-3xl font-bold text-green-500 mb-2">CAT</div>
+                <div className="text-gray-400">Professional Equipment</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-green-500 mb-2">FL</div>
+                <div className="text-gray-400">Licensed & Bonded</div>
               </div>
             </div>
           </div>
