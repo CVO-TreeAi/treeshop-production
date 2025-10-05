@@ -377,19 +377,31 @@ export default function ReviewsPage() {
             Experience the TreeShop difference for yourself. Get your free estimate today!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Link
               href="/landing/target1#estimate-form"
               className="bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
             >
               Get Free Estimate
-            </a>
+            </Link>
             <a
               href="tel:3868435266"
               className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300"
             >
               Call: (386) 843-5266
             </a>
+          </div>
+
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/articles" className="text-green-400 hover:text-green-300 text-sm font-medium">
+              Read Our Articles →
+            </Link>
+            <Link href="/tech" className="text-green-400 hover:text-green-300 text-sm font-medium">
+              Learn About TreeAI →
+            </Link>
+            <Link href="/videos" className="text-green-400 hover:text-green-300 text-sm font-medium">
+              Watch Project Videos →
+            </Link>
           </div>
 
           <div className="mt-6 text-green-400 text-sm">

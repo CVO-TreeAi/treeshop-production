@@ -37,6 +37,21 @@ export default async function ArticlesPage() {
             Insights from the field. Professional writings on land clearing, forestry mulching, and tree services.
           </p>
 
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <Link href="/services/land-clearing" className="bg-gray-800 hover:bg-green-500 hover:text-black text-white px-4 py-2 rounded text-sm transition-colors">
+              Land Clearing Services
+            </Link>
+            <Link href="/services/forestry-mulching" className="bg-gray-800 hover:bg-green-500 hover:text-black text-white px-4 py-2 rounded text-sm transition-colors">
+              Forestry Mulching Services
+            </Link>
+            <Link href="/services/stump-grinding" className="bg-gray-800 hover:bg-green-500 hover:text-black text-white px-4 py-2 rounded text-sm transition-colors">
+              Stump Grinding Services
+            </Link>
+            <Link href="/tech" className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded text-sm font-bold transition-colors">
+              TreeAI Technology
+            </Link>
+          </div>
+
           {/* Category Filter */}
           <div className="mb-12 flex flex-wrap gap-2">
             <span className="bg-gray-800 text-white px-4 py-2 rounded text-sm">All Categories</span>

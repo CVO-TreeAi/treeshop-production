@@ -311,9 +311,23 @@ export default function TechPage() {
             <p className="text-xl text-white mb-4">
               <span className="font-bold">Tree Shop LLC faced these exact problems.</span>
             </p>
-            <p className="text-lg text-green-400">
+            <p className="text-lg text-green-400 mb-6">
               TreeAI was built to solve them.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/reviews"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                Read Customer Reviews
+              </Link>
+              <Link
+                href="/articles"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                Learn More in Articles
+              </Link>
+            </div>
           </div>
         </div>
       </section>
