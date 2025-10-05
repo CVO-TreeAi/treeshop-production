@@ -101,6 +101,57 @@ const roleFeatures = [
 export default function TechPage() {
   const [activeTab, setActiveTab] = useState('features')
   const [heroVariant, setHeroVariant] = useState('A')
+  const [formData, setFormData] = useState({
+    companyName: '',
+    email: '',
+    phone: '',
+    currentRevenue: '',
+    operationsChallenges: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitMessage(result.message)
+        setFormData({
+          companyName: '',
+          email: '',
+          phone: '',
+          currentRevenue: '',
+          operationsChallenges: ''
+        })
+      } else {
+        setSubmitMessage(result.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setSubmitMessage('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -620,23 +671,41 @@ export default function TechPage() {
             <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
               <h3 className="text-xl font-bold text-white mb-6 text-center">Reserve Your Founding Member Spot</h3>
 
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                   type="text"
+                  name="companyName"
+                  required
+                  value={formData.companyName}
+                  onChange={handleChange}
                   placeholder="Company Name"
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
                 />
                 <input
                   type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email Address"
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
                 />
                 <input
                   type="tel"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Phone Number"
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
                 />
-                <select className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white">
+                <select
+                  name="currentRevenue"
+                  required
+                  value={formData.currentRevenue}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                >
                   <option value="">Current Annual Revenue</option>
                   <option value="under-250k">Under $250K</option>
                   <option value="250k-500k">$250K - $500K</option>
@@ -644,14 +713,36 @@ export default function TechPage() {
                   <option value="1m-plus">$1M+</option>
                 </select>
                 <textarea
+                  name="operationsChallenges"
+                  value={formData.operationsChallenges}
+                  onChange={handleChange}
                   placeholder="What's your biggest challenge with current operations? (Optional)"
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white h-24 resize-none"
                 />
+
+                {submitMessage && (
+                  <div className={`text-center p-4 rounded-lg text-sm ${
+                    submitMessage.includes('Welcome') || submitMessage.includes('Founding Member')
+                      ? 'bg-green-900/50 text-green-400 border border-green-700'
+                      : 'bg-red-900/50 text-red-400 border border-red-700'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+                  disabled={isSubmitting}
+                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 disabled:bg-gray-600 disabled:cursor-not-allowed"
                 >
-                  Join TreeAI Waitlist - Founding Member
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                      Joining Waitlist...
+                    </span>
+                  ) : (
+                    'Join TreeAI Waitlist - Founding Member'
+                  )}
                 </button>
               </form>
 

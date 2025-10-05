@@ -608,4 +608,44 @@ export default defineSchema({
     .index("by_siteSource", ["siteSource"])
     .index("by_eventName", ["eventName"])
     .index("by_createdAt", ["createdAt"]),
+
+  // TreeAI Waitlist
+  waitlist: defineTable({
+    // Company Information
+    companyName: v.string(),
+    email: v.string(),
+    phone: v.string(),
+
+    // Business Details
+    currentRevenue: v.string(), // 'under-250k', '250k-500k', '500k-1m', '1m-plus'
+    operationsChallenges: v.optional(v.string()),
+
+    // Founding Member Status
+    foundingMember: v.boolean(),
+    signupDate: v.number(),
+
+    // Communication Preferences
+    interestedInUpdates: v.optional(v.boolean()),
+    interestedInBeta: v.optional(v.boolean()),
+
+    // Lead Source Tracking
+    source: v.optional(v.string()), // 'tech-page', 'article', 'referral'
+    utmSource: v.optional(v.string()),
+    utmMedium: v.optional(v.string()),
+    utmCampaign: v.optional(v.string()),
+
+    // Status
+    status: v.string(), // 'active', 'contacted', 'qualified', 'onboarded'
+    notes: v.optional(v.string()),
+    contactedAt: v.optional(v.number()),
+
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_email", ["email"])
+    .index("by_status", ["status"])
+    .index("by_foundingMember", ["foundingMember"])
+    .index("by_signupDate", ["signupDate"])
+    .index("by_createdAt", ["createdAt"]),
 });
