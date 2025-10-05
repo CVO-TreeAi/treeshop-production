@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, address, service } = body
+    const { name, email, phone, address, service, areaSize, stumpCount } = body
 
     // Validate required fields
     if (!name || !email || !phone || !address || !service) {
@@ -30,8 +30,10 @@ export async function POST(request: Request) {
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
             <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
-            <p><strong>Address:</strong> ${address}</p>
-            <p><strong>Service Interested In:</strong> ${service}</p>
+            <p><strong>Work Site Address:</strong> ${address}</p>
+            <p><strong>Service Requested:</strong> ${service}</p>
+            ${areaSize ? `<p><strong>Area Size:</strong> ${areaSize}</p>` : ''}
+            ${stumpCount ? `<p><strong>Stump Count:</strong> ${stumpCount}</p>` : ''}
           </div>
 
           <div style="background-color: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -69,9 +71,11 @@ export async function POST(request: Request) {
           <p>We've received your request for a free estimate for ${service}. One of our team members will contact you within 24 hours to discuss your project and schedule a site visit.</p>
 
           <div style="background-color: #f0fdf4; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #166534; margin-top: 0;">Your Information</h3>
+            <h3 style="color: #166534; margin-top: 0;">Your Request Details</h3>
             <p><strong>Service Requested:</strong> ${service}</p>
-            <p><strong>Property Address:</strong> ${address}</p>
+            <p><strong>Work Site Address:</strong> ${address}</p>
+            ${areaSize ? `<p><strong>Project Size:</strong> ${areaSize}</p>` : ''}
+            ${stumpCount ? `<p><strong>Stumps to Grind:</strong> ${stumpCount}</p>` : ''}
           </div>
 
           <p>If you have any immediate questions, please don't hesitate to call us at (123) 456-7890.</p>

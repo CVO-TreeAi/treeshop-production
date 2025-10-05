@@ -76,7 +76,9 @@ export default function TreeShopLanding() {
     email: '',
     phone: '',
     address: '',
-    service: ''
+    service: '',
+    areaSize: '',
+    stumpCount: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
@@ -188,7 +190,9 @@ export default function TreeShopLanding() {
           email: '',
           phone: '',
           address: '',
-          service: ''
+          service: '',
+          areaSize: '',
+          stumpCount: ''
         })
       } else {
         setSubmitMessage('Something went wrong. Please try again or call us directly.')
@@ -610,7 +614,7 @@ export default function TreeShopLanding() {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                  placeholder="Full Name *"
+                  placeholder="Name *"
                 />
               </div>
 
@@ -622,7 +626,7 @@ export default function TreeShopLanding() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                  placeholder="Email Address *"
+                  placeholder="Email *"
                 />
               </div>
 
@@ -634,7 +638,7 @@ export default function TreeShopLanding() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                  placeholder="Phone Number *"
+                  placeholder="Phone *"
                 />
               </div>
 
@@ -646,7 +650,7 @@ export default function TreeShopLanding() {
                   value={formData.address}
                   onChange={handleAddressChange}
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
-                  placeholder={userLocation ? `Property Address in ${userLocation} *` : "Property Address *"}
+                  placeholder={userLocation ? `Work Site Address in ${userLocation} *` : "Work Site Address *"}
                 />
               </div>
 
@@ -666,6 +670,69 @@ export default function TreeShopLanding() {
                   ))}
                 </select>
               </div>
+
+              {/* Conditional Fields Based on Service Selection */}
+              {(formData.service === 'Forestry Mulching' || formData.service === 'Land Clearing') && (
+                <div className="bg-gray-800/50 p-4 rounded-lg border border-green-800/30">
+                  <label className="block text-green-400 text-sm font-bold mb-2">
+                    {formData.service === 'Forestry Mulching' ? 'Area to be mulched' : 'Area to be cleared'}
+                  </label>
+                  <select
+                    name="areaSize"
+                    required
+                    value={formData.areaSize}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                  >
+                    <option value="">Select area size *</option>
+                    <option value="Less than 1 acre">Less than 1 acre</option>
+                    <option value="1-2 acres">1-2 acres</option>
+                    <option value="3-5 acres">3-5 acres</option>
+                    <option value="6-10 acres">6-10 acres</option>
+                    <option value="More than 10 acres">More than 10 acres</option>
+                    <option value="Not sure - need estimate">Not sure - need estimate</option>
+                  </select>
+                </div>
+              )}
+
+              {formData.service === 'Stump Grinding' && (
+                <div className="bg-gray-800/50 p-4 rounded-lg border border-green-800/30">
+                  <label className="block text-green-400 text-sm font-bold mb-2">
+                    Number of stumps to grind
+                  </label>
+                  <select
+                    name="stumpCount"
+                    required
+                    value={formData.stumpCount}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                  >
+                    <option value="">Select stump count *</option>
+                    <option value="1-2 stumps">1-2 stumps</option>
+                    <option value="3-5 stumps">3-5 stumps</option>
+                    <option value="6-10 stumps">6-10 stumps</option>
+                    <option value="11-20 stumps">11-20 stumps</option>
+                    <option value="More than 20 stumps">More than 20 stumps</option>
+                    <option value="Not sure - need estimate">Not sure - need estimate</option>
+                  </select>
+                </div>
+              )}
+
+              {formData.service === 'Multiple Services' && (
+                <div className="bg-gray-800/50 p-4 rounded-lg border border-green-800/30">
+                  <label className="block text-green-400 text-sm font-bold mb-2">
+                    Project details
+                  </label>
+                  <textarea
+                    name="areaSize"
+                    value={formData.areaSize}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
+                    placeholder="Describe your project needs (area size, stumps, clearing requirements)"
+                    rows={3}
+                  />
+                </div>
+              )}
 
               <button
                 type="submit"
