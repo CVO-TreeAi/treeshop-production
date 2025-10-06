@@ -124,44 +124,106 @@ export default function LandClearingPage(){
           </div>
         </section>
 
-        {/* Address Common Concerns */}
-        <section className="mb-16 bg-green-900/10 rounded-lg p-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-8 text-white">
-              You're Probably Wondering...
+        {/* Professional Pricing & Process */}
+        <section className="mb-16">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8 text-white">
+              Professional <span className="text-green-500">Day Rate System</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-gray-900/50 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">"Will this damage my property?"</h3>
-                <p className="text-white">
-                  Professional clearing actually <strong>protects</strong> your property. We preserve valuable trees,
-                  prevent erosion, and create defensible space. You get the benefits without the damage.
-                </p>
+            <div className="grid lg:grid-cols-2 gap-8 mb-12">
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-green-400 mb-6">TreeShop Standard Package</h3>
+                <div className="space-y-4 mb-6">
+                  <div className="bg-black/50 rounded-lg p-4">
+                    <div className="text-3xl font-bold text-white mb-2">$4,500 per day</div>
+                    <div className="text-green-400 font-medium">Complete land clearing operation</div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div style={{color: '#ffffff'}}>
+                      <strong className="text-green-400">CAT 315 Excavator</strong> — 15-ton precision clearing machine
+                    </div>
+                    <div style={{color: '#ffffff'}}>
+                      <strong className="text-green-400">CAT 265 Skid Steer</strong> — Root rake, grapple, forestry mulcher attachments
+                    </div>
+                    <div style={{color: '#ffffff'}}>
+                      <strong className="text-green-400">Professional Operation</strong> — Licensed, insured, systematic approach
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gray-800 rounded-lg p-4">
+                  <h4 className="text-green-400 font-bold mb-2">Timeline for Standard Lot:</h4>
+                  <div style={{color: '#ffffff'}}>1-3 days depending on vegetation density, building plans, permits, and site conditions</div>
+                </div>
               </div>
 
-              <div className="bg-gray-900/50 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">"Is this going to be expensive?"</h3>
-                <p className="text-white">
-                  Think investment, not expense. Cleared land increases property value, enables development,
-                  and often pays for itself through the opportunities it creates.
-                </p>
-              </div>
+              <div className="bg-gray-900 border border-gray-700 rounded-lg p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Debris Management</h3>
+                <div className="space-y-4 mb-6">
+                  <div className="bg-black/50 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-white mb-2">$700 per load</div>
+                    <div style={{color: '#ffffff'}}>Self-loading grapple trucks</div>
+                  </div>
 
-              <div className="bg-gray-900/50 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">"How do I know you'll do it right?"</h3>
-                <p className="text-white">
-                  We've been doing this systematically for years. Licensed, insured, and equipped with professional
-                  CAT machinery. Plus, we show you exactly what we'll do before we start.
-                </p>
-              </div>
+                  <div style={{color: '#ffffff'}} className="text-sm">
+                    <strong className="text-green-400">Average Florida property:</strong> 15-20 truck loads per acre
+                  </div>
+                </div>
 
-              <div className="bg-gray-900/50 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">"What if I change my mind?"</h3>
-                <p className="text-white">
-                  We start with a free site visit and detailed plan. No commitment until you're completely
-                  confident this is right for your property and your goals.
-                </p>
+                <div className="bg-gray-800 rounded-lg p-4">
+                  <h4 className="text-white font-bold mb-2">Other Options Available:</h4>
+                  <div style={{color: '#ffffff'}} className="text-sm">Project-specific debris management solutions for different needs and budgets</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Complete Project Management</h3>
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <div className="text-green-500 font-bold text-lg mb-2">TreeAI Analysis</div>
+                  <div style={{color: '#ffffff'}}>Our AI system provides detailed site assessment</div>
+                </div>
+                <div>
+                  <div className="text-green-500 font-bold text-lg mb-2">Drawn Plans</div>
+                  <div style={{color: '#ffffff'}}>Full plans on satellite maps showing clearing areas</div>
+                </div>
+                <div>
+                  <div className="text-green-500 font-bold text-lg mb-2">Phased Billing</div>
+                  <div style={{color: '#ffffff'}}>Deposit → Hauling → Finished (spreads costs)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Concierge Service */}
+        <section className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-green-900/20 border border-green-800 rounded-lg p-8 text-center">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Concierge <span className="text-green-500">"Done for You"</span> Service
+              </h2>
+              <p className="text-xl text-white mb-8">
+                We scale our service up and down to fit your DIY level. From complete project management
+                to fixing disasters when you get in over your head.
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-black/50 rounded-lg p-6">
+                  <h3 className="text-lg font-bold text-green-400 mb-3">Full Service</h3>
+                  <div style={{color: '#ffffff'}}>Complete project management from permits to final cleanup</div>
+                </div>
+                <div className="bg-black/50 rounded-lg p-6">
+                  <h3 className="text-lg font-bold text-green-400 mb-3">Partial Support</h3>
+                  <div style={{color: '#ffffff'}}>Equipment and expertise for specific phases you need</div>
+                </div>
+                <div className="bg-black/50 rounded-lg p-6">
+                  <h3 className="text-lg font-bold text-green-400 mb-3">Disaster Recovery</h3>
+                  <div style={{color: '#ffffff'}}>Fix problems when DIY projects go wrong</div>
+                </div>
               </div>
             </div>
           </div>
@@ -276,32 +338,52 @@ export default function LandClearingPage(){
           </div>
         </section>
 
-        {/* Simple FAQ */}
+        {/* Professional FAQ */}
         <section className="mb-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-white">
-              Common <span className="text-green-500">Questions</span>
+              Professional <span className="text-green-500">Land Clearing</span> Questions
             </h2>
 
             <div className="space-y-6">
-              <div className="bg-gray-900 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">How much does land clearing cost?</h3>
-                <p className="text-white">Every property is different. We provide free estimates after seeing your land in person. No surprises, no hidden fees.</p>
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"Will this damage my property?"</h3>
+                <p style={{color: '#ffffff'}}>
+                  Professional clearing actually <strong>protects</strong> your property. We preserve valuable trees,
+                  prevent erosion, and create defensible space. You get the benefits without the damage.
+                </p>
               </div>
 
-              <div className="bg-gray-900 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">How long does it take?</h3>
-                <p className="text-white">Most projects take 1-3 days. Larger properties might take a week. We'll give you an exact timeline with your estimate.</p>
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"How much does this cost?"</h3>
+                <p style={{color: '#ffffff'}}>
+                  Our day rate system is transparent: <strong>$4,500 per day</strong> for our CAT excavator and skid steer package.
+                  Debris removal is <strong>$700 per truck load</strong>. Most standard lots take 1-3 days.
+                </p>
               </div>
 
-              <div className="bg-gray-900 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">What about permits?</h3>
-                <p className="text-white">We help you understand what permits you need and can guide you through the process. We know the local requirements.</p>
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"How do I know you'll do it right?"</h3>
+                <p style={{color: '#ffffff'}}>
+                  We've been doing this systematically for years. <strong>Licensed, insured, and equipped with professional
+                  CAT machinery.</strong> TreeAI system provides detailed analysis. We show you drawn plans on satellite maps before we start.
+                </p>
               </div>
 
-              <div className="bg-gray-900 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-green-400 mb-3">What happens to all the debris?</h3>
-                <p className="text-white">We haul everything away and dispose of it properly. You get clean land with nothing left behind.</p>
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"What if my project goes wrong?"</h3>
+                <p style={{color: '#ffffff'}}>
+                  We can fix disasters when DIY projects get out of hand. Our concierge service scales up and down
+                  to fit your needs — from complete project management to disaster recovery.
+                </p>
+              </div>
+
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"Do you handle custom projects?"</h3>
+                <p style={{color: '#ffffff'}}>
+                  Absolutely. For larger scale, smaller scale, or specialty clearing, we create custom plans.
+                  TreeAI helps us understand your specific site conditions and requirements.
+                </p>
               </div>
             </div>
           </div>
