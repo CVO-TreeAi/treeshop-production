@@ -124,75 +124,89 @@ export default function LandClearingPage(){
           </div>
         </section>
 
-        {/* Professional Pricing & Process */}
+        {/* Professional Pricing */}
         <section className="mb-16">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8 text-white">
-              Professional <span className="text-green-500">Day Rate System</span>
+          <div className="max-w-4xl mx-auto">
+            <h2 style={{color: '#ffffff'}} className="text-3xl font-bold text-center mb-8">
+              Transparent <span style={{color: '#22c55e'}}>Professional Pricing</span>
             </h2>
 
-            <div className="grid lg:grid-cols-2 gap-8 mb-12">
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-8">
-                <h3 style={{color: '#22c55e'}} className="text-2xl font-bold mb-6">TreeShop Standard Package</h3>
-                <div className="space-y-4 mb-6">
-                  <div className="bg-black/50 rounded-lg p-4">
-                    <div className="text-3xl font-bold text-white mb-2">$4,500 per day</div>
-                    <div className="text-green-400 font-medium">Complete land clearing operation</div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div style={{color: '#ffffff'}}>
-                      <strong className="text-green-400">CAT 315 Excavator</strong> — 15-ton precision clearing machine
-                    </div>
-                    <div style={{color: '#ffffff'}}>
-                      <strong className="text-green-400">CAT 265 Skid Steer</strong> — Root rake, grapple, forestry mulcher attachments
-                    </div>
-                    <div style={{color: '#ffffff'}}>
-                      <strong className="text-green-400">Professional Operation</strong> — Licensed, insured, systematic approach
-                    </div>
-                  </div>
+            <div className="bg-gray-800 border border-green-500 rounded-lg p-8 mb-8">
+              <div className="text-center mb-8">
+                <div className="bg-black rounded-lg p-6 mb-6">
+                  <div style={{color: '#22c55e'}} className="text-4xl font-bold mb-2">$4,500</div>
+                  <div style={{color: '#ffffff'}} className="text-xl font-medium">Per Day - Complete Land Clearing</div>
                 </div>
 
-                <div className="bg-gray-800 rounded-lg p-4">
-                  <h4 className="text-green-400 font-bold mb-2">Timeline for Standard Lot:</h4>
-                  <div style={{color: '#ffffff'}}>1-3 days depending on vegetation density, building plans, permits, and site conditions</div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="text-left">
+                    <h3 style={{color: '#22c55e'}} className="text-lg font-bold mb-4">Equipment Package Includes:</h3>
+                    <ul className="space-y-2">
+                      <li style={{color: '#ffffff'}}>✓ CAT 315 Excavator (15-ton precision machine)</li>
+                      <li style={{color: '#ffffff'}}>✓ CAT 265 Skid Steer (root rake, grapple, mulcher)</li>
+                      <li style={{color: '#ffffff'}}>✓ Professional operators and project management</li>
+                      <li style={{color: '#ffffff'}}>✓ Licensed, insured, systematic approach</li>
+                    </ul>
+                  </div>
+
+                  <div className="text-left">
+                    <h3 style={{color: '#22c55e'}} className="text-lg font-bold mb-4">Timeline:</h3>
+                    <ul className="space-y-2">
+                      <li style={{color: '#ffffff'}}>✓ Standard lot: 1-3 days</li>
+                      <li style={{color: '#ffffff'}}>✓ Depends on vegetation density</li>
+                      <li style={{color: '#ffffff'}}>✓ Building plans and permit requirements</li>
+                      <li style={{color: '#ffffff'}}>✓ Site conditions and access</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-gray-900 border border-gray-700 rounded-lg p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Debris Management</h3>
-                <div className="space-y-4 mb-6">
-                  <div className="bg-black/50 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-white mb-2">$700 per load</div>
-                    <div style={{color: '#ffffff'}}>Self-loading grapple trucks</div>
-                  </div>
-
-                  <div style={{color: '#ffffff'}} className="text-sm">
-                    <strong className="text-green-400">Average Florida property:</strong> 15-20 truck loads per acre
-                  </div>
+              <div className="bg-gray-700 rounded-lg p-6 border border-green-500">
+                <h3 style={{color: '#22c55e'}} className="text-xl font-bold mb-4 text-center">
+                  Add-On: Debris Hauling
+                </h3>
+                <div className="text-center mb-4">
+                  <div style={{color: '#22c55e'}} className="text-2xl font-bold">$700 per truck load</div>
+                  <div style={{color: '#ffffff'}}>Self-loading grapple trucks</div>
                 </div>
 
-                <div className="bg-gray-800 rounded-lg p-4">
-                  <h4 className="text-white font-bold mb-2">Other Options Available:</h4>
-                  <div style={{color: '#ffffff'}} className="text-sm">Project-specific debris management solutions for different needs and budgets</div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 style={{color: '#22c55e'}} className="font-bold mb-2">If you want debris hauled off:</h4>
+                    <div style={{color: '#ffffff'}}>
+                      ✓ We can handle complete removal<br/>
+                      ✓ Average Florida property: 15-20 loads per acre<br/>
+                      ✓ Clean site with nothing left behind
+                    </div>
+                  </div>
+                  <div>
+                    <h4 style={{color: '#22c55e'}} className="font-bold mb-2">Other options available:</h4>
+                    <div style={{color: '#ffffff'}}>
+                      ✓ Leave mulched material on site<br/>
+                      ✓ Burn piles (where permitted)<br/>
+                      ✓ Custom debris management solutions
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">Complete Project Management</h3>
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <div className="bg-black border border-gray-600 rounded-lg p-6 text-center">
+              <h3 style={{color: '#ffffff'}} className="text-xl font-bold mb-4">
+                Complete Project Management Included
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
                 <div>
-                  <div className="text-green-500 font-bold text-lg mb-2">TreeAI Analysis</div>
-                  <div style={{color: '#ffffff'}}>Our AI system provides detailed site assessment</div>
+                  <div style={{color: '#22c55e'}} className="font-bold text-lg mb-2">TreeAI Analysis</div>
+                  <div style={{color: '#ffffff'}}>Site assessment and optimization</div>
                 </div>
                 <div>
-                  <div className="text-green-500 font-bold text-lg mb-2">Drawn Plans</div>
-                  <div style={{color: '#ffffff'}}>Full plans on satellite maps showing clearing areas</div>
+                  <div style={{color: '#22c55e'}} className="font-bold text-lg mb-2">Satellite Plans</div>
+                  <div style={{color: '#ffffff'}}>Detailed clearing maps and strategy</div>
                 </div>
                 <div>
-                  <div className="text-green-500 font-bold text-lg mb-2">Phased Billing</div>
-                  <div style={{color: '#ffffff'}}>Deposit → Hauling → Finished (spreads costs)</div>
+                  <div style={{color: '#22c55e'}} className="font-bold text-lg mb-2">Phased Billing</div>
+                  <div style={{color: '#ffffff'}}>Deposit → Work → Final (spreads costs)</div>
                 </div>
               </div>
             </div>
