@@ -346,41 +346,41 @@ export default function LandClearingPage(){
             </h2>
 
             <div className="space-y-6">
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+              <div className="bg-gray-800 border border-green-500 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-green-400 mb-3">"Will this damage my property?"</h3>
-                <p style={{color: '#ffffff'}}>
+                <p style={{color: '#ffffff', fontWeight: 'bold'}}>
                   Professional clearing actually <strong>protects</strong> your property. We preserve valuable trees,
                   prevent erosion, and create defensible space. You get the benefits without the damage.
                 </p>
               </div>
 
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+              <div className="bg-gray-800 border border-green-500 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-green-400 mb-3">"How much does this cost?"</h3>
-                <p style={{color: '#ffffff'}}>
+                <p style={{color: '#ffffff', fontWeight: 'bold'}}>
                   Our day rate system is transparent: <strong>$4,500 per day</strong> for our CAT excavator and skid steer package.
                   Debris removal is <strong>$700 per truck load</strong>. Most standard lots take 1-3 days.
                 </p>
               </div>
 
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+              <div className="bg-gray-800 border border-green-500 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-green-400 mb-3">"How do I know you'll do it right?"</h3>
-                <p style={{color: '#ffffff'}}>
+                <p style={{color: '#ffffff', fontWeight: 'bold'}}>
                   We've been doing this systematically for years. <strong>Licensed, insured, and equipped with professional
                   CAT machinery.</strong> TreeAI system provides detailed analysis. We show you drawn plans on satellite maps before we start.
                 </p>
               </div>
 
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+              <div className="bg-gray-800 border border-green-500 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-green-400 mb-3">"What if my project goes wrong?"</h3>
-                <p style={{color: '#ffffff'}}>
+                <p style={{color: '#ffffff', fontWeight: 'bold'}}>
                   We can fix disasters when DIY projects get out of hand. Our concierge service scales up and down
                   to fit your needs — from complete project management to disaster recovery.
                 </p>
               </div>
 
-              <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
+              <div className="bg-gray-800 border border-green-500 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-green-400 mb-3">"Do you handle custom projects?"</h3>
-                <p style={{color: '#ffffff'}}>
+                <p style={{color: '#ffffff', fontWeight: 'bold'}}>
                   Absolutely. For larger scale, smaller scale, or specialty clearing, we create custom plans.
                   TreeAI helps us understand your specific site conditions and requirements.
                 </p>
