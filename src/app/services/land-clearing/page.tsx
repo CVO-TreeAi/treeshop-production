@@ -133,7 +133,7 @@ export default function LandClearingPage(){
 
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
               <div className="bg-green-900/20 border border-green-800 rounded-lg p-8">
-                <h3 className="text-2xl font-bold text-green-400 mb-6">TreeShop Standard Package</h3>
+                <h3 style={{color: '#22c55e'}} className="text-2xl font-bold mb-6">TreeShop Standard Package</h3>
                 <div className="space-y-4 mb-6">
                   <div className="bg-black/50 rounded-lg p-4">
                     <div className="text-3xl font-bold text-white mb-2">$4,500 per day</div>
@@ -203,10 +203,10 @@ export default function LandClearingPage(){
         <section className="mb-16">
           <div className="max-w-4xl mx-auto">
             <div className="bg-green-900/20 border border-green-800 rounded-lg p-8 text-center">
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Concierge <span className="text-green-500">"Done for You"</span> Service
+              <h2 style={{color: '#ffffff'}} className="text-3xl font-bold mb-6">
+                Concierge <span style={{color: '#22c55e'}}>"Done for You"</span> Service
               </h2>
-              <p className="text-xl text-white mb-8">
+              <p style={{color: '#ffffff'}} className="text-xl mb-8">
                 We scale our service up and down to fit your DIY level. From complete project management
                 to fixing disasters when you get in over your head.
               </p>
@@ -290,10 +290,10 @@ export default function LandClearingPage(){
             </div>
 
             <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6 text-center">
-              <p className="text-lg text-white mb-4">
+              <p style={{color: '#ffffff'}} className="text-lg mb-4">
                 <strong>"We don't just clear land — we unlock your property's full potential."</strong>
               </p>
-              <p className="text-green-400">
+              <p style={{color: '#ffffff'}}>
                 This is why property owners trust TreeShop with their most important projects.
               </p>
             </div>
