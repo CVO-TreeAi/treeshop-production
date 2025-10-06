@@ -27,7 +27,7 @@ export default function LandClearingPage(){
             <p className="text-green-400 font-medium">
               — Property owner after seeing their transformation
             </p>
-            <p className="text-gray-300 text-sm mt-4">
+            <p className="text-white text-sm mt-4">
               From cramped and confined to open and inspiring. That's what proper land clearing delivers.
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function LandClearingPage(){
                   "They cleared 3 acres for our new home. Professional, fast, and left it perfect for construction."
                 </p>
                 <div className="text-green-400 font-bold">- Sarah M.</div>
-                <div className="text-gray-400 text-sm">New Home Construction</div>
+                <div className="text-white text-sm">New Home Construction</div>
               </div>
 
               <div className="bg-gray-900 rounded-lg p-6 text-center">
@@ -261,7 +261,7 @@ export default function LandClearingPage(){
                   "Great company! They cleared my property quickly and did an excellent job."
                 </p>
                 <div className="text-green-400 font-bold">- Aixala</div>
-                <div className="text-gray-400 text-sm">Property Development</div>
+                <div className="text-white text-sm">Property Development</div>
               </div>
 
               <div className="bg-gray-900 rounded-lg p-6 text-center">
@@ -270,7 +270,7 @@ export default function LandClearingPage(){
                   "Fair pricing, showed up on time, and did exactly what we discussed."
                 </p>
                 <div className="text-green-400 font-bold">- Rhodes</div>
-                <div className="text-gray-400 text-sm">Commercial Project</div>
+                <div className="text-white text-sm">Commercial Project</div>
               </div>
             </div>
           </div>
