@@ -274,14 +274,6 @@ export default function LandClearingPage(){
               </div>
             </div>
 
-            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6 text-center">
-              <p style={{color: '#ffffff'}} className="text-lg mb-4">
-                <strong>"We don't just clear land — we unlock your property's full potential."</strong>
-              </p>
-              <p style={{color: '#ffffff'}}>
-                This is why property owners trust TreeShop with their most important projects.
-              </p>
-            </div>
           </div>
         </section>
 
