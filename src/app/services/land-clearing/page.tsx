@@ -213,35 +213,6 @@ export default function LandClearingPage(){
           </div>
         </section>
 
-        {/* Concierge Service */}
-        <section className="mb-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-green-900/20 border border-green-800 rounded-lg p-8 text-center">
-              <h2 style={{color: '#ffffff'}} className="text-3xl font-bold mb-6">
-                Concierge <span style={{color: '#22c55e'}}>"Done for You"</span> Service
-              </h2>
-              <p style={{color: '#ffffff'}} className="text-xl mb-8">
-                We scale our service up and down to fit your DIY level. From complete project management
-                to fixing disasters when you get in over your head.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-black/50 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-green-400 mb-3">Full Service</h3>
-                  <div style={{color: '#ffffff'}}>Complete project management from permits to final cleanup</div>
-                </div>
-                <div className="bg-black/50 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-green-400 mb-3">Partial Support</h3>
-                  <div style={{color: '#ffffff'}}>Equipment and expertise for specific phases you need</div>
-                </div>
-                <div className="bg-black/50 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-green-400 mb-3">Disaster Recovery</h3>
-                  <div style={{color: '#ffffff'}}>Fix problems when DIY projects go wrong</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Professional Control */}
         <section className="mb-16">
