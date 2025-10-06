@@ -13,157 +13,226 @@ export default function LandClearingPage(){
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Turn Your <span className="text-green-500">Raw Land</span> into a Clean Slate
+            Clearing Land, <span className="text-green-500">Exposing Potential</span>
           </h1>
           <p className="text-xl text-white max-w-4xl mx-auto mb-8 leading-relaxed">
-            We transform overgrown, unusable land into <strong className="text-green-400">clean, buildable space</strong> ready for whatever you're planning.
+            Your property holds possibilities you can't see yet. That perfect building site. The stunning view hiding behind overgrowth.
+            The trails that could connect everything. <strong className="text-green-400">We reveal what's already there.</strong>
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl mb-3"></div>
-              <h3 className="text-lg font-bold text-white mb-2">Ready to Build</h3>
-              <p className="text-gray-300 text-sm">Clean, solid ground perfect for construction, foundations, and development</p>
-            </div>
-            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl mb-3"></div>
-              <h3 className="text-lg font-bold text-white mb-2">Fresh Start</h3>
-              <p className="text-gray-300 text-sm">Remove all unwanted vegetation, stumps, and debris for a completely clean property</p>
-            </div>
-            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6">
-              <div className="text-3xl mb-3"></div>
-              <h3 className="text-lg font-bold text-white mb-2">Fast Results</h3>
-              <p className="text-gray-300 text-sm">Most projects completed in 1-3 days with professional CAT equipment</p>
-            </div>
+          <div className="bg-gray-900/50 border border-green-800/50 rounded-lg p-8 max-w-3xl mx-auto mb-12">
+            <p className="text-lg text-white mb-4 italic">
+              "I didn't even know that's what I wanted until I experienced it."
+            </p>
+            <p className="text-green-400 font-medium">
+              — Property owner after seeing their transformation
+            </p>
+            <p className="text-gray-300 text-sm mt-4">
+              From cramped and confined to open and inspiring. That's what proper land clearing delivers.
+            </p>
           </div>
 
           <Link
             href="/estimate"
             className="bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
           >
-            Get Your Free Estimate
+            Discover Your Property's Potential
           </Link>
         </div>
 
 
-        {/* What You Get */}
+        {/* The ROI of Freedom */}
         <section className="mb-16">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 text-white">
-              What You Get with <span className="text-green-500">TreeShop Land Clearing</span>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-4 text-white">
+              Land Clearing: An Investment with <span className="text-green-500">Unmatched ROI</span>
             </h2>
+            <p className="text-xl text-center text-white mb-12 max-w-3xl mx-auto">
+              Done correctly, clearing your land isn't an expense — it's the foundation for everything you want to achieve.
+            </p>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="text-left">
-                <h3 className="text-xl font-bold text-green-400 mb-4">Before We Start:</h3>
-                <ul className="space-y-3 text-white">
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Free site visit and honest assessment</span>
+            <div className="grid lg:grid-cols-3 gap-8 mb-12">
+              {/* Unlock Hidden Value */}
+              <div className="bg-gray-900 rounded-lg p-8">
+                <h3 className="text-xl font-bold text-green-400 mb-6">Unlock Hidden Value</h3>
+                <ul className="space-y-4 text-white">
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Reveal stunning views</strong> you didn't know existed</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Clear explanation of what we'll do</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Create usable space</strong> where there was only overgrowth</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Upfront pricing with no hidden fees</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Open possibilities</strong> for trails, gardens, and outdoor living</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Timeline you can count on</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Transform cramped and confined</strong> into open and inspiring</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="text-left">
-                <h3 className="text-xl font-bold text-green-400 mb-4">After We're Done:</h3>
-                <ul className="space-y-3 text-white">
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Clean, buildable land ready for construction</span>
+              {/* Protect Your Investment */}
+              <div className="bg-gray-900 rounded-lg p-8">
+                <h3 className="text-xl font-bold text-green-400 mb-6">Protect Your Investment</h3>
+                <ul className="space-y-4 text-white">
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Fire mitigation</strong> creates defensible space around your property</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>All debris removed and disposed of properly</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Erosion control</strong> prevents costly damage and washouts</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Solid ground you can build on with confidence</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Storm preparation</strong> eliminates hazardous widow makers</span>
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-green-500">✓</span>
-                    <span>Your project can move forward immediately</span>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Pest reduction</strong> removes habitat for unwanted wildlife</span>
                   </li>
                 </ul>
               </div>
-            </div>
 
-            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">Simple Process, Professional Results</h3>
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
-                <div>
-                  <div className="text-2xl mb-2">1.</div>
-                  <div className="text-white font-bold">Free Visit</div>
-                  <div className="text-gray-300 text-sm">We come see your land</div>
-                </div>
-                <div>
-                  <div className="text-2xl mb-2">2.</div>
-                  <div className="text-white font-bold">Clear Plan</div>
-                  <div className="text-gray-300 text-sm">Honest estimate & timeline</div>
-                </div>
-                <div>
-                  <div className="text-2xl mb-2">3.</div>
-                  <div className="text-white font-bold">Clean Results</div>
-                  <div className="text-gray-300 text-sm">Buildable land, ready to go</div>
-                </div>
+              {/* Enable Development */}
+              <div className="bg-gray-900 rounded-lg p-8">
+                <h3 className="text-xl font-bold text-green-400 mb-6">Enable Development</h3>
+                <ul className="space-y-4 text-white">
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Building pads</strong> exactly where you want them</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Access roads</strong> and driveways that make sense</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Utility corridors</strong> for power, water, and septic</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span><strong>Recreation areas</strong> designed around natural features</span>
+                  </li>
+                </ul>
               </div>
-              <Link
-                href="/estimate"
-                className="bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-lg text-lg transition-all"
-              >
-                Start with a Free Visit
-              </Link>
             </div>
           </div>
         </section>
 
-        {/* Simple Results */}
+        {/* Address Common Concerns */}
+        <section className="mb-16 bg-green-900/10 rounded-lg p-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-center mb-8 text-white">
+              You're Probably Wondering...
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-gray-900/50 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"Will this damage my property?"</h3>
+                <p className="text-white">
+                  Professional clearing actually <strong>protects</strong> your property. We preserve valuable trees,
+                  prevent erosion, and create defensible space. You get the benefits without the damage.
+                </p>
+              </div>
+
+              <div className="bg-gray-900/50 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"Is this going to be expensive?"</h3>
+                <p className="text-white">
+                  Think investment, not expense. Cleared land increases property value, enables development,
+                  and often pays for itself through the opportunities it creates.
+                </p>
+              </div>
+
+              <div className="bg-gray-900/50 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"How do I know you'll do it right?"</h3>
+                <p className="text-white">
+                  We've been doing this systematically for years. Licensed, insured, and equipped with professional
+                  CAT machinery. Plus, we show you exactly what we'll do before we start.
+                </p>
+              </div>
+
+              <div className="bg-gray-900/50 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-green-400 mb-3">"What if I change my mind?"</h3>
+                <p className="text-white">
+                  We start with a free site visit and detailed plan. No commitment until you're completely
+                  confident this is right for your property and your goals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Control */}
         <section className="mb-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-white">
-              Perfect for These <span className="text-green-500">Projects</span>
+              Why TreeShop Takes <span className="text-green-500">Complete Control</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <div className="bg-gray-900 rounded-lg p-6 text-center">
-                <div className="text-3xl mb-3"></div>
-                <h3 className="text-lg font-bold text-white mb-2">New Home Construction</h3>
-                <p className="text-gray-300 text-sm">Clean foundation area for your dream home</p>
-              </div>
-              <div className="bg-gray-900 rounded-lg p-6 text-center">
-                <div className="text-3xl mb-3"></div>
-                <h3 className="text-lg font-bold text-white mb-2">Commercial Development</h3>
-                <p className="text-gray-300 text-sm">Large-scale site preparation for business projects</p>
-              </div>
-              <div className="bg-gray-900 rounded-lg p-6 text-center">
-                <div className="text-3xl mb-3"></div>
-                <h3 className="text-lg font-bold text-white mb-2">Agricultural Land</h3>
-                <p className="text-gray-300 text-sm">Convert forest to farmable, usable land</p>
-              </div>
-              <div className="bg-gray-900 rounded-lg p-6 text-center">
-                <div className="text-3xl mb-3"></div>
-                <h3 className="text-lg font-bold text-white mb-2">Access Roads</h3>
-                <p className="text-gray-300 text-sm">Create pathways and driveways through wooded areas</p>
+            <div className="bg-gray-900 rounded-lg p-8 mb-8">
+              <p className="text-xl text-white text-center mb-6">
+                Most contractors show up and start cutting. We show up with a <strong className="text-green-400">systematic plan</strong>
+                that maximizes your property's potential while protecting what matters.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-lg font-bold text-green-400 mb-4">Our Professional Approach:</h3>
+                  <ul className="space-y-3 text-white">
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>Site analysis first</strong> — we identify opportunities and constraints</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>Strategic preservation</strong> — save valuable trees and natural features</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>Phased clearing</strong> — reveal views and adjust plans as we progress</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>Professional equipment</strong> — CAT machinery for precision work</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-green-400 mb-4">What This Means for You:</h3>
+                  <ul className="space-y-3 text-white">
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>No regrets</strong> — we preserve options and enhance value</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>No surprises</strong> — detailed planning prevents costly mistakes</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>No delays</strong> — systematic approach keeps projects on track</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-green-500 mt-1">•</span>
+                      <span><strong>No cleanup headaches</strong> — we handle everything</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-6 text-center">
-              <h3 className="text-xl font-bold text-white mb-3">
-                "From jungle to job site in days, not months"
-              </h3>
-              <p className="text-green-400 font-medium">
-                - That's the TreeShop difference
+            <div className="bg-green-900/20 border border-green-800/50 rounded-lg p-6 text-center">
+              <p className="text-lg text-white mb-4">
+                <strong>"We don't just clear land — we unlock your property's full potential."</strong>
+              </p>
+              <p className="text-green-400">
+                This is why property owners trust TreeShop with their most important projects.
               </p>
             </div>
           </div>
